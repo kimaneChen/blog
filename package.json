@@ -1,6 +1,7 @@
 {
-  "name": "madkangaroo",
+  "name": "mad-kangaroo",
   "version": "0.1.0",
+  "license": "UNLICENSED",
   "private": true,
   "engines": {
     "npm": "^8.0.0",
@@ -8,6 +9,7 @@
   },
   "scripts": {
     "dev": "next dev",
+    "prebuild": "prisma migrate deploy",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
