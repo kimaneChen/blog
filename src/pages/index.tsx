@@ -16,7 +16,7 @@ const Login: React.FC = () => {
   return (
     <>
       Not signed in <br />
-      <button type="button" onClick={() => signIn()}>
+      <button type="button" onClick={() => signIn('github', { callbackUrl: '/' })}>
         Sign in
       </button>
     </>
