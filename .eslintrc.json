@@ -15,6 +15,13 @@
         "unnamedComponents": "arrow-function"
       }
     ],
+    "react/require-default-props": [
+      0,
+      {
+        "classes": "defaultProps",
+        "functions": "defaultArguments"
+      }
+    ],
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
@@ -23,8 +30,6 @@
     ]
   },
   "parserOptions": {
-    "project": [
-      "./tsconfig.json"
-    ]
+    "project": ["./tsconfig.json"]
   }
 }
