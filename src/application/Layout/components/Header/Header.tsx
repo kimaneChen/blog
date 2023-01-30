@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import NavLink from './NavLink'
-import Logo from './Logo'
+import NavLink from './components/NavLink'
+import Logo from './components/Logo'
 
 const Header: FC = () => (
   <header className="bg-background border-b">

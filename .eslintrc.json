@@ -8,6 +8,7 @@
   ],
   "rules": {
     "arrow-body-style": "error",
+    "no-restricted-exports": "off",
     "react/function-component-definition": [
       "error",
       {
@@ -30,6 +31,8 @@
     ]
   },
   "parserOptions": {
-    "project": ["./tsconfig.json"]
+    "project": [
+      "./tsconfig.json"
+    ]
   }
 }
