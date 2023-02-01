@@ -23,8 +23,10 @@ const Header: FC = () => {
           </section>
         ) : (
           <section className="flex gap-4">
-            <NavLink label="Sign Up" value="/signup" outline />
-            <NavLink label="Log In" value="/login" />
+            <NavLink href="/sign-up" outline>
+              Sign Up
+            </NavLink>
+            <NavLink href="/login">Log In</NavLink>
           </section>
         )}
       </Container>
