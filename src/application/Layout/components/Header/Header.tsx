@@ -2,8 +2,8 @@ import { FC } from 'react'
 import { useSession } from 'next-auth/react'
 import Avatar from '@/components/Avatar'
 import Container from '@/components/Container'
+import Logo from '@/components/Logo'
 import NavLink from './components/NavLink'
-import Logo from './components/Logo'
 import Notification from './components/Notification'
 
 const Header: FC = () => {
