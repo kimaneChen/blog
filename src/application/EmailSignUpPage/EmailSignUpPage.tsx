@@ -11,7 +11,7 @@ const EmailSignUpPage: NextPage = () => (
       <Input placeholder="Email address" />
     </div>
     <AuthButton icon={<FaEnvelope className="text-lg" />}>Continue with Email </AuthButton>
-    <Button variant={Variant.Primary}>
+    <Button variant={Variant.Primary} block>
       <div className="flex items-center gap-2 justify-center">
         <FaArrowLeft className="text-lg" />
         Other Sign Up Options

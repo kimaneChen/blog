@@ -8,10 +8,17 @@ module.exports = {
         'background-variant': '#F2F2F2',
         'on-background': '#666666',
         primary: '#0070F3',
+        outline: '#EAEAEA',
+        placeholder: '#8993A4',
+        surface: '#F2F2F2',
         dark: 'black',
       },
       maxWidth: {
         container: '1440px',
+        narrow: '950px',
+      },
+      height: {
+        header: '64px',
       },
     },
   },

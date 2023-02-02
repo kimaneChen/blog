@@ -7,7 +7,7 @@ interface Props {
 }
 
 const AuthButton: FC<Props> = ({ icon, children }) => (
-  <Button variant={Variant.Dark}>
+  <Button variant={Variant.Dark} block>
     <div className="flex items-center gap-2 justify-center">
       {icon}
       {children}
