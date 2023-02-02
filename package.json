@@ -12,7 +12,8 @@
     "prebuild": "prisma migrate deploy",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "tsc": "tsc"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.5",
