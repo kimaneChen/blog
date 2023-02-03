@@ -2,10 +2,22 @@ import Head from 'next/head'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import Layout from '@/application/Layout'
 import { NextPage } from 'next'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 const Login: FC = () => {
   const { data: session } = useSession()
+
+  const { query } = useRouter()
+
+  useEffect(() => {
+    if (!query.redirect_url) {
+      return
+    }
+
+    localStorage.setItem('redirect_url', query.redirect_url as string)
+  }, [query.redirect_url])
+
   if (session?.user) {
     return (
       <>
@@ -16,10 +28,18 @@ const Login: FC = () => {
       </>
     )
   }
+
   return (
     <>
       Not signed in <br />
-      <button type="button" onClick={() => signIn('github', { callbackUrl: '/' })}>
+      <button
+        type="button"
+        onClick={() =>
+          signIn('github', {
+            callbackUrl: localStorage.getItem('redirect_url') || '/',
+          })
+        }
+      >
         Sign in
       </button>
     </>

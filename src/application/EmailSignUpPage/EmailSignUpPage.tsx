@@ -1,9 +1,9 @@
-import { NextPage } from 'next'
-import AuthButton from '@/components/AuthButton'
-import Button, { Variant } from '@/components/Button'
-import Input from '@/components/Input'
-import { FaEnvelope, FaArrowLeft } from 'react-icons/fa'
 import SignUpPageLayout from '@/application/SignUpPageLayout'
+import AuthButton from '@/components/AuthButton'
+import Button from '@/components/Button'
+import Input from '@/components/Input'
+import { NextPage } from 'next'
+import { FaArrowLeft, FaEnvelope } from 'react-icons/fa'
 
 const EmailSignUpPage: NextPage = () => (
   <SignUpPageLayout>
@@ -11,7 +11,7 @@ const EmailSignUpPage: NextPage = () => (
       <Input placeholder="Email address" />
     </div>
     <AuthButton icon={<FaEnvelope className="text-lg" />}>Continue with Email </AuthButton>
-    <Button variant={Variant.Primary} block>
+    <Button block>
       <div className="flex items-center gap-2 justify-center">
         <FaArrowLeft className="text-lg" />
         Other Sign Up Options

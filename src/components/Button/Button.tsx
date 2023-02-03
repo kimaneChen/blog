@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import { FC, HTMLProps, ReactNode } from 'react'
 import classNames from 'classnames'
 
 export enum Variant {
@@ -9,17 +9,27 @@ export enum Variant {
   Outline,
 }
 
-interface Props {
-  variant: Variant
+interface Props extends HTMLProps<HTMLButtonElement> {
+  variant?: Variant
   block?: boolean
   children: ReactNode
+  type?: 'submit' | 'button' | 'reset' | undefined
 }
 
-const Button: FC<Props> = ({ variant, block = false, children }) => {
+const Button: FC<Props> = ({
+  variant = Variant.Primary,
+  block = false,
+  children,
+  type = 'button',
+  ...props
+}) => {
   const classname = classNames(
     'h-12',
     'rounded-md',
     'px-4',
+    'disabled:opacity-50',
+    'disabled:grayscale',
+    'disabled:cursor-not-allowed',
     variant === Variant.Primary && ['bg-background', 'text-primary'],
     variant === Variant.Background && ['bg-background', 'text-dark'],
     variant === Variant.Dark && ['bg-dark', 'text-background'],
@@ -28,7 +38,8 @@ const Button: FC<Props> = ({ variant, block = false, children }) => {
     block && ['block', 'w-full']
   )
   return (
-    <button type="button" className={classname}>
+    // eslint-disable-next-line react/button-has-type, react/jsx-props-no-spreading
+    <button type={type} className={classname} {...props}>
       {children}
     </button>
   )

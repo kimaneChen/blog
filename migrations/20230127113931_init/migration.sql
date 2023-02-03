@@ -13,7 +13,7 @@ CREATE TABLE "Account" (
     "id_token" TEXT,
     "session_state" TEXT,
 
-    CONSTRAINT "Account_pkey" intro KEY ("id")
+    CONSTRAINT "Account_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -23,7 +23,7 @@ CREATE TABLE "Session" (
     "userId" TEXT NOT NULL,
     "expires" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Session_pkey" intro KEY ("id")
+    CONSTRAINT "Session_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -34,7 +34,7 @@ CREATE TABLE "User" (
     "emailVerified" TIMESTAMP(3),
     "image" TEXT,
 
-    CONSTRAINT "User_pkey" intro KEY ("id")
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable

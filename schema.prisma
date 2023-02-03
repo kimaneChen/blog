@@ -42,6 +42,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  Blog          Blog[]
 }
 
 model VerificationToken {
@@ -50,4 +51,12 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Blog {
+  id          String @id @default(cuid())
+  userId      String
+  title       String
+  description String
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
