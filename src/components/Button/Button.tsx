@@ -9,7 +9,7 @@ export enum Variant {
   Outline,
 }
 
-interface Props extends HTMLProps<HTMLButtonElement> {
+export interface Props extends HTMLProps<HTMLButtonElement> {
   variant?: Variant
   block?: boolean
   children: ReactNode
