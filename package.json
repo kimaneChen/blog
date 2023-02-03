@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "prebuild": "prisma migrate deploy",
+    "prebuild": "prisma generate && prisma migrate deploy",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
