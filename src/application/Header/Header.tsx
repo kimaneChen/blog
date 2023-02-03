@@ -10,8 +10,8 @@ const Header: FC = () => {
   const { data: session } = useSession()
 
   return (
-    <header className="bg-background border-b">
-      <Container className="h-16 px-6">
+    <header className="bg-background">
+      <Container className="h-16 px-6 border-b">
         <Logo />
 
         {session ? (
