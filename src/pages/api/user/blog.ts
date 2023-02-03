@@ -1,45 +1,56 @@
-import { NextApiHandler } from 'next'
 import prisma from '@/lib/prisma'
+import { BlogSchema } from '@/schemas/Blog'
+import Boom from '@hapi/boom'
+import { NextApiHandler } from 'next'
 import { getToken } from 'next-auth/jwt'
+import { ZodError } from 'zod'
 
 const createBlog: NextApiHandler = async (req, res) => {
   const token = await getToken({ req })
 
   if (!token) {
-    res.status(401).end()
+    const { statusCode, message } = Boom.unauthorized().output.payload
+    res.status(statusCode).send(message)
 
     return
   }
 
   if (!token.email) {
-    // TODO: Handle token email is not found
-    // TODO: BOOM
-    // https://www.npmjs.com/package/@hapi/boom
-    res.status(400).end()
+    const { statusCode, message } = Boom.badData().output.payload
+    res.status(statusCode).send(message)
 
     return
   }
 
-  //
-  const { title, description } = req.body
-  // TODO: Request body check
-  // https://github.com/colinhacks/zod
+  try {
+    const { title, description } = BlogSchema.parse(req.body)
 
-  const result = await prisma.blog.create({
-    data: {
-      title,
-      description,
-      user: {
-        connect: {
-          email: token.email,
+    const result = await prisma.blog.create({
+      data: {
+        title,
+        description,
+        user: {
+          connect: {
+            email: token.email,
+          },
         },
       },
-    },
-  })
+    })
 
-  res.status(200).send({
-    id: result.id,
-  })
+    res.status(200).send({
+      id: result.id,
+    })
+  } catch (error) {
+    if (error instanceof ZodError) {
+      const formatted = error.format()
+      const { statusCode } = Boom.badData().output.payload
+      res.status(statusCode).send(formatted)
+
+      return
+    }
+
+    throw error
+  }
 }
 
 export default createBlog
