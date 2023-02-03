@@ -5,9 +5,6 @@ export interface Data {
   description: string
 }
 
-const createBlog = (data: Data): Promise<AxiosResponse> =>
-  axios.post('/api/user/blog', {
-    title: data.title,
-  })
+const createBlog = (data: Data): Promise<AxiosResponse> => axios.post('/api/user/blog', data)
 
 export default createBlog
