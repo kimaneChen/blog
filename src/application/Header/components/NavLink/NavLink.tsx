@@ -1,9 +1,9 @@
+import { FC, ReactNode } from 'react'
 import Link from 'next/link'
 import classNames from 'classnames'
-import { FC } from 'react'
 
 interface Props {
-  children: string
+  children: ReactNode
   href: string
   outline?: boolean
 }
