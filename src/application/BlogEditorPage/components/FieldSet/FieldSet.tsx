@@ -1,11 +1,16 @@
 import { FC } from 'react'
 import { useFormContext } from 'react-hook-form'
+import dynamic from 'next/dynamic'
+
+const EditorBlock = dynamic(() => import('./components/Editor'), {
+  ssr: false,
+})
 
 const FieldSet: FC = () => {
   const { register } = useFormContext()
 
   return (
-    <div className="bg-white p-12 grow flex flex-col">
+    <div className="bg-white py-16 px-20 grow flex flex-col">
       <input
         className="block focus:outline-none placeholder:text-placeholder-500 text-[2rem] mb-3"
         type="text"
@@ -33,7 +38,9 @@ const FieldSet: FC = () => {
         </button>
       </div>
       <hr className="border-t-2 border-outline mb-5" />
-      <textarea className="grow focus:outline-none" placeholder="Change the world from now on" />
+      <div className="prose max-w-none">
+        <EditorBlock />
+      </div>
     </div>
   )
 }
