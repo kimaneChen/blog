@@ -10,15 +10,15 @@ const TAGS = [
 ]
 
 const BLOGS = [
-  { title: 'Blog 1', badge: 'Badge 1', time: 'Jan 7 2023', id: 1 },
-  { title: 'Blog 2', badge: 'Badge 2', time: 'Jan 17 2023', id: 2 },
-  { title: 'Blog 3', badge: 'Badge 3', time: 'Jan 27 2023', id: 3 },
+  { title: 'My Blog 1', badge: 'Badge 1', time: 'Jan 7 2023', id: 1 },
+  { title: 'My Blog 2', badge: 'Badge 2', time: 'Jan 17 2023', id: 2 },
+  { title: 'My Blog 3', badge: 'Badge 3', time: 'Jan 27 2023', id: 3 },
 ]
 
-const HomePage: NextPage = () => (
+const MyBlogsPage: NextPage = () => (
   <>
     <Head>
-      <title>Blogs</title>
+      <title>My blogs</title>
     </Head>
     <Layout>
       <SearchBlogsPage tags={TAGS} blogs={BLOGS} />
@@ -26,4 +26,4 @@ const HomePage: NextPage = () => (
   </>
 )
 
-export default HomePage
+export default MyBlogsPage
