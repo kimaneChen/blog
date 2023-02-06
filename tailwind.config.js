@@ -17,6 +17,10 @@ module.exports = {
         container: '1440px',
         narrow: '950px',
       },
+      width: {
+        container: '1440px',
+        narrow: '950px',
+      },
       height: {
         header: '64px',
       },
