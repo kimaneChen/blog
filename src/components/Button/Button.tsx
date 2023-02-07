@@ -2,8 +2,8 @@ import { FC, HTMLProps, ReactNode } from 'react'
 import classNames from 'classnames'
 
 export enum Variant {
+  Default,
   Primary,
-  Secondary,
   Dark,
   Outline,
   Background,
@@ -17,7 +17,7 @@ export interface Props extends HTMLProps<HTMLButtonElement> {
 }
 
 const Button: FC<Props> = ({
-  variant = Variant.Primary,
+  variant = Variant.Default,
   block = false,
   children,
   type = 'button',
@@ -30,8 +30,8 @@ const Button: FC<Props> = ({
     'disabled:opacity-50',
     'disabled:grayscale',
     'disabled:cursor-not-allowed',
-    variant === Variant.Primary && ['bg-background', 'text-primary'],
-    variant === Variant.Secondary && ['bg-primary', 'text-on-primary'],
+    variant === Variant.Default && ['bg-background', 'text-primary'],
+    variant === Variant.Primary && ['bg-primary', 'text-on-primary'],
     variant === Variant.Background && ['bg-background', 'text-dark'],
     variant === Variant.Dark && ['bg-dark', 'text-background'],
     variant === Variant.Outline && ['border', 'border-outline', 'text-on-background'],
