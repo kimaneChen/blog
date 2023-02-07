@@ -1,7 +1,9 @@
-import { NextPage } from 'next'
-import SearchBlogsPage from '@/application/SearchBlogs'
 import Layout from '@/application/Layout'
+import SearchBlogsPage from '@/application/SearchBlogs'
+import Blog from '@/types/Blog'
+import { NextPage } from 'next'
 import Head from 'next/head'
+import useSWRInfinite from 'swr/infinite'
 
 const TAGS = [
   { tagName: 'Account', id: '1' },
@@ -9,21 +11,36 @@ const TAGS = [
   { tagName: 'Teams', id: '3' },
 ]
 
-const BLOGS = [
-  { title: 'Blog 1', badge: 'Badge 1', time: 'Jan 7 2023', id: 1 },
-  { title: 'Blog 2', badge: 'Badge 2', time: 'Jan 17 2023', id: 2 },
-  { title: 'Blog 3', badge: 'Badge 3', time: 'Jan 27 2023', id: 3 },
-]
+const BLOGS_PER_PAGE = 3
 
-const HomePage: NextPage = () => (
-  <>
-    <Head>
-      <title>Blogs</title>
-    </Head>
-    <Layout>
-      <SearchBlogsPage tags={TAGS} blogs={BLOGS} />
-    </Layout>
-  </>
-)
+const HomePage: NextPage = () => {
+  const { data, isLoading, size, setSize } = useSWRInfinite<Blog[]>(
+    (index) => `/api/blogs?page=${index + 1}&perPage=${BLOGS_PER_PAGE}`
+  )
+
+  const blogs = data ? data.flat() : []
+
+  const lastPage = data?.[data.length - 1]
+  const isReachingEnd = lastPage && lastPage.length < BLOGS_PER_PAGE
+
+  const isLoadMoreDisabled = isLoading || isReachingEnd
+
+  return (
+    <>
+      <Head>
+        <title>Blogs</title>
+      </Head>
+      <Layout>
+        <SearchBlogsPage
+          title="Blogs"
+          tags={TAGS}
+          blogs={blogs}
+          isLoadMoreDisabled={isLoadMoreDisabled}
+          onLoadMore={() => setSize(size + 1)}
+        />
+      </Layout>
+    </>
+  )
+}
 
 export default HomePage

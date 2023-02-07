@@ -6,21 +6,11 @@ const AVATAR2 = { alt: 'avatar2' }
 
 const Blogs: FC = () => (
   <div className="py-3">
-    <BlogOverview
-      date="22 Jan 2023"
-      title="Lorem ipsum dolor sit..."
-      badge="badge"
-      avatar={AVATAR1}
-    >
+    <BlogOverview date="22 Jan 2023" title="Lorem ipsum dolor sit..." avatar={AVATAR1}>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam voluptate nulla assumenda
       iure vero nam in id aperiam rerum ab.
     </BlogOverview>
-    <BlogOverview
-      date="22 Jan 2023"
-      title="Lorem ipsum dolor sit..."
-      badge="Engineering"
-      avatar={AVATAR2}
-    >
+    <BlogOverview date="22 Jan 2023" title="Lorem ipsum dolor sit..." avatar={AVATAR2}>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam voluptate nulla assumenda
       iure vero nam in id aperiam rerum ab.
     </BlogOverview>

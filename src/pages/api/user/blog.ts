@@ -11,14 +11,14 @@ const createBlog: NextApiHandler = async (req, res) => {
 
   if (!session) {
     const { statusCode, message } = Boom.unauthorized().output.payload
-    res.status(statusCode).send(message)
+    res.status(statusCode).json(message)
 
     return
   }
 
   if (!session.user?.email) {
     const { statusCode, message } = Boom.badData().output.payload
-    res.status(statusCode).send(message)
+    res.status(statusCode).json(message)
 
     return
   }
@@ -38,14 +38,14 @@ const createBlog: NextApiHandler = async (req, res) => {
       },
     })
 
-    res.status(200).send({
+    res.status(200).json({
       id: result.id,
     })
   } catch (error) {
     if (error instanceof ZodError) {
       const formatted = error.format()
       const { statusCode } = Boom.badData().output.payload
-      res.status(statusCode).send(formatted)
+      res.status(statusCode).json(formatted)
 
       return
     }
