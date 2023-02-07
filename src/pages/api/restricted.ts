@@ -1,10 +1,11 @@
+import authOptions from '@/config/authOptions'
 import { NextApiHandler } from 'next'
-import { getToken } from 'next-auth/jwt'
+import { getServerSession } from 'next-auth/next'
 
 const restricted: NextApiHandler = async (req, res) => {
-  const token = await getToken({ req })
+  const session = await getServerSession(req, res, authOptions)
 
-  if (token) {
+  if (session) {
     res.send({
       content: 'This is protected content. You can access this content because you are signed in.',
     })
