@@ -15,8 +15,8 @@ interface Props {
 }
 
 const SearchBlogs: FC<Props> = ({ title, tags, blogs, isLoadMoreDisabled = false, onLoadMore }) => (
-  <section className="flex px-6 w-container m-auto min-h-[calc(100vh-theme(height.header))]">
-    <div className="grow py-8 pr-4 border-r-2">
+  <section className="flex w-container m-auto min-h-[calc(100vh-theme(height.header))]">
+    <div className="grow py-8 pr-12 border-r">
       <Input placeholder="Search posts..." suffix={<FiSearch />} />
       <section className="py-4">
         <h3>Filters</h3>
@@ -25,7 +25,7 @@ const SearchBlogs: FC<Props> = ({ title, tags, blogs, isLoadMoreDisabled = false
         ))}
       </section>
     </div>
-    <div className="w-narrow py-9 px-5">
+    <div className="w-narrow py-9 pl-12">
       <h1 className="text-4xl mb-4">{title}</h1>
       <dt>See what&apos;s new on the blog</dt>
       <div className="mt-4">

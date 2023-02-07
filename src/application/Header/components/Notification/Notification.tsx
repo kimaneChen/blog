@@ -4,7 +4,7 @@ import newNotificationAlert from './assets/notification-alert.svg'
 import notificationBell from './assets/notification-bell.svg'
 
 const Notification: FC = () => (
-  <div className="bg-gray-200 rounded-full w-[30px] h-[30px] relative">
+  <div className="bg-background-variant rounded-full w-[30px] h-[30px] relative">
     <button type="button">
       <Image src={newNotificationAlert} alt="New Notification" className="absolute top-0 right-0" />
       <Image
