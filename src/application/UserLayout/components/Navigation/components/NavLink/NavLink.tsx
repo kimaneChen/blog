@@ -9,7 +9,7 @@ interface Props {
 }
 
 const NavLink: FC<Props> = ({ href, active = false, children }) => {
-  const classname = classNames(
+  const className = classNames(
     'text-on-background',
     'font-medium',
     'py-2',
@@ -27,7 +27,7 @@ const NavLink: FC<Props> = ({ href, active = false, children }) => {
   )
 
   return (
-    <Link href={href} className={classname}>
+    <Link href={href} className={className}>
       {children}
     </Link>
   )

@@ -23,7 +23,7 @@ const Button: FC<Props> = ({
   type = 'button',
   ...props
 }) => {
-  const classname = classNames(
+  const className = classNames(
     'h-12',
     'rounded-md',
     'px-4',
@@ -39,7 +39,7 @@ const Button: FC<Props> = ({
   )
   return (
     // eslint-disable-next-line react/button-has-type, react/jsx-props-no-spreading
-    <button type={type} className={classname} {...props}>
+    <button type={type} className={className} {...props}>
       {children}
     </button>
   )
