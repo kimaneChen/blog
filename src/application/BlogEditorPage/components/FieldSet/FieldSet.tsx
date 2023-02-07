@@ -10,7 +10,7 @@ const FieldSet: FC = () => {
   const { register } = useFormContext()
 
   return (
-    <div className="bg-white py-16 px-20 grow flex flex-col">
+    <div className="bg-background py-16 px-20 grow flex flex-col">
       <input
         className="block focus:outline-none placeholder:text-placeholder-500 text-[2rem] mb-3"
         type="text"

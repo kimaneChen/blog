@@ -14,7 +14,7 @@ export interface Props {
 
 const BlogOverview: FC<Props> = ({ date, title, children, avatar }) => (
   <Link href="/blogs/id">
-    <div className="bg-white rounded-xl border p-4 mb-4">
+    <div className="bg-background rounded-xl border p-4 mb-4">
       <div className="text-on-background text-sm">{date}</div>
       <h3 className="text-lg font-medium">{title}</h3>
       <div className="text-on-background">{children}</div>

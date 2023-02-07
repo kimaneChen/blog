@@ -11,7 +11,7 @@ const ActionButtons: FC = () => {
   return (
     <div className="flex justify-end gap-3 pt-6 pb-3">
       {session ? (
-        <Button disabled={!isValid} type="submit" variant={Variant.Blue}>
+        <Button disabled={!isValid} type="submit" variant={Variant.Secondary}>
           Publish
         </Button>
       ) : (
