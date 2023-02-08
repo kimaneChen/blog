@@ -9,8 +9,14 @@ export enum Variant {
   Background,
 }
 
+export enum Size {
+  Normal,
+  Small,
+}
+
 export interface Props extends HTMLProps<HTMLButtonElement> {
   variant?: Variant
+  size?: Size
   block?: boolean
   children: ReactNode
   type?: 'submit' | 'button' | 'reset' | undefined
@@ -18,15 +24,13 @@ export interface Props extends HTMLProps<HTMLButtonElement> {
 
 const Button: FC<Props> = ({
   variant = Variant.Default,
+  size = Size.Normal,
   block = false,
   children,
   type = 'button',
   ...props
 }) => {
   const className = classNames(
-    'h-12',
-    'rounded-md',
-    'px-4',
     'disabled:opacity-50',
     'disabled:grayscale',
     'disabled:cursor-not-allowed',
@@ -35,6 +39,8 @@ const Button: FC<Props> = ({
     variant === Variant.Background && ['bg-background', 'text-dark'],
     variant === Variant.Dark && ['bg-dark', 'text-background'],
     variant === Variant.Outline && ['border', 'border-outline', 'text-on-background'],
+    size === Size.Normal && ['h-12', 'rounded-md', 'px-4'],
+    size === Size.Small && ['h-8', 'w-26', 'rounded-md', 'px-4'],
     block && ['block', 'w-full']
   )
   return (
