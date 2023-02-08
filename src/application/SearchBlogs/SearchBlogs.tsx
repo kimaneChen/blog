@@ -5,6 +5,7 @@ import BlogOverview from '@/application/BlogOverview'
 import { FC, ReactNode } from 'react'
 import Blog from '@/types/Blog'
 import Tag from './components/Tag'
+import CreateANewBlogButton from './components/CreateANewBlogButton'
 
 interface Props {
   blogs: Blog[]
@@ -26,7 +27,10 @@ const SearchBlogs: FC<Props> = ({ title, tags, blogs, isLoadMoreDisabled = false
       </section>
     </div>
     <div className="w-narrow py-9 pl-12">
-      <h1 className="text-4xl mb-4">{title}</h1>
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-4xl">{title}</h1>
+        <CreateANewBlogButton />
+      </div>
       <dt>See what&apos;s new on the blog</dt>
       <div className="mt-4">
         {blogs.map((blog) => (
