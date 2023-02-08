@@ -31,7 +31,7 @@ const Navigation: FC = () => {
   const router = useRouter()
 
   return (
-    <Container>
+    <Container className="flex justify-between items-center">
       <nav className="flex gap-16">
         {navLinks.map(({ id, href, label }) => (
           <NavLink key={id} href={href} active={router.pathname === href}>

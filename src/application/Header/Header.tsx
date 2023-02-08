@@ -11,7 +11,7 @@ const Header: FC = () => {
 
   return (
     <header className="bg-background">
-      <Container className="h-16 px-6 border-b">
+      <Container className="flex justify-between items-center h-16 px-6 border-b">
         <Logo />
 
         {session ? (

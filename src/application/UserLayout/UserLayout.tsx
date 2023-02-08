@@ -1,6 +1,7 @@
 import { FC, ReactNode } from 'react'
 import { useSession } from 'next-auth/react'
 import Header from '@/application/Header'
+import Container from '@/components/Container'
 import Navigation from './components/Navigation'
 
 interface Props {
@@ -16,7 +17,7 @@ const UserLayout: FC<Props> = ({ children }) => {
     <>
       <Header />
       <Navigation />
-      {children}
+      <Container className="flex px-6">{children}</Container>
     </>
   )
 }

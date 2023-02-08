@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react'
 import Header from '@/application/Header'
+import Container from '@/components/Container'
 
 interface Props {
   children: ReactNode
@@ -7,7 +8,7 @@ interface Props {
 const Layout: FC<Props> = ({ children }) => (
   <>
     <Header />
-    <main>{children}</main>
+    <Container className="flex px-6">{children}</Container>
   </>
 )
 
