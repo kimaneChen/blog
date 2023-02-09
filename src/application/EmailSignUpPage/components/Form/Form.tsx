@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { signIn } from 'next-auth/react'
-import { FaEnvelope } from 'react-icons/fa'
 import { Variant } from '@/components/Button'
 import Error from '@/components/Error'
 import AuthButton from '@/components/AuthButton'
 import Input from '@/components/Input'
+import { FiMail } from 'react-icons/fi'
 
 const Form: FC = () => {
   const {
@@ -36,7 +36,7 @@ const Form: FC = () => {
       </div>
       <AuthButton
         onClick={handleSubmit(onSubmit)}
-        icon={<FaEnvelope className="text-lg" />}
+        icon={<FiMail className="text-lg" />}
         variant={Variant.Dark}
         block
         type="submit"

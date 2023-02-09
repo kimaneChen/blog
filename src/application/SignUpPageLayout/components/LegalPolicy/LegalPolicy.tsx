@@ -1,6 +1,6 @@
-import { FC } from 'react'
 import Link from 'next/link'
-import { HiOutlineExternalLink } from 'react-icons/hi'
+import { FC } from 'react'
+import { FiExternalLink } from 'react-icons/fi'
 
 const LegalPolicy: FC = () => (
   <section>
@@ -8,13 +8,13 @@ const LegalPolicy: FC = () => (
     <div>
       <Link href="/" className="flex items-center gap-1">
         Terms of Service
-        <HiOutlineExternalLink />
+        <FiExternalLink />
       </Link>
     </div>
     <div>
       <Link href="/" className="flex items-center gap-1">
         Privacy of Policy
-        <HiOutlineExternalLink />
+        <FiExternalLink />
       </Link>
     </div>
   </section>
