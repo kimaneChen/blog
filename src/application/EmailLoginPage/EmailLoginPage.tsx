@@ -7,7 +7,7 @@ import OtherOptionsButton from '@/components/OtherOptionsButton'
 
 const EmailLoginPage: NextPage = () => (
   <LoginPageLayout>
-    <div className="mb-6">
+    <div className="mb-2">
       <Input placeholder="Email address" />
     </div>
     <AuthButton icon={<FaEnvelope className="text-lg" />}>Continue with Email </AuthButton>

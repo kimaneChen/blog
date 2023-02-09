@@ -5,9 +5,7 @@ import Form from './components/Form'
 
 const EmailSignUpPage: NextPage = () => (
   <SignUpPageLayout>
-    <div className="mb-6">
-      <Form />
-    </div>
+    <Form />
     <OtherOptionsButton href="/sign-up">Other Sign Up Options</OtherOptionsButton>
   </SignUpPageLayout>
 )

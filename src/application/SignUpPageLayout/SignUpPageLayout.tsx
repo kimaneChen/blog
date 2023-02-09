@@ -11,8 +11,10 @@ const SignUpPageLayout: FC<Props> = ({ children }) => (
   <AuthLayout type={Type.SignUp}>
     <section>
       {children}
-      <LegalPolicy />
-      <ExistingAccount />
+      <div className="mt-12">
+        <LegalPolicy />
+        <ExistingAccount />
+      </div>
     </section>
   </AuthLayout>
 )

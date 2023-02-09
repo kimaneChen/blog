@@ -20,7 +20,7 @@ const Form: FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="mb-6">
+      <div className="mb-2">
         <Input
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...register('email', {

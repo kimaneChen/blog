@@ -23,7 +23,7 @@ const AuthLayout: FC<Props> = ({ children, type }) => (
         <Blogs />
       </Section>
       <Section position={Position.Right}>
-        <h1 className="text-4xl font-medium mb-4">
+        <h1 className="text-4xl font-medium mb-10">
           {type === Type.Login && `Log In`}
           {type === Type.SignUp && (
             <>
