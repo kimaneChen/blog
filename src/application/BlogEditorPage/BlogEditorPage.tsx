@@ -25,9 +25,11 @@ const BlogEditorPage: NextPage = () => {
       })
 
       // TODO: Success Handling
+      // eslint-disable-next-line no-console
       console.log(response)
     } catch (error) {
       // TODO: Error Handling
+      // eslint-disable-next-line no-console
       console.log(error)
     }
   }

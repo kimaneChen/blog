@@ -12,6 +12,7 @@ module.exports = {
       placeholder: '#8993A4',
       surface: '#F2F2F2',
       dark: 'black',
+      error: 'red',
     },
     borderColor: {
       DEFAULT: '#EAEAEA',
@@ -30,8 +31,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/typography')],
 }
-

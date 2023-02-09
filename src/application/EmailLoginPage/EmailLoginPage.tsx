@@ -2,8 +2,8 @@ import { NextPage } from 'next'
 import { FaEnvelope } from 'react-icons/fa'
 import Input from '@/components/Input'
 import AuthButton from '@/components/AuthButton'
-import LoginPageLayout from '../LoginPageLayout'
-import OtherOptionsButton from '../AuthLayout/components/OtherOptionsButton'
+import LoginPageLayout from '@/application/LoginPageLayout'
+import OtherOptionsButton from '@/components/OtherOptionsButton'
 
 const EmailLoginPage: NextPage = () => (
   <LoginPageLayout>
