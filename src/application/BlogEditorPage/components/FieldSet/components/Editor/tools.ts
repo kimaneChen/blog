@@ -1,10 +1,10 @@
 import Code from '@editorjs/code'
 import Header from '@editorjs/header'
-import Paragraph from '@editorjs/paragraph'
-import List from '@editorjs/list'
-import Quote from '@editorjs/quote'
-import LinkTool from '@editorjs/link'
 import ImageTool from '@editorjs/image'
+import LinkTool from '@editorjs/link'
+import List from '@editorjs/list'
+import Paragraph from '@editorjs/paragraph'
+import Quote from '@editorjs/quote'
 
 interface Tools {
   [key: string]: any

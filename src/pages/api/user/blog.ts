@@ -24,7 +24,7 @@ const createBlog: NextApiHandler = async (req, res) => {
   }
 
   try {
-    const { title, description } = BlogSchema.parse(req.body)
+    const { title, description, tags } = BlogSchema.parse(req.body)
 
     const result = await prisma.blog.create({
       data: {
@@ -34,6 +34,16 @@ const createBlog: NextApiHandler = async (req, res) => {
           connect: {
             email: session.user.email,
           },
+        },
+        tags: {
+          connectOrCreate: tags.map((tag) => ({
+            where: {
+              name: tag,
+            },
+            create: {
+              name: tag,
+            },
+          })),
         },
       },
     })

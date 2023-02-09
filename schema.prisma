@@ -63,4 +63,24 @@ model Blog {
   title       String
   description String
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tags        Tag[]
+
+  TagsOnBlogs TagsOnBlogs[]
+}
+
+model Tag {
+  id          String        @id @default(cuid())
+  name        String        @unique
+  Blog        Blog[]
+  TagsOnBlogs TagsOnBlogs[]
+}
+
+model TagsOnBlogs {
+  blog      Blog     @relation(fields: [blogId], references: [id])
+  blogId    String
+  tag       Tag      @relation(fields: [tagId], references: [id])
+  tagId     String
+  createdAt DateTime @default(now())
+
+  @@id([blogId, tagId])
 }

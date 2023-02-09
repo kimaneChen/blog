@@ -35,9 +35,10 @@ const SearchBlogs: FC<Props> = ({ title, tags, blogs, isLoadMoreDisabled = false
       <div className="mt-4">
         {blogs.map((blog) => (
           <BlogOverview
+            key={blog.id}
             title={blog.title}
             date={blog.createdAt}
-            key={blog.id}
+            tags={blog.tags}
             avatar={{
               src: blog.user?.image,
               alt: blog.user?.name || 'Unknown user',

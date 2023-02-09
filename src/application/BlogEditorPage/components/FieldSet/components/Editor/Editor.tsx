@@ -1,6 +1,6 @@
-import React, { memo, useEffect, useRef, FC } from 'react'
 import EditorJS from '@editorjs/editorjs'
-import tools from './Tools'
+import { FC, memo, useEffect, useRef } from 'react'
+import tools from './tools'
 
 const HOLDER = 'editorjs-container'
 

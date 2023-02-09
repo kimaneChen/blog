@@ -1,21 +1,28 @@
-import { NextPage } from 'next'
-import { useForm, SubmitHandler, FormProvider } from 'react-hook-form'
+import createBlog from '@/apis/createBlog'
 import Header from '@/application/Header'
-import createBlog, { Data } from '@/apis/createBlog'
+import { Blog } from '@/schemas/Blog'
+import { NextPage } from 'next'
 import { useSession } from 'next-auth/react'
+import { useState } from 'react'
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
 import ActionButtons from './components/ActionButtons'
 import FieldSet from './components/FieldSet'
 
 const BlogEditorPage: NextPage = () => {
   const { data: session } = useSession()
 
-  const onSubmit: SubmitHandler<Data> = async (data) => {
+  const [tags, setTags] = useState<string[]>([])
+
+  const onSubmit: SubmitHandler<Blog> = async (data) => {
     if (!session) {
       return
     }
 
     try {
-      const response = await createBlog(data)
+      const response = await createBlog({
+        ...data,
+        tags,
+      })
 
       // TODO: Success Handling
       console.log(response)
@@ -25,7 +32,7 @@ const BlogEditorPage: NextPage = () => {
     }
   }
 
-  const form = useForm<Data>()
+  const form = useForm<Extract<Blog, 'title' | 'description'>>()
   const { handleSubmit } = form
 
   return (
@@ -35,7 +42,7 @@ const BlogEditorPage: NextPage = () => {
       <main className="bg-[#EEF5FA] min-h-[calc(100vh-theme(height.header))] px-3 pb-5 flex flex-col items-center">
         <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-narrow grow flex flex-col">
           <ActionButtons />
-          <FieldSet />
+          <FieldSet tags={tags} onTagsChange={setTags} />
         </form>
       </main>
     </FormProvider>

@@ -1,12 +1,18 @@
 import { FC } from 'react'
 import { useFormContext } from 'react-hook-form'
 import dynamic from 'next/dynamic'
+import Tags from './components/Tags'
 
 const EditorBlock = dynamic(() => import('./components/Editor'), {
   ssr: false,
 })
 
-const FieldSet: FC = () => {
+interface Props {
+  tags: string[]
+  onTagsChange: (tags: string[]) => void
+}
+
+const FieldSet: FC<Props> = ({ tags, onTagsChange }) => {
   const { register } = useFormContext()
 
   return (
@@ -29,14 +35,7 @@ const FieldSet: FC = () => {
           required: true,
         })}
       />
-      <div>
-        <button
-          className="border border-outline  bg-surface text-xs text-on-background px-1.5 py-1 mb-5 rounded"
-          type="button"
-        >
-          Add a tag
-        </button>
-      </div>
+      <Tags tags={tags} onTagsChange={onTagsChange} />
       <hr className="border-t-2 border-outline mb-5" />
       <div className="prose max-w-none">
         <EditorBlock />
