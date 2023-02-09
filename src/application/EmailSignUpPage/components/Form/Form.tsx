@@ -15,7 +15,11 @@ const Form: FC = () => {
   } = useForm()
 
   const onSubmit = async (data: any): Promise<void> => {
-    await signIn('email', { callbackUrl: '/', email: data.email })
+    await signIn('email', {
+      callbackUrl: localStorage.getItem('redirect_url') || '/',
+      email: data.email,
+    })
+    localStorage.removeItem('redirect_url')
   }
 
   return (
