@@ -1,13 +1,15 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import Avatar from '@/components/Avatar'
 import Container from '@/components/Container'
 import Logo from '@/components/Logo'
 import NavLink from './components/NavLink'
 import Notification from './components/Notification'
+import UserDropdown from './components/UserDropdown'
 
 const Header: FC = () => {
   const { data: session } = useSession()
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState<boolean>(false)
 
   return (
     <header className="bg-background">
@@ -17,9 +19,13 @@ const Header: FC = () => {
         {session ? (
           <section className="flex gap-2.5">
             <Notification />
-            <button type="button">
-              <Avatar src={session.user?.image} alt={session.user?.name} width={30} height={30} />
-            </button>
+
+            <div className="relative">
+              <button type="button" onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}>
+                <Avatar src={session.user?.image} alt={session.user?.name} width={30} height={30} />
+              </button>
+              {isUserDropdownOpen && <UserDropdown />}
+            </div>
           </section>
         ) : (
           <section className="flex gap-4">

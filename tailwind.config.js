@@ -10,12 +10,12 @@ module.exports = {
       'on-primary': 'white',
       outline: '#EAEAEA',
       placeholder: '#8993A4',
-      surface: '#F2F2F2',
       dark: 'black',
       error: 'red',
     },
     borderColor: {
       DEFAULT: '#EAEAEA',
+      dark: 'black',
     },
     extend: {
       maxWidth: {
@@ -28,6 +28,9 @@ module.exports = {
       },
       height: {
         header: '64px',
+      },
+      boxShadow: {
+        dropdown: '0 2px 5px 2px #EAEAEA',
       },
     },
   },
