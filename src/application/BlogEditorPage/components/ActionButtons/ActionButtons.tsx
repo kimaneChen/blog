@@ -15,7 +15,7 @@ const ActionButtons: FC = () => {
           Publish
         </Button>
       ) : (
-        <Button onClick={() => window.open('/?redirect_url=/close', '_blank')}>
+        <Button onClick={() => window.open('/login?redirect_url=/close', '_blank')}>
           Log In to Publish
         </Button>
       )}
