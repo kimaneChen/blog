@@ -1,5 +1,3 @@
-import Input from '@/components/Input'
-import { FiSearch } from 'react-icons/fi'
 import Button, { Variant } from '@/components/Button'
 import BlogOverview from '@/application/BlogOverview'
 import { FC, ReactNode } from 'react'
@@ -18,9 +16,7 @@ interface Props {
 const SearchBlogs: FC<Props> = ({ title, tags, blogs, isLoadMoreDisabled = false, onLoadMore }) => (
   <section className="flex w-container m-auto min-h-[calc(100vh-theme(height.header))]">
     <div className="grow py-8 pr-12 border-r">
-      <Input placeholder="Search posts..." suffix={<FiSearch />} />
       <section className="py-4">
-        <h3>Filters</h3>
         {tags.map((tag) => (
           <Tag name={tag.tagName} key={tag.id} />
         ))}

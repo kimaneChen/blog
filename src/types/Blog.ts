@@ -8,7 +8,7 @@ interface Blog {
   userId: string
   title: string
   description: string
-  user?: User
+  user?: Pick<User, 'id' | 'name' | 'email' | 'image'>
   tags?: Tag[]
 }
 

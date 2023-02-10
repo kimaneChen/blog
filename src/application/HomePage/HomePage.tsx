@@ -1,9 +1,9 @@
 import Layout from '@/application/Layout'
 import SearchBlogsPage from '@/application/SearchBlogs'
-import Blog from '@/types/Blog'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import useSWRInfinite from 'swr/infinite'
+import Blog from '@/types/Blog'
 
 const TAGS = [
   { tagName: 'Account', id: '1' },
