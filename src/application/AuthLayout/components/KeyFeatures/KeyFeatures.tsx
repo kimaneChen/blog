@@ -4,22 +4,16 @@ import Feature from './components/Feature'
 const KeyFeatures: FC = () => (
   <div className="py-3">
     <Feature
-      title="Lorem ipsum dolor sit amet."
-      content="
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae alias possimus reprehenderit
-        voluptatibus velit sint quod illum dolorum aliquam quaerat."
+      title="A in-text comment system"
+      content="Easy share your thoughts and feedback directly on specific parts of a blog post."
     />
     <Feature
-      title="Lorem ipsum dolor sit amet."
-      content="
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae alias possimus reprehenderit
-        voluptatibus velit sint quod illum dolorum aliquam quaerat."
+      title="Content Management System (CMS)"
+      content="An easy-to-use platform to manage and publish blog posts."
     />
     <Feature
-      title="Lorem ipsum dolor sit amet."
-      content="
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae alias possimus reprehenderit
-        voluptatibus velit sint quod illum dolorum aliquam quaerat."
+      title="Categories and tags"
+      content="Filter and organize content use your own label and tags."
     />
   </div>
 )
