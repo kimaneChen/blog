@@ -11,6 +11,7 @@ module.exports = {
       outline: '#EAEAEA',
       placeholder: '#8993A4',
       dark: 'black',
+      highlight:'#79FFE1',
       error: 'red',
     },
     borderColor: {

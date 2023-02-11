@@ -1,12 +1,26 @@
 import { FC, ReactNode } from 'react'
+import classNames from 'classnames'
 
-export interface Props {
-  children: ReactNode
+export enum Variant {
+  White,
+  Background,
 }
 
-const Badge: FC<Props> = ({ children }) => (
-  <div className="border bg-background-variant rounded py-1 px-1.5 text-on-background text-xs">
-    {children}
-  </div>
-)
+interface Props {
+  children: ReactNode
+  variant?: Variant
+}
+
+const Badge: FC<Props> = ({ children, variant = Variant.Background }) => {
+  const classname = classNames(
+    'border',
+    'rounded',
+    'py-1',
+    'px-1.5',
+    'text-xs',
+    variant === Variant.Background && ['bg-background-variant', 'text-on-background'],
+    variant === Variant.White && 'text-on-background'
+  )
+  return <div className={classname}>{children}</div>
+}
 export default Badge

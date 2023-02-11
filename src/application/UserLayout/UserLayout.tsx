@@ -17,7 +17,7 @@ const UserLayout: FC<Props> = ({ children }) => {
     <>
       <Header />
       <Navigation />
-      <Container className="flex px-6">{children}</Container>
+      <Container>{children}</Container>
     </>
   )
 }
