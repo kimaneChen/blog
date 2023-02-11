@@ -8,8 +8,8 @@ const Navigation: FC = () => {
   const router = useRouter()
 
   return (
-    <Container className="flex justify-between items-center">
-      <nav className="flex gap-16">
+    <Container>
+      <nav className="flex gap-14 w-[880px] px-6 py-2">
         {navItems.map(({ id, href, label }) => (
           <NavLink key={id} href={href} active={router.pathname === href}>
             {label}

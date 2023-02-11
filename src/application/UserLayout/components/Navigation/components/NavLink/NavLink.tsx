@@ -22,7 +22,7 @@ const NavLink: FC<Props> = ({ href, active = false, children }) => {
       'after:w-full',
       'after:border-b-4',
       'after:border-dark',
-      'after:mt-4',
+      'after:mt-3',
     ]
   )
 
