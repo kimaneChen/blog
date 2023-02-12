@@ -1,20 +1,33 @@
 import { FC } from 'react'
 import BlogOverview from '@/application/BlogOverview'
+import Blog from '@/types/Blog'
+import useSWR from 'swr'
 
-const AVATAR1 = { alt: 'avatar1' }
-const AVATAR2 = { alt: 'avatar2' }
+const BLOGS_LIMIT = 2
 
-const Blogs: FC = () => (
-  <div className="py-3">
-    <BlogOverview tags={[]} date="22 Jan 2023" title="Lorem ipsum dolor sit..." avatar={AVATAR1}>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam voluptate nulla assumenda
-      iure vero nam in id aperiam rerum ab.
-    </BlogOverview>
-    <BlogOverview tags={[]} date="22 Jan 2023" title="Lorem ipsum dolor sit..." avatar={AVATAR2}>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam voluptate nulla assumenda
-      iure vero nam in id aperiam rerum ab.
-    </BlogOverview>
-  </div>
-)
+const Blogs: FC = () => {
+  const { data } = useSWR(`/api/blogs?perPage=${BLOGS_LIMIT}`)
+
+  if (!data) return null
+
+  return (
+    <div className="py-3">
+      {data.map((blog: Blog) => (
+        <BlogOverview
+          title={blog.title}
+          date={blog.createdAt}
+          key={blog.id}
+          tags={blog.tags}
+          avatar={{
+            src: blog.user?.image,
+            alt: blog.user?.name || 'Unknown user',
+          }}
+        >
+          {blog.description}
+        </BlogOverview>
+      ))}
+    </div>
+  )
+}
 
 export default Blogs

@@ -1,5 +1,4 @@
 import { FC, ReactNode } from 'react'
-
 import AuthLayout, { Type } from '../AuthLayout/AuthLayout'
 import NoAccount from './components/NoAccount'
 
