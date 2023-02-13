@@ -5,7 +5,7 @@ const getBlogs = async (req: NextApiRequest, res: NextApiResponse): Promise<void
   const page = Number(req.query.page) || 1
   const perPage = Number(req.query.perPage) || 3
 
-  const blogs = await prisma.blog.findMany({
+  const result = await prisma.blog.findMany({
     orderBy: {
       createdAt: 'desc',
     },
@@ -29,7 +29,7 @@ const getBlogs = async (req: NextApiRequest, res: NextApiResponse): Promise<void
     skip: (page - 1) * perPage,
   })
 
-  res.status(200).json(blogs)
+  res.status(200).json(result)
 }
 
 export default getBlogs

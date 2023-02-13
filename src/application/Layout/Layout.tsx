@@ -8,7 +8,7 @@ interface Props {
 const Layout: FC<Props> = ({ children }) => (
   <>
     <Header />
-    <Container className="flex px-6">{children}</Container>
+    <Container>{children}</Container>
   </>
 )
 

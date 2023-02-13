@@ -3,6 +3,7 @@ import { AuthOptions } from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
 import prisma from '@/lib/prisma'
 import EmailProvider from 'next-auth/providers/email'
+import { User } from '@prisma/client'
 
 const authOptions: AuthOptions = {
   pages: {
@@ -28,6 +29,17 @@ const authOptions: AuthOptions = {
       from: process.env.EMAIL_FROM,
     }),
   ],
+  callbacks: {
+    session({ session, user }) {
+      return {
+        ...session,
+        user: {
+          ...user,
+          role: (user as User).role,
+        },
+      }
+    },
+  },
 }
 
 export default authOptions
