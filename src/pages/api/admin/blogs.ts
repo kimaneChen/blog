@@ -1,4 +1,5 @@
 import { NextApiHandler } from 'next'
+import prisma from '@/lib/prisma'
 import Boom from '@hapi/boom'
 import { BlogSchema } from '@/schemas/Blog'
 
