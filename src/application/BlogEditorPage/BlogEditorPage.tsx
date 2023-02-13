@@ -1,5 +1,5 @@
 import createBlog from '@/apis/createBlog'
-import Header from '@/application/Header'
+import Header from '@/components/Header'
 import { Blog } from '@/schemas/Blog'
 import { NextPage } from 'next'
 import { useSession } from 'next-auth/react'

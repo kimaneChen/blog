@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import Header from '@/application/Header'
+import Header from '@/components/Header'
 import Contents from './components/Contents'
 import AddComments from './components/AddComments'
 import Comments from './components/Comments'

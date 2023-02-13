@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react'
 import { useSession } from 'next-auth/react'
-import Header from '@/application/Header'
+import Header from '@/components/Header'
 import Container from '@/components/Container'
 import Navigation from './components/Navigation'
 

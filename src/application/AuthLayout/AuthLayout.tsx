@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react'
-import Blogs from './components/Blogs'
 import Header from './components/Header'
+import Blogs from './components/Blogs'
 import KeyFeatures from './components/KeyFeatures'
 import Section, { Position } from './components/Section'
 

@@ -3,6 +3,7 @@ import { useSession } from 'next-auth/react'
 import Avatar from '@/components/Avatar'
 import Container from '@/components/Container'
 import Logo from '@/components/Logo'
+import Input from '@/components/Input'
 import useClickOutside from '@/hooks/useClickOutside'
 import NavLink from './components/NavLink'
 import Notification from './components/Notification'
@@ -17,8 +18,13 @@ const Header: FC = () => {
 
   return (
     <header className="bg-background">
-      <Container className="flex justify-between items-center h-16 px-6 border-b">
+      <Container className="flex justify-between items-center h-16 px-6 border-b relative">
         <Logo />
+
+        <Input
+          className="absolute text-center h-8 w-[200px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
+          placeholder="Search..."
+        />
 
         {session ? (
           <section className="flex gap-2.5">

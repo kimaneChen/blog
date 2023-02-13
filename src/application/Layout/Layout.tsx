@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import Header from '@/application/Header'
+import Header from '@/components/Header'
 import Container from '@/components/Container'
 
 interface Props {
