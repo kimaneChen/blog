@@ -1,9 +1,11 @@
 import Layout from '@/application/Layout'
-import SearchBlogsPage from '@/application/SearchBlogs'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import useSWRInfinite from 'swr/infinite'
 import Blog from '@/types/Blog'
+import TagsFilter from '@/application/TagsFilter'
+import BlogOverview from '@/components/BlogOverview'
+import Button, { Variant } from '@/components/Button'
 
 const TAGS = [
   { tagName: 'Account', id: '1' },
@@ -31,13 +33,42 @@ const HomePage: NextPage = () => {
         <title>Blogs</title>
       </Head>
       <Layout>
-        <SearchBlogsPage
-          title="Blogs"
-          tags={TAGS}
-          blogs={blogs}
-          isLoadMoreDisabled={isLoadMoreDisabled}
-          onLoadMore={() => setSize(size + 1)}
-        />
+        <section className="flex w-container m-auto min-h-[calc(100vh-theme(height.header))]">
+          <div className="grow pr-4 border-r">
+            <TagsFilter tags={TAGS} />
+          </div>
+          <div className="w-narrow py-9 pl-12">
+            <div className="flex justify-between items-center mb-4">
+              <h1 className="text-4xl">All Blogs</h1>
+            </div>
+            <dt>See what&apos;s new on the blog</dt>
+            <div className="mt-4">
+              {blogs.map((blog) => (
+                <BlogOverview
+                  key={blog.id}
+                  title={blog.title}
+                  date={blog.createdAt}
+                  tags={blog.tags}
+                  avatar={{
+                    src: blog.user?.image,
+                    alt: blog.user?.name || 'Unknown user',
+                  }}
+                >
+                  {blog.description}
+                </BlogOverview>
+              ))}
+            </div>
+            <div className="text-center">
+              <Button
+                disabled={isLoadMoreDisabled}
+                variant={Variant.Outline}
+                onClick={() => setSize(size + 1)}
+              >
+                MORE BLOGS
+              </Button>
+            </div>
+          </div>
+        </section>
       </Layout>
     </>
   )

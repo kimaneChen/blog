@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import BlogOverview from '@/application/BlogOverview'
+import BlogOverview from '@/components/BlogOverview'
 import Blog from '@/types/Blog'
 import useSWR from 'swr'
 
