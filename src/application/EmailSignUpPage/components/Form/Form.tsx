@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { signIn } from 'next-auth/react'
 import { Variant } from '@/components/Button'
@@ -13,8 +13,9 @@ const Form: FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm()
-
+  const [isLoading, setIsLoading] = useState(false)
   const onSubmit = async (data: any): Promise<void> => {
+    setIsLoading(true)
     await signIn('email', {
       callbackUrl: localStorage.getItem('redirect_url') || '/',
       email: data.email,
@@ -41,6 +42,7 @@ const Form: FC = () => {
       <AuthButton
         onClick={handleSubmit(onSubmit)}
         icon={<FiMail className="text-lg" />}
+        isLoading={isLoading}
         variant={Variant.Dark}
         block
         type="submit"
