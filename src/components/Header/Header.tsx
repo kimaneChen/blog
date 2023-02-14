@@ -17,8 +17,8 @@ const Header: FC = () => {
   useClickOutside(ref, () => setIsUserDropdownOpen(false))
 
   return (
-    <header className="bg-background">
-      <Container className="flex justify-between items-center h-16 px-6 border-b relative">
+    <header className="bg-background border-b">
+      <Container className="flex justify-between items-center h-16 px-6 relative">
         <Logo />
 
         <Input
