@@ -1,20 +1,27 @@
+import { forwardRef, InputHTMLAttributes, ReactNode } from 'react'
 import classNames from 'classnames'
-import { forwardRef, InputHTMLAttributes } from 'react'
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'prefix'> {
   placeholder?: string
-  suffix?: JSX.Element
+  prefix?: ReactNode
+  suffix?: ReactNode
   className?: string
 }
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ placeholder, suffix, className, ...props }, ref) => (
-    <div className={classNames({ relative: suffix })}>
+  ({ placeholder, prefix, suffix, className, ...props }, ref) => (
+    <div className={classNames({ relative: prefix || suffix })}>
+      {prefix && <div className="absolute top-0 bottom-0 flex items-center left-3">{prefix}</div>}
       <input
         ref={ref}
         type="text"
         placeholder={placeholder}
-        className={`w-full h-12 px-4 border rounded-md ${className}`}
+        className={classNames(
+          ['w-full', 'h-12', 'px-4', 'border', 'rounded-md'],
+          prefix && 'pl-9',
+          suffix && 'pr-9',
+          className
+        )}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
       />
@@ -24,4 +31,5 @@ const Input = forwardRef<HTMLInputElement, Props>(
 )
 
 Input.displayName = 'Input'
+
 export default Input
