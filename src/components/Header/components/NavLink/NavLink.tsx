@@ -1,19 +1,19 @@
 import { FC, ReactNode } from 'react'
 import Link from 'next/link'
 import classNames from 'classnames'
+import { Variant } from '@/components/Button'
 
 interface Props {
   children: ReactNode
   href: string
-  outline?: boolean
+  variant?: Variant
 }
 
-const NavLink: FC<Props> = ({ children, href, outline = false }) => {
+const NavLink: FC<Props> = ({ children, href, variant }) => {
   const className = classNames(
     'py-1',
     'px-2',
-    'text-on-background',
-    outline && ['border', 'border-on-background', 'rounded-md']
+    variant === Variant.Dark && ['bg-dark', 'text-background', 'rounded-md']
   )
   return (
     <Link href={href} className={className}>

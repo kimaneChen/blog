@@ -1,5 +1,6 @@
 import { FC, useState, useRef } from 'react'
 import { useSession } from 'next-auth/react'
+import { Variant } from '@/components/Button'
 import Avatar from '@/components/Avatar'
 import Container from '@/components/Container'
 import Logo from '@/components/Logo'
@@ -39,10 +40,10 @@ const Header: FC = () => {
           </section>
         ) : (
           <section className="flex gap-4">
-            <NavLink href="/sign-up" outline>
+            <NavLink href="/login">Log In</NavLink>
+            <NavLink href="/sign-up" variant={Variant.Dark}>
               Sign Up
             </NavLink>
-            <NavLink href="/login">Log In</NavLink>
           </section>
         )}
       </Container>
