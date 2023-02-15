@@ -18,7 +18,7 @@ const AddBlog: FC<Props> = ({ title, description, tags }) => {
   const [email, setEmail] = useState<string | undefined>()
   const [dirty, setDirty] = useState(false)
 
-  const { trigger, isMutating } = useSWRMutation('/api/admin/blogs', () => {
+  const { trigger, isMutating } = useSWRMutation('/api/blogs', () => {
     if (!email) {
       return null
     }

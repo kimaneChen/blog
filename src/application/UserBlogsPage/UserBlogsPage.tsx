@@ -59,20 +59,21 @@ const UserBlogsPage: NextPage = () => {
               <h1 className="text-4xl">Blogs</h1>
               <CreateANewBlogButton />
             </div>
-            <div className="mt-4">
+            <div className="mt-6">
               {blogs.map((blog) => (
-                <BlogOverview
-                  key={blog.id}
-                  title={blog.title}
-                  date={blog.createdAt}
-                  tags={blog.tags}
-                  avatar={{
-                    src: blog.user?.image,
-                    alt: blog.user?.name || 'Unknown user',
-                  }}
-                >
-                  {blog.description}
-                </BlogOverview>
+                <div key={blog.id} className="mb-6">
+                  <BlogOverview
+                    title={blog.title}
+                    date={blog.createdAt}
+                    tags={blog.tags}
+                    avatar={{
+                      src: blog.user?.image,
+                      alt: blog.user?.name || 'Unknown user',
+                    }}
+                  >
+                    {blog.description}
+                  </BlogOverview>
+                </div>
               ))}
             </div>
             <div className="text-center">

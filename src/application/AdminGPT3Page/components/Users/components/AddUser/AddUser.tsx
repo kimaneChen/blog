@@ -13,7 +13,7 @@ interface Props {
 }
 
 const AddUser: FC<Props> = ({ name, email, image }) => {
-  const { trigger, isMutating } = useSWRMutation('/api/admin/users', () =>
+  const { trigger, isMutating } = useSWRMutation('/api/admin/users?role=GPT3', () =>
     createUser({
       name,
       email,
@@ -22,7 +22,7 @@ const AddUser: FC<Props> = ({ name, email, image }) => {
     })
   )
 
-  const { data, mutate } = useSWR('/api/admin/users?role=GPT3')
+  const { data } = useSWR('/api/admin/users?role=GPT3')
 
   return (
     <div>
@@ -40,10 +40,7 @@ const AddUser: FC<Props> = ({ name, email, image }) => {
             disabled={isMutating}
             variant={Variant.Outline}
             size={Size.Small}
-            onClick={async () => {
-              await trigger()
-              mutate()
-            }}
+            onClick={() => trigger()}
           >
             Add
           </Button>

@@ -1,23 +1,34 @@
 import { forwardRef, InputHTMLAttributes, ReactNode } from 'react'
 import classNames from 'classnames'
 
-export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'prefix'> {
+export enum Size {
+  Small = 'small',
+  Normal = 'Normal',
+}
+
+export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'> {
   placeholder?: string
   prefix?: ReactNode
   suffix?: ReactNode
+  size?: Size
   className?: string
 }
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ placeholder, prefix, suffix, className, ...props }, ref) => (
-    <div className={classNames({ relative: prefix || suffix })}>
-      {prefix && <div className="absolute top-0 bottom-0 flex items-center left-3">{prefix}</div>}
+  ({ placeholder, prefix, suffix, className, size = Size.Normal, ...props }, ref) => (
+    <div className={classNames({ relative: suffix })}>
       <input
         ref={ref}
         type="text"
         placeholder={placeholder}
         className={classNames(
-          ['w-full', 'h-12', 'px-4', 'border', 'rounded-md'],
+          'w-full',
+          'h-12',
+          'px-4',
+          'border',
+          'rounded-md',
+          size === Size.Normal && ['h-12', 'rounded-md', 'px-4'],
+          size === Size.Small && ['h-8', 'w-26', 'rounded-md', 'px-4'],
           prefix && 'pl-9',
           suffix && 'pr-9',
           className

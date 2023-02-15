@@ -5,18 +5,22 @@ module.exports = {
     colors: {
       background: 'white',
       'on-background': '#666666',
-      'background-variant': '#F2F2F2',
+      'background-variant': '#fafafa',
       primary: '#0070F3',
       'on-primary': 'white',
       outline: '#EAEAEA',
       placeholder: '#8993A4',
       dark: 'black',
-      highlight:'#79FFE1',
+      highlight: '#79FFE1',
       error: 'red',
+      'on-error': 'white',
+      warn: '#fff4e5',
+      'on-warn': '#663c00',
     },
     borderColor: {
       DEFAULT: '#EAEAEA',
       dark: 'black',
+      warn: '#fff4e5',
     },
     extend: {
       maxWidth: {
@@ -28,7 +32,7 @@ module.exports = {
         narrow: '950px',
       },
       height: {
-        header: '64px',
+        header: '70px',
       },
       boxShadow: {
         dropdown: '0 2px 5px 2px #EAEAEA',
