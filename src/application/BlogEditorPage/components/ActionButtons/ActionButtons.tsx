@@ -1,19 +1,37 @@
-import { FC, useState } from 'react'
+import { FC, useState, MouseEvent } from 'react'
+import { useRouter } from 'next/router'
 import { useFormContext } from 'react-hook-form'
 import Button, { Variant } from '@/components/Button'
 import { useSession } from 'next-auth/react'
 import AddTitleModal from './components/AddTitleModal'
+import BeforeCloseModal from './components/BeforeCloseModal'
 
 interface Props {
   onConfirmPublish: () => void
 }
 
+enum ConfirmationModal {
+  BeforeClose,
+  AddTitle,
+}
+
 const ActionButtons: FC<Props> = ({ onConfirmPublish }) => {
   const { formState } = useFormContext()
-  const { isValid } = formState
+  const { isDirty, isValid } = formState
   const { data: session } = useSession()
 
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modal, setModal] = useState<ConfirmationModal | null>(null)
+
+  const router = useRouter()
+  const handleClose = (e: MouseEvent<HTMLButtonElement>): void => {
+    e.preventDefault()
+
+    if (isDirty) {
+      setModal(ConfirmationModal.BeforeClose)
+    } else {
+      router.push('/')
+    }
+  }
 
   return (
     <>
@@ -28,7 +46,7 @@ const ActionButtons: FC<Props> = ({ onConfirmPublish }) => {
                 }
               : {
                   type: 'button',
-                  onClick: () => setIsModalOpen(true),
+                  onClick: () => setModal(ConfirmationModal.AddTitle),
                 })}
           >
             Publish
@@ -38,11 +56,15 @@ const ActionButtons: FC<Props> = ({ onConfirmPublish }) => {
             Log In to Publish
           </Button>
         )}
-
-        <Button variant={Variant.Outline}>Close</Button>
+        <Button onClick={handleClose} variant={Variant.Outline}>
+          Close
+        </Button>
       </div>
-      {isModalOpen && (
-        <AddTitleModal onClose={() => setIsModalOpen(false)} onConfirmPublish={onConfirmPublish} />
+      {modal === ConfirmationModal.AddTitle && (
+        <AddTitleModal onClose={() => setModal(null)} onConfirmPublish={onConfirmPublish} />
+      )}
+      {modal === ConfirmationModal.BeforeClose && (
+        <BeforeCloseModal onClose={() => setModal(null)} />
       )}
     </>
   )
