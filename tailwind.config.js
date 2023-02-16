@@ -11,7 +11,7 @@ module.exports = {
       'on-primary': 'white',
       outline: '#EAEAEA',
       placeholder: '#8993A4',
-      dark: 'black',
+      dark: '#131313',
       highlight: '#79FFE1',
       error: 'red',
       'on-error': 'white',
@@ -20,7 +20,7 @@ module.exports = {
     },
     borderColor: {
       DEFAULT: '#EAEAEA',
-      dark: 'black',
+      dark: '#131313',
       error: 'red',
       warn: '#fff4e5',
     },
