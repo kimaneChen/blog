@@ -4,6 +4,7 @@ import GithubProvider from 'next-auth/providers/github'
 import prisma from '@/lib/prisma'
 import EmailProvider from 'next-auth/providers/email'
 import { User } from '@prisma/client'
+import sendVerificationRequest from '@/utils/sendVerificationRequest'
 
 const authOptions: AuthOptions = {
   pages: {
@@ -27,6 +28,9 @@ const authOptions: AuthOptions = {
       },
 
       from: process.env.EMAIL_FROM,
+      async sendVerificationRequest({ identifier, url, provider }) {
+        await sendVerificationRequest({ identifier, url, provider })
+      },
     }),
   ],
   callbacks: {
