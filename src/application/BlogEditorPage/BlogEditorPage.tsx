@@ -5,13 +5,23 @@ import { NextPage } from 'next'
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
+import useSWRMutation from 'swr/mutation'
+import { useRouter } from 'next/router'
 import ActionButtons from './components/ActionButtons'
 import FieldSet from './components/FieldSet'
 
 const BlogEditorPage: NextPage = () => {
   const { data: session } = useSession()
+  const router = useRouter()
 
   const [tags, setTags] = useState<string[]>([])
+
+  const { trigger, isMutating } = useSWRMutation('/api/user/blogs', (_, { arg: data }) =>
+    createBlog({
+      ...data,
+      tags,
+    })
+  )
 
   const onSubmit: SubmitHandler<Blog> = async (data) => {
     if (!session) {
@@ -19,14 +29,11 @@ const BlogEditorPage: NextPage = () => {
     }
 
     try {
-      const response = await createBlog({
-        ...data,
-        tags,
-      })
+      const response = await trigger(data)
 
-      // TODO: Success Handling
-      // eslint-disable-next-line no-console
-      console.log(response)
+      if (response?.status === 200) {
+        router.push(`/blogs/${response.data?.id}`)
+      }
     } catch (error) {
       // TODO: Error Handling
       // eslint-disable-next-line no-console
@@ -43,7 +50,7 @@ const BlogEditorPage: NextPage = () => {
       <Header />
       <main className="bg-[#EEF5FA] min-h-[calc(100vh-theme(height.header))] px-3 pb-5 flex flex-col items-center">
         <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-narrow grow flex flex-col">
-          <ActionButtons onConfirmPublish={handleSubmit(onSubmit)} />
+          <ActionButtons onConfirmPublish={handleSubmit(onSubmit)} isLoading={isMutating} />
           <FieldSet tags={tags} onTagsChange={setTags} />
         </form>
       </main>

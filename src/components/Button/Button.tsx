@@ -1,5 +1,6 @@
 import { FC, HTMLProps, ReactNode } from 'react'
 import classNames from 'classnames'
+import { AiOutlineLoading } from 'react-icons/ai'
 
 export enum Variant {
   Default,
@@ -22,6 +23,7 @@ export interface Props extends HTMLProps<HTMLButtonElement> {
   block?: boolean
   children: ReactNode
   type?: 'submit' | 'button' | 'reset' | undefined
+  isLoading?: boolean
 }
 
 const Button: FC<Props> = ({
@@ -31,6 +33,7 @@ const Button: FC<Props> = ({
   children,
   type = 'button',
   className,
+  isLoading = false,
   ...props
 }) => (
   <button
@@ -55,7 +58,7 @@ const Button: FC<Props> = ({
     // eslint-disable-next-line react/jsx-props-no-spreading
     {...props}
   >
-    {children}
+    {children} {isLoading && <AiOutlineLoading className="animate-spin inline-block ml-1" />}
   </button>
 )
 

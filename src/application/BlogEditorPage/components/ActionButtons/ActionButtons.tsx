@@ -8,6 +8,7 @@ import BeforeCloseModal from './components/BeforeCloseModal'
 
 interface Props {
   onConfirmPublish: () => void
+  isLoading: boolean
 }
 
 enum ConfirmationModal {
@@ -15,7 +16,7 @@ enum ConfirmationModal {
   AddTitle,
 }
 
-const ActionButtons: FC<Props> = ({ onConfirmPublish }) => {
+const ActionButtons: FC<Props> = ({ onConfirmPublish, isLoading }) => {
   const { formState } = useFormContext()
   const { isDirty, isValid } = formState
   const { data: session } = useSession()
@@ -39,6 +40,7 @@ const ActionButtons: FC<Props> = ({ onConfirmPublish }) => {
         {session ? (
           <Button
             variant={Variant.Primary}
+            isLoading={isLoading}
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...(isValid
               ? {
