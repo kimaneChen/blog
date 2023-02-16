@@ -12,10 +12,11 @@ export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size
   suffix?: ReactNode
   size?: Size
   className?: string
+  error?: boolean
 }
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ placeholder, prefix, suffix, className, size = Size.Normal, ...props }, ref) => (
+  ({ placeholder, prefix, suffix, className, size = Size.Normal, error, ...props }, ref) => (
     <div className={classNames({ relative: suffix })}>
       <input
         ref={ref}
@@ -31,6 +32,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
           size === Size.Small && ['h-8', 'w-26', 'rounded-md', 'px-4'],
           prefix && 'pl-9',
           suffix && 'pr-9',
+          error && ['border-error', 'focus:outline-none'],
           className
         )}
         // eslint-disable-next-line react/jsx-props-no-spreading

@@ -21,6 +21,7 @@ module.exports = {
     borderColor: {
       DEFAULT: '#EAEAEA',
       dark: 'black',
+      error: 'red',
       warn: '#fff4e5',
     },
     extend: {
