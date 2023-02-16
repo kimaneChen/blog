@@ -8,7 +8,7 @@ const dropdownItems = [
   ...navItems,
   {
     id: uuidv4(),
-    href: '/api/auth/signout',
+    href: '/sign-out',
     label: 'Log Out',
   },
 ]

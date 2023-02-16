@@ -9,6 +9,7 @@ import sendVerificationRequest from '@/utils/sendVerificationRequest'
 const authOptions: AuthOptions = {
   pages: {
     signIn: '/',
+    signOut: '/sign-out',
     verifyRequest: '/email-verification-request',
   },
   adapter: PrismaAdapter(prisma),
