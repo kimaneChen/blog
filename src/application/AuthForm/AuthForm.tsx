@@ -12,9 +12,19 @@ import checkEmail from '@/apis/checkEmail'
 enum EmailErrorMessage {
   Exists = 'Email address already exists.',
   Invalid = 'Please enter a valid email address.',
+  noAccount = 'There is no Chuckroo account associated with this email address.',
 }
 
-const Form: FC = () => {
+export enum Type {
+  Login,
+  SignUp,
+}
+
+interface Props {
+  type: Type
+}
+
+const AuthForm: FC<Props> = ({ type }) => {
   const {
     register,
     handleSubmit,
@@ -45,6 +55,16 @@ const Form: FC = () => {
             </Error>
           </div>
         )}
+        {errors.email?.message === EmailErrorMessage.noAccount && (
+          <div className="my-3">
+            <Error>
+              {`${EmailErrorMessage.noAccount} `}
+              <Link href="/sign-up/email" className="underline">
+                Sign up?
+              </Link>
+            </Error>
+          </div>
+        )}
         <Input
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...register('email', {
@@ -56,10 +76,10 @@ const Form: FC = () => {
               }
               try {
                 await checkEmail(value)
-                return true
+                return type === Type.SignUp || EmailErrorMessage.noAccount
               } catch (err: any) {
                 if (err?.response.status === 409) {
-                  return EmailErrorMessage.Exists
+                  return type === Type.Login || EmailErrorMessage.Exists
                 }
                 throw err
               }
@@ -86,4 +106,4 @@ const Form: FC = () => {
   )
 }
 
-export default Form
+export default AuthForm

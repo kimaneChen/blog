@@ -18,7 +18,7 @@ const SignUpPage: NextPage = () => (
     >
       Continue with Github
     </AuthButton>
-    <ContinueWithEmailButton href="/email-sign-up" />
+    <ContinueWithEmailButton href="/sign-up/email" />
   </SignUpPageLayout>
 )
 

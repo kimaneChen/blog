@@ -1,14 +1,11 @@
 import { FC } from 'react'
-import Link from 'next/link'
 import { AiTwotoneHeart } from 'react-icons/ai'
 
 const Tag: FC = () => (
-  <div>
+  <div className="text-on-background">
     Made with <AiTwotoneHeart color="#EB367F" className="inline" />
     {' by '}
-    <Link className="text-primary" href="/Users/KieraDog">
-      KieraDog
-    </Link>
+    <span className="text-dark">MadKangaroo</span>
   </div>
 )
 export default Tag
