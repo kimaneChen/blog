@@ -40,7 +40,7 @@ const Button: FC<Props> = ({
     // eslint-disable-next-line react/button-has-type
     type={type}
     className={classNames(
-      'disabled:opacity-50',
+      'disabled:opacity-20',
       'disabled:grayscale',
       'disabled:cursor-not-allowed',
       variant === Variant.Default && ['bg-background', 'text-primary'],
