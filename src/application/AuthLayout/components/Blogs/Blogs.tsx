@@ -10,21 +10,27 @@ const Blogs: FC = () => {
 
   if (!data) return null
 
-  return data.map((blog: Blog) => (
-    <div key={blog.id} className="mt-3">
-      <BlogOverview
-        title={blog.title}
-        date={blog.createdAt}
-        tags={blog.tags}
-        avatar={{
-          src: blog.user?.image,
-          alt: blog.user?.name || 'Unknown user',
-        }}
-      >
-        {blog.description}
-      </BlogOverview>
-    </div>
-  ))
+  return (
+    <>
+      {data.map((blog: Blog) => (
+        <div key={blog.id} className="mt-3">
+          <BlogOverview
+            id={blog.id}
+            title={blog.title}
+            date={blog.createdAt}
+            key={blog.id}
+            tags={blog.tags}
+            avatar={{
+              src: blog.user?.image,
+              alt: blog.user?.name || 'Unknown user',
+            }}
+          >
+            {blog.description}
+          </BlogOverview>
+        </div>
+      ))}
+    </>
+  )
 }
 
 export default Blogs

@@ -31,6 +31,7 @@ const Blogs: FC<Props> = ({ page }) => {
       {data?.map((item: Blog) => (
         <div key={item.id}>
           <BlogOverview
+            id={item.id}
             title={item.title}
             date={item.createdAt}
             tags={item.tags}

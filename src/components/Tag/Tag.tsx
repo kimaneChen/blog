@@ -11,7 +11,7 @@ interface Props {
   variant?: Variant
 }
 
-const Badge: FC<Props> = ({ children, variant = Variant.Background }) => {
+const Tag: FC<Props> = ({ children, variant = Variant.Background }) => {
   const classname = classNames(
     'border',
     'rounded',
@@ -23,4 +23,4 @@ const Badge: FC<Props> = ({ children, variant = Variant.Background }) => {
   )
   return <div className={classname}>{children}</div>
 }
-export default Badge
+export default Tag

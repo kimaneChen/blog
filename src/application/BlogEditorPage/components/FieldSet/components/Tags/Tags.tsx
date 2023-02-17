@@ -1,4 +1,4 @@
-import Badge from '@/components/Badge'
+import Tag from '@/components/Tag'
 import { FC, useState } from 'react'
 import AddTagModal from './components/AddTagModal'
 
@@ -15,10 +15,10 @@ const Tags: FC<Props> = ({ tags, onTagsChange }) => {
     <>
       <div className="flex gap-3 mb-5 ">
         {tags.map((tag) => (
-          <Badge key={tag}>{tag}</Badge>
+          <Tag key={tag}>{tag}</Tag>
         ))}
         <button type="button" onClick={toggleModal}>
-          <Badge>Add a tag</Badge>
+          <Tag>Add a tag</Tag>
         </button>
       </div>
       {isModalOpen && <AddTagModal tags={tags} onTagsChange={onTagsChange} onClose={toggleModal} />}

@@ -1,10 +1,12 @@
 import Avatar from '@/components/Avatar'
-import Badge from '@/components/Badge'
+import Tag from '@/components/Tag'
 import Blog from '@/types/Blog'
 import Link from 'next/link'
 import { FC, ReactNode } from 'react'
+import Date from '@/components/Date'
 
 export interface Props {
+  id: string
   date: string
   title: string
   children: ReactNode
@@ -15,18 +17,18 @@ export interface Props {
   }
 }
 
-const BlogOverview: FC<Props> = ({ date, title, children, avatar, tags }) => (
-  <Link href="/blogs/id">
-    <div className="bg-background rounded-xl border p-4">
-      <div className="text-on-background text-sm">{date}</div>
-      <h3 className="text-lg font-medium">{title}</h3>
-      <div className="text-on-background">{children}</div>
+const BlogOverview: FC<Props> = ({ id, date, title, children, avatar, tags }) => (
+  <Link href={`/blog/${id}`}>
+    <article className="bg-background rounded-xl border p-4">
+      <Date className="text-on-background text-sm">{date}</Date>
+      <h3 className="text-2xl font-medium my-2">{title}</h3>
+      <p className="text-on-background">{children}</p>
       <div className="flex pt-4 justify-between ">
         <div>
           {!!tags?.length && (
             <div className="mt-2.5 flex gap-2">
               {tags.map((tag) => (
-                <Badge key={tag.id}>{tag.name}</Badge>
+                <Tag key={tag.id}>{tag.name}</Tag>
               ))}
             </div>
           )}
@@ -35,7 +37,7 @@ const BlogOverview: FC<Props> = ({ date, title, children, avatar, tags }) => (
           <Avatar width={28} height={28} alt={avatar?.alt} src={avatar?.src} />
         </div>
       </div>
-    </div>
+    </article>
   </Link>
 )
 

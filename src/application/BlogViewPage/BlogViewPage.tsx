@@ -1,22 +1,41 @@
 import { NextPage } from 'next'
+import { useRouter } from 'next/router'
+import useSWR from 'swr'
+import Container from '@/components/Container'
+import BackLink from '@/components/BackLink'
 import Header from '@/components/Header'
-import Contents from './components/Contents'
-import AddComments from './components/AddComments'
-import Comments from './components/Comments'
+import BlogTitle from './components/BlogTitle'
+import User from './components/User'
 
-const BlogViewPage: NextPage = () => (
-  <>
-    <Header />
-
-    <main className="px-3 pb-5 flex flex-col items-center">
-      <div className="w-narrow">
-        <Contents />
-        <AddComments />
-        <Comments />
-        <Comments />
-      </div>
-    </main>
-  </>
-)
+const BlogViewPage: NextPage = () => {
+  const router = useRouter()
+  const { id } = router.query
+  const { data, isLoading } = useSWR(`/api/blog/${id}`)
+  if (isLoading) return <>Loading...</>
+  if (!data) return null
+  return (
+    <>
+      <Header />
+      <Container>
+        <BackLink>Back to Blogs</BackLink>
+      </Container>
+      <Container className="px-52">
+        <div className="pb-4 mt-6">
+          <BlogTitle />
+        </div>
+        <Container className="mb-60 flex py-12">
+          <article className="prose pr-14 grow">
+            Contenet 1 of blog goes here...
+            <br />
+            Contenet 2 of blog goes here...
+            <br />
+            Contenet 3 of blog goes here...
+          </article>
+          <User />
+        </Container>
+      </Container>
+    </>
+  )
+}
 
 export default BlogViewPage

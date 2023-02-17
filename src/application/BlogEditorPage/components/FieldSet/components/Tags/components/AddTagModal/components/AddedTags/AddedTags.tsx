@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import Badge from '@/components/Badge'
+import Tag from '@/components/Tag'
 
 interface Props {
   tags: string[]
@@ -17,7 +17,7 @@ const AddedTags: FC<Props> = ({ tags, onRemoveTag }) => (
             type="button"
             onClick={() => onRemoveTag(tags.filter((item) => item !== tag))}
           >
-            <Badge>{tag}</Badge>
+            <Tag>{tag}</Tag>
           </button>
         ))}
       </div>

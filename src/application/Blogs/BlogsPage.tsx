@@ -46,6 +46,7 @@ const BlogsPage: NextPage = () => {
               {blogs.map((blog) => (
                 <div key={blog.id} className="mb-6">
                   <BlogOverview
+                    id={blog.id}
                     title={blog.title}
                     date={blog.createdAt}
                     tags={blog.tags}

@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import UserLayout from '@/application/UserLayout'
 import MarkAllReadButton from './components/MarkAllReadButton'
-import Tag from './components/Tag'
+import Tag from './components/Badge'
 import Item from './components/Item'
 import MOCKNOTIFICATIONS from './Mocknotification'
 

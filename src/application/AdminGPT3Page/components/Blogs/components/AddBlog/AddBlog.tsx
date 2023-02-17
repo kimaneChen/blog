@@ -1,5 +1,5 @@
 import createBlog from '@/apis/admin/createBlog'
-import Badge from '@/components/Badge'
+import Tag from '@/components/Tag'
 import Button, { Size, Variant } from '@/components/Button'
 import Blog from '@/types/Blog'
 import User from '@/types/User'
@@ -42,7 +42,7 @@ const AddBlog: FC<Props> = ({ title, description, tags }) => {
       <div className="text-on-background text-sm mb-2">{description}</div>
       <div className="flex gap-1 mb-4">
         {tags.map((tag) => (
-          <Badge key={tag.id}>{tag.name}</Badge>
+          <Tag key={tag.id}>{tag.name}</Tag>
         ))}
       </div>
       {!dirty && users && (
