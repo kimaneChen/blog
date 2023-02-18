@@ -3,11 +3,6 @@ import { v4 as uuidv4 } from 'uuid'
 const navItems = [
   {
     id: uuidv4(),
-    href: '/user/dashboard',
-    label: 'Dashboard',
-  },
-  {
-    id: uuidv4(),
     href: '/user/notifications',
     label: 'Notifications',
   },
