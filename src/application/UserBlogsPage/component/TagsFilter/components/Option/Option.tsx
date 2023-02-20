@@ -4,7 +4,7 @@ interface Props {
   name: string
 }
 
-const Tag: FC<Props> = ({ name }) => {
+const Option: FC<Props> = ({ name }) => {
   const id = useId()
 
   return (
@@ -21,4 +21,4 @@ const Tag: FC<Props> = ({ name }) => {
   )
 }
 
-export default Tag
+export default Option

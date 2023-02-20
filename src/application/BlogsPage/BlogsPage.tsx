@@ -1,49 +1,59 @@
 import Layout from '@/application/Layout'
-import { NextPage } from 'next'
-import Head from 'next/head'
-import useSWRInfinite from 'swr/infinite'
-import Blog from '@/types/Blog'
 import TagsFilter from '@/application/TagsFilter'
 import BlogOverview from '@/components/BlogOverview'
-import Container from '@/components/Container'
 import LoadMoreButton from '@/components/LoadMoreButton'
-
-const TAGS = [
-  { tagName: 'Account', id: '1' },
-  { tagName: 'Projects', id: '2' },
-  { tagName: 'Teams', id: '3' },
-]
-
-const BLOGS_PER_PAGE = 3
+import Tag from '@/types/Tag'
+import { NextPage } from 'next'
+import Head from 'next/head'
+import { useState } from 'react'
+import useSWR from 'swr'
+import Container from '@/components/Container'
+import useBlogs from './hooks/useBlogs'
 
 const BlogsPage: NextPage = () => {
-  const { data, isLoading, size, setSize } = useSWRInfinite<Blog[]>(
-    (index) => `/api/blogs?page=${index + 1}&perPage=${BLOGS_PER_PAGE}`
-  )
+  const [selectedTags, setSelectedTags] = useState<Tag[]>()
 
-  const blogs = data ? data.flat() : []
+  const { blogs, size, setSize, isLoadMoreDisabled } = useBlogs({
+    tags: selectedTags,
+  })
 
-  const lastPage = data?.[data.length - 1]
-  const isReachingEnd = lastPage && lastPage.length < BLOGS_PER_PAGE
-
-  const isLoadMoreDisabled = isLoading || isReachingEnd
+  const { data: tags } = useSWR<Tag[]>('/api/tags')
 
   return (
     <>
       <Head>
         <title>Blogs</title>
       </Head>
+
       <Layout>
         <Container>
           <section className="flex">
             <div className="w-[300px] ml-6 border-r">
               <div className="pr-5 my-9">
                 <div className="font-medium">Filters</div>
-                <div className="mt-3">
-                  <TagsFilter tags={TAGS} />
-                </div>
+                <div className="mt-3" />
+              </div>
+              <div>
+                {tags ? (
+                  <TagsFilter
+                    tags={tags}
+                    selectedTags={selectedTags}
+                    onTagSelect={(tag) => {
+                      setSelectedTags((currentTags) => {
+                        if (currentTags?.includes(tag)) {
+                          return currentTags.filter((currentTag) => currentTag.id !== tag.id)
+                        }
+
+                        return [...(currentTags || []), tag]
+                      })
+                    }}
+                  />
+                ) : (
+                  <div>Loading...</div>
+                )}
               </div>
             </div>
+
             <div className="grow py-9 px-5 mx-3">
               <div className="mb-4">
                 <h1 className="text-3xl font-bold">All Blogs</h1>
@@ -67,9 +77,11 @@ const BlogsPage: NextPage = () => {
                   </div>
                 ))}
               </div>
-              <LoadMoreButton hasMore={!isLoadMoreDisabled} onLoadMore={() => setSize(size + 1)}>
-                More Blogs
-              </LoadMoreButton>
+              <div>
+                <LoadMoreButton hasMore={!isLoadMoreDisabled} onLoadMore={() => setSize(size + 1)}>
+                  More Blogs
+                </LoadMoreButton>
+              </div>
             </div>
           </section>
         </Container>

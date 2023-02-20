@@ -1,14 +1,22 @@
+import Tag from '@/types/Tag'
 import { FC } from 'react'
-import Tag from './components/Tag'
+import Option from './components/Option'
 
 interface Props {
-  tags: { tagName: string; id: string }[]
+  tags: Tag[]
+  selectedTags?: Tag[]
+  onTagSelect: (tag: Tag) => void
 }
 
-const TagsFilter: FC<Props> = ({ tags }) => (
-  <section>
+const TagsFilter: FC<Props> = ({ tags, selectedTags, onTagSelect }) => (
+  <section className="pt-[30px]">
     {tags.map((tag) => (
-      <Tag name={tag.tagName} key={tag.id} />
+      <Option
+        name={tag.name}
+        key={tag.id}
+        selected={selectedTags?.includes(tag)}
+        onSelect={() => onTagSelect(tag)}
+      />
     ))}
   </section>
 )
