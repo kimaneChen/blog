@@ -12,6 +12,13 @@ const getBlogs = async (req: NextApiRequest, res: NextApiResponse): Promise<void
     },
     where: {
       userId,
+      tags: {
+        some: {
+          id: {
+            in: req.query.tags,
+          },
+        },
+      },
     },
     include: {
       user: {
