@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import { FC, ReactNode } from 'react'
 
 interface Props {
@@ -6,7 +7,7 @@ interface Props {
 }
 
 const Container: FC<Props> = ({ children, className }) => (
-  <div className={`max-w-container mx-auto ${className}`}>{children}</div>
+  <div className={classNames('max-w-container', 'mx-auto', 'px-6', className)}>{children}</div>
 )
 
 export default Container

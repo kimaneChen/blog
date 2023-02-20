@@ -28,7 +28,7 @@ const AdminPageLayout: FC<Props> = ({ children }) => {
   const { pathname } = useRouter()
 
   return (
-    <div className="flex flex-col h-screen">
+    <div>
       <Header />
       <Container>
         <div className="mt-12">
@@ -55,9 +55,9 @@ const AdminPageLayout: FC<Props> = ({ children }) => {
           </div>
         </div>
       </Container>
-      <div className="bg-background-variant grow">
+      <div className="bg-background-variant">
         <Container>
-          <div className="my-12">{children}</div>
+          <div className="py-12">{children}</div>
         </Container>
       </div>
     </div>

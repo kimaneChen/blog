@@ -20,7 +20,7 @@ const Header: FC = () => {
 
   return (
     <header className="bg-background border-b">
-      <Container className="flex justify-between items-center h-16 px-6 relative">
+      <Container className="flex justify-between items-center h-16 relative">
         <Logo />
 
         <div className="absolute text-center h-8 w-[200px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">

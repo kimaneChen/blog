@@ -7,7 +7,7 @@ interface Props {
 }
 
 const BackLink: FC<Props> = ({ children }) => (
-  <Link href="/" className="mt-1 px-6 py-3 flex items-center gap-1.5 text-sm text-on-background">
+  <Link href="/" className="mt-1 py-3 flex items-center gap-1.5 text-sm text-on-background">
     <FiArrowLeft className="inline w-4 h-4" />
     {children}
   </Link>
