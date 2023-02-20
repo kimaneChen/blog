@@ -4,10 +4,14 @@ import prisma from '@/lib/prisma'
 const getBlogs = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const page = Number(req.query.page) || 1
   const perPage = Number(req.query.perPage) || 3
+  const userId = req.query?.userId as string | undefined
 
   const result = await prisma.blog.findMany({
     orderBy: {
-      createdAt: 'desc',
+      updatedAt: 'desc',
+    },
+    where: {
+      userId,
     },
     include: {
       user: {

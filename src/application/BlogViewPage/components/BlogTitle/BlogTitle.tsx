@@ -4,6 +4,7 @@ import { FC } from 'react'
 import { useRouter } from 'next/router'
 import Tag from '@/components/Tag'
 import TagType from '@/types/Tag'
+import DateFormat from '@/types/DateFormat'
 
 const BlogTitle: FC = () => {
   const router = useRouter()
@@ -12,7 +13,7 @@ const BlogTitle: FC = () => {
   if (!blog) return null
   return (
     <header>
-      <Date className="mt-3 text-on-background text-sm" format="LLLL d yyyy">
+      <Date className="mt-3 text-on-background text-sm" format={DateFormat.LongDate}>
         {blog.createdAt}
       </Date>
       <h1 className="mt-3 text-4xl font-bold">{blog.title}</h1>

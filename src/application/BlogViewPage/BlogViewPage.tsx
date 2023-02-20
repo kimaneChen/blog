@@ -13,6 +13,7 @@ const BlogViewPage: NextPage = () => {
   const { data, isLoading } = useSWR(`/api/blog/${id}`)
   if (isLoading) return <>Loading...</>
   if (!data) return null
+
   return (
     <>
       <Header />
