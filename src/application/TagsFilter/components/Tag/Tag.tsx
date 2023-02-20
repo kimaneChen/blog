@@ -8,7 +8,7 @@ const Tag: FC<Props> = ({ name }) => {
   const id = useId()
 
   return (
-    <div className="bg-background-variant rounded py-2 px-3 my-3">
+    <div className="bg-background-variant rounded py-2 px-3 my-3 truncate">
       <input
         type="checkbox"
         id={id}

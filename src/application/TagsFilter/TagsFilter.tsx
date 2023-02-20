@@ -6,7 +6,7 @@ interface Props {
 }
 
 const TagsFilter: FC<Props> = ({ tags }) => (
-  <section className="pt-[30px]">
+  <section>
     {tags.map((tag) => (
       <Tag name={tag.tagName} key={tag.id} />
     ))}
