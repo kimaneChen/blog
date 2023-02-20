@@ -8,7 +8,7 @@ const getBlogs = async (req: NextApiRequest, res: NextApiResponse): Promise<void
 
   const result = await prisma.blog.findMany({
     orderBy: {
-      updatedAt: 'desc',
+      createdAt: 'desc',
     },
     where: {
       userId,
