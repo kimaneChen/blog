@@ -32,6 +32,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps: { session, ...pageProps
           <Component {...pageProps} />
         </SessionProvider>
       </SWRConfig>
+      <div id="modal" />
     </main>
   )
 }
