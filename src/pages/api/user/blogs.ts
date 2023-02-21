@@ -82,6 +82,7 @@ const getBlogs: NextApiHandler = async (req, res) => {
       createdAt: 'desc',
     },
     where: {
+      unpublishedAt: null,
       user: {
         email: {
           equals: session.user?.email,

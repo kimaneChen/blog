@@ -12,6 +12,7 @@ const getBlogs = async (req: NextApiRequest, res: NextApiResponse): Promise<void
     },
     where: {
       userId,
+      unpublishedAt: null,
       tags: {
         some: {
           id: {

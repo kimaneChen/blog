@@ -14,15 +14,15 @@ interface Props {
 }
 
 const Blogs: FC<Props> = ({ page }) => {
-  const { data } = useSWR(`/api/blogs?perPage=${PER_PAGE}&page=${page}`)
+  const { data } = useSWR(`/api/admin/blogs?perPage=${PER_PAGE}&page=${page}`)
 
   const { trigger: unpublishOrDelete } = useSWRMutation(
-    `/api/blogs?perPage=${PER_PAGE}&page=${page}`,
+    `/api/admin/blogs?perPage=${PER_PAGE}&page=${page}`,
     (_, { arg: { id } }) => deleteBlog(id)
   )
 
   const { trigger: publish } = useSWRMutation(
-    `/api/blogs?perPage=${PER_PAGE}&page=${page}`,
+    `/api/admin/blogs?perPage=${PER_PAGE}&page=${page}`,
     (_, { arg: { id } }) => publishBlog(id)
   )
 

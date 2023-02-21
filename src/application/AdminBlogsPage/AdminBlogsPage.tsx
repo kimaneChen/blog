@@ -15,7 +15,7 @@ const AdminBlogsPage: FC = () => {
     router.push(`/admin/blogs?page=${to}`)
   }
 
-  const { data } = useSWR(`/api/blogs?perPage=${PER_PAGE}&page=${page}`)
+  const { data } = useSWR(`/api/admin/blogs?perPage=${PER_PAGE}&page=${page}`)
 
   const isPreviousPage = page > 1
   const isNextPage = data?.length === PER_PAGE
