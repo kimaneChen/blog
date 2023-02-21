@@ -17,30 +17,15 @@ type GPT3Blog = Pick<Blog, 'id' | 'title' | 'description'> & {
 
 const Blogs: FC = () => {
   const { loading, data, askGPT3 } = useAskGPT3(`
-    If you are a front-end blog writer, 
-    can you update the following data to a real front-end blog? 
-    Your response should in JSON format and JSON only. 
+    If you are a front-end tech blog website api that returns a list of blogs in JSON format.
+    Could you give me 4 blogs in the following structure?
+    Your response should only include JSON response.
     [
       {
-        "title": "Example blog",
-        "description": "Example description",
-        "tags": ["Tag1", "Tag2", "Tag3"]
-      },
-      {
-        "title": Example blog",
-        "description": "Example ",
-        "tags": ["Tag1", "Tag2", "Tag3"]
-      },
-      {
-        "title": Example blog",
-        "description": "Example ",
-        "tags": ["Tag1", "Tag2", "Tag3"]
-      },
-      {
-        "title": Example blog",
-        "description": "Example ",
-        "tags": ["Tag1", "Tag2", "Tag3"]
-      },
+        "title": string,
+        "description": string,
+        "tags": string[]
+      }
     ]
   `)
 
@@ -68,6 +53,14 @@ const Blogs: FC = () => {
           {loading ? 'Loading...' : 'Hi GPT3, Give me some blogs!'}
         </Button>
       </div>
+      {data && (
+        <textarea
+          className="mt-12 w-full resize-none rounded-md p-2"
+          rows={10}
+          readOnly
+          value={data}
+        />
+      )}
       {blogs && (
         <div className="mt-12">
           <div className="grid grid-cols-2 gap-4">

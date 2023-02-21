@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const { fontFamily } = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: ['./src/**/*.{ts,tsx}'],
@@ -40,6 +41,9 @@ module.exports = {
         dropdown: '0 2px 5px 2px #EAEAEA',
       },
     },
+    fontFamily: {
+      sans: ['var(--font-inter)', ...fontFamily.sans],
+    },
   },
-  plugins: [require('@tailwindcss/typography'), require('tailwindcss-font-inter')],
+  plugins: [require('@tailwindcss/typography')],
 }

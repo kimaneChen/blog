@@ -37,7 +37,7 @@ const AddBlog: FC<Props> = ({ title, description, tags }) => {
   const { data: session } = useSession()
 
   return (
-    <div className="rounded-xl border p-4 mb-4">
+    <div className="bg-background rounded-xl border p-4 mb-4">
       <div className="mb-1 text-lg">{title}</div>
       <div className="text-on-background text-sm mb-2">{description}</div>
       <div className="flex gap-1 mb-4">
