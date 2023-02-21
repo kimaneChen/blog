@@ -13,7 +13,7 @@ const Item: FC<Props> = ({ href, label, active = false, onMouseEnter }) => {
   const classname = classNames(
     'text-on-background',
     'px-6',
-    'py-2',
+    'py-3',
     'text-left',
     'relative',
 

@@ -19,11 +19,11 @@ const Header: FC = () => {
       toggle={<Avatar src={session.user?.image} alt={session.user?.name} width={30} height={30} />}
     >
       <div
-        className="absolute right-0 w-[185px] mt-3 py-3 bg-background rounded shadow-dropdown"
+        className="absolute right-0 w-[185px] mt-3 py-4 bg-background rounded shadow-dropdown"
         onMouseEnter={() => setCurrentActive('')}
         onMouseLeave={() => setCurrentActive(router.pathname)}
       >
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col">
           {[
             ...navItems,
             {
