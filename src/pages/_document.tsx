@@ -6,6 +6,7 @@ const Document: React.FC = () => (
     <Head />
     <body>
       <Main />
+      <div id="modal" />
       <NextScript />
     </body>
   </Html>

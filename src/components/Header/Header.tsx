@@ -1,22 +1,16 @@
-import { FC, useState, useRef } from 'react'
-import { useSession } from 'next-auth/react'
 import { Variant } from '@/components/Button'
-import Avatar from '@/components/Avatar'
 import Container from '@/components/Container'
-import Logo from '@/components/Logo'
 import Input from '@/components/Input'
-import useClickOutside from '@/hooks/useClickOutside'
+import Logo from '@/components/Logo'
+import { useSession } from 'next-auth/react'
+import { FC } from 'react'
+import { Size } from '../Input/Input'
 import NavLink from './components/NavLink'
 import Notification from './components/Notification'
-import UserDropdown from './components/UserDropdown'
-import { Size } from '../Input/Input'
+import User from './components/User'
 
 const Header: FC = () => {
   const { data: session } = useSession()
-  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState<boolean>(false)
-  const ref = useRef<HTMLDivElement>(null)
-
-  useClickOutside(ref, () => setIsUserDropdownOpen(false))
 
   return (
     <header className="bg-background border-b">
@@ -30,13 +24,7 @@ const Header: FC = () => {
         {session ? (
           <section className="flex gap-2.5">
             <Notification />
-
-            <div className="relative" ref={ref}>
-              <button type="button" onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}>
-                <Avatar src={session.user?.image} alt={session.user?.name} width={30} height={30} />
-              </button>
-              {isUserDropdownOpen && <UserDropdown />}
-            </div>
+            <User />
           </section>
         ) : (
           <section className="flex gap-4">
