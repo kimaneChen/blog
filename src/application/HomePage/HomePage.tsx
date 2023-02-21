@@ -1,6 +1,7 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Layout from '@/application/Layout'
+import Description from './Description'
 
 const HomePage: NextPage = () => (
   <>
@@ -8,7 +9,7 @@ const HomePage: NextPage = () => (
       <title>Blogs</title>
     </Head>
     <Layout>
-      <p>Home page</p>
+      <Description />
     </Layout>
   </>
 )
