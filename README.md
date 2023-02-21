@@ -68,3 +68,11 @@ The project uses [Zod](https://github.com/colinhacks/zod) for schema validation 
 The response data should always have a corresponding type defined in the `./src/types` folder. The types should be based on the structure of the response data and should be named to reflect the response.
 
 Using types for request and response data helps ensure that the data is properly validated and formatted, reducing the likelihood of errors and bugs.
+
+## Code Quality
+
+The project follows the principles of ["Thinking in React"](https://reactjs.org/docs/thinking-in-react.html), which emphasizes a component-based architecture and a focus on reusability, readability, and maintainability.
+
+To maintain high code quality, all components should be well-organized, easy to understand, and reusable. Code should be properly formatted and follow the established code style to ensure consistency.
+
+Additionally, when making changes to the codebase, it is important to consider the impact on readability, maintainability, and reusability. Refactoring and optimization should be done as necessary to maintain a high level of code quality.
