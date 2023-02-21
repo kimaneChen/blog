@@ -11,7 +11,7 @@ interface Props {
 
 const LatestBlogHighlight: FC<Props> = ({ title, updatedAt, id }) => (
   <div className="mb-4">
-    <Link href={`/blog/${id}`}>
+    <Link href={`/blogs/${id}`}>
       <h3 className="text-sm font-medium">{title}</h3>
     </Link>
     <Date format={DateFormat.LongDate} className="text-xs text-placeholder">

@@ -10,7 +10,7 @@ import User from './components/User'
 const BlogViewPage: NextPage = () => {
   const router = useRouter()
   const { id } = router.query
-  const { data, isLoading } = useSWR(`/api/blog/${id}`)
+  const { data, isLoading } = useSWR(`/api/blogs/${id}`)
   if (isLoading) return <>Loading...</>
   if (!data) return null
 

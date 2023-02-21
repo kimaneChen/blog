@@ -9,7 +9,7 @@ import DateFormat from '@/types/DateFormat'
 const BlogTitle: FC = () => {
   const router = useRouter()
   const { id } = router.query
-  const { data: blog } = useSWR(`/api/blog/${id}`)
+  const { data: blog } = useSWR(`/api/blogs/${id}`)
   if (!blog) return null
   return (
     <header>

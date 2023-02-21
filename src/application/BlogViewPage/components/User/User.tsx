@@ -11,7 +11,7 @@ const User: FC = () => {
 
   const {
     data: { userId },
-  } = useSWR(`/api/blog/${blogId}`)
+  } = useSWR(`/api/blogs/${blogId}`)
 
   const { data: blogs } = useSWR(`/api/blogs?userId=${userId}&perPage=2`)
 
