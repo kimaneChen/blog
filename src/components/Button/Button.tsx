@@ -14,6 +14,7 @@ export enum Variant {
 
 export enum Size {
   Normal,
+  Medium,
   Small,
 }
 
@@ -43,6 +44,8 @@ const Button: FC<Props> = ({
       'disabled:opacity-20',
       'disabled:grayscale',
       'disabled:cursor-not-allowed',
+      'rounded-md',
+      'px-4',
       variant === Variant.Default && ['bg-background', 'text-primary'],
       variant === Variant.Primary && ['bg-primary', 'text-on-primary'],
       variant === Variant.Warn && ['bg-warn', 'text-on-warn'],
@@ -50,8 +53,9 @@ const Button: FC<Props> = ({
       variant === Variant.Background && ['bg-background', 'text-dark'],
       variant === Variant.Dark && ['bg-dark', 'text-background'],
       variant === Variant.Outline && ['border', 'border-outline', 'text-on-background'],
-      size === Size.Normal && ['h-12', 'rounded-md', 'px-4'],
-      size === Size.Small && ['h-8', 'rounded-md', 'px-4'],
+      size === Size.Normal && ['h-12'],
+      size === Size.Medium && ['h-10'],
+      size === Size.Small && ['h-8'],
       block && ['block', 'w-full'],
       className
     )}
