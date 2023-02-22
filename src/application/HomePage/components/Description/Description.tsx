@@ -14,7 +14,7 @@ const Description: FC = () => (
     </div>
     <div className="max-w-xl mx-auto px-20 mb-14 border border-[#666666] rounded-full">
       <NakedInput
-        className="rounded-full py-8  placeholder:text-lg placeholder:font-medium"
+        className="rounded-full py-8  placeholder:text-lg placeholder:font-medium mix-blend-multiply"
         prefix={<FiSearch />}
         type="text"
         placeholder="Search our blogs for a world of inspiration..."

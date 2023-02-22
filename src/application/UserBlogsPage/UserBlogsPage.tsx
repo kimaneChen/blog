@@ -6,7 +6,7 @@ import useSWRInfinite from 'swr/infinite'
 import BlogOverview from '@/components/BlogOverview'
 import Button, { Variant } from '@/components/Button'
 import Image from 'next/image'
-import CreateANewBlogButton from './component/CreateANewBlogButton'
+import CreateANewBlogButton from '@/components/CreateANewBlogButton'
 import noBlogAlert from './assets/noblog-alert.svg'
 
 const BLOGS_PER_PAGE = 3
@@ -30,7 +30,7 @@ const UserBlogsPage: NextPage = () => {
         <div className="pt-12 pb-7 px-9">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-4xl">Blogs</h1>
-            <CreateANewBlogButton />
+            <CreateANewBlogButton>Create a new Blog</CreateANewBlogButton>
           </div>
           {!blogs.length ? (
             <div className="bg-background-variant min-h-[80vh] flex justify-center items-center rounded-lg">
