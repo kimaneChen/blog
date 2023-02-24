@@ -37,7 +37,7 @@ const getBlogs: NextApiHandler = async (req, res) => {
 const createBlog: NextApiHandler = async (req, res) => {
   const { blog, userEmail } = req.body
 
-  const { title, description, tags } = BlogSchema.parse(blog)
+  const { title, description, tags, content } = BlogSchema.parse(blog)
 
   if (!userEmail) {
     const { statusCode, message } = Boom.badRequest().output.payload
@@ -49,6 +49,7 @@ const createBlog: NextApiHandler = async (req, res) => {
     data: {
       title,
       description,
+      content,
       user: {
         connect: {
           email: userEmail,

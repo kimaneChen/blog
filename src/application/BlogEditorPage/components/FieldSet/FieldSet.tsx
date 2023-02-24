@@ -1,3 +1,4 @@
+import EditorJS from '@editorjs/editorjs'
 import { FC } from 'react'
 import { useFormContext } from 'react-hook-form'
 import dynamic from 'next/dynamic'
@@ -11,9 +12,10 @@ const EditorBlock = dynamic(() => import('./components/Editor'), {
 interface Props {
   tags: string[]
   onTagsChange: (tags: string[]) => void
+  onEditorInitialize: (instance: EditorJS) => void
 }
 
-const FieldSet: FC<Props> = ({ tags, onTagsChange }) => {
+const FieldSet: FC<Props> = ({ tags, onTagsChange, onEditorInitialize }) => {
   const { register } = useFormContext()
 
   return (
@@ -35,7 +37,7 @@ const FieldSet: FC<Props> = ({ tags, onTagsChange }) => {
       <Tags tags={tags} onTagsChange={onTagsChange} />
       <hr className="border-t-2 border-outline mb-5" />
       <div className="prose max-w-none">
-        <EditorBlock />
+        <EditorBlock onInitialize={onEditorInitialize} />
       </div>
     </div>
   )
