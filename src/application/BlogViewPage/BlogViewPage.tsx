@@ -4,6 +4,7 @@ import useSWR from 'swr'
 import Container from '@/components/Container'
 import BackLink from '@/components/BackLink'
 import Header from '@/components/Header'
+import AddComments from './components/AddComments'
 import BlogTitle from './components/BlogTitle'
 import User from './components/User'
 
@@ -35,6 +36,12 @@ const BlogViewPage: NextPage = () => {
           <User />
         </Container>
       </Container>
+      <div>
+        <hr />
+        <Container>
+          <AddComments />
+        </Container>
+      </div>
     </>
   )
 }

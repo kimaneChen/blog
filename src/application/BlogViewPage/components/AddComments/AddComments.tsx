@@ -6,20 +6,28 @@ import { useSession } from 'next-auth/react'
 const AddComments: FC = () => {
   const { data: session } = useSession()
   return (
-    <div className="grid grid-cols-12">
-      <div className="flex items-center justify-center py-2 px-5">
+    <div className="py-12 pr-75 pl-52 pr-72">
+      <div className="h-12 flex items-center gap-6">
         <Avatar src={session?.user?.image} alt={session?.user?.name} width={40} height={40} />
-      </div>
-      <div className="relative col-span-11">
-        <textarea
-          className="w-full h-20 focus:outline-none"
-          placeholder="Start a discussion, not a fire. Post with kindness"
-        />
-        <div className="absolute bottom-4 right-6">
-          <Button variant={Variant.Dark} size={Size.Small}>
-            Comment
-          </Button>
+        <div className="border rounded-lg py-3 px-4 w-full h-12">
+          <textarea
+            className="text-sm h-5  w-full focus:outline-none"
+            placeholder="Start a discussion, not a fire. Post with kindness"
+          />
         </div>
+      </div>
+      <div className="my-4 flex justify-end">
+        <Button variant={Variant.Dark} size={Size.Small} disabled>
+          Comment
+        </Button>
+      </div>
+      <div className="my-4 flex items-center justify-end  gap-1 ">
+        <Avatar src={session?.user?.image} alt={session?.user?.name} width={16} height={16} />
+        <Avatar src={session?.user?.image} alt={session?.user?.name} width={16} height={16} />
+        <Avatar src={session?.user?.image} alt={session?.user?.name} width={16} height={16} />
+        <Avatar src={session?.user?.image} alt={session?.user?.name} width={16} height={16} />
+        <Avatar src={session?.user?.image} alt={session?.user?.name} width={16} height={16} />
+        <Avatar src={session?.user?.image} alt={session?.user?.name} width={16} height={16} />
       </div>
     </div>
   )
