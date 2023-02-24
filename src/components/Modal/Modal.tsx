@@ -72,7 +72,6 @@ const Modal: FC<Props> = ({
             <AiOutlineClose className="w-5 h-5" />
           </button>
         )}
-
         {children}
       </div>
     </div>,

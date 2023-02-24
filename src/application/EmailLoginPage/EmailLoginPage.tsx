@@ -1,7 +1,8 @@
 import LoginPageLayout from '@/application/LoginPageLayout'
 import OtherOptionsButton from '@/components/OtherOptionsButton'
 import { NextPage } from 'next'
-import AuthForm, { Type } from '@/application/AuthForm'
+import Type from '@/types/AuthType'
+import AuthForm from '@/application/AuthForm'
 
 const EmailLoginPage: NextPage = () => (
   <LoginPageLayout>

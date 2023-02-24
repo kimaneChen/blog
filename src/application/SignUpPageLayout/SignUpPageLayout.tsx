@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react'
-import AuthLayout, { Type } from '@/application/AuthLayout'
+import AuthLayout from '@/application/AuthLayout'
+import Type from '@/types/AuthType'
 import LegalPolicy from './components/LegalPolicy'
 import ExistingAccount from './components/ExistingAccount'
 
