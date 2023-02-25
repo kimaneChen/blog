@@ -3,8 +3,8 @@ import UserLayout from '@/application/UserLayout'
 import Head from 'next/head'
 import Blog from '@/types/Blog'
 import useSWRInfinite from 'swr/infinite'
+import LoadMoreButton from '@/components/LoadMoreButton'
 import BlogOverview from '@/components/BlogOverview'
-import Button, { Variant } from '@/components/Button'
 import Image from 'next/image'
 import CreateANewBlogButton from '@/components/CreateANewBlogButton'
 import noBlogAlert from './assets/noblog-alert.svg'
@@ -27,7 +27,7 @@ const UserBlogsPage: NextPage = () => {
         <title>My blogs</title>
       </Head>
       <UserLayout>
-        <div className="pt-12 pb-7 px-9">
+        <div className="pt-12 pb-7">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-4xl">Blogs</h1>
             <CreateANewBlogButton>Create a new Blog</CreateANewBlogButton>
@@ -64,13 +64,9 @@ const UserBlogsPage: NextPage = () => {
                 ))}
               </div>
               <div className="text-center">
-                <Button
-                  disabled={isLoadMoreDisabled}
-                  variant={Variant.Outline}
-                  onClick={() => setSize(size + 1)}
-                >
+                <LoadMoreButton hasMore={!isLoadMoreDisabled} onLoadMore={() => setSize(size + 1)}>
                   MORE BLOGS
-                </Button>
+                </LoadMoreButton>
               </div>
             </>
           )}
