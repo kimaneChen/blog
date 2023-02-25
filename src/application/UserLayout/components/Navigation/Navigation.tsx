@@ -9,9 +9,10 @@ const Navigation: FC = () => {
 
   return (
     <Container>
-      <nav className="flex gap-14 w-[880px] px-6 py-2">
-        {navItems.map(({ id, href, label }) => (
+      <nav className="flex gap-14 w-[880px] pt-5">
+        {navItems.map(({ id, href, label, icon }) => (
           <NavLink key={id} href={href} active={router.pathname === href}>
+            {icon}
             {label}
           </NavLink>
         ))}
