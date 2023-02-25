@@ -27,6 +27,7 @@ const BlogViewPage: NextPage = () => {
       <hr />
       <Container>
         <AddComments />
+        <Comments />
       </Container>
     </>
   )
