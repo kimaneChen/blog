@@ -13,7 +13,7 @@ const AddTitleModal: FC<Props> = ({ onClose, onConfirmPublish }) => {
   const { isValid } = formState
 
   return (
-    <Modal onClose={onClose}>
+    <Modal onClose={onClose} enableCloseButton>
       <div className="text-xl font-medium mb-4">This blog needs a title</div>
       <div className="text-sm text-on-background mb-4">
         You need to add a title to this page to publish it

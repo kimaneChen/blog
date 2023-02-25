@@ -11,7 +11,7 @@ interface Props {
 }
 
 const AddTagModal: FC<Props> = ({ tags, onTagsChange, onClose }) => (
-  <Modal onClose={onClose}>
+  <Modal onClose={onClose} enableCloseButton>
     <div className="text-xl mb-4">Add tags for your blog</div>
     <SearchTag tags={tags} onTagsChange={onTagsChange} />
     <div className="mt-4">

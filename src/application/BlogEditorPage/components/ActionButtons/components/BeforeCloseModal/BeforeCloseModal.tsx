@@ -11,7 +11,7 @@ const BeforeCloseModal: FC<Props> = ({ onClose }) => {
   const router = useRouter()
 
   return (
-    <Modal onClose={onClose}>
+    <Modal onClose={onClose} enableCloseButton>
       <p className="text-lg text-center pt-10 mb-10">
         Your content hasn&apos;t been published, are you sure to close?
       </p>

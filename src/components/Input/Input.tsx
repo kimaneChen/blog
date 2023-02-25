@@ -2,8 +2,9 @@ import { forwardRef, InputHTMLAttributes, ReactNode } from 'react'
 import classNames from 'classnames'
 
 export enum Size {
-  Small = 'small',
+  Small = 'Small',
   Normal = 'Normal',
+  Large = 'Large',
 }
 
 export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'> {
@@ -25,12 +26,10 @@ const Input = forwardRef<HTMLInputElement, Props>(
         placeholder={placeholder}
         className={classNames(
           'w-full',
-          'h-12',
-          'px-4',
           'border',
-          'rounded-md',
           size === Size.Normal && ['h-12', 'rounded-md', 'px-4'],
           size === Size.Small && ['h-8', 'w-26', 'rounded-md', 'px-4'],
+          size === Size.Large && ['h-14', 'px-6', 'rounded-md'],
           prefix && 'pl-9',
           suffix && 'pr-9',
           error && ['border-error', 'focus:outline-none'],

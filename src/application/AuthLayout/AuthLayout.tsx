@@ -1,4 +1,5 @@
 import { FC, ReactNode } from 'react'
+import Type from '@/types/AuthType'
 import Header from './components/Header'
 import Blogs from './components/Blogs'
 import KeyFeatures from './components/KeyFeatures'
@@ -7,11 +8,6 @@ import Section, { Position } from './components/Section'
 interface Props {
   children: ReactNode
   type: Type
-}
-
-export enum Type {
-  SignUp = 'SignUp',
-  Login = 'Login',
 }
 
 const AuthLayout: FC<Props> = ({ children, type }) => (

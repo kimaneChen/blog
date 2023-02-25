@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react'
-import AuthLayout, { Type } from '../AuthLayout/AuthLayout'
+import Type from '@/types/AuthType'
+import AuthLayout from '@/application/AuthLayout'
 import NoAccount from './components/NoAccount'
 
 interface Props {

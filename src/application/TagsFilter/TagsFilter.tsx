@@ -9,7 +9,7 @@ interface Props {
 }
 
 const TagsFilter: FC<Props> = ({ tags, selectedTags, onTagSelect }) => (
-  <section className="pt-[30px]">
+  <section>
     {tags.map((tag) => (
       <Option
         name={tag.name}

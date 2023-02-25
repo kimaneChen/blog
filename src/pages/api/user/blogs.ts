@@ -24,12 +24,13 @@ const createBlog: NextApiHandler = async (req, res) => {
   }
 
   try {
-    const { title, description, tags } = BlogSchema.parse(req.body)
+    const { title, description, tags, content } = BlogSchema.parse(req.body)
 
     const result = await prisma.blog.create({
       data: {
         title,
         description,
+        content,
         user: {
           connect: {
             email: session.user?.email,

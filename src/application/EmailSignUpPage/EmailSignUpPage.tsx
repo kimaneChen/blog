@@ -1,7 +1,8 @@
 import SignUpPageLayout from '@/application/SignUpPageLayout'
 import { NextPage } from 'next'
 import OtherOptionsButton from '@/components/OtherOptionsButton'
-import AuthForm, { Type } from '@/application/AuthForm'
+import AuthForm from '@/application/AuthForm'
+import Type from '@/types/AuthType'
 
 const EmailSignUpPage: NextPage = () => (
   <SignUpPageLayout>

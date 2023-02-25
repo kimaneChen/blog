@@ -1,30 +1,36 @@
 import EditorJS from '@editorjs/editorjs'
-import { FC, memo, useEffect, useRef } from 'react'
+import { FC, useEffect, useRef } from 'react'
 import tools from './tools'
 
 const HOLDER = 'editorjs-container'
 
-const EditorBlock: FC = () => {
+interface Props {
+  onInitialize: (instance: EditorJS) => void
+}
+
+const Editor: FC<Props> = ({ onInitialize }) => {
   const ref = useRef<EditorJS>()
 
   useEffect(() => {
     if (!ref.current) {
-      const editor = new EditorJS({
+      const instance = new EditorJS({
         holder: HOLDER,
         tools,
       })
-      ref.current = editor
+      ref.current = instance
+
+      onInitialize(instance)
     }
     return () => {
-      if (ref.current && ref.current.destroy) {
+      if (ref.current?.destroy) {
         ref.current.destroy()
       }
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return <div id={HOLDER} />
 }
-
-const Editor = memo(EditorBlock)
 
 export default Editor
