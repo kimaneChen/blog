@@ -2,9 +2,11 @@ import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import Layout from '@/application/Layout'
+import Container from '@/components/Container'
 import BackLink from './components/BackLink'
 import BlogTitle from './components/BlogTitle'
 import Content from './components/Content'
+import AddComments from './components/AddComments'
 
 const BlogViewPage: NextPage = () => {
   const router = useRouter()
@@ -14,11 +16,18 @@ const BlogViewPage: NextPage = () => {
   if (!data) return null
 
   return (
-    <Layout>
-      <BackLink />
-      <BlogTitle />
-      <Content />
-    </Layout>
+    <>
+      <Layout>
+        <BackLink />
+        <BlogTitle />
+        <Content />
+      </Layout>
+
+      <hr />
+      <Container>
+        <AddComments />
+      </Container>
+    </>
   )
 }
 
