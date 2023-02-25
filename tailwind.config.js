@@ -8,7 +8,7 @@ module.exports = {
       background: 'white',
       'on-background': '#666666',
       'background-variant': '#fafafa',
-      primary: '#0070F3',
+      primary: '#F36F37',
       'on-primary': 'white',
       outline: '#EAEAEA',
       placeholder: '#8993A4',
@@ -24,6 +24,7 @@ module.exports = {
       dark: '#131313',
       error: 'red',
       warn: '#fff4e5',
+      primary:'#F36F37',
     },
     extend: {
       maxWidth: {

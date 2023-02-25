@@ -1,8 +1,9 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Layout from '@/application/Layout'
-import Tags from './components/Tags'
 import Description from './components/Description'
+import Tags from './components/Tags'
+import ExploreBlogs from './components/ExploreBlogs'
 
 const HomePage: NextPage = () => (
   <>
@@ -13,6 +14,7 @@ const HomePage: NextPage = () => (
     <Layout>
       <Description />
       <Tags />
+      <ExploreBlogs />
     </Layout>
   </>
 )

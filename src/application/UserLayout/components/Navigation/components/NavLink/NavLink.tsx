@@ -10,9 +10,12 @@ interface Props {
 
 const NavLink: FC<Props> = ({ href, active = false, children }) => {
   const className = classNames(
+    'flex',
+    'items-center',
     'text-on-background',
     'font-medium',
     'py-2',
+    'gap-2.5',
 
     active && [
       'text-dark',
@@ -20,9 +23,9 @@ const NavLink: FC<Props> = ({ href, active = false, children }) => {
       'after:block',
       'after:absolute',
       'after:w-full',
-      'after:border-b-4',
-      'after:border-dark',
-      'after:mt-3',
+      'after:border-b-2',
+      'after:border-primary',
+      'after:mt-10',
     ]
   )
 
