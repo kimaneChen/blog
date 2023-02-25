@@ -65,7 +65,7 @@ model Blog {
   description   String?
   user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   tags          Tag[]
-  content       Json?
+  content       Json？
   unpublishedAt DateTime?
 }
 

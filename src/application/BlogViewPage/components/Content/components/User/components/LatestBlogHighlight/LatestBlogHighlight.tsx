@@ -10,7 +10,7 @@ interface Props {
 }
 
 const LatestBlogHighlight: FC<Props> = ({ title, updatedAt, id }) => (
-  <div className="mb-4">
+  <div className="mb-4 max-w-[225px]">
     <Link href={`/blogs/${id}`}>
       <h3 className="text-sm font-medium">{title}</h3>
     </Link>

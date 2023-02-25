@@ -37,7 +37,7 @@ To get started with the project, follow these steps:
 4. Generate the Prisma client by running the following command: `npx dotenv-cli -e .env.local -- npx prisma generate`
 5. Reset the database by running the following command: `npx dotenv-cli -e .env.local -- npx prisma migrate reset`
 6. Start the development server by running `npm run dev`.
-7. Open your web browser and navigate to `http://localhost:3000`.
+7. Open your web browser and navigate to `http://localhost:3000`
 
 ## Managing the Database
 
