@@ -6,10 +6,12 @@ import { useForm } from 'react-hook-form'
 
 const AddComments: FC = () => {
   const { data: session } = useSession()
-  const { register, handleSubmit, watch } = useForm()
+  const {
+    register,
+    handleSubmit,
+    formState: { isDirty },
+  } = useForm()
   const [focused, setFocused] = useState(false)
-
-  const watchComment = watch('comment')
 
   return (
     <div className="py-12 pl-[200px] pr-72">
@@ -20,9 +22,7 @@ const AddComments: FC = () => {
           </div>
           <div className="border rounded-lg py-3 px-4 w-full">
             <textarea
-              className={`text-sm ${
-                focused || watchComment ? 'h-24' : 'h-5'
-              } w-full focus:outline-none`}
+              className={`text-sm ${focused || isDirty ? 'h-24' : 'h-5'} w-full focus:outline-none`}
               placeholder="Start a discussion, not a fire. Post with kindness"
               // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('comment')}
@@ -32,8 +32,8 @@ const AddComments: FC = () => {
           </div>
         </div>
         <div className="my-4 flex justify-end">
-          {(focused || watchComment) && (
-            <Button variant={Variant.Dark} size={Size.Small} disabled={!watchComment} type="submit">
+          {(focused || isDirty) && (
+            <Button variant={Variant.Dark} size={Size.Small} disabled={!isDirty} type="submit">
               Comment
             </Button>
           )}
