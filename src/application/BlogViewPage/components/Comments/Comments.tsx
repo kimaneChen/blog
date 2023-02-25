@@ -3,7 +3,7 @@ import Avatar from '@/components/Avatar'
 import { BsFillEmojiSmileFill, BsDot } from 'react-icons/bs'
 
 const Comments: FC = () => (
-  <div className="mb-5 grid grid-cols-12 bg-outline rounded-xl pl-[200px] pr-72 py-3">
+  <div className="mb-5 grid grid-cols-12 bg-outline rounded-xl px-3 py-3">
     <div className="flex items-center justify-center">
       <Avatar width={16} height={16} />
     </div>
