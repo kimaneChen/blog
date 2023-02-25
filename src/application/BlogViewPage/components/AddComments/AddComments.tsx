@@ -14,7 +14,7 @@ const AddComments: FC = () => {
   return (
     <div className="py-12 pl-[200px] pr-72">
       <form onSubmit={handleSubmit(() => {})}>
-        <div className="flex items gap-6">
+        <div className="flex gap-6">
           <div>
             <Avatar src={session?.user?.image} alt={session?.user?.name} width={40} height={40} />
           </div>
