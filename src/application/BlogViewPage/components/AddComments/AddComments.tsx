@@ -31,13 +31,13 @@ const AddComments: FC = () => {
             />
           </div>
         </div>
-        <div className="my-4 flex justify-end">
-          {(focused || isDirty) && (
+        {(focused || isDirty) && (
+          <div className="my-4 flex justify-end">
             <Button variant={Variant.Dark} size={Size.Small} disabled={!isDirty} type="submit">
               Comment
             </Button>
-          )}
-        </div>
+          </div>
+        )}
       </form>
       <div className="my-4 flex items-center justify-end  gap-1 ">
         <Avatar src={session?.user?.image} alt={session?.user?.name} width={16} height={16} />
