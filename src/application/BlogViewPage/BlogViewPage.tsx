@@ -21,12 +21,9 @@ const BlogViewPage: NextPage = () => {
         <BackLink />
         <BlogTitle />
         <Content />
-      </Layout>
-
-      <hr />
-      <Container>
+        <hr className="w-screen"/>
         <AddComments />
-      </Container>
+      </Layout>
     </>
   )
 }
