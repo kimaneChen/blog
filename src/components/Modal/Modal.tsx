@@ -61,16 +61,17 @@ const Modal: FC<Props> = ({
           overlay === Overlay.Light && ['drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]'],
           size === Size.Normal && ['w-[600px]', 'px-8', 'py-7'],
           size === Size.Large && ['w-[660px]'],
-          enableCloseButton && ['relative'],
           position === Position.Top && ['absolute', 'top-[15vh]']
         )}
         onClick={(event) => event.stopPropagation()}
         onKeyDown={(event) => event.stopPropagation()}
       >
         {enableCloseButton && (
-          <button type="button" className="absolute right-8 top-7" onClick={onClose}>
-            <AiOutlineClose className="w-5 h-5" />
-          </button>
+          <div className="relative">
+            <button type="button" className="absolute right-0" onClick={onClose}>
+              <AiOutlineClose className="w-5 h-5" />
+            </button>
+          </div>
         )}
         {children}
       </div>

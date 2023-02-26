@@ -18,16 +18,12 @@ const SearchTag: FC<Props> = ({ tags, onTagsChange }) => {
   const { data } = useSWR<Tag[]>(isValid && `/api/tags/suggested?search=${value}`)
 
   const suggestedTags = useMemo<string[]>(() => {
-    let result: string[] = []
+    if (!isValid) return []
 
-    if (data?.length) {
-      result = data.map((tag) => tag.name)
-    } else if (isValid) {
-      result = [value]
-    }
-
-    return result.filter((tag) => !tags.includes(tag))
-  }, [data, tags, value, isValid])
+    return data?.length
+      ? [value, ...data.map((tag) => tag.name).filter((name) => name !== value)]
+      : [value]
+  }, [data, value, isValid])
 
   return (
     <div className="border rounded">
@@ -38,11 +34,11 @@ const SearchTag: FC<Props> = ({ tags, onTagsChange }) => {
         prefix={<FiSearch />}
       />
       {suggestedTags.length > 0 && (
-        <div className="leading-10 bg-[#FAFAFA]">
-          <div className="mt-2 flex gap-3">
+        <div className="leading-10 h-[200px] overflow-auto">
+          <div className="mt-2 gap-3">
             {suggestedTags.map((tag) => (
               <button
-                className="px-4 block w-full text-left"
+                className="px-4 block w-full text-left hover:bg-background-variant"
                 key={tag}
                 type="button"
                 onClick={() => onTagsChange([...tags, tag])}

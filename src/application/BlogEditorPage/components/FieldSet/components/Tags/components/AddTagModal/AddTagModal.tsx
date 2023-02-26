@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Button, { Variant, Size } from '@/components/Button'
-import Modal from '@/components/Modal'
+import Modal, { Position } from '@/components/Modal'
 import SearchTag from './components/SearchTag'
 import AddedTags from './components/AddedTags'
 
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const AddTagModal: FC<Props> = ({ tags, onTagsChange, onClose }) => (
-  <Modal onClose={onClose} enableCloseButton>
+  <Modal position={Position.Top} onClose={onClose} enableCloseButton>
     <div className="text-xl mb-4">Add tags for your blog</div>
     <SearchTag tags={tags} onTagsChange={onTagsChange} />
     <div className="mt-4">
