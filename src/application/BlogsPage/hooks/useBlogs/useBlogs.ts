@@ -12,7 +12,7 @@ interface Result {
 }
 
 interface Params {
-  tags?: Tag[]
+  tags?: Tag['name'][]
   perPage?: number
 }
 
@@ -23,7 +23,7 @@ const useBlogs = ({ tags, perPage = 3 }: Params | undefined = {}): Result => {
       query: {
         page: index + 1,
         perPage,
-        tags: tags?.map((tag) => tag.id),
+        tags,
       },
     })
   )

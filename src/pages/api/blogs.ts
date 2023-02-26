@@ -21,7 +21,7 @@ const getBlogs = async (req: NextApiRequest, res: NextApiResponse): Promise<void
       unpublishedAt: null,
       tags: {
         some: {
-          id: {
+          name: {
             in: req.query.tags,
           },
         },
