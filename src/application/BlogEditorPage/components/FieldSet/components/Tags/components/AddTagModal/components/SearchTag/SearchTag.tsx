@@ -3,7 +3,7 @@ import useSWR from 'swr'
 import { FiSearch } from 'react-icons/fi'
 import { SuggestedTags } from '@/schemas/SuggestedTags'
 import Tag from '@/types/Tag'
-import NakedInput from '@/components/NakedInput'
+import NakedInput, { Size } from '@/components/NakedInput'
 
 interface Props {
   tags: string[]
@@ -12,7 +12,6 @@ interface Props {
 
 const SearchTag: FC<Props> = ({ tags, onTagsChange }) => {
   const [value, setValue] = useState<SuggestedTags['search']>('')
-
   const isValid = value.length > 2
 
   const { data } = useSWR<Tag[]>(isValid && `/api/tags/suggested?search=${value}`)
@@ -32,6 +31,7 @@ const SearchTag: FC<Props> = ({ tags, onTagsChange }) => {
         value={value}
         onChange={(event: ChangeEvent<HTMLInputElement>) => setValue(event.target.value)}
         prefix={<FiSearch />}
+        size={Size.Medium}
       />
       {suggestedTags.length > 0 && (
         <div className="leading-10 h-[200px] overflow-auto">

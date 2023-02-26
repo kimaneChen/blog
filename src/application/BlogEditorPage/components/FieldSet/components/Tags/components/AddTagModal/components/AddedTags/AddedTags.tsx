@@ -8,9 +8,9 @@ interface Props {
 
 const AddedTags: FC<Props> = ({ tags, onRemoveTag }) => (
   <>
-    <div className="text-small text-on-background">Added Tags</div>
+    <div className="text-sm text-on-background">Added Tags</div>
     {tags.length > 0 && (
-      <div className="mt-2 flex gap-3">
+      <div className="mt-2 flex gap-2">
         {tags.map((tag) => (
           <button
             key={tag}
