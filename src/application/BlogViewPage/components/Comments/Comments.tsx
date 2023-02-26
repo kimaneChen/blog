@@ -1,41 +1,33 @@
 import { FC } from 'react'
-import Avatar from '@/components/Avatar'
-import { BsDot } from 'react-icons/bs'
-import IconSmile from '@/components/IconSmile'
-import { useSession } from 'next-auth/react'
-import { MdKeyboardArrowDown } from 'react-icons/md'
+import { User } from '@/schemas/User'
+import Item from './components/Item'
 
-const Comments: FC = () => {
-  const { data: session } = useSession()
-  return (
-    <div className="pl-[200px] pr-72">
-      <section className="px-5 py-4 mb-4 bg-background-variant rounded-xl flex gap-3">
-        <div>
-          <Avatar src={session?.user?.image} alt={session?.user?.name} width={20} height={20} />
-        </div>
-        <div className="w-full">
-          <div className="font-bold">User Name</div>
-          <div className="mt-1">
-            Lorem ipsum dolor sit amet consectetur This is test result Lorem ipsum dolor sit
-          </div>
-          <div className="mt-2 text-sm text-on-background flex items-center justify-between">
-            <div className="pt-1  flex items-center gap-1">
-              <div className="pt-0.5">4h</div>
-              <BsDot />
-              <div className="pt-0.5">Reply</div>
-              <BsDot />
-              <div className="pt-0.5">Delete</div>
-              <BsDot />
-              <IconSmile />
-            </div>
-            <div className="flex pt-1.5 items-center">
-              4 Replies <MdKeyboardArrowDown />
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  )
+const MOCKUSER: User = {
+  name: 'Helena Jones',
+  email: 'Helena.Jones@mel.fish',
+  image: 'https://avatars.dicebear.com/api/avataaars/Helena.Jones@mel.fish.svg',
 }
+const MOCKUSER2: User = {
+  name: 'Michael Smith',
+  email: 'Michael.Smith@mel.fish',
+  image: 'https://avatars.dicebear.com/api/avataaars/Michael.Smith@mel.fish.svg',
+}
+
+const Comments: FC = () => (
+  <div className="pl-[200px] pr-72">
+    <Item relativeTime="4h" commentUser={MOCKUSER}>
+      Lorem ipsum dolor sit amet.
+    </Item>
+    <Item relativeTime="4h" isMyComment amountReplies={5} commentUser={MOCKUSER2}>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta totam fugit dolores pariatur
+      quas exercitationem commodi consequuntur nisi suscipit odit quam voluptatibus animi,
+      cupiditate, culpa perspiciatis quidem? Aperiam, tempore natus!
+    </Item>
+    <Item relativeTime="4h" isMyComment amountReplies={3} commentUser={MOCKUSER}>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta totam fugit dolores pariatur
+      quas exercitationem commodi
+    </Item>
+  </div>
+)
 
 export default Comments
