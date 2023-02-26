@@ -14,7 +14,7 @@ const AddComments: FC = () => {
   const [focused, setFocused] = useState(false)
 
   return (
-    <div className="py-12 pl-[200px] pr-72">
+    <div className="pt-12 pl-[200px] pr-72">
       <form onSubmit={handleSubmit(() => {})}>
         <div className="flex gap-6">
           <div>
