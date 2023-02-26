@@ -41,7 +41,10 @@ const SearchTag: FC<Props> = ({ tags, onTagsChange }) => {
                 className="px-4 block w-full text-left hover:bg-background-variant"
                 key={tag}
                 type="button"
-                onClick={() => onTagsChange([...tags, tag])}
+                onClick={() => {
+                  onTagsChange([...tags, tag])
+                  setValue('')
+                }}
               >
                 {tag}
               </button>
