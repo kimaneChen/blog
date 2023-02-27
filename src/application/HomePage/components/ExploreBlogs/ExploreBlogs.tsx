@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import useSWR from 'swr'
 import Blog from '@/types/Blog'
+import Link from 'next/link'
 import Router from 'next/router'
 import classNames from 'classnames'
 import BlogOverview from '@/components/BlogOverview'
@@ -27,7 +28,8 @@ const ExploreBlogs: FC = () => {
             key={blog.id}
             className={classNames('flex', 'mb-10', reversed && ['flex-row-reverse'])}
           >
-            <div
+            <Link
+              href={`/blogs/${blog.id}`}
               className={classNames(
                 'md:w-[70%]',
                 'border',
@@ -42,17 +44,12 @@ const ExploreBlogs: FC = () => {
               <UserInfo name={blog.user?.name} image={blog.user?.image} />
               <div className="border-r h-full" />
               <div className="grow px-8">
-                <BlogOverview
-                  id={blog.id}
-                  title={blog.title}
-                  date={blog.createdAt}
-                  tags={blog.tags}
-                  unframed
-                >
+                <BlogOverview title={blog.title} date={blog.createdAt} tags={blog.tags} unframed>
                   {blog.description}
                 </BlogOverview>
               </div>
-            </div>
+            </Link>
+
             {index > 0 && index < blogs.length - 1 && <DecorationLine />}
           </div>
         )

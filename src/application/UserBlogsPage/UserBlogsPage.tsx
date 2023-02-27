@@ -6,6 +6,7 @@ import useSWRInfinite from 'swr/infinite'
 import LoadMoreButton from '@/components/LoadMoreButton'
 import BlogOverview from '@/components/BlogOverview'
 import Image from 'next/image'
+import Link from 'next/link'
 import CreateANewBlogButton from '@/components/CreateANewBlogButton'
 import noBlogAlert from './assets/noblog-alert.svg'
 
@@ -47,19 +48,19 @@ const UserBlogsPage: NextPage = () => {
               <div className="mt-6">
                 {blogs.map((blog) => (
                   <div key={blog.id} className="mb-6">
-                    <BlogOverview
-                      id={blog.id}
-                      key={blog.id}
-                      title={blog.title}
-                      date={blog.createdAt}
-                      tags={blog.tags}
-                      avatar={{
-                        src: blog.user?.image,
-                        alt: blog.user?.name || 'Unknown user',
-                      }}
-                    >
-                      {blog.description}
-                    </BlogOverview>
+                    <Link href={`/blogs/${blog.id}`}>
+                      <BlogOverview
+                        title={blog.title}
+                        date={blog.createdAt}
+                        tags={blog.tags}
+                        avatar={{
+                          src: blog.user?.image,
+                          alt: blog.user?.name || 'Unknown user',
+                        }}
+                      >
+                        {blog.description}
+                      </BlogOverview>
+                    </Link>
                   </div>
                 ))}
               </div>

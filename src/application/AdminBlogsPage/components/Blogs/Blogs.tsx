@@ -6,6 +6,7 @@ import Blog from '@/types/Blog'
 import { FC } from 'react'
 import useSWR from 'swr'
 import useSWRMutation from 'swr/mutation'
+import Link from 'next/link'
 
 const PER_PAGE = 10
 
@@ -30,18 +31,19 @@ const Blogs: FC<Props> = ({ page }) => {
     <div className="grid grid-cols-2 gap-8">
       {data?.map((item: Blog) => (
         <div key={item.id}>
-          <BlogOverview
-            id={item.id}
-            title={item.title}
-            date={item.createdAt}
-            tags={item.tags}
-            avatar={{
-              src: item.user?.image,
-              alt: item.user?.name || 'Unknown user',
-            }}
-          >
-            {item.description}
-          </BlogOverview>
+          <Link href={`/blogs/${item.id}`}>
+            <BlogOverview
+              title={item.title}
+              date={item.createdAt}
+              tags={item.tags}
+              avatar={{
+                src: item.user?.image,
+                alt: item.user?.name || 'Unknown user',
+              }}
+            >
+              {item.description}
+            </BlogOverview>
+          </Link>
           <div className="mt-2 flex gap-2 items-center">
             {item.unpublishedAt ? (
               <>

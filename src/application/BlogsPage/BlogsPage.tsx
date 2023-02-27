@@ -6,6 +6,7 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import Router, { useRouter } from 'next/router'
 import useSWR from 'swr'
+import Link from 'next/link'
 import TagsFilter from './components/TagsFilter'
 import useBlogs from './hooks/useBlogs'
 
@@ -60,18 +61,19 @@ const BlogsPage: NextPage = () => {
             <div className="mt-6">
               {blogs.map((blog) => (
                 <div key={blog.id} className="mb-6">
-                  <BlogOverview
-                    id={blog.id}
-                    title={blog.title}
-                    date={blog.createdAt}
-                    tags={blog.tags}
-                    avatar={{
-                      src: blog.user?.image,
-                      alt: blog.user?.name || 'Unknown user',
-                    }}
-                  >
-                    {blog.description}
-                  </BlogOverview>
+                  <Link href={`/blogs/${blog.id}`}>
+                    <BlogOverview
+                      title={blog.title}
+                      date={blog.createdAt}
+                      tags={blog.tags}
+                      avatar={{
+                        src: blog.user?.image,
+                        alt: blog.user?.name || 'Unknown user',
+                      }}
+                    >
+                      {blog.description}
+                    </BlogOverview>
+                  </Link>
                 </div>
               ))}
             </div>
