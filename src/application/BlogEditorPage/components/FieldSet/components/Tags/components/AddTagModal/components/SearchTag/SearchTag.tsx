@@ -13,8 +13,13 @@ interface Props {
 const SearchTag: FC<Props> = ({ tags, onTagsChange }) => {
   const [value, setValue] = useState<SuggestedTags['search']>('')
   const isValid = value.length > 2
+  const suggestedListLimit = 10
 
-  const { data } = useSWR<Tag[]>(isValid && `/api/tags/suggested?search=${value}`)
+  let { data } = useSWR<Tag[]>(isValid && `/api/tags/suggested?search=${value}`)
+
+  if (data && data.length > suggestedListLimit) {
+    data = data.slice(0, suggestedListLimit)
+  }
 
   const suggestedTags = useMemo<string[]>(() => {
     if (!isValid) return []
@@ -35,7 +40,7 @@ const SearchTag: FC<Props> = ({ tags, onTagsChange }) => {
       />
       {suggestedTags.length > 0 && (
         <div className="leading-10 h-[200px] overflow-auto">
-          <div className="mt-2 gap-3">
+          <div className="gap-3">
             {suggestedTags.map((tag) => (
               <button
                 className="px-4 block w-full text-left hover:bg-background-variant"
