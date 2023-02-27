@@ -1,14 +1,21 @@
 import Input, { Size } from '@/components/Input'
-import { FC, Ref } from 'react'
+import { ChangeEventHandler, FC, Ref } from 'react'
+
+interface Props {
+  value: string | undefined
+  onChange: ChangeEventHandler<HTMLInputElement>
+}
 
 const handleInputFocus: Ref<HTMLInputElement> = (element) => element?.focus()
 
-const Search: FC = () => (
+const Search: FC<Props> = ({ value, onChange }) => (
   <Input
     ref={handleInputFocus}
     placeholder="What do you need?"
     size={Size.Large}
-    className="focus:outline-none border-none text-[18px] font-medium"
+    value={value}
+    onChange={onChange}
+    className="focus:outline-none border-none text-lg font-medium placeholder:text-placeholder"
   />
 )
 

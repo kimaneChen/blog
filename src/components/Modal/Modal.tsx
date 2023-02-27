@@ -58,9 +58,9 @@ const Modal: FC<Props> = ({
         className={classNames(
           'bg-background',
           'rounded',
-          overlay === Overlay.Light && ['drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]'],
+          overlay === Overlay.Light && ['shadow-[0_2px_50px_8px_rgba(234,234,234,1)]'],
           size === Size.Normal && ['w-[600px]', 'px-8', 'py-7'],
-          size === Size.Large && ['w-[660px]'],
+          size === Size.Large && ['w-[650px]'],
           position === Position.Top && ['absolute', 'top-[15vh]']
         )}
         onClick={(event) => event.stopPropagation()}

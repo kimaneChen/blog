@@ -5,6 +5,7 @@ const getBlogs = async (req: NextApiRequest, res: NextApiResponse): Promise<void
   const page = Number(req.query.page) || 1
   const perPage = Number(req.query.perPage) || 3
   const userId = req.query?.userId as string | undefined
+  const search = req.query?.search as string | undefined
   const exclude = req.query?.exclude as string | undefined
 
   const result = await prisma.blog.findMany({
@@ -12,11 +13,6 @@ const getBlogs = async (req: NextApiRequest, res: NextApiResponse): Promise<void
       createdAt: 'desc',
     },
     where: {
-      NOT: {
-        id: {
-          in: exclude,
-        },
-      },
       userId,
       unpublishedAt: null,
       tags: {
@@ -26,6 +22,37 @@ const getBlogs = async (req: NextApiRequest, res: NextApiResponse): Promise<void
           },
         },
       },
+      NOT: {
+        id: {
+          in: exclude,
+        },
+      },
+      ...(search && {
+        OR: [
+          {
+            title: {
+              contains: search,
+              mode: 'insensitive',
+            },
+          },
+          {
+            description: {
+              contains: search,
+              mode: 'insensitive',
+            },
+          },
+          {
+            tags: {
+              some: {
+                name: {
+                  contains: search,
+                  mode: 'insensitive',
+                },
+              },
+            },
+          },
+        ],
+      }),
     },
     include: {
       user: {
