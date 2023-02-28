@@ -15,7 +15,7 @@ interface Props {
 
 const Item: FC<Props> = ({ children, isDeletable = false, amountReplies, relativeTime, user }) => (
   <section className="px-5 py-4 mb-4 bg-background-variant rounded-xl flex gap-3">
-    <div>
+    <div className="shrink-0">
       <Avatar src={user?.image} alt={user?.name} width={20} height={20} />
     </div>
     <div className="w-full">
