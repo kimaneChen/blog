@@ -1,80 +1,30 @@
+import getBlogs from '@/services/getBlogs'
+import Boom from '@hapi/boom'
 import { NextApiRequest, NextApiResponse } from 'next'
-import prisma from '@/lib/prisma'
 
-const getBlogs = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
-  const page = Number(req.query.page) || 1
-  const perPage = Number(req.query.perPage) || 3
-  const userId = req.query?.userId as string | undefined
-  const search = req.query?.search as string | undefined
-  const exclude = req.query?.exclude as string | undefined
-
-  const result = await prisma.blog.findMany({
-    orderBy: {
-      createdAt: 'desc',
-    },
-    where: {
-      userId,
-      unpublishedAt: null,
-      tags: {
-        some: {
-          name: {
-            in: req.query.tags,
-          },
-        },
-      },
-      NOT: {
-        id: {
-          in: exclude,
-        },
-      },
-      ...(search && {
-        OR: [
-          {
-            title: {
-              contains: search,
-              mode: 'insensitive',
-            },
-          },
-          {
-            description: {
-              contains: search,
-              mode: 'insensitive',
-            },
-          },
-          {
-            tags: {
-              some: {
-                name: {
-                  contains: search,
-                  mode: 'insensitive',
-                },
-              },
-            },
-          },
-        ],
-      }),
-    },
-    include: {
-      user: {
-        select: {
-          id: true,
-          name: true,
-          email: true,
-          image: true,
-        },
-      },
-      tags: {
-        select: {
-          id: true,
-          name: true,
-        },
-      },
-    },
-    take: perPage,
-    skip: (page - 1) * perPage,
+const get = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+  const result = await getBlogs({
+    page: Number(req.query.page) || 1,
+    perPage: Number(req.query.perPage) || 10,
+    userId: req.query.userId as string,
+    exclude: req.query.exclude as string,
+    tags: req.query.tags as string[],
+    search: req.query.search as string,
   })
 
   res.status(200).json(result)
 }
 
-export default getBlogs
+const BlogsHandler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+  switch (req.method) {
+    case 'GET':
+      await get(req, res)
+      break
+    default: {
+      const { statusCode, message } = Boom.methodNotAllowed().output.payload
+      res.status(statusCode).json({ message })
+    }
+  }
+}
+
+export default BlogsHandler

@@ -1,23 +1,20 @@
-import Tag from '@/types/Tag'
-import useSWR from 'swr'
 import CreateANewBlogButton from '@/components/CreateANewBlogButton'
+import Tag from '@/types/Tag'
+import { chunk } from 'lodash'
 import { FC } from 'react'
-import Holder from './components/Holder'
+import useSWR from 'swr'
 import Gradient from './components/Gradient'
+import Holder from './components/Holder'
 
-const PER_PAGE = 30
+export const TAGS_PER_PAGE = 30
 const Tags: FC = () => {
-  const { data: tags } = useSWR<Tag[]>(`/api/tags?perPage=${PER_PAGE}`)
+  const { data: tags } = useSWR<Tag[]>(`/api/tags?perPage=${TAGS_PER_PAGE}`)
 
   if (!tags) {
     return null
   }
 
-  const tagsPerSection = 3 + Math.floor(Math.random() * 3)
-
-  const sections = new Array(6)
-    .fill(null)
-    .map((_, i) => tags.slice(i * tagsPerSection, (i + 1) * tagsPerSection))
+  const sections = chunk(tags, 5)
 
   return (
     <div className="flex flex-col items-center relative">
@@ -30,7 +27,7 @@ const Tags: FC = () => {
         </div>
       ))}
       <CreateANewBlogButton className="mt-[52px]">
-        start creating a New Blog Now
+        Start Creating a New Blog Now
       </CreateANewBlogButton>
       <Gradient />
     </div>

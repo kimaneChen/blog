@@ -9,10 +9,10 @@ import Button, { Variant } from '@/components/Button'
 import UserInfo from './components/UserInfo'
 import DecorationLine from './components/DecorationLine'
 
-const BLOGS_LIMIT = 10
+export const BLOGS_PER_PAGE = 10
 
 const ExploreBlogs: FC = () => {
-  const { data: blogs } = useSWR(`/api/blogs?perPage=${BLOGS_LIMIT}`)
+  const { data: blogs } = useSWR(`/api/blogs?perPage=${BLOGS_PER_PAGE}`)
 
   if (!blogs) return null
 

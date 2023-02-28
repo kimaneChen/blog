@@ -11,8 +11,9 @@ type RawGPT3Blog = {
   tags: string[]
 }
 
-type GPT3Blog = Pick<Blog, 'id' | 'title' | 'description'> & {
+type GPT3Blog = Pick<Blog, 'id' | 'title'> & {
   tags: NonNullable<Blog['tags']>
+  description: NonNullable<Blog['description']>
 }
 
 const Blogs: FC = () => {
