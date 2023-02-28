@@ -5,12 +5,12 @@ import Item from './components/Item'
 const MOCKUSER: User = {
   name: 'Helena Jones',
   email: 'Helena.Jones@mel.fish',
-  image: 'https://avatars.dicebear.com/api/avataaars/Helena.Jones@mel.fish.svg',
+  image: 'https://avatars.dicebear.com/api/avataaars/Rafael.Gutierrez@mel.fish.svg',
 }
 const MOCKUSER2: User = {
   name: 'Michael Smith',
   email: 'Michael.Smith@mel.fish',
-  image: 'https://avatars.dicebear.com/api/avataaars/Michael.Smith@mel.fish.svg',
+  image: 'https://avatars.dicebear.com/api/avataaars/Nina.Williams@mel.fish.svg',
 }
 
 const Comments: FC = () => (
