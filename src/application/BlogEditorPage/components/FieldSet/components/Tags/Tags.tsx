@@ -13,7 +13,7 @@ const Tags: FC<Props> = ({ tags, onTagsChange }) => {
 
   return (
     <>
-      <div className="flex gap-3 mb-5 ">
+      <div className="flex gap-3 mb-5 flex-wrap">
         {tags.map((tag) => (
           <Tag key={tag}>{tag}</Tag>
         ))}

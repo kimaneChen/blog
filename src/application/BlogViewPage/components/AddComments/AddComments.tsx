@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 import Button, { Size, Variant } from '@/components/Button'
 import Avatar from '@/components/Avatar'
+import classNames from 'classnames'
 import { useSession } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 
@@ -14,15 +15,21 @@ const AddComments: FC = () => {
   const [focused, setFocused] = useState(false)
 
   return (
-    <div className="pt-12 pl-[200px] pr-72">
+    <div className="pt-12  pr-24">
       <form onSubmit={handleSubmit(() => {})}>
-        <div className="flex gap-6">
-          <div>
-            <Avatar src={session?.user?.image} alt={session?.user?.name} width={40} height={40} />
-          </div>
-          <div className="border rounded-lg py-3 px-4 w-full">
+        <div className="flex gap-6 items-start">
+          <Avatar src={session?.user?.image} alt={session?.user?.name} width={40} height={40} />
+          <div className="border rounded-lg grow">
             <textarea
-              className={`text-sm ${focused || isDirty ? 'h-24' : 'h-5'} w-full focus:outline-none`}
+              className={classNames(
+                'text-sm',
+                'focus:outline-none',
+                'py-3',
+                'leading-6',
+                'px-4',
+                'w-full',
+                focused || isDirty ? 'h-24' : 'h-11'
+              )}
               placeholder="Start a discussion, not a fire. Post with kindness"
               // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('comment')}
@@ -39,7 +46,7 @@ const AddComments: FC = () => {
           </div>
         )}
       </form>
-      <div className="my-4 flex items-center justify-end  gap-1 ">
+      <div className="my-4 flex items-center justify-end gap-1">
         <Avatar src={session?.user?.image} alt={session?.user?.name} width={16} height={16} />
         <Avatar src={session?.user?.image} alt={session?.user?.name} width={16} height={16} />
         <Avatar src={session?.user?.image} alt={session?.user?.name} width={16} height={16} />

@@ -54,7 +54,10 @@ const ActionButtons: FC<Props> = ({ onConfirmPublish, isLoading }) => {
             Publish
           </Button>
         ) : (
-          <Button onClick={() => window.open('/login?redirect_url=/close', '_blank')}>
+          <Button
+            variant={Variant.Dark}
+            onClick={() => window.open('/login?redirect_url=/close', '_blank')}
+          >
             Log In to Publish
           </Button>
         )}

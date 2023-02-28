@@ -7,9 +7,9 @@ interface Blog {
   updatedAt: string
   userId: string
   title: string
-  description?: string
-  unpublishedAt?: string
-  content?: any
+  description: string | null
+  unpublishedAt: string | null
+  content: any | null
   user?: Pick<User, 'id' | 'name' | 'email' | 'image'>
   tags?: Tag[]
 }

@@ -12,7 +12,7 @@ const BlogTitle: FC = () => {
   const { data: blog } = useSWR(`/api/blogs/${id}`)
   if (!blog) return null
   return (
-    <header className="max-w-[980px] my-6 pt-3 pl-[200px]">
+    <header className="max-w-[980px] my-6 pt-3">
       <Date className="text-sm text-on-background" format={DateFormat.LongDate}>
         {blog.createdAt}
       </Date>

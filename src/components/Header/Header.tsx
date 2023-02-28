@@ -4,11 +4,11 @@ import Input from '@/components/Input'
 import Logo from '@/components/Logo'
 import { useSession } from 'next-auth/react'
 import { FC, useState } from 'react'
+import SearchModal from '@/components/SearchModal'
 import { Size } from '../Input/Input'
 import NavLink from './components/NavLink'
 import Notification from './components/Notification'
 import User from './components/User'
-import SearchModal from './components/SearchModal/SearchModal'
 
 const Header: FC = () => {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false)

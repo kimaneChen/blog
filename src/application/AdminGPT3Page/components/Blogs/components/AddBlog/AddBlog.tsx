@@ -10,7 +10,7 @@ import useSWRMutation from 'swr/mutation'
 
 interface Props {
   title: Blog['title']
-  description: Blog['description']
+  description: NonNullable<Blog['description']>
   tags: NonNullable<Blog['tags']>
 }
 

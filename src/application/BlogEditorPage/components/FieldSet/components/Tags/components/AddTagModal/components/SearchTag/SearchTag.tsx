@@ -3,7 +3,7 @@ import useSWR from 'swr'
 import { FiSearch } from 'react-icons/fi'
 import { SuggestedTags } from '@/schemas/SuggestedTags'
 import Tag from '@/types/Tag'
-import NakedInput from '@/components/NakedInput'
+import NakedInput, { Size } from '@/components/NakedInput'
 
 interface Props {
   tags: string[]
@@ -12,22 +12,22 @@ interface Props {
 
 const SearchTag: FC<Props> = ({ tags, onTagsChange }) => {
   const [value, setValue] = useState<SuggestedTags['search']>('')
-
   const isValid = value.length > 2
+  const suggestedListLimit = 10
 
-  const { data } = useSWR<Tag[]>(isValid && `/api/tags/suggested?search=${value}`)
+  let { data } = useSWR<Tag[]>(isValid && `/api/tags/suggested?search=${value}`)
+
+  if (data && data.length > suggestedListLimit) {
+    data = data.slice(0, suggestedListLimit)
+  }
 
   const suggestedTags = useMemo<string[]>(() => {
-    let result: string[] = []
+    if (!isValid) return []
 
-    if (data?.length) {
-      result = data.map((tag) => tag.name)
-    } else if (isValid) {
-      result = [value]
-    }
-
-    return result.filter((tag) => !tags.includes(tag))
-  }, [data, tags, value, isValid])
+    return data?.length
+      ? [value, ...data.map((tag) => tag.name).filter((name) => name !== value)]
+      : [value]
+  }, [data, value, isValid])
 
   return (
     <div className="border rounded">
@@ -36,16 +36,20 @@ const SearchTag: FC<Props> = ({ tags, onTagsChange }) => {
         value={value}
         onChange={(event: ChangeEvent<HTMLInputElement>) => setValue(event.target.value)}
         prefix={<FiSearch />}
+        size={Size.Medium}
       />
       {suggestedTags.length > 0 && (
-        <div className="leading-10 bg-[#FAFAFA]">
-          <div className="mt-2 flex gap-3">
+        <div className="leading-10 h-[200px] overflow-auto">
+          <div className="gap-3">
             {suggestedTags.map((tag) => (
               <button
-                className="px-4 block w-full text-left"
+                className="px-4 block w-full text-left hover:bg-background-variant"
                 key={tag}
                 type="button"
-                onClick={() => onTagsChange([...tags, tag])}
+                onClick={() => {
+                  onTagsChange([...tags, tag])
+                  setValue('')
+                }}
               >
                 {tag}
               </button>

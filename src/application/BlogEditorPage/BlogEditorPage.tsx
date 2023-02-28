@@ -54,7 +54,7 @@ const BlogEditorPage: NextPage = () => {
     // eslint-disable-next-line react/jsx-props-no-spreading
     <FormProvider {...form}>
       <Header />
-      <main className="bg-[#EEF5FA] min-h-[calc(100vh-theme(height.header))] px-3 pb-5 flex flex-col items-center">
+      <main className="min-h-[calc(100vh-theme(height.header))] px-3 pb-5 flex flex-col items-center">
         <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-narrow grow flex flex-col">
           <ActionButtons onConfirmPublish={handleSubmit(onSubmit)} isLoading={isMutating} />
           <FieldSet

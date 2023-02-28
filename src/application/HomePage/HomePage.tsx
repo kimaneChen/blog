@@ -1,14 +1,23 @@
+import Layout from '@/application/Layout'
 import { NextPage } from 'next'
 import Head from 'next/head'
-import Layout from '@/application/Layout'
+import { SWRConfig } from 'swr'
 import Description from './components/Description'
-import Tags from './components/Tags'
 import ExploreBlogs from './components/ExploreBlogs'
+import Tags from './components/Tags'
 
-const HomePage: NextPage = () => (
-  <>
+interface Props {
+  fallback: Record<string, unknown>
+}
+
+const HomePage: NextPage<Props> = ({ fallback }) => (
+  <SWRConfig
+    value={{
+      fallback,
+    }}
+  >
     <Head>
-      <title>Blogs</title>
+      <title>Make Your Voice Heard - Chuckroo</title>
     </Head>
 
     <Layout>
@@ -16,7 +25,7 @@ const HomePage: NextPage = () => (
       <Tags />
       <ExploreBlogs />
     </Layout>
-  </>
+  </SWRConfig>
 )
 
 export default HomePage

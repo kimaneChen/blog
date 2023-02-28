@@ -1,16 +1,26 @@
 import Layout from '@/application/Layout'
-import TagsFilter from '@/application/TagsFilter'
 import BlogOverview from '@/components/BlogOverview'
 import LoadMoreButton from '@/components/LoadMoreButton'
 import Tag from '@/types/Tag'
 import { NextPage } from 'next'
 import Head from 'next/head'
-import { useState } from 'react'
+import Router, { useRouter } from 'next/router'
 import useSWR from 'swr'
+import Link from 'next/link'
+import TagsFilter from './components/TagsFilter'
 import useBlogs from './hooks/useBlogs'
 
 const BlogsPage: NextPage = () => {
-  const [selectedTags, setSelectedTags] = useState<Tag[]>()
+  const { query } = useRouter()
+
+  const selectedTags = query.tags ? (query.tags as string).split(',') : []
+  const setSelectedTags = (tagName: Tag['name']): void => {
+    const newTags = selectedTags.includes(tagName)
+      ? selectedTags.filter((name) => name !== tagName)
+      : [...selectedTags, tagName]
+
+    Router.push(`/blogs?tags=${newTags}`)
+  }
 
   const { blogs, size, setSize, isLoadMoreDisabled } = useBlogs({
     tags: selectedTags,
@@ -26,7 +36,7 @@ const BlogsPage: NextPage = () => {
 
       <Layout>
         <section className="flex">
-          <div className="w-[300px] border-r">
+          <div className="min-w-[300px] border-r">
             <div className="pr-5 mt-9">
               <div>Filters</div>
               <div>
@@ -34,15 +44,7 @@ const BlogsPage: NextPage = () => {
                   <TagsFilter
                     tags={tags}
                     selectedTags={selectedTags}
-                    onTagSelect={(tag) => {
-                      setSelectedTags((currentTags) => {
-                        if (currentTags?.includes(tag)) {
-                          return currentTags.filter((currentTag) => currentTag.id !== tag.id)
-                        }
-
-                        return [...(currentTags || []), tag]
-                      })
-                    }}
+                    onTagSelect={(name) => setSelectedTags(name)}
                   />
                 ) : (
                   <div>Loading...</div>
@@ -59,18 +61,19 @@ const BlogsPage: NextPage = () => {
             <div className="mt-6">
               {blogs.map((blog) => (
                 <div key={blog.id} className="mb-6">
-                  <BlogOverview
-                    id={blog.id}
-                    title={blog.title}
-                    date={blog.createdAt}
-                    tags={blog.tags}
-                    avatar={{
-                      src: blog.user?.image,
-                      alt: blog.user?.name || 'Unknown user',
-                    }}
-                  >
-                    {blog.description}
-                  </BlogOverview>
+                  <Link href={`/blogs/${blog.id}`}>
+                    <BlogOverview
+                      title={blog.title}
+                      date={blog.createdAt}
+                      tags={blog.tags}
+                      avatar={{
+                        src: blog.user?.image,
+                        alt: blog.user?.name || 'Unknown user',
+                      }}
+                    >
+                      {blog.description}
+                    </BlogOverview>
+                  </Link>
                 </div>
               ))}
             </div>

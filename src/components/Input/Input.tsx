@@ -3,6 +3,7 @@ import classNames from 'classnames'
 
 export enum Size {
   Small = 'Small',
+  Medium = 'Medium',
   Normal = 'Normal',
   Large = 'Large',
 }
@@ -27,9 +28,11 @@ const Input = forwardRef<HTMLInputElement, Props>(
         className={classNames(
           'w-full',
           'border',
-          size === Size.Normal && ['h-12', 'rounded-md', 'px-4'],
-          size === Size.Small && ['h-8', 'w-26', 'rounded-md', 'px-4'],
-          size === Size.Large && ['h-14', 'px-6', 'rounded-md'],
+          'rounded-md',
+          size === Size.Normal && ['h-12', 'px-4'],
+          size === Size.Small && ['h-8', 'px-4'],
+          size === Size.Medium && ['h-10', 'px-4'],
+          size === Size.Large && ['h-14', 'px-6'],
           prefix && 'pl-9',
           suffix && 'pr-9',
           error && ['border-error', 'focus:outline-none'],

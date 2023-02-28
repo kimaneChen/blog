@@ -18,13 +18,14 @@ module.exports = {
       'on-error': 'white',
       warn: '#fff4e5',
       'on-warn': '#663c00',
+      link: '#0070F3',
     },
     borderColor: {
       DEFAULT: '#EAEAEA',
       dark: '#131313',
       error: 'red',
       warn: '#fff4e5',
-      primary:'#F36F37',
+      primary: '#F36F37',
     },
     extend: {
       maxWidth: {
