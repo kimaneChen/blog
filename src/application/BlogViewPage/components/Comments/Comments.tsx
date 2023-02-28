@@ -14,7 +14,7 @@ const MOCKUSER2: User = {
 }
 
 const Comments: FC = () => (
-  <div className="pl-[200px] pr-72">
+  <div className="pr-24">
     <Item relativeTime="4h" commentUser={MOCKUSER}>
       Lorem ipsum dolor sit amet.
     </Item>
