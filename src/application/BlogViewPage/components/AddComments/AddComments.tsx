@@ -17,15 +17,16 @@ const AddComments: FC = () => {
   return (
     <div className="pt-12  pr-24">
       <form onSubmit={handleSubmit(() => {})}>
-        <div className="flex gap-6 items-start">
-          <Avatar src={session?.user?.image} alt={session?.user?.name} width={40} height={40} />
-          <div className="border rounded-lg grow">
+        <div className="py-0.5 flex gap-6 items-center">
+          <div>
+            <Avatar src={session?.user?.image} alt={session?.user?.name} width={40} height={40} />
+          </div>
+          <div className="border rounded-lg grow py-0 my-0">
             <textarea
               className={classNames(
                 'text-sm',
                 'focus:outline-none',
                 'py-3',
-                'leading-6',
                 'px-4',
                 'w-full',
                 'overflow-hidden',
