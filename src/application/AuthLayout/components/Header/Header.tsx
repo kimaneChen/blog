@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Logo from '@/components/Logo'
-import Tag from './components/Tag'
+import Signature from '@/components/Signature'
 
 const Header: FC = () => (
   <div>
@@ -8,7 +8,7 @@ const Header: FC = () => (
       <Logo />
     </div>
     <div className="text-on-background mb-4">
-      <Tag />
+      <Signature />
     </div>
   </div>
 )
