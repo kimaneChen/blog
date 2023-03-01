@@ -7,6 +7,7 @@ import Head from 'next/head'
 import Router, { useRouter } from 'next/router'
 import useSWR from 'swr'
 import Link from 'next/link'
+import Loading from '@/components/Loading'
 import TagsFilter from './components/TagsFilter'
 import useBlogs from './hooks/useBlogs'
 
@@ -22,11 +23,24 @@ const BlogsPage: NextPage = () => {
     Router.push(`/blogs?tags=${newTags}`)
   }
 
-  const { blogs, size, setSize, isLoadMoreDisabled } = useBlogs({
+  const {
+    blogs,
+    size,
+    setSize,
+    isLoadMoreDisabled,
+    isLoading: isBlogsLoading,
+  } = useBlogs({
     tags: selectedTags,
   })
 
-  const { data: tags } = useSWR<Tag[]>('/api/tags')
+  const { data: tags, isLoading: isTagsLoading } = useSWR<Tag[]>('/api/tags')
+
+  if (isTagsLoading)
+    return (
+      <Layout>
+        <Loading />
+      </Layout>
+    )
 
   return (
     <>
@@ -40,14 +54,12 @@ const BlogsPage: NextPage = () => {
             <div className="pr-5 mt-9">
               <div>Filters</div>
               <div>
-                {tags ? (
+                {tags && (
                   <TagsFilter
                     tags={tags}
                     selectedTags={selectedTags}
                     onTagSelect={(name) => setSelectedTags(name)}
                   />
-                ) : (
-                  <div>Loading...</div>
                 )}
               </div>
             </div>
@@ -58,30 +70,39 @@ const BlogsPage: NextPage = () => {
               <h1 className="text-3xl font-bold">All Blogs</h1>
             </div>
             <div className="text-on-background">See what&apos;s new on the blog</div>
-            <div className="mt-6">
-              {blogs.map((blog) => (
-                <div key={blog.id} className="mb-6">
-                  <Link href={`/blogs/${blog.id}`}>
-                    <BlogOverview
-                      title={blog.title}
-                      date={blog.createdAt}
-                      tags={blog.tags}
-                      avatar={{
-                        src: blog.user?.image,
-                        alt: blog.user?.name || 'Unknown user',
-                      }}
-                    >
-                      {blog.description}
-                    </BlogOverview>
-                  </Link>
+            {isBlogsLoading ? (
+              <Loading />
+            ) : (
+              <>
+                <div className="mt-6">
+                  {blogs.map((blog) => (
+                    <div key={blog.id} className="mb-6">
+                      <Link href={`/blogs/${blog.id}`}>
+                        <BlogOverview
+                          title={blog.title}
+                          date={blog.createdAt}
+                          tags={blog.tags}
+                          avatar={{
+                            src: blog.user?.image,
+                            alt: blog.user?.name || 'Unknown user',
+                          }}
+                        >
+                          {blog.description}
+                        </BlogOverview>
+                      </Link>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <div>
-              <LoadMoreButton hasMore={!isLoadMoreDisabled} onLoadMore={() => setSize(size + 1)}>
-                More Blogs
-              </LoadMoreButton>
-            </div>
+                <div>
+                  <LoadMoreButton
+                    hasMore={!isLoadMoreDisabled}
+                    onLoadMore={() => setSize(size + 1)}
+                  >
+                    More Blogs
+                  </LoadMoreButton>
+                </div>
+              </>
+            )}
           </div>
         </section>
       </Layout>
