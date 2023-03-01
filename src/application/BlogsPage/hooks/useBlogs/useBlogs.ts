@@ -9,6 +9,7 @@ interface Result {
   blogs: Blog[]
   loadMore: () => void
   isLoadMoreDisabled: boolean
+  isLoading: boolean
 }
 
 interface Params {
@@ -49,6 +50,7 @@ const useBlogs = ({ tags, perPage = 3 }: Params | undefined = {}): Result => {
     blogs,
     loadMore,
     isLoadMoreDisabled,
+    isLoading,
   }
 }
 
