@@ -14,14 +14,8 @@ const AddComments: FC = () => {
   return (
     <div className="pt-12  pr-24">
       <form onSubmit={handleSubmit(() => {})}>
-        <div
-          className={classNames(
-            'flex',
-            'gap-6',
-            focused || commentsWatch ? 'items-start' : 'items-center'
-          )}
-        >
-          <div>
+        <div className="flex gap-6 items-start">
+          <div className="py-0.5">
             <Avatar src={session?.user?.image} alt={session?.user?.name} width={40} height={40} />
           </div>
           <div className="border rounded-lg grow box-border">
