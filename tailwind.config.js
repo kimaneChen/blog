@@ -28,9 +28,17 @@ module.exports = {
       primary: '#F36F37',
     },
     extend: {
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.dark'),
+            '--tw-prose-headings': theme('colors.dark'),
+          },
+        },
+      }),
       maxWidth: {
         container: '1440px',
-        narrow: '950px',
+        narrow: '1040px',
       },
       width: {
         container: '1440px',
@@ -43,9 +51,9 @@ module.exports = {
         dropdown: '0 2px 5px 2px #EAEAEA',
       },
       fontSize: {
-        sx: ['12px','18px'],
+        sx: ['12px', '18px'],
         sm: ['14px', '20px'],
-      }
+      },
     },
     fontFamily: {
       sans: ['var(--font-inter)', ...fontFamily.sans],
