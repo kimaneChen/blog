@@ -7,6 +7,7 @@ import BackLink from './components/BackLink'
 import BlogTitle from './components/BlogTitle'
 import Content from './components/Content'
 import AddComments from './components/AddComments'
+import Comments from './components/Comments'
 
 const BlogViewPage: NextPage = () => {
   const router = useRouter()
@@ -28,6 +29,7 @@ const BlogViewPage: NextPage = () => {
       <hr />
       <Container>
         <AddComments />
+        <Comments />
       </Container>
     </>
   )

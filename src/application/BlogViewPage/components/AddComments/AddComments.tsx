@@ -28,6 +28,8 @@ const AddComments: FC = () => {
                 'leading-6',
                 'px-4',
                 'w-full',
+                'overflow-hidden',
+                'resize-none',
                 focused || isDirty ? 'h-24' : 'h-11'
               )}
               placeholder="Start a discussion, not a fire. Post with kindness"
