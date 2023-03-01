@@ -11,6 +11,7 @@ const authOptions: AuthOptions = {
     signIn: '/',
     signOut: '/sign-out',
     verifyRequest: '/email-verification-request',
+    error: '/',
   },
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -43,6 +44,9 @@ const authOptions: AuthOptions = {
           role: (user as User).role,
         },
       }
+    },
+    redirect({ url }) {
+      return url
     },
   },
 }
