@@ -7,9 +7,15 @@ import { useForm } from 'react-hook-form'
 
 const AddComments: FC = () => {
   const { data: session } = useSession()
-  const { register, handleSubmit, watch } = useForm()
+  const {
+    register,
+    handleSubmit,
+    formState: { isDirty },
+    getValues,
+    reset,
+  } = useForm()
   const [focused, setFocused] = useState(false)
-  const commentsWatch = watch('comment')
+  const [input, setInput] = useState<string>()
 
   return (
     <div className="pt-12  pr-24">
@@ -29,22 +35,26 @@ const AddComments: FC = () => {
                 'overflow-hidden',
                 'block',
                 'resize-none',
-                focused || commentsWatch ? 'h-[90px]' : 'h-11'
+                focused || input ? 'h-[90px]' : 'h-11'
               )}
               placeholder="Start a discussion, not a fire. Post with kindness"
               // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('comment')}
               onFocus={() => setFocused(true)}
-              onBlur={() => setFocused(false)}
+              onBlur={() => {
+                setFocused(false)
+                setInput(getValues().comment)
+                reset({ keepValues: true })
+              }}
             />
           </div>
         </div>
-        {(focused || commentsWatch) && (
+        {(focused || input) && (
           <div className="my-4 flex justify-end">
             <Button
               variant={Variant.Dark}
               size={Size.Small}
-              disabled={!commentsWatch}
+              disabled={!isDirty && !input}
               type="submit"
             >
               Comment
