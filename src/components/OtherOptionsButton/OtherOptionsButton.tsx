@@ -10,7 +10,7 @@ interface Props {
 
 const OtherOptionsButton: FC<Props> = ({ children, href }) => (
   <Button onClick={() => Router.push(href)} block>
-    <div className="flex items-center gap-2 justify-center">
+    <div className="flex items-center gap-2 justify-center text-link">
       <FiArrowLeft className="text-lg" />
       {children}
     </div>
