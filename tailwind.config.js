@@ -42,6 +42,10 @@ module.exports = {
       boxShadow: {
         dropdown: '0 2px 5px 2px #EAEAEA',
       },
+      fontSize: {
+        sx: ['12px','18px'],
+        sm: ['14px', '22px'],
+      }
     },
     fontFamily: {
       sans: ['var(--font-inter)', ...fontFamily.sans],

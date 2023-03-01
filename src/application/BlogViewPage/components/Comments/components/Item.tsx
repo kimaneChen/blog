@@ -8,36 +8,36 @@ import { FaRegSmile } from 'react-icons/fa'
 interface Props {
   children: ReactNode
   isDeletable?: boolean
-  amountReplies: number
+  replies: number
   relativeTime: string
   user: User
 }
 
-const Item: FC<Props> = ({ children, isDeletable = false, amountReplies, relativeTime, user }) => (
+const Item: FC<Props> = ({ children, isDeletable = false, replies, relativeTime, user }) => (
   <section className="px-5 py-4 mb-4 bg-background-variant rounded-xl flex gap-3">
-    <div className="shrink-0">
+    <div>
       <Avatar src={user?.image} alt={user?.name} width={20} height={20} />
     </div>
-    <div className="w-full">
+    <div className="grow">
       <div className="font-bold">{user?.name}</div>
       <div className="mt-1">{children}</div>
-      <div className="mt-2 text-sm text-on-background flex items-center justify-between">
-        <div className="pt-1 flex items-center gap-1">
-          <div className="pt-0.5">{relativeTime}</div>
+      <div className="mt-2 pt-1 text-sm text-on-background flex items-center justify-between">
+        <div className="flex items-center gap-1">
+          <div>{relativeTime}</div>
           <BsDot />
-          <div className="pt-0.5">Reply</div>
+          <div>Reply</div>
           <BsDot />
           {isDeletable && (
             <>
-              <div className="pt-0.5">Delete</div>
+              <div>Delete</div>
               <BsDot />
             </>
           )}
           <FaRegSmile />
         </div>
-        {amountReplies !== 0 && (
-          <div className="flex pt-1.5 items-center">
-            {`${amountReplies} Replies`} <MdKeyboardArrowDown />
+        {replies !== 0 && (
+          <div className="flex items-center">
+            {`${replies} Replies`} <MdKeyboardArrowDown />
           </div>
         )}
       </div>
