@@ -1,5 +1,6 @@
 import DateFormat from '@/types/DateFormat'
-import { format as dateFormat, parseISO } from 'date-fns'
+import { parseISO } from 'date-fns'
+import { formatInTimeZone } from 'date-fns-tz'
 import { FC } from 'react'
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 
 const Date: FC<Props> = ({ children, format = DateFormat.Default, className = undefined }) => (
   <time dateTime={children} className={className}>
-    {dateFormat(parseISO(children), format)}
+    {formatInTimeZone(parseISO(children), 'GMT', format)}
   </time>
 )
 
