@@ -21,7 +21,7 @@ const Footer: FC = () => (
         </ColumnWrapper>
         <ColumnWrapper>
           <Item>Team</Item>
-          <Link href="/about">About</Link>
+          <Link href="/about-us">About</Link>
         </ColumnWrapper>
         <ColumnWrapper>
           <Item>Legal</Item>
