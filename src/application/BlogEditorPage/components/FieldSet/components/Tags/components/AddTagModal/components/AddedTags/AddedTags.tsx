@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { AiOutlineClose } from 'react-icons/ai'
 import Tag from '@/components/Tag'
 
 interface Props {
@@ -17,7 +18,12 @@ const AddedTags: FC<Props> = ({ tags, onRemoveTag }) => (
             type="button"
             onClick={() => onRemoveTag(tags.filter((item) => item !== tag))}
           >
-            <Tag>{tag}</Tag>
+            <Tag>
+              <div className="flex items-center gap-1">
+                {tag}
+                <AiOutlineClose />
+              </div>
+            </Tag>
           </button>
         ))}
       </div>

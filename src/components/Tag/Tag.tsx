@@ -16,7 +16,7 @@ const Tag: FC<Props> = ({ children, variant = Variant.Background }) => {
     'border',
     'rounded',
     'py-1',
-    'px-1.5',
+    'px-2',
     'text-xs',
     variant === Variant.Background && ['bg-background-variant', 'text-on-background'],
     variant === Variant.White && 'text-on-background'

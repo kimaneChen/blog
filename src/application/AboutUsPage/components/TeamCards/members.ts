@@ -7,7 +7,7 @@ const members = [
   },
   {
     imgSrc: '/image/chelsea.png',
-    name: 'Meiyi (Chelsea) Cao',
+    name: 'Meiyi(Chelsea) Cao',
     title: '@Business Analyst',
     link: 'https://www.linkedin.com/in/chelsea-cao-b470b7192',
   },
@@ -25,7 +25,7 @@ const members = [
   },
   {
     imgSrc: '/image/ethan.png',
-    name: 'Ethan Tang',
+    name: 'Hao(Ethan) Tang',
     title: '@Developer',
     link: 'https://www.linkedin.com/in/ethanhaotang',
   },
@@ -55,7 +55,7 @@ const members = [
   },
   {
     imgSrc: '/image/nash.png',
-    name: 'Nash Zhao',
+    name: 'Longcheng(Nash) Zhao',
     title: '@Developer',
     link: 'https://www.linkedin.com/in/nash-zhao-au',
   },
@@ -67,7 +67,7 @@ const members = [
   },
   {
     imgSrc: '/image/mitch.png',
-    name: 'Jeremy Huang',
+    name: 'Yifan(Mitchell) Zhang',
     title: '@Developer',
     link: 'https://www.linkedin.com/in/yifan-zhang-681224127',
   },
