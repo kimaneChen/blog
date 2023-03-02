@@ -1,33 +1,22 @@
 import { NextPage } from 'next'
 import UserLayout from '@/application/UserLayout'
-import MarkAllReadButton from './components/MarkAllReadButton'
-import Tag from './components/Badge'
-import Item from './components/Item'
-import MOCKNOTIFICATIONS from './Mocknotification'
+import Button, { Size, Variant } from '@/components/Button'
+import BlogComments from './components/BlogComments'
+import BLOGSWITHCOMMENTS from './MockData'
 
 const UserNotificationPage: NextPage = () => (
   <UserLayout>
-    <div>
-      <div className="my-4 flex justify-end">
-        <MarkAllReadButton />
-      </div>
+    <div className="w-[1300px] mx-auto px-7 pt-6 mt-10 border rounded-xl">
+      <Button variant={Variant.Background} size={Size.Small} className="border border-dark mr-5">
+        Blogs
+      </Button>
+      <Button variant={Variant.Outline} size={Size.Small} className="bg-background-variant">
+        Comments
+      </Button>
 
-      <div className="mt-30">
-        <div>
-          <div className="p-6 flex justify-start gap-5">
-            <Tag notifications={2}>Blog</Tag>
-            <Tag notifications={4} active>
-              Comment
-            </Tag>
-          </div>
-          <Item title={MOCKNOTIFICATIONS[0].title} responses={MOCKNOTIFICATIONS[0].responses} />
-          <Item
-            title={MOCKNOTIFICATIONS[1].title}
-            inline={MOCKNOTIFICATIONS[1].inline}
-            responses={MOCKNOTIFICATIONS[1].responses}
-          />
-        </div>
-      </div>
+      {BLOGSWITHCOMMENTS.map(({ id, title, comments }) => (
+        <BlogComments key={id} title={title} comments={comments} />
+      ))}
     </div>
   </UserLayout>
 )
