@@ -7,30 +7,29 @@ import { useForm } from 'react-hook-form'
 
 const AddComments: FC = () => {
   const { data: session } = useSession()
-  const {
-    register,
-    handleSubmit,
-    formState: { isDirty },
-  } = useForm()
+  const { register, handleSubmit, watch } = useForm()
   const [focused, setFocused] = useState(false)
+  const comment = watch('comment')
 
   return (
     <div className="pt-12  pr-24">
       <form onSubmit={handleSubmit(() => {})}>
         <div className="flex gap-6 items-start">
-          <Avatar src={session?.user?.image} alt={session?.user?.name} width={40} height={40} />
-          <div className="border rounded-lg grow">
+          <div className="py-0.5">
+            <Avatar src={session?.user?.image} alt={session?.user?.name} width={40} height={40} />
+          </div>
+          <div className="border rounded-lg grow box-border">
             <textarea
               className={classNames(
                 'text-sm',
                 'focus:outline-none',
                 'py-3',
-                'leading-6',
                 'px-4',
                 'w-full',
                 'overflow-hidden',
+                'block',
                 'resize-none',
-                focused || isDirty ? 'h-24' : 'h-11'
+                focused || comment ? 'h-[90px]' : 'h-11'
               )}
               placeholder="Start a discussion, not a fire. Post with kindness"
               // eslint-disable-next-line react/jsx-props-no-spreading
@@ -40,9 +39,9 @@ const AddComments: FC = () => {
             />
           </div>
         </div>
-        {(focused || isDirty) && (
+        {(focused || comment) && (
           <div className="my-4 flex justify-end">
-            <Button variant={Variant.Dark} size={Size.Small} disabled={!isDirty} type="submit">
+            <Button variant={Variant.Dark} size={Size.Small} disabled={!comment} type="submit">
               Comment
             </Button>
           </div>
