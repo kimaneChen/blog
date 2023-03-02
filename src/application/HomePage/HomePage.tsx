@@ -2,6 +2,7 @@ import Layout from '@/application/Layout'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import { SWRConfig } from 'swr'
+import Container from '@/components/Container'
 import Description from './components/Description'
 import ExploreBlogs from './components/ExploreBlogs'
 import AuthErrorMessage from './components/AuthErrorMessage'
@@ -23,9 +24,11 @@ const HomePage: NextPage<Props> = ({ fallback }) => (
 
     <AuthErrorMessage />
     <Layout>
-      <Description />
-      <Tags />
-      <ExploreBlogs />
+      <Container>
+        <Description />
+        <Tags />
+        <ExploreBlogs />
+      </Container>
     </Layout>
   </SWRConfig>
 )

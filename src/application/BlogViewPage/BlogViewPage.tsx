@@ -17,12 +17,9 @@ const BlogViewPage: NextPage = () => {
   if (!data) return null
 
   return (
-    <>
-      <Layout>
-        <BackLink />
-      </Layout>
-
+    <Layout>
       <Container>
+        <BackLink />
         <BlogTitle />
         <Content />
       </Container>
@@ -31,7 +28,7 @@ const BlogViewPage: NextPage = () => {
         <AddComments />
         <Comments />
       </Container>
-    </>
+    </Layout>
   )
 }
 

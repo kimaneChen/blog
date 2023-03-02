@@ -8,10 +8,10 @@ import Item from './components/Item'
 import ColumnWrapper from './components/ColumnWrapper'
 
 const Footer: FC = () => (
-  <footer className="h-[360px] relative border-t border-outline flex justify-center">
+  <footer className="border-t border-outline">
     <Container>
-      <div className="flex w-container justify-start gap-x-40 pt-[60px] px-10">
-        <div className="flex flex-col justify-start items-center w-36">
+      <div className="h-[300px] flex justify-start gap-x-40 pt-[60px] px-[60px]">
+        <div className="flex justify-center items-start">
           <Logo />
         </div>
         <ColumnWrapper>
@@ -41,7 +41,7 @@ const Footer: FC = () => (
         </ColumnWrapper>
       </div>
     </Container>
-    <section className="h-[60px] w-full bg-background-variant absolute bottom-0 flex items-center pl-6">
+    <section className="h-[60px] bg-background-variant flex items-center px-6">
       <Signature />
     </section>
   </footer>
