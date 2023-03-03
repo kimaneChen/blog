@@ -13,14 +13,6 @@ const GPT3Handler: NextApiHandler = async (req, res) => {
     model: 'gpt-3.5-turbo',
     messages: [
       {
-        role: 'system',
-        content: 'You are a front-end tech blog website api, that returns response in JSON format.',
-      },
-      {
-        role: 'system',
-        content: 'Your message content should only include JSON response.',
-      },
-      {
         role: 'user',
         content: prompt,
       },
