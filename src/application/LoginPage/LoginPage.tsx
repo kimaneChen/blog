@@ -21,5 +21,4 @@ const LoginPage: NextPage = () => (
     <ContinueWithEmailButton href="/login/email" />
   </LoginPageLayout>
 )
-
 export default LoginPage
