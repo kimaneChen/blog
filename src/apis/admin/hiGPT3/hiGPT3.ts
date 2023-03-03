@@ -2,7 +2,9 @@ import axios, { AxiosResponse } from 'axios'
 
 export interface Data {
   choices: {
-    text: string
+    message: {
+      content: string
+    }
   }[]
 }
 

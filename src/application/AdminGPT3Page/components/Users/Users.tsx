@@ -13,15 +13,18 @@ interface GPT3User {
 }
 
 const Users: FC = () => {
-  const { loading, data, askGPT3 } = useAskGPT3(
-    'Can you give me 5 random full name? Your response should be an Array'
-  )
+  const { loading, data, askGPT3 } = useAskGPT3(`
+    Can you give me 5 random full name in the following structure?
+    string[]
+  `)
 
   const users = useMemo<GPT3User[] | null>(() => {
-    if (!data) return null
+    const result = data?.match(/(\[.*\])/gs)?.[0]
+
+    if (!result) return null
 
     try {
-      return JSON.parse(data).map((name: string) => {
+      return JSON.parse(result).map((name: string) => {
         const [firstName, lastName] = name.split(' ')
         const email = `${firstName}.${lastName}@mel.fish`
 
@@ -29,7 +32,7 @@ const Users: FC = () => {
           id: uuidv4(),
           name,
           email,
-          image: `https://avatars.dicebear.com/api/avataaars/${email}.svg`,
+          image: `https://api.dicebear.com/5.x/fun-emoji/png?seed=${name}`,
         }
       })
     } catch (error) {
@@ -44,17 +47,23 @@ const Users: FC = () => {
           {loading ? 'Loading...' : 'Hi GPT3, Give me some users!'}
         </Button>
       </div>
-      <div>
-        {users && (
-          <div className="mt-12">
-            <div className="grid grid-cols-5 gap-12">
-              {users.map((user: GPT3User) => (
-                <AddUser key={user.id} name={user.name} email={user.email} image={user.image} />
-              ))}
-            </div>
+      {data && (
+        <textarea
+          className="mt-12 w-full resize-none rounded-md p-2"
+          rows={10}
+          readOnly
+          value={data}
+        />
+      )}
+      {users && (
+        <div className="mt-12">
+          <div className="grid grid-cols-5 gap-12">
+            {users.map((user: GPT3User) => (
+              <AddUser key={user.id} name={user.name} email={user.email} image={user.image} />
+            ))}
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </>
   )
 }

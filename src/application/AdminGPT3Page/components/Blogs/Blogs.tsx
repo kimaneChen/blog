@@ -18,9 +18,7 @@ type GPT3Blog = Pick<Blog, 'id' | 'title'> & {
 
 const Blogs: FC = () => {
   const { loading, data, askGPT3 } = useAskGPT3(`
-    If you are a front-end tech blog website api that returns a list of blogs in JSON format.
     Could you give me 4 blogs in the following structure?
-    Your response should only include JSON response.
     [
       {
         "title": string,
@@ -31,10 +29,12 @@ const Blogs: FC = () => {
   `)
 
   const blogs = useMemo<GPT3Blog[] | null>(() => {
-    if (!data) return null
+    const result = data?.match(/(\[.*\])/gs)?.[0]
+
+    if (!result) return null
 
     try {
-      return JSON.parse(data).map((item: RawGPT3Blog) => ({
+      return JSON.parse(result).map((item: RawGPT3Blog) => ({
         ...item,
         id: uuidv4(),
         tags: item.tags.map((name) => ({
