@@ -2,7 +2,7 @@
 import classNames from 'classnames'
 import { FC, ReactNode } from 'react'
 import ReactDOM from 'react-dom'
-import { AiOutlineClose } from 'react-icons/ai'
+import { IoClose } from 'react-icons/io5'
 
 export enum Overlay {
   Dark = 'Dark',
@@ -69,7 +69,7 @@ const Modal: FC<Props> = ({
         {enableCloseButton && (
           <div className="relative">
             <button type="button" className="absolute right-0" onClick={onClose}>
-              <AiOutlineClose className="w-5 h-5" />
+              <IoClose className="w-5 h-5" />
             </button>
           </div>
         )}
