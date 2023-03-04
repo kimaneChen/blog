@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import Layout from '@/application/Layout'
-import Container from './components/Container'
+import Container, { Size } from '@/components/Container'
 import BackLink from './components/BackLink'
 import BlogTitle from './components/BlogTitle'
 import Content from './components/Content'
@@ -20,11 +20,13 @@ const BlogViewPage: NextPage = () => {
     <Layout>
       <Container>
         <BackLink />
+      </Container>
+      <Container size={Size.Narrow}>
         <BlogTitle />
         <Content />
       </Container>
       <hr />
-      <Container>
+      <Container size={Size.Narrow}>
         <AddComments />
         <Comments />
       </Container>

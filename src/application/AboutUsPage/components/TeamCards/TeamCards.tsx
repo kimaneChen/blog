@@ -1,9 +1,10 @@
 import { FC } from 'react'
 import Image from 'next/image'
+import Container, { Size } from '@/components/Container'
 import members from './members'
 
 const TeamCards: FC = () => (
-  <div className="max-w-narrow mx-auto mb-40">
+  <Container size={Size.Narrow} className="mb-40">
     <h2 className="text-2xl font-bold text-center mb-10">Our Team Members</h2>
     <div className="grid grid-cols-3 gap-10">
       {members.map(({ imgSrc, name, title, link }) => (
@@ -46,7 +47,7 @@ const TeamCards: FC = () => (
         </div>
       ))}
     </div>
-  </div>
+  </Container>
 )
 
 export default TeamCards
