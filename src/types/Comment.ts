@@ -8,6 +8,7 @@ interface Comment {
   updatedAt: string
   title?: string
   comment: string
+  replies?: Comment[]
 }
 
 export default Comment

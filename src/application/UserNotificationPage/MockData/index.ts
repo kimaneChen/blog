@@ -1,1 +1,1 @@
-export { default } from './MockData'
+export * from './MockData'

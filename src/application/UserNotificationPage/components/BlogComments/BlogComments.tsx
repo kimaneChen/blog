@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Comment from '@/types/Comment'
-import Item, { CommentType } from './components/Item'
+import CommentCard, { ReplyType } from '@/components/CommentCard'
 
 interface Props {
   title: string
@@ -11,17 +11,20 @@ const BlogComments: FC<Props> = ({ title, comments }) => (
   <>
     <h3 className="text-lg font-medium mt-6 mb-3">{title}</h3>
 
-    {comments.map(({ id, user, createdAt, updatedAt, comment }) => (
-      <Item
-        key={id}
-        id={id}
-        user={user}
-        createdAt={createdAt}
-        updatedAt={updatedAt}
-        comment={comment}
-        type={CommentType.Commented}
-      />
-    ))}
+    {comments.map(
+      ({ id, parentId, user, createdAt, updatedAt, comment }) =>
+        parentId === null && (
+          <CommentCard
+            key={id}
+            id={id}
+            user={user}
+            createdAt={createdAt}
+            updatedAt={updatedAt}
+            comment={comment}
+            replyType={ReplyType.Commented}
+          />
+        )
+    )}
   </>
 )
 
