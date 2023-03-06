@@ -1,13 +1,24 @@
-import { FC } from 'react'
+import { FC, useRef } from 'react'
+import EditorJS from '@editorjs/editorjs'
+import dynamic from 'next/dynamic'
+import useBlog from '@/hooks/useBlog'
 
-const Article: FC = () => (
-  <article className="min-w-[780px] pr-[60px]">
-    Contenet 1 of blog goes here...
-    <br />
-    Contenet 2 of blog goes here...
-    <br />
-    Contenet 3 of blog goes here...
-  </article>
-)
+const EditorBlock = dynamic(() => import('@/components/Editor'), {
+  ssr: false,
+})
+
+const Article: FC = () => {
+  const { blog } = useBlog()
+  const editor = useRef<EditorJS | undefined>()
+  const handleEditorInitialize = (instance: EditorJS): void => {
+    editor.current = instance
+  }
+
+  return (
+    <article className="min-w-[780px] pr-[60px] prose">
+      <EditorBlock onInitialize={handleEditorInitialize} data={blog?.content} readOnly />
+    </article>
+  )
+}
 
 export default Article

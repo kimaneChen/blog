@@ -1,21 +1,26 @@
-import EditorJS from '@editorjs/editorjs'
+import EditorJS, { OutputData } from '@editorjs/editorjs'
 import { FC, useEffect, useRef } from 'react'
-import tools from './tools'
+import { editableTools, readOnlyTools } from './tools'
 
 const HOLDER = 'editorjs-container'
 
 interface Props {
   onInitialize: (instance: EditorJS) => void
+  readOnly?: boolean
+  data?: OutputData | undefined
 }
 
-const Editor: FC<Props> = ({ onInitialize }) => {
+const Editor: FC<Props> = ({ onInitialize, readOnly = false, data }) => {
   const ref = useRef<EditorJS>()
+  const tools = readOnly ? readOnlyTools : editableTools
 
   useEffect(() => {
     if (!ref.current) {
       const instance = new EditorJS({
         holder: HOLDER,
         tools,
+        readOnly,
+        data,
       })
       ref.current = instance
 

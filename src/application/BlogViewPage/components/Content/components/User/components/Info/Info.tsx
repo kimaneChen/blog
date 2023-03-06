@@ -2,8 +2,8 @@ import { FC } from 'react'
 import Avatar from '@/components/Avatar'
 
 interface Props {
-  name: string
-  image: string
+  name?: string | null
+  image?: string | null
 }
 
 const Info: FC<Props> = ({ name, image }) => (

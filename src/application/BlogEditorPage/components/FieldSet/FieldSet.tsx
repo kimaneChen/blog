@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import Tags from './components/Tags'
 import Textarea from './components/Textarea'
 
-const EditorBlock = dynamic(() => import('./components/Editor'), {
+const EditorBlock = dynamic(() => import('@/components/Editor'), {
   ssr: false,
 })
 

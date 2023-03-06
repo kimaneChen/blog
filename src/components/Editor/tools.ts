@@ -10,7 +10,7 @@ interface Tools {
   [key: string]: any
 }
 
-const tools: Tools = {
+export const readOnlyTools: Tools = {
   code: Code,
   paragraph: {
     class: Paragraph,
@@ -19,7 +19,6 @@ const tools: Tools = {
       placeholder: 'Change the world from now on',
     },
   },
-  inlineToolbar: ['bold', 'italic'],
 
   heading: {
     class: Header,
@@ -53,4 +52,7 @@ const tools: Tools = {
   },
 }
 
-export default tools
+export const editableTools: Tools = {
+  ...readOnlyTools,
+  inlineToolbar: ['bold', 'italic'],
+}

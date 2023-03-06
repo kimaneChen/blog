@@ -1,6 +1,5 @@
 import { NextPage } from 'next'
-import { useRouter } from 'next/router'
-import useSWR from 'swr'
+import useBlog from '@/hooks/useBlog'
 import Layout from '@/application/Layout'
 import Container, { Size } from '@/components/Container'
 import BackLink from './components/BackLink'
@@ -10,11 +9,9 @@ import AddComments from './components/AddComments'
 import Comments from './components/Comments'
 
 const BlogViewPage: NextPage = () => {
-  const router = useRouter()
-  const { id } = router.query
-  const { data, isLoading } = useSWR(`/api/blogs/${id}`)
+  const { blog, isLoading } = useBlog()
   if (isLoading) return <>Loading...</>
-  if (!data) return null
+  if (!blog) return null
 
   return (
     <Layout>
