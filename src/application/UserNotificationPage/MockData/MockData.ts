@@ -14,6 +14,8 @@ const BLOGSWITHCOMMENTS = [
         },
         createdAt: '40 minutes ago',
         updatedAt: '40 minutes ago',
+        title:
+          'How to Build a Fullstack App with Next.js, Prisma, and PostgreSQL (this is my blog title)',
         comment:
           "Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering. (This is comment's content)",
       },
@@ -27,6 +29,8 @@ const BLOGSWITHCOMMENTS = [
         },
         createdAt: '12 hours ago',
         updatedAt: '12 hours ago',
+        title:
+          'How to Build a Fullstack App with Next.js, Prisma, and PostgreSQL (this is my blog title)',
         comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       },
       {
@@ -39,6 +43,8 @@ const BLOGSWITHCOMMENTS = [
         },
         createdAt: '1 day ago',
         updatedAt: '1 day ago',
+        title:
+          'How to Build a Fullstack App with Next.js, Prisma, and PostgreSQL (this is my blog title)',
         comment:
           'Lorem ipsum dolor sit amet consectetur. Turpis nibh malesuada egestas elementum pellentesque. Adipiscing tempor tristique pretium pretium. Tincidunt euismod lobortis enim placerat tellus ullamcorper nulla nisi.',
       },
@@ -58,6 +64,7 @@ const BLOGSWITHCOMMENTS = [
         },
         createdAt: '50 minutes ago',
         updatedAt: '50 minutes ago',
+        title: 'Using AJAX to Improve User Experience',
         comment:
           'Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.',
       },
@@ -71,6 +78,7 @@ const BLOGSWITHCOMMENTS = [
         },
         createdAt: '20 hours ago',
         updatedAt: '20 hours ago',
+        title: 'Using AJAX to Improve User Experience',
         comment:
           'Lorem ipsum dolor sit amet consectetur. Arcu nulla rhoncus quis et varius. Nisi eget morbi amet vel risus amet tristique blandit eget. Sodales vitae amet amet dictum amet pellentesque. Tempor semper felis a quisque tincidunt. Auctor varius viverra ut eu.',
       },
@@ -84,6 +92,7 @@ const BLOGSWITHCOMMENTS = [
         },
         createdAt: '2 days ago',
         updatedAt: '2 days ago',
+        title: 'Using AJAX to Improve User Experience',
         comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       },
       {
@@ -96,6 +105,7 @@ const BLOGSWITHCOMMENTS = [
         },
         createdAt: 'Feb 20th 2023',
         updatedAt: 'Feb 20th 2023',
+        title: 'Using AJAX to Improve User Experience',
         comment:
           'Lorem ipsum dolor sit amet consectetur. Lobortis elementum fermentum tristique et suscipit ut condimentum.',
       },
@@ -109,6 +119,7 @@ const BLOGSWITHCOMMENTS = [
         },
         createdAt: 'Jan 30th 2023',
         updatedAt: 'Jan 30th 2023',
+        title: 'Using AJAX to Improve User Experience',
         comment: 'Lorem ipsum dolor',
       },
     ],

@@ -6,6 +6,7 @@ interface Comment {
   user: Pick<User, 'id' | 'name' | 'image'>
   createdAt: string
   updatedAt: string
+  title?: string
   comment: string
 }
 
