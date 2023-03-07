@@ -10,10 +10,10 @@ const User: FC = () => {
   const router = useRouter()
   const { id: blogId } = router.query
   const {
-    blog: { userId, user },
+    blog: { user },
   } = useBlog()
 
-  const { data: blogs } = useSWR(`/api/blogs?userId=${userId}&exclude=${blogId}&perPage=2`)
+  const { data: blogs } = useSWR(`/api/blogs?userId=${user?.id}&exclude=${blogId}&perPage=2`)
 
   if (!blogs) return null
 
