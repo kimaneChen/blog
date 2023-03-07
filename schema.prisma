@@ -46,6 +46,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   blogs         Blog[]
+  comments      Comment[] 
 }
 
 model VerificationToken {
@@ -67,10 +68,22 @@ model Blog {
   tags          Tag[]
   content       Json?
   unpublishedAt DateTime?
+  comments      Comment[]
 }
 
 model Tag {
   id   String @id @default(cuid())
   name String @unique
   Blog Blog[]
+}
+
+model Comment {
+  id            String    @id @default(cuid())
+  blogId        String
+  blog          Blog      @relation(fields:[blogId], references: [id], onDelete: Cascade)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  content       String
 }

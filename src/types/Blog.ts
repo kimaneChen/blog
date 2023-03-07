@@ -5,7 +5,6 @@ interface Blog {
   id: string
   createdAt: string
   updatedAt: string
-  userId: string
   title: string
   description: string | null
   unpublishedAt: string | null
