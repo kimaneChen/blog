@@ -39,7 +39,9 @@ const BlogsPage: NextPage = () => {
     <Layout>
       <Container>
         {isTagsLoading ? (
-          <Loading />
+          <div className="h-[700px] flex items-center justify-center">
+            <Loading />
+          </div>
         ) : (
           <section className="flex">
             <div className="min-w-[300px] border-r">
@@ -57,13 +59,15 @@ const BlogsPage: NextPage = () => {
               </div>
             </div>
 
-            <div className="grow py-9 px-5 mx-3">
+            <div className="grow py-9 px-5 mx-3 min-h-[700px]">
               <div className="mb-4">
                 <h1 className="text-3xl font-bold">All Blogs</h1>
               </div>
               <div className="text-on-background">See what&apos;s new on the blog</div>
               {isBlogsLoading ? (
-                <Loading />
+                <div className="mt-[200px]">
+                  <Loading />
+                </div>
               ) : (
                 <>
                   <div className="mt-6">

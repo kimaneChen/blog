@@ -30,7 +30,9 @@ const UserBlogsPage: NextPage = () => {
       </Head>
       <UserLayout>
         {isLoading ? (
-          <Loading />
+          <div className="h-[900px] flex justify-center items-center">
+            <Loading />
+          </div>
         ) : (
           <div className="pt-12 pb-7">
             <div className="flex justify-between items-center mb-6">
