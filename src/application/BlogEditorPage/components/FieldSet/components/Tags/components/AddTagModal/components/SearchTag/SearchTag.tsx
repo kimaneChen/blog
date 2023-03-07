@@ -35,8 +35,8 @@ const SearchTag: FC<Props> = ({ tags, onTagsChange }) => {
         placeholder="Search tags here"
         value={value}
         onChange={(event: ChangeEvent<HTMLInputElement>) => setValue(event.target.value)}
-        prefix={<FiSearch className={value ? 'text-dark' : 'text-[#D9D9D9]'} />}
-        className={value ? 'text-dark' : 'text-[#D9D9D9]'}
+        prefix={<FiSearch className={value ? 'text-dark' : 'text-placeholder'} />}
+        className={value ? 'text-dark' : 'text-placeholder'}
         size={Size.Medium}
       />
       {suggestedTags.length > 0 && (
