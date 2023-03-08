@@ -16,7 +16,6 @@ const Item: FC<Props> = ({ href, label, active = false, onMouseEnter }) => {
     'py-3',
     'text-left',
     'relative',
-
     active && [
       'text-dark',
       'bg-background-variant',
