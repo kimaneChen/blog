@@ -1,7 +1,7 @@
-import { FC, useRef } from 'react'
 import EditorJS from '@editorjs/editorjs'
 import dynamic from 'next/dynamic'
-import useBlog from '@/hooks/useBlog'
+import { FC, useRef } from 'react'
+import useBlog from '../../../../hooks/useBlog'
 
 const EditorBlock = dynamic(() => import('@/components/Editor'), {
   ssr: false,

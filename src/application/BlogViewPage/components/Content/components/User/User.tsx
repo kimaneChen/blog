@@ -1,8 +1,8 @@
-import { FC } from 'react'
-import useSWR from 'swr'
 import Blog from '@/types/Blog'
 import { useRouter } from 'next/router'
-import useBlog from '@/hooks/useBlog'
+import { FC } from 'react'
+import useSWR from 'swr'
+import useBlog from '../../../../hooks/useBlog'
 import Info from './components/Info'
 import LatestBlogHighlight from './components/LatestBlogHighlight'
 

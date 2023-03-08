@@ -1,9 +1,9 @@
 import Date from '@/components/Date'
-import { FC } from 'react'
 import Tag from '@/components/Tag'
-import TagType from '@/types/Tag'
 import DateFormat from '@/types/DateFormat'
-import useBlog from '@/hooks/useBlog'
+import TagType from '@/types/Tag'
+import { FC } from 'react'
+import useBlog from '../../hooks/useBlog'
 
 const BlogTitle: FC = () => {
   const { blog } = useBlog()
