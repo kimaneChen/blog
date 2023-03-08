@@ -11,20 +11,17 @@ const BlogComments: FC<Props> = ({ title, comments }) => (
   <>
     <h3 className="text-lg font-medium mt-6 mb-3">{title}</h3>
 
-    {comments.map(
-      ({ id, parentId, user, createdAt, updatedAt, comment }) =>
-        parentId === null && (
-          <CommentCard
-            key={id}
-            id={id}
-            user={user}
-            createdAt={createdAt}
-            updatedAt={updatedAt}
-            comment={comment}
-            replyType={ReplyType.Commented}
-          />
-        )
-    )}
+    {comments.map(({ id, user, createdAt, updatedAt, content }) => (
+      <CommentCard
+        key={id}
+        id={id}
+        user={user}
+        createdAt={createdAt}
+        updatedAt={updatedAt}
+        comment={content}
+        replyType={ReplyType.Commented}
+      />
+    ))}
   </>
 )
 
