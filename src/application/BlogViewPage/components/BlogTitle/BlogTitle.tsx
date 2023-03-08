@@ -1,7 +1,6 @@
 import Date from '@/components/Date'
 import Tag from '@/components/Tag'
 import DateFormat from '@/types/DateFormat'
-import TagType from '@/types/Tag'
 import { FC } from 'react'
 import useBlog from '../../hooks/useBlog'
 
@@ -17,7 +16,7 @@ const BlogTitle: FC = () => {
       {blog.description && <h3 className="text-lg text-on-background mb-3">{blog.description}</h3>}
       {blog.tags && (
         <div className="flex gap-2 text-on-background py-1">
-          {blog.tags.map((tag: TagType) => (
+          {blog.tags.map((tag) => (
             <Tag key={tag.id}>{tag.name}</Tag>
           ))}
         </div>
