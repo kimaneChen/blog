@@ -9,10 +9,12 @@ interface Props {
   className?: string
 }
 
-const UserLayout: FC<Props> = ({ children, className }) => {
+const UserLayout: FC<Props> = ({ children, className = undefined }) => {
   const { data: session } = useSession()
 
-  if (!session) return null
+  if (!session) {
+    return null
+  }
 
   return (
     <>

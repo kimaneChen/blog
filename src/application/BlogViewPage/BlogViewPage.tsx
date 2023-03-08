@@ -12,7 +12,9 @@ import useBlog from './hooks/useBlog'
 
 const BlogViewPage: NextPage = () => {
   const { blog, isLoading } = useBlog()
-  if (!blog) return null
+  if (!blog) {
+    return null
+  }
 
   return (
     <Layout>

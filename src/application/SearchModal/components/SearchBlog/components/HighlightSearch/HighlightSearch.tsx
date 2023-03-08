@@ -7,7 +7,7 @@ interface HighlightSearchProps {
   className?: string
 }
 
-const HighlightSearch: FC<HighlightSearchProps> = ({ text, search, className }) => {
+const HighlightSearch: FC<HighlightSearchProps> = ({ text, search, className = undefined }) => {
   const regex = new RegExp(`(${search})`, 'gi')
   const parts = text.split(regex)
 

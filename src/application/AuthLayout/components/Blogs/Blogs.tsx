@@ -9,7 +9,9 @@ const BLOGS_LIMIT = 2
 const Blogs: FC = () => {
   const { data } = useSWR(`/api/blogs?perPage=${BLOGS_LIMIT}`)
 
-  if (!data) return null
+  if (!data) {
+    return null
+  }
 
   return (
     <>

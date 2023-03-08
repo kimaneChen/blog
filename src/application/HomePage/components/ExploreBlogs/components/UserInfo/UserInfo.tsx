@@ -8,7 +8,7 @@ interface Props {
   image?: User['image']
 }
 
-const UserInfo: FC<Props> = ({ name, image }) => {
+const UserInfo: FC<Props> = ({ name = undefined, image = undefined }) => {
   const className = classNames(
     'md:min-w-[25%]',
     'md:h-[200px]',

@@ -12,11 +12,13 @@ const Header: FC = () => {
   const router = useRouter()
   const [currentActive, setCurrentActive] = useState(router.pathname)
 
-  if (!session?.user) return null
+  if (!session?.user) {
+    return null
+  }
 
   return (
     <Dropdown
-      toggle={<Avatar src={session.user?.image} alt={session.user?.name} width={30} height={30} />}
+      toggle={<Avatar src={session.user.image} alt={session.user.name} width={30} height={30} />}
     >
       <div
         className="absolute right-0 w-[185px] mt-3 py-4 bg-background rounded shadow-dropdown"

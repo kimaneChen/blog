@@ -10,7 +10,7 @@ interface Props {
   data?: OutputData | undefined
 }
 
-const Editor: FC<Props> = ({ onInitialize, readOnly = false, data }) => {
+const Editor: FC<Props> = ({ onInitialize, readOnly = false, data = undefined }) => {
   const ref = useRef<EditorJS>()
   const tools = readOnly ? readOnlyTools : editableTools
 

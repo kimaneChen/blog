@@ -16,7 +16,7 @@ const createBlog: NextApiHandler = async (req, res) => {
     return
   }
 
-  if (!session?.user?.email) {
+  if (!session.user?.email) {
     const { statusCode, message } = Boom.badData().output.payload
     res.status(statusCode).json(message)
 
@@ -33,7 +33,7 @@ const createBlog: NextApiHandler = async (req, res) => {
         content,
         user: {
           connect: {
-            email: session.user?.email,
+            email: session.user.email,
           },
         },
         tags: {

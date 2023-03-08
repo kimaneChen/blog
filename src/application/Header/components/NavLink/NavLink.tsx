@@ -1,7 +1,11 @@
 import { FC, ReactNode } from 'react'
 import Link from 'next/link'
 import classNames from 'classnames'
-import { Variant } from '@/components/Button'
+
+export enum Variant {
+  Light,
+  Dark,
+}
 
 interface Props {
   children: ReactNode
@@ -9,7 +13,7 @@ interface Props {
   variant?: Variant
 }
 
-const NavLink: FC<Props> = ({ children, href, variant }) => {
+const NavLink: FC<Props> = ({ children, href, variant = Variant.Light }) => {
   const className = classNames(
     'py-1',
     'px-2',

@@ -3,7 +3,7 @@ import { ChangeEventHandler, forwardRef } from 'react'
 interface Props {
   className: string
   placeholder: string
-  onChange?: ChangeEventHandler
+  onChange: ChangeEventHandler
 }
 
 const Textarea = forwardRef<HTMLTextAreaElement, Props>(
@@ -12,9 +12,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, Props>(
       const textarea = event.target
       textarea.style.height = '0px'
       textarea.style.height = `${textarea.scrollHeight}px`
-      if (onChange) {
-        onChange(event)
-      }
+      onChange(event)
     }
 
     return (

@@ -14,9 +14,13 @@ const Article: FC = () => {
     editor.current = instance
   }
 
+  if (!blog) {
+    return null
+  }
+
   return (
     <article className="min-w-[780px] pr-[60px] prose">
-      <EditorBlock onInitialize={handleEditorInitialize} data={blog?.content} readOnly />
+      <EditorBlock onInitialize={handleEditorInitialize} data={blog.content} readOnly />
     </article>
   )
 }

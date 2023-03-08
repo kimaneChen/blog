@@ -1,9 +1,9 @@
-import { FC, ReactNode } from 'react'
-import Blog from '@/types/Blog'
 import Avatar from '@/components/Avatar'
-import Tag from '@/components/Tag'
 import Date from '@/components/Date'
+import Tag from '@/components/Tag'
+import Blog from '@/types/Blog'
 import classNames from 'classnames'
+import { FC, ReactNode } from 'react'
 
 export interface Props {
   date: string
@@ -17,7 +17,14 @@ export interface Props {
   unframed?: boolean
 }
 
-const BlogOverview: FC<Props> = ({ date, title, children, avatar, tags, unframed = false }) => {
+const BlogOverview: FC<Props> = ({
+  date,
+  title,
+  children,
+  avatar = undefined,
+  tags,
+  unframed = false,
+}) => {
   const className = classNames(
     'bg-background',
     !unframed && ['border', 'rounded-xl', 'py-4', 'px-6']
@@ -35,7 +42,7 @@ const BlogOverview: FC<Props> = ({ date, title, children, avatar, tags, unframed
           ))}
         </div>
 
-        {avatar && <Avatar width={28} height={28} alt={avatar?.alt} src={avatar?.src} />}
+        {avatar && <Avatar width={28} height={28} alt={avatar.alt} src={avatar.src} />}
       </div>
     </article>
   )

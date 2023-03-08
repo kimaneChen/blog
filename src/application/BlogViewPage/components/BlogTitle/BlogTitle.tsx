@@ -7,6 +7,10 @@ import useBlog from '../../hooks/useBlog'
 const BlogTitle: FC = () => {
   const { blog } = useBlog()
 
+  if (!blog) {
+    return null
+  }
+
   return (
     <header className="max-w-[980px] my-6 pt-3">
       <Date className="text-sm text-on-background" format={DateFormat.LongDate}>

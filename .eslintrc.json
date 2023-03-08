@@ -3,12 +3,18 @@
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
+    "eslint:recommended",
     "next/core-web-vitals",
     "plugin:prettier/recommended"
   ],
   "rules": {
+    "curly": [
+      "error",
+      "all"
+    ],
     "arrow-body-style": "error",
     "no-restricted-exports": "off",
+    "@typescript-eslint/no-unnecessary-condition": "error",
     "react/function-component-definition": [
       "error",
       {
@@ -17,9 +23,8 @@
       }
     ],
     "react/require-default-props": [
-      0,
+      "error",
       {
-        "classes": "defaultProps",
         "functions": "defaultArguments"
       }
     ],

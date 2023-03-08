@@ -12,7 +12,7 @@ interface Props {
   size?: Size
 }
 
-const Container: FC<Props> = ({ size = Size.Default, children, className }) => (
+const Container: FC<Props> = ({ size = Size.Default, children, className = undefined }) => (
   <div className={classNames(size, 'mx-auto', className)}>{children}</div>
 )
 

@@ -14,7 +14,9 @@ export const BLOGS_PER_PAGE = 10
 const ExploreBlogs: FC = () => {
   const { data: blogs } = useSWR(`/api/blogs?perPage=${BLOGS_PER_PAGE}`)
 
-  if (!blogs) return null
+  if (!blogs) {
+    return null
+  }
 
   return (
     <div className="md:px-12 pt-20 pb-40">

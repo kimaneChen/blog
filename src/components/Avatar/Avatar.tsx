@@ -9,7 +9,7 @@ interface Props {
   height: number
 }
 
-const Avatar: FC<Props> = ({ src, alt, width, height }) => (
+const Avatar: FC<Props> = ({ src = undefined, alt = undefined, width, height }) => (
   <Image
     src={src || defaultAvatar}
     alt={alt || 'Avatar Placeholder'}
