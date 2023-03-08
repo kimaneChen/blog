@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { FiSearch } from 'react-icons/fi'
 import NakedInput from '@/components/NakedInput'
-import SearchModal from '@/components/SearchModal'
+import SearchModal from '@/application/SearchModal'
 
 const Description: FC = () => {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false)

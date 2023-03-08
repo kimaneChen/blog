@@ -1,6 +1,6 @@
 import Layout from '@/application/Layout'
-import BlogOverview from '@/components/BlogOverview'
-import LoadMoreButton from '@/components/LoadMoreButton'
+import BlogOverview from '@/application/BlogOverview'
+import LoadMoreButton from '@/application/LoadMoreButton'
 import Tag from '@/types/Tag'
 import { NextPage } from 'next'
 import Router, { useRouter } from 'next/router'

@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react'
 import { useSession } from 'next-auth/react'
-import Header from '@/components/Header'
+import Header from '@/application/Header'
 import classNames from 'classnames'
 import Navigation from './components/Navigation'
 
@@ -18,7 +18,7 @@ const UserLayout: FC<Props> = ({ children, className }) => {
     <>
       <Header />
       <Navigation />
-      <div className={classNames('max-w-[1300px]', 'mx-auto', className)}>{children}</div>
+      <div className={classNames('max-w-[1300px]', 'mx-auto', 'px-6', className)}>{children}</div>
     </>
   )
 }

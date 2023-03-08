@@ -9,7 +9,11 @@ const Loading: FC = () => {
     const timeout = setTimeout(() => {
       if (numOfDots < 3) {
         setNumOfDots((prev) => prev + 1)
+
+        return
       }
+
+      setNumOfDots(0)
     }, 300)
 
     return () => {

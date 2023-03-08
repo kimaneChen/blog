@@ -2,8 +2,8 @@ import { NextPage } from 'next'
 import { FaGithub } from 'react-icons/fa'
 import { signIn } from 'next-auth/react'
 import SignUpPageLayout from '@/application/SignUpPageLayout'
-import AuthButton from '@/components/AuthButton'
-import ContinueWithEmailButton from '@/components/ContinueWithEmailButton'
+import AuthButton from '@/application/AuthButton'
+import ContinueWithEmailButton from '@/application/ContinueWithEmailButton'
 
 const SignUpPage: NextPage = () => (
   <SignUpPageLayout>

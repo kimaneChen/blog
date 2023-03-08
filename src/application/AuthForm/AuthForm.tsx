@@ -7,7 +7,7 @@ import checkEmail from '@/apis/checkEmail'
 import Type from '@/types/AuthType'
 import { Variant } from '@/components/Button'
 import Error from '@/components/Error'
-import AuthButton from '@/components/AuthButton'
+import AuthButton from '@/application/AuthButton'
 import Input from '@/components/Input'
 import CheckEmailModal from './components/CheckEmailModal'
 

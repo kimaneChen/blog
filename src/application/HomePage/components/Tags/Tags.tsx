@@ -1,4 +1,4 @@
-import CreateANewBlogButton from '@/components/CreateANewBlogButton'
+import CreateANewBlogButton from '@/application/CreateANewBlogButton'
 import Tag from '@/types/Tag'
 import { chunk } from 'lodash'
 import { FC } from 'react'

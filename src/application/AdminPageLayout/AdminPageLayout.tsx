@@ -1,5 +1,5 @@
 import Container from '@/components/Container'
-import Header from '@/components/Header'
+import Header from '@/application/Header'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'

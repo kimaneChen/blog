@@ -1,5 +1,5 @@
-import AuthButton from '@/components/AuthButton'
-import ContinueWithEmailButton from '@/components/ContinueWithEmailButton'
+import AuthButton from '@/application/AuthButton'
+import ContinueWithEmailButton from '@/application/ContinueWithEmailButton'
 import { NextPage } from 'next'
 import { signIn } from 'next-auth/react'
 import { FaGithub } from 'react-icons/fa'
