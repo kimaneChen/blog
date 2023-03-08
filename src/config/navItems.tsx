@@ -25,8 +25,8 @@ const navItems = [
   },
   {
     id: uuidv4(),
-    href: '/user/settings',
-    label: 'Settings',
+    href: '/user/profile',
+    label: 'Profile',
     icon: <FiSettings />,
   },
 ]
