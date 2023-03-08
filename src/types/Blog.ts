@@ -1,16 +1,12 @@
-import User from '@/types/User'
-import Tag from '@/types/Tag'
+import { Blog as PrismaBlog, User as PrismaUser, Tag as PrismaTag } from '@prisma/client'
 
-interface Blog {
-  id: string
+interface Blog extends Pick<PrismaBlog, 'id' | 'title' | 'description'> {
   createdAt: string
   updatedAt: string
-  title: string
-  description: string | null
   unpublishedAt: string | null
-  content: any | null
-  user?: Pick<User, 'id' | 'name' | 'email' | 'image'>
-  tags?: Tag[]
+  content: any
+  user?: Pick<PrismaUser, 'id' | 'name' | 'email' | 'image'>
+  tags?: Pick<PrismaTag, 'id' | 'name'>[]
 }
 
 export default Blog

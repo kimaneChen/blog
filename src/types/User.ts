@@ -1,11 +1,8 @@
-interface User {
-  id: string
+import { User as PrismaUser } from '@prisma/client'
+
+interface User extends Pick<PrismaUser, 'id' | 'name' | 'email' | 'image'> {
   createdAt: string
   updatedAt: string
-  name?: string | null
-  email?: string | null
-  emailVerified?: string | null
-  image?: string | null
 }
 
 export default User

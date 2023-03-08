@@ -1,6 +1,6 @@
-interface AvatarProps {
+interface Avatar {
   src?: string | null
   alt: string
 }
 
-export default AvatarProps
+export default Avatar

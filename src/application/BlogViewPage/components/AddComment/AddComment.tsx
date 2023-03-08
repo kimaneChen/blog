@@ -9,7 +9,7 @@ import createComment from '@/apis/createComment'
 import router from 'next/router'
 import { Comment } from '@/schemas/Comment'
 
-const AddComments: FC = () => {
+const AddComment: FC = () => {
   const { data: session } = useSession()
   const [focused, setFocused] = useState(false)
   const { id: blogId } = router.query
@@ -83,4 +83,4 @@ const AddComments: FC = () => {
   )
 }
 
-export default AddComments
+export default AddComment

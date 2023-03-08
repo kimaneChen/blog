@@ -4,8 +4,8 @@ import User from '@/types/User'
 import Avatar from '@/components/Avatar'
 
 interface Props {
-  name: User['name']
-  image: User['image']
+  name?: User['name']
+  image?: User['image']
 }
 
 const UserInfo: FC<Props> = ({ name, image }) => {

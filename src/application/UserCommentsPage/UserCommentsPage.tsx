@@ -1,13 +1,12 @@
-import { NextPage } from 'next'
 import UserLayout from '@/application/UserLayout'
+import { NextPage } from 'next'
 import Comments from './components/Comments'
-import MockData from './MockData'
 
 const UserCommentsPage: NextPage = () => (
   <UserLayout className="mt-10">
-    {MockData.map((item) => (
-      <Comments key={item.id} date={item.date} comments={item.comments} />
-    ))}
+    <Comments />
+    <Comments />
+    <Comments />
   </UserLayout>
 )
 

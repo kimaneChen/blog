@@ -1,11 +1,10 @@
-import { useState } from 'react'
-import { NextPage } from 'next'
-import classNames from 'classnames'
 import UserLayout from '@/application/UserLayout'
 import Button, { Size, Variant } from '@/components/Button'
-import CommentCard, { ReplyType } from '@/components/CommentCard'
-import BlogComments from './components/BlogComments'
-import { MYBLOGSWITHCOMMENTS, MYCOMMENTS } from './MockData'
+import classNames from 'classnames'
+import { NextPage } from 'next'
+import { useState } from 'react'
+import Item, { CommentType } from './components/Item'
+import Quote from './components/Quote/Quote'
 
 enum Tabs {
   Blogs = 'Blogs',
@@ -33,28 +32,47 @@ const UserNotificationPage: NextPage = () => {
         ))}
       </div>
 
-      {currentActive === Tabs.Blogs &&
-        MYBLOGSWITHCOMMENTS.map(({ id, title, comments }) => (
-          <BlogComments key={id} title={title} comments={comments} />
-        ))}
+      {currentActive === Tabs.Blogs && (
+        <div>
+          <h3 className="text-lg font-medium mt-6 mb-3">
+            How to Build a Fullstack App with Next.js, Prisma, and PostgreSQL
+          </h3>
+          <Item type={CommentType.Commented}>
+            Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
+          </Item>
+          <Item type={CommentType.Commented}>
+            Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
+          </Item>
+          <Item type={CommentType.Commented}>
+            Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
+          </Item>
+        </div>
+      )}
 
-      {currentActive === Tabs.Comments &&
-        MYCOMMENTS.map(
-          ({ comment, replies }) =>
-            replies.length > 0 &&
-            replies.map(({ id, user, createdAt, updatedAt, comment: replyComment }) => (
-              <CommentCard
-                key={id}
-                id={id}
-                user={user}
-                createdAt={createdAt}
-                updatedAt={updatedAt}
-                comment={comment}
-                replyComment={replyComment}
-                replyType={ReplyType.Replied}
-              />
-            ))
-        )}
+      {currentActive === Tabs.Comments && (
+        <div>
+          <Item type={CommentType.Replied}>
+            <Quote reference="Lorem ipsum dolor sit amet consectetur">
+              Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
+            </Quote>
+          </Item>
+          <Item type={CommentType.Replied}>
+            <Quote reference="Lorem ipsum dolor sit amet consectetur">
+              Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
+            </Quote>
+          </Item>
+          <Item type={CommentType.Replied}>
+            <Quote reference="Lorem ipsum dolor sit amet consectetur">
+              Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
+            </Quote>
+          </Item>
+          <Item type={CommentType.Replied}>
+            <Quote reference="Lorem ipsum dolor sit amet consectetur">
+              Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
+            </Quote>
+          </Item>
+        </div>
+      )}
     </UserLayout>
   )
 }

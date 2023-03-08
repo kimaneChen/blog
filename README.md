@@ -59,15 +59,15 @@ npx dotenv-cli -e .env.local -- npx prisma generate
 
 ## Types
 
+Using types for request and response data helps ensure that the data is properly validated and formatted, reducing the likelihood of errors and bugs.
+
 ### Request
 
 The project uses [Zod](https://github.com/colinhacks/zod) for schema validation and type inference. All request data should be validated against the schema defined in the `./src/schemas` folder, and the types should be inferred from the schema using Zod.
 
 ### Response
 
-The response data should always have a corresponding type defined in the `./src/types` folder. The types should be based on the structure of the response data and should be named to reflect the response.
-
-Using types for request and response data helps ensure that the data is properly validated and formatted, reducing the likelihood of errors and bugs.
+The response data should always have a corresponding type defined in the `./src/types` folder. The types should be based on and picked from the Prisma-generated types in `@prisma/client`. You may need to add any additional properties or overrides as needed.
 
 ## Code Quality
 

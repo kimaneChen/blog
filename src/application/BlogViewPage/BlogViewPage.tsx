@@ -1,14 +1,14 @@
-import { NextPage } from 'next'
-import useBlog from '@/hooks/useBlog'
 import Layout from '@/application/Layout'
 import Container, { Size } from '@/components/Container'
 import Loading from '@/components/Loading'
+import useBlog from '@/hooks/useBlog'
+import { NextPage } from 'next'
+import AddComment from './components/AddComment'
 import BackLink from './components/BackLink'
 import BlogTitle from './components/BlogTitle'
-import Content from './components/Content'
-import AddComments from './components/AddComments'
 import Comments from './components/Comments'
 import CommentsUserList from './components/CommentsUserList'
+import Content from './components/Content'
 
 const BlogViewPage: NextPage = () => {
   const { blog, isLoading } = useBlog()
@@ -31,7 +31,7 @@ const BlogViewPage: NextPage = () => {
           </Container>
           <hr />
           <Container size={Size.Narrow}>
-            <AddComments />
+            <AddComment />
             <CommentsUserList />
             <Comments />
           </Container>
