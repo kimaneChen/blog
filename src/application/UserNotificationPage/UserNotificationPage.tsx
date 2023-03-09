@@ -72,7 +72,7 @@ const UserNotificationPage: NextPage = () => {
 
       {currentActive === Tabs.Comments && (
         <div>
-          <Item type={CommentType.Replied} >
+          <Item type={CommentType.Replied}>
             <Quote reference="Lorem ipsum dolor sit amet consectetur">
               Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
             </Quote>
