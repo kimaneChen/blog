@@ -45,7 +45,7 @@ const BlogsPage: NextPage = () => {
         ) : (
           <section className="flex">
             <div className="min-w-[300px] border-r">
-              <div className="pr-5 mt-9">
+              <div className="pr-5 mt-9 mb-[120px]">
                 <div>Filters</div>
                 <div>
                   {tags && (
@@ -59,7 +59,7 @@ const BlogsPage: NextPage = () => {
               </div>
             </div>
 
-            <div className="grow py-9 px-5 mx-3 min-h-[700px]">
+            <div className="grow pt-9 pb-[75px] px-5 mx-3 min-h-[700px]">
               <div className="mb-4">
                 <h1 className="text-3xl font-bold">All Blogs</h1>
               </div>
@@ -72,7 +72,7 @@ const BlogsPage: NextPage = () => {
                 <>
                   <div className="mt-6">
                     {blogs.map((blog) => (
-                      <div key={blog.id} className="mb-6">
+                      <div key={blog.id} className="mb-5">
                         <Link href={`/blogs/${blog.id}`}>
                           <BlogOverview
                             title={blog.title}

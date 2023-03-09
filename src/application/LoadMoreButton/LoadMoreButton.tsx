@@ -8,7 +8,7 @@ interface Props {
 }
 
 const LoadMoreButton: FC<Props> = ({ hasMore, children, onLoadMore }) => (
-  <div className="text-center">
+  <div className="text-center mt-5">
     {hasMore ? (
       <Button variant={Variant.Outline} onClick={onLoadMore}>
         {children}
