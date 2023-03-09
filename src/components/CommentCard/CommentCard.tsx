@@ -16,7 +16,7 @@ interface Props extends Comment {
 const CommentCard: FC<Props> = ({
   user,
   createdAt,
-  comment,
+  content,
   replyType,
   replyComment = 'No reply from others yet',
 }) => (
@@ -34,11 +34,11 @@ const CommentCard: FC<Props> = ({
       <div className="px-7">
         <p className="mb-2">{replyComment}</p>
         <p className="text-sm text-on-background before:border-l-4 before:rounded-lg before:h-full before:mr-1">
-          {comment}
+          {content}
         </p>
       </div>
     ) : (
-      <p className="px-7 mb-2">{comment}</p>
+      <p className="px-7 mb-2">{content}</p>
     )}
   </div>
 )
