@@ -8,9 +8,10 @@ interface Props {
   onInitialize: (instance: EditorJS) => void
   readOnly?: boolean
   data?: OutputData | undefined
+  onReady?: () => void
 }
 
-const Editor: FC<Props> = ({ onInitialize, readOnly = false, data }) => {
+const Editor: FC<Props> = ({ onInitialize, readOnly = false, data, onReady }) => {
   const ref = useRef<EditorJS>()
   const tools = readOnly ? readOnlyTools : editableTools
 
@@ -21,6 +22,7 @@ const Editor: FC<Props> = ({ onInitialize, readOnly = false, data }) => {
         tools,
         readOnly,
         data,
+        onReady,
       })
       ref.current = instance
 

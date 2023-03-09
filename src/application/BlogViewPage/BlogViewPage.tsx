@@ -13,20 +13,16 @@ import CommentsUserList from './components/CommentsUserList'
 
 const BlogViewPage: NextPage = () => {
   const { blog, isLoading } = useBlog()
-  const { query } = useRouter()
+  // const { query } = useRouter()
 
-  useEffect(() => {
-    if (query?.scrollTo) {
-      setTimeout(() => document.getElementById(query.scrollTo as string)?.scrollIntoView(), 500)
-    }
-  }, [query.scrollTo])
-
-  // useEffect(() =>setTimeout(()=>,500), [])
+  // useEffect(() => {
+  //   if (query?.scrollTo) {
+  //     document.getElementById(query.scrollTo as string)?.scrollIntoView()
+  //   }
+  // }, [query.scrollTo])
 
   if (isLoading) return <>Loading...</>
   if (!blog) return null
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
 
   return (
     <Layout>
