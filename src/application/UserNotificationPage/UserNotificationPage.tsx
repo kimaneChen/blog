@@ -1,13 +1,16 @@
-import { useState } from 'react'
-import { NextPage } from 'next'
-import classNames from 'classnames'
 import UserLayout from '@/application/UserLayout'
 import Button, { Size, Variant } from '@/components/Button'
-import CommentCard, { ReplyType } from '@/components/CommentCard'
+//import CommentCard, { ReplyType } from '@/components/CommentCard'
 import useSWR from 'swr'
 import Loading from '@/components/Loading'
-import BlogComments from './components/BlogComments'
-import { MYCOMMENTS } from './MockData'
+//import BlogComments from './components/BlogComments'
+//import { MYCOMMENTS } from './MockData'
+import classNames from 'classnames'
+import { NextPage } from 'next'
+import { useState } from 'react'
+import Item, { CommentType } from './components/Item'
+import Quote from './components/Quote/Quote'
+import AuthMessageToast from './components/AuthMessageToast'
 
 enum Tabs {
   Blogs = 'Blogs',
@@ -23,6 +26,7 @@ const UserNotificationPage: NextPage = () => {
 
   return (
     <UserLayout className="px-7 pt-6 mt-10 border rounded-xl">
+      <AuthMessageToast />
       <div className="flex gap-5 mb-6">
         {Object.values(Tabs).map((tab) => (
           <Button
@@ -39,7 +43,7 @@ const UserNotificationPage: NextPage = () => {
         ))}
       </div>
 
-      {currentActive === Tabs.Blogs &&
+      {/* {currentActive === Tabs.Blogs &&
         (isCommentsLoading ? (
           <div className="h-[630px] flex items-center justify-center">
             <Loading />
@@ -47,32 +51,51 @@ const UserNotificationPage: NextPage = () => {
         ) : (
           blogsWithComments &&
           blogsWithComments.map((comment: any) => (
-            <BlogComments
-              key={comment.blog.id}
-              title={comment.blog.title}
-              blogId={comment.blog.id}
-              comments={comment.blog.comments}
-            />
+            // <BlogComments
+            //   key={comment.blog.id}
+            //   title={comment.blog.title}
+            //   blogId={comment.blog.id}
+            //   comments={comment.blog.comments}
+            // />
           ))
-        ))}
+        ))} */}
+      {currentActive === Tabs.Blogs && blogsWithComments && blogsWithComments.map((comment: any)=>(
+        <div id={comment.blog.id}>
+          <h3 className="text-lg font-medium mt-6 mb-3">
+            {comment.blog.title}
+          </h3>
+          {comment.blog.comments.map((comment: any)=> (
+            <Item type={CommentType.Commented}>
+              {comment.content}
+            </Item>))}
+        </div>
+      ))}
+      
 
-      {currentActive === Tabs.Comments &&
-        MYCOMMENTS.map(
-          ({ comment, replies }) =>
-            replies.length > 0 &&
-            replies.map(({ id, user, createdAt, updatedAt, comment: replyComment }) => (
-              <CommentCard
-                key={id}
-                id={id}
-                user={user}
-                createdAt={createdAt}
-                updatedAt={updatedAt}
-                comment={comment}
-                replyComment={replyComment}
-                replyType={ReplyType.Replied}
-              />
-            ))
-        )}
+      {currentActive === Tabs.Comments && (
+        <div>
+          <Item type={CommentType.Replied}>
+            <Quote reference="Lorem ipsum dolor sit amet consectetur">
+              Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
+            </Quote>
+          </Item>
+          <Item type={CommentType.Replied}>
+            <Quote reference="Lorem ipsum dolor sit amet consectetur">
+              Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
+            </Quote>
+          </Item>
+          <Item type={CommentType.Replied}>
+            <Quote reference="Lorem ipsum dolor sit amet consectetur">
+              Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
+            </Quote>
+          </Item>
+          <Item type={CommentType.Replied}>
+            <Quote reference="Lorem ipsum dolor sit amet consectetur">
+              Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
+            </Quote>
+          </Item>
+        </div>
+      )}
     </UserLayout>
   )
 }

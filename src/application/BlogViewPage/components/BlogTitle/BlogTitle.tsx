@@ -1,12 +1,15 @@
 import Date from '@/components/Date'
-import { FC } from 'react'
 import Tag from '@/components/Tag'
-import TagType from '@/types/Tag'
 import DateFormat from '@/types/DateFormat'
-import useBlog from '@/hooks/useBlog'
+import { FC } from 'react'
+import useBlog from '../../hooks/useBlog'
 
 const BlogTitle: FC = () => {
   const { blog } = useBlog()
+
+  if (!blog) {
+    return null
+  }
 
   return (
     <header className="max-w-[980px] my-6 pt-3">
@@ -17,7 +20,7 @@ const BlogTitle: FC = () => {
       {blog.description && <h3 className="text-lg text-on-background mb-3">{blog.description}</h3>}
       {blog.tags && (
         <div className="flex gap-2 text-on-background py-1">
-          {blog.tags.map((tag: TagType) => (
+          {blog.tags.map((tag) => (
             <Tag key={tag.id}>{tag.name}</Tag>
           ))}
         </div>

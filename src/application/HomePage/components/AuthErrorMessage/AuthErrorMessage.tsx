@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { BsExclamationCircleFill } from 'react-icons/bs'
+import Toast, { Position, Variant } from '@/components/Toast'
 
 const ERROR = {
   OAuthSignin: 'Error in constructing an authorization.',
@@ -18,7 +18,7 @@ const ERROR = {
 
 const AuthErrorMessage: FC = () => {
   const router = useRouter()
-  const error = (router.query.error as keyof typeof ERROR) || null
+  const error = router.query.error as keyof typeof ERROR
   const [authErrorMessage, setAuthErrorMessage] = useState<string | null>(null)
 
   useEffect(() => {
@@ -33,13 +33,14 @@ const AuthErrorMessage: FC = () => {
     }
   }, [error])
 
-  if (!authErrorMessage) return null
+  if (!authErrorMessage) {
+    return null
+  }
 
   return (
-    <div className="fixed flex items-center py-3 top-[120px] left-1/2 translate-x-[-50%] px-[60px] gap-3 border rounded-lg border-error bg-background text-error">
-      <BsExclamationCircleFill />
+    <Toast position={Position.Center} variant={Variant.Error}>
       {authErrorMessage}
-    </div>
+    </Toast>
   )
 }
 

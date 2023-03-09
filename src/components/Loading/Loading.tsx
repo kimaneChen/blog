@@ -1,5 +1,6 @@
 import { FC, useState, useEffect } from 'react'
 import { BiRocket } from 'react-icons/bi'
+import classNames from 'classnames'
 
 const Loading: FC = () => {
   const [numOfDots, setNumOfDots] = useState(0)
@@ -8,7 +9,11 @@ const Loading: FC = () => {
     const timeout = setTimeout(() => {
       if (numOfDots < 3) {
         setNumOfDots((prev) => prev + 1)
+
+        return
       }
+
+      setNumOfDots(0)
     }, 300)
 
     return () => {
@@ -17,7 +22,7 @@ const Loading: FC = () => {
   }, [numOfDots])
 
   return (
-    <div className="flex flex-col justify-center items-center gap-2 min-h-[75vh] text-placeholder">
+    <div className={classNames('flex', 'flex-col', 'items-center', 'gap-2', 'text-placeholder')}>
       <BiRocket className="w-12 h-12" />
       <div className="flex gap-1 w-44 px-12 py-3">
         <div>Loading</div>

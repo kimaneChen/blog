@@ -1,6 +1,6 @@
 import Layout from '@/application/Layout'
-import BlogOverview from '@/components/BlogOverview'
-import LoadMoreButton from '@/components/LoadMoreButton'
+import BlogOverview from '@/application/BlogOverview'
+import LoadMoreButton from '@/application/LoadMoreButton'
 import Tag from '@/types/Tag'
 import { NextPage } from 'next'
 import Router, { useRouter } from 'next/router'
@@ -39,11 +39,13 @@ const BlogsPage: NextPage = () => {
     <Layout>
       <Container>
         {isTagsLoading ? (
-          <Loading />
+          <div className="h-[700px] flex items-center justify-center">
+            <Loading />
+          </div>
         ) : (
           <section className="flex">
             <div className="min-w-[300px] border-r">
-              <div className="pr-5 mt-9">
+              <div className="pr-5 mt-9 mb-[120px]">
                 <div>Filters</div>
                 <div>
                   {tags && (
@@ -57,18 +59,20 @@ const BlogsPage: NextPage = () => {
               </div>
             </div>
 
-            <div className="grow py-9 px-5 mx-3">
+            <div className="grow pt-9 pb-[75px] px-5 mx-3 min-h-[700px]">
               <div className="mb-4">
                 <h1 className="text-3xl font-bold">All Blogs</h1>
               </div>
               <div className="text-on-background">See what&apos;s new on the blog</div>
               {isBlogsLoading ? (
-                <Loading />
+                <div className="mt-[200px]">
+                  <Loading />
+                </div>
               ) : (
                 <>
                   <div className="mt-6">
                     {blogs.map((blog) => (
-                      <div key={blog.id} className="mb-6">
+                      <div key={blog.id} className="mb-5">
                         <Link href={`/blogs/${blog.id}`}>
                           <BlogOverview
                             title={blog.title}

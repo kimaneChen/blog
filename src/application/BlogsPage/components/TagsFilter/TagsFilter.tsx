@@ -22,7 +22,7 @@ const TagsFilter: FC<Props> = ({ tags, selectedTags, onTagSelect }) => {
         <Option
           name={tag.name}
           key={tag.id}
-          selected={selectedTags?.includes(tag.name)}
+          selected={selectedTags.includes(tag.name)}
           onSelect={() => onTagSelect(tag.name)}
         />
       ))}
@@ -30,7 +30,7 @@ const TagsFilter: FC<Props> = ({ tags, selectedTags, onTagSelect }) => {
         <Option
           name={name}
           key={name}
-          selected={selectedTags?.includes(name)}
+          selected={selectedTags.includes(name)}
           onSelect={() => onTagSelect(name)}
         />
       ))}

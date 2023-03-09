@@ -1,5 +1,5 @@
 import LoginPageLayout from '@/application/LoginPageLayout'
-import OtherOptionsButton from '@/components/OtherOptionsButton'
+import OtherOptionsButton from '@/application/OtherOptionsButton'
 import { NextPage } from 'next'
 import Type from '@/types/AuthType'
 import AuthForm from '@/application/AuthForm'

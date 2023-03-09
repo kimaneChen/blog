@@ -5,9 +5,9 @@ import Link from 'next/link'
 import useSWRInfinite from 'swr/infinite'
 import Blog from '@/types/Blog'
 import UserLayout from '@/application/UserLayout'
-import LoadMoreButton from '@/components/LoadMoreButton'
-import BlogOverview from '@/components/BlogOverview'
-import CreateANewBlogButton from '@/components/CreateANewBlogButton'
+import LoadMoreButton from '@/application/LoadMoreButton'
+import BlogOverview from '@/application/BlogOverview'
+import CreateANewBlogButton from '@/application/CreateANewBlogButton'
 import Loading from '@/components/Loading'
 import noBlogAlert from './assets/noblog-alert.svg'
 
@@ -30,7 +30,9 @@ const UserBlogsPage: NextPage = () => {
       </Head>
       <UserLayout>
         {isLoading ? (
-          <Loading />
+          <div className="h-[900px] flex justify-center items-center">
+            <Loading />
+          </div>
         ) : (
           <div className="pt-12 pb-7">
             <div className="flex justify-between items-center mb-6">

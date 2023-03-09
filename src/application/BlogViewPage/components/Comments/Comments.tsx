@@ -2,7 +2,7 @@ import useSWRInfinite from 'swr/infinite'
 import { FC } from 'react'
 import { useRouter } from 'next/router'
 import Comment from '@/types/Comment'
-import LoadMoreButton from '@/components/LoadMoreButton'
+import LoadMoreButton from '@/application/LoadMoreButton'
 import Item from './components/Item'
 
 const Comments: FC = () => {

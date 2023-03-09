@@ -1,6 +1,6 @@
 import deleteBlog from '@/apis/admin/deleteBlog'
 import publishBlog from '@/apis/admin/publishBlog'
-import BlogOverview from '@/components/BlogOverview'
+import BlogOverview from '@/application/BlogOverview'
 import Button, { Size, Variant } from '@/components/Button'
 import Blog from '@/types/Blog'
 import { FC } from 'react'

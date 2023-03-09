@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import Logo from '@/components/Logo'
-import Signature from '@/components/Signature'
+import Logo from '@/application/Logo'
+import Signature from '@/application/Signature'
 
 const Header: FC = () => (
   <div>

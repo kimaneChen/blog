@@ -1,8 +1,8 @@
-import { FC, useRef } from 'react'
 import EditorJS from '@editorjs/editorjs'
 import dynamic from 'next/dynamic'
-import useBlog from '@/hooks/useBlog'
 import { useRouter } from 'next/router'
+import { FC, useRef } from 'react'
+import useBlog from '../../../../hooks/useBlog'
 
 const EditorBlock = dynamic(() => import('@/components/Editor'), {
   ssr: false,
@@ -16,16 +16,20 @@ const Article: FC = () => {
     editor.current = instance
   }
   const handleEditorOnReady = (): void => {
-    if (query?.scrollTo) {
+    if (query.scrollTo) {
       document.getElementById(query.scrollTo as string)?.scrollIntoView()
     }
+  }
+
+  if (!blog) {
+    return null
   }
 
   return (
     <article className="min-w-[780px] pr-[60px] prose">
       <EditorBlock
         onInitialize={handleEditorInitialize}
-        data={blog?.content}
+        data={blog.content}
         readOnly
         onReady={handleEditorOnReady}
       />

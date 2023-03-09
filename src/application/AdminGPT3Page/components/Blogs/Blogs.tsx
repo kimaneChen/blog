@@ -31,7 +31,9 @@ const Blogs: FC = () => {
   `)
 
   const blogs = useMemo<GPT3Blog[] | null>(() => {
-    if (!data) return null
+    if (!data) {
+      return null
+    }
 
     try {
       return JSON.parse(data).map((item: RawGPT3Blog) => ({

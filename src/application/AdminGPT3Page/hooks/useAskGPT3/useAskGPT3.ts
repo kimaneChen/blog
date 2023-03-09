@@ -19,7 +19,9 @@ function useAskGPT3(prompt: string): Result {
   }
 
   const data = useMemo<string | null>(() => {
-    if (!response) return null
+    if (!response) {
+      return null
+    }
 
     return response.data.choices[0].message.content
   }, [response])

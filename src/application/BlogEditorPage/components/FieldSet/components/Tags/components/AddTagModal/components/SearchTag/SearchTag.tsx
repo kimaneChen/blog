@@ -22,7 +22,9 @@ const SearchTag: FC<Props> = ({ tags, onTagsChange }) => {
   }
 
   const suggestedTags = useMemo<string[]>(() => {
-    if (!isValid) return []
+    if (!isValid) {
+      return []
+    }
 
     return data?.length
       ? [value, ...data.map((tag) => tag.name).filter((name) => name !== value)]

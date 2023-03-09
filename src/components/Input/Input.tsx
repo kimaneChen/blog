@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import { forwardRef, InputHTMLAttributes, ReactNode } from 'react'
 import classNames from 'classnames'
 
@@ -9,7 +10,6 @@ export enum Size {
 }
 
 export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'> {
-  placeholder?: string
   prefix?: ReactNode
   suffix?: ReactNode
   size?: Size
@@ -18,13 +18,21 @@ export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size
 }
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ placeholder, prefix, suffix, className, size = Size.Normal, error, ...props }, ref) => (
+  (
+    {
+      prefix = undefined,
+      suffix = undefined,
+      className = undefined,
+      size = Size.Normal,
+      error = undefined,
+      ...props
+    },
+    ref
+  ) => (
     <div className={classNames({ relative: prefix || suffix })}>
       {prefix && <div className="absolute top-0 bottom-0 flex items-center left-3">{prefix}</div>}
       <input
         ref={ref}
-        type="text"
-        placeholder={placeholder}
         className={classNames(
           'w-full',
           'border',

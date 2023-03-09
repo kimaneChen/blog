@@ -1,21 +1,23 @@
-import { FC } from 'react'
-import useSWR from 'swr'
 import Blog from '@/types/Blog'
 import { useRouter } from 'next/router'
-import useBlog from '@/hooks/useBlog'
+import { FC } from 'react'
+import useSWR from 'swr'
+import useBlog from '../../../../hooks/useBlog'
 import Info from './components/Info'
 import LatestBlogHighlight from './components/LatestBlogHighlight'
 
 const User: FC = () => {
   const router = useRouter()
   const { id: blogId } = router.query
-  const {
-    blog: { user },
-  } = useBlog()
+  const { blog } = useBlog()
 
-  const { data: blogs } = useSWR(`/api/blogs?userId=${user?.id}&exclude=${blogId}&perPage=2`)
+  const user = blog?.user
 
-  if (!blogs) return null
+  const { data: blogs } = useSWR(user && `/api/blogs?userId=${user.id}&exclude=${blogId}&perPage=2`)
+
+  if (!blogs) {
+    return null
+  }
 
   return (
     <div className="border-l pl-9 py-3">

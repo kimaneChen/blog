@@ -18,7 +18,9 @@ const Users: FC = () => {
   )
 
   const users = useMemo<GPT3User[] | null>(() => {
-    if (!data) return null
+    if (!data) {
+      return null
+    }
 
     try {
       return JSON.parse(data).map((name: string) => {

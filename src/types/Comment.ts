@@ -1,17 +1,9 @@
-import User from '@/types/User'
-import Blog from '@/types/Blog'
+import { Comment as PrismaComment, User as PrismaUser } from '@prisma/client'
 
-interface Comment {
-  id: string
+interface Comment extends Pick<PrismaComment, 'id' | 'content'> {
   createdAt: string
-  updatedAt?: string
-  content?: any
-  user?: Pick<User, 'id' | 'name' | 'email' | 'image'>
-  blog?: Pick<Blog, 'id' | 'title'>
-  title?: string
-  comment: string
-  replies?: Comment[]
-  parentId?: string | null
+  updatedAt: string
+  user?: Pick<PrismaUser, 'id' | 'name' | 'email' | 'image'>
 }
 
 export default Comment
