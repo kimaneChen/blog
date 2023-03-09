@@ -7,6 +7,7 @@ import BackLink from './components/BackLink'
 import BlogTitle from './components/BlogTitle'
 import Comments from './components/Comments'
 import CommentsUserList from './components/CommentsUserList'
+import PublishStatusMessage from './components/PublishStatusMessage'
 import Content from './components/Content'
 import useBlog from './hooks/useBlog'
 
@@ -18,6 +19,7 @@ const BlogViewPage: NextPage = () => {
 
   return (
     <Layout>
+      <PublishStatusMessage />
       {isLoading ? (
         <div className="h-[700px] flex items-center justify-center">
           <Loading />

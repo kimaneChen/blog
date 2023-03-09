@@ -5,6 +5,7 @@ import { NextPage } from 'next'
 import { useState } from 'react'
 import Item, { CommentType } from './components/Item'
 import Quote from './components/Quote/Quote'
+import AuthMessageToast from './components/AuthMessageToast'
 
 enum Tabs {
   Blogs = 'Blogs',
@@ -16,6 +17,7 @@ const UserNotificationPage: NextPage = () => {
 
   return (
     <UserLayout className="px-7 pt-6 mt-10 border rounded-xl">
+      <AuthMessageToast />
       <div className="flex gap-5 mb-6">
         {Object.values(Tabs).map((tab) => (
           <Button

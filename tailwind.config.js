@@ -19,6 +19,7 @@ module.exports = {
       warn: '#fff4e5',
       'on-warn': '#663c00',
       link: '#0070F3',
+      success: '#37D42A',
     },
     borderColor: {
       DEFAULT: '#EAEAEA',
@@ -26,6 +27,7 @@ module.exports = {
       error: 'red',
       warn: '#fff4e5',
       primary: '#F36F37',
+      success: '#37D42A',
     },
     extend: {
       typography: (theme) => ({
@@ -51,9 +53,9 @@ module.exports = {
         dropdown: '0 2px 5px 2px #EAEAEA',
       },
       fontSize: {
-        sx: ['12px','18px'],
+        sx: ['12px', '18px'],
         sm: ['14px', '22px'],
-      }
+      },
     },
     fontFamily: {
       sans: ['var(--font-inter)', ...fontFamily.sans],

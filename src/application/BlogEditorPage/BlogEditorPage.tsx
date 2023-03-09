@@ -8,6 +8,7 @@ import { useRef, useState } from 'react'
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
 import useSWRMutation from 'swr/mutation'
 import { useRouter } from 'next/router'
+import { useNotification } from '@/context/NotificationContext'
 import ActionButtons from './components/ActionButtons'
 import FieldSet from './components/FieldSet'
 
@@ -16,6 +17,8 @@ const BlogEditorPage: NextPage = () => {
   const router = useRouter()
 
   const [tags, setTags] = useState<string[]>([])
+
+  const { setMessage } = useNotification()
 
   const { trigger, isMutating } = useSWRMutation('/api/user/blogs', (_, { arg: data }) =>
     createBlog({
@@ -39,6 +42,7 @@ const BlogEditorPage: NextPage = () => {
       const response = await trigger({ ...data, content })
       if (response?.status === 200) {
         router.push(`/blogs/${response.data?.id}`)
+        setMessage('Published successfully')
       }
     } catch (error) {
       // TODO: Error Handling

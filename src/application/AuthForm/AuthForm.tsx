@@ -1,7 +1,6 @@
 import React, { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { FiMail } from 'react-icons/fi'
-import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 import checkEmail from '@/apis/checkEmail'
 import Type from '@/types/AuthType'
@@ -9,6 +8,7 @@ import { Variant } from '@/components/Button'
 import Error from '@/components/Error'
 import AuthButton from '@/application/AuthButton'
 import Input from '@/components/Input'
+import handleSignIn from '@/utils/handleSignIn'
 import CheckEmailModal from './components/CheckEmailModal'
 
 enum EmailErrorMessage {
@@ -33,12 +33,7 @@ const AuthForm: FC<Props> = ({ type }) => {
 
   const onSubmit = async (data: any): Promise<void> => {
     setIsLoading(true)
-    const redirectUrl = localStorage.getItem('redirect_url') || '/user/notifications'
-    await signIn('email', {
-      callbackUrl: redirectUrl,
-      email: data.email,
-      redirect: false,
-    })
+    await handleSignIn('email', { email: data.email, redirect: false })
     setIsShowCheckEmailModal(true)
     setIsLoading(false)
   }
