@@ -12,9 +12,9 @@ interface Props {
 const FormattedTime: FC<Props> = ({
   children,
   className = undefined,
-  format = DateFormat.ISODate,
+  format = DateFormat.Default,
 }) => {
-  if (differenceInDays(new Date(children), new Date()) <= 3) {
+  if (differenceInDays(new Date(), new Date(children)) <= 3) {
     return (
       <time dateTime={children} className={className}>
         {formatDistanceToNowStrict(new Date(children), { addSuffix: true })}
