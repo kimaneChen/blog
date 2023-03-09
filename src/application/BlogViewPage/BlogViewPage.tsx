@@ -1,6 +1,4 @@
-import { useEffect } from 'react'
 import { NextPage } from 'next'
-import { useRouter } from 'next/router'
 import useBlog from '@/hooks/useBlog'
 import Layout from '@/application/Layout'
 import Container, { Size } from '@/components/Container'
@@ -13,13 +11,6 @@ import CommentsUserList from './components/CommentsUserList'
 
 const BlogViewPage: NextPage = () => {
   const { blog, isLoading } = useBlog()
-  // const { query } = useRouter()
-
-  // useEffect(() => {
-  //   if (query?.scrollTo) {
-  //     document.getElementById(query.scrollTo as string)?.scrollIntoView()
-  //   }
-  // }, [query.scrollTo])
 
   if (isLoading) return <>Loading...</>
   if (!blog) return null

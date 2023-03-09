@@ -46,12 +46,12 @@ const UserNotificationPage: NextPage = () => {
           </div>
         ) : (
           blogsWithComments &&
-          blogsWithComments.map(({ blog }) => (
+          blogsWithComments.map((comment: any) => (
             <BlogComments
-              key={blog.id}
-              title={blog.title}
-              comments={blog.comments}
-              blogId={blog.id}
+              key={comment.blog.id}
+              title={comment.blog.title}
+              blogId={comment.blog.id}
+              comments={comment.blog.comments}
             />
           ))
         ))}
