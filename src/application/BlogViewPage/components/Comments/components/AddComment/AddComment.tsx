@@ -1,45 +1,49 @@
-import { FC, useState } from 'react'
-import Button, { Size, Variant } from '@/components/Button'
+import createComment from '@/apis/createComment'
 import Avatar from '@/components/Avatar'
+import Button, { Size, Variant } from '@/components/Button'
+import { Comment } from '@/schemas/Comment'
 import classNames from 'classnames'
 import { useSession } from 'next-auth/react'
-import { useForm, SubmitHandler } from 'react-hook-form'
-import useSWRMutation from 'swr/mutation'
-import createComment from '@/apis/createComment'
 import router from 'next/router'
-import { Comment } from '@/schemas/Comment'
+import { FC, useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
-const AddComment: FC = () => {
+interface Props {
+  onSuccess: () => void
+}
+
+const AddComment: FC<Props> = ({ onSuccess }) => {
   const { data: session } = useSession()
   const [focused, setFocused] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
   const { id: blogId } = router.query
-  const COMMENTS_PER_PAGE = 5
-  const { trigger } = useSWRMutation(
-    `/api/blogs/${blogId}/comments?page=1&perPage=${COMMENTS_PER_PAGE}`,
-    (_, { arg: data }) =>
-      createComment({
-        blogId,
-        ...data,
-      })
-  )
 
   const { handleSubmit, reset, watch, register, formState } = useForm<Pick<Comment, 'content'>>()
-  const content = watch('content')
   const { isValid } = formState
+  const content = watch('content')
+
   const onSubmit: SubmitHandler<Pick<Comment, 'content'>> = async (data) => {
-    if (!session) {
+    if (!session || !blogId) {
       return
     }
     try {
-      const response = await trigger(data)
-      if (response?.status === 200) {
-        reset()
-      }
+      setIsLoading(true)
+
+      await createComment({
+        blogId: blogId as string,
+        ...data,
+      })
+
+      reset()
+      onSuccess()
     } catch (error) {
       // TODO: Error Handling
       // eslint-disable-next-line no-console
       console.log(error)
     }
+
+    setIsLoading(false)
   }
 
   return (
@@ -73,7 +77,13 @@ const AddComment: FC = () => {
         </div>
         {(focused || content) && (
           <div className="my-4 flex justify-end">
-            <Button variant={Variant.Dark} size={Size.Small} disabled={!isValid} type="submit">
+            <Button
+              isLoading={isLoading}
+              variant={Variant.Dark}
+              size={Size.Small}
+              disabled={!isValid}
+              type="submit"
+            >
               Comment
             </Button>
           </div>

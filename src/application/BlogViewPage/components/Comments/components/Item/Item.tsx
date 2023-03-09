@@ -18,7 +18,7 @@ const Item: FC<Props> = ({ content, createdAt, user }) => {
   const { data: session } = useSession()
   return (
     <section className="px-5 py-4 mb-4 bg-background-variant rounded-xl flex gap-3">
-      <div>
+      <div className="min-w-[20px]">
         <Avatar src={user?.image} alt={user?.name} width={20} height={20} />
       </div>
       <div className="grow">
@@ -29,14 +29,22 @@ const Item: FC<Props> = ({ content, createdAt, user }) => {
             <Date className="text-sm text-on-background" format={DateFormat.LongTime}>
               {createdAt}
             </Date>
-            {session?.user && <div>Reply</div>}
-            {session?.user?.email === user?.email && (
+            {session?.user && (
               <>
-                <div>Delete</div>
                 <BsDot />
+                <button type="button">Reply</button>
               </>
             )}
-            <FaRegSmile />
+            {session?.user?.email === user?.email && (
+              <>
+                <BsDot />
+                <button type="button">Delete</button>
+              </>
+            )}
+            <BsDot />
+            <button type="button">
+              <FaRegSmile />
+            </button>
           </div>
           <div className="flex items-center">
             {`${0} Replies`} <MdKeyboardArrowDown />
