@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import Comment from '@/types/Comment'
 import Avatar from '@/components/Avatar'
+import FormattedTime from '../FormattedTime'
 
 export enum ReplyType {
   Replied = 'Replied',
@@ -25,7 +26,9 @@ const CommentCard: FC<Props> = ({
       <div>{user?.name}</div>
       <div className="text-on-background">{replyType}</div>
       <hr className="h-5 border-r border-dark" />
-      <div className="text-on-background">{createdAt}</div>
+      <div className="text-on-background">
+        <FormattedTime>{createdAt}</FormattedTime>
+      </div>
     </div>
     {replyType === ReplyType.Replied ? (
       <div className="px-7">

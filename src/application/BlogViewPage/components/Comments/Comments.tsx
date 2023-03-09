@@ -23,6 +23,7 @@ const Comments: FC = () => {
     <div className="pr-24">
       {comments.map((comment) => (
         <Item
+          id={comment.id}
           key={comment.id}
           content={comment.content}
           createdAt={comment.createdAt}

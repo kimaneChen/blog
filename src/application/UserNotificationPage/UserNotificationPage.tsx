@@ -5,6 +5,7 @@ import UserLayout from '@/application/UserLayout'
 import Button, { Size, Variant } from '@/components/Button'
 import CommentCard, { ReplyType } from '@/components/CommentCard'
 import useSWR from 'swr'
+import Loading from '@/components/Loading'
 import BlogComments from './components/BlogComments'
 import { MYCOMMENTS } from './MockData'
 
@@ -16,9 +17,9 @@ enum Tabs {
 const UserNotificationPage: NextPage = () => {
   const [currentActive, setCurrentActive] = useState(Tabs.Blogs)
 
-  const { data: blogsWithComments, isLoading } = useSWR('/api/user/blogsWithComments')
-
-  console.log('blogsWithComments', blogsWithComments)
+  const { data: blogsWithComments, isLoading: isCommentsLoading } = useSWR(
+    '/api/user/blogsWithComments'
+  )
 
   return (
     <UserLayout className="px-7 pt-6 mt-10 border rounded-xl">
@@ -39,9 +40,20 @@ const UserNotificationPage: NextPage = () => {
       </div>
 
       {currentActive === Tabs.Blogs &&
-        blogsWithComments &&
-        blogsWithComments.map(({ blog }) => (
-          <BlogComments key={blog.id} title={blog.title} comments={blog.comments} />
+        (isCommentsLoading ? (
+          <div className="h-[630px] flex items-center justify-center">
+            <Loading />
+          </div>
+        ) : (
+          blogsWithComments &&
+          blogsWithComments.map(({ blog }) => (
+            <BlogComments
+              key={blog.id}
+              title={blog.title}
+              comments={blog.comments}
+              blogId={blog.id}
+            />
+          ))
         ))}
 
       {currentActive === Tabs.Comments &&
