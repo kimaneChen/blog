@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react'
 import AuthLayout from '@/application/AuthLayout'
-import Type from '@/types/AuthType'
+import AuthType from '@/types/AuthType'
 import LegalPolicy from './components/LegalPolicy'
 import ExistingAccount from './components/ExistingAccount'
 
@@ -9,7 +9,7 @@ export interface Props {
 }
 
 const SignUpPageLayout: FC<Props> = ({ children }) => (
-  <AuthLayout type={Type.SignUp}>
+  <AuthLayout type={AuthType.SignUp}>
     <section>
       {children}
       <div className="mt-12">

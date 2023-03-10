@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import Type from '@/types/AuthType'
+import AuthType from '@/types/AuthType'
 import AuthLayout from '@/application/AuthLayout'
 import NoAccount from './components/NoAccount'
 
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const LoginPageLayout: FC<Props> = ({ children }) => (
-  <AuthLayout type={Type.Login}>
+  <AuthLayout type={AuthType.Login}>
     <section>
       {children}
       <NoAccount />

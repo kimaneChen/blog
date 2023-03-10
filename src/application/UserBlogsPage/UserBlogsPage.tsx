@@ -40,7 +40,7 @@ const UserBlogsPage: NextPage = () => {
               <CreateANewBlogButton>Create a new Blog</CreateANewBlogButton>
             </div>
             {!blogs.length ? (
-              <div className="bg-background-variant min-h-[80vh] flex justify-center items-center rounded-lg">
+              <div className="bg-background-variant min-h-[800px] flex justify-center items-center rounded-lg">
                 <div className="flex flex-col items-center">
                   <Image src={noBlogAlert} alt="No Blogs" className="w-12 h-12 mb-5" />
                   <p className="text-on-background">

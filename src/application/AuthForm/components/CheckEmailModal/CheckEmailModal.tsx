@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import Type from '@/types/AuthType'
+import AuthType from '@/types/AuthType'
 import Modal, { Overlay, Size } from '@/components/Modal'
 
 interface Props {
-  type: Type
+  type: AuthType
   email: string
   onClose: () => void
 }
@@ -14,8 +14,8 @@ const CheckEmailModal: FC<Props> = ({ type, email, onClose }) => (
       <div className="text-center">
         <h2 className="text-4xl font-bold mb-5">Email Verification</h2>
         <p className="text-base font-medium text-on-background">
-          {type === Type.SignUp && 'Thanks for joining us! '}
-          {type === Type.Login && 'Welcome to Chuckroo! '}
+          {type === AuthType.SignUp && 'Thanks for joining us! '}
+          {type === AuthType.Login && 'Welcome to Chuckroo! '}
           We just sent a link to <span className="text-dark">{email}</span>, please check your
           email.
         </p>

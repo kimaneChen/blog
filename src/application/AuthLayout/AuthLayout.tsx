@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import Type from '@/types/AuthType'
+import AuthType from '@/types/AuthType'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import Header from './components/Header'
@@ -9,7 +9,7 @@ import Section, { Position } from './components/Section'
 
 interface Props {
   children: ReactNode
-  type: Type
+  type: AuthType
 }
 
 const AuthLayout: FC<Props> = ({ children, type }) => {
@@ -31,8 +31,8 @@ const AuthLayout: FC<Props> = ({ children, type }) => {
         </Section>
         <Section position={Position.Right}>
           <h1 className="text-4xl font-medium mb-4">
-            {type === Type.Login && `Log In`}
-            {type === Type.SignUp && (
+            {type === AuthType.Login && `Log In`}
+            {type === AuthType.SignUp && (
               <>
                 Join <br />
                 and Comment

@@ -33,7 +33,7 @@ const BlogEditorPage: NextPage = () => {
   }
 
   const onSubmit: SubmitHandler<Blog> = async (data) => {
-    if (!session) {
+    if (!session?.user) {
       return
     }
 
