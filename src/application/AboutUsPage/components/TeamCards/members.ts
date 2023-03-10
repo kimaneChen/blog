@@ -1,72 +1,85 @@
+import bruce from './assets/bruce.svg'
+import long from './assets/long.svg'
+import chelsea from './assets/chelsea.svg'
+import ryann from './assets/ryann.svg'
+import ethan from './assets/ethan.svg'
+import jeremy from './assets/jeremy.svg'
+import jerry from './assets/jerry.svg'
+import kim from './assets/kim.svg'
+import linghan from './assets/linghan.svg'
+import nash from './assets/nash.svg'
+import vivi from './assets/vivi.svg'
+import mitch from './assets/mitch.svg'
+
 const members = [
   {
-    imgSrc: '/image/long.png',
+    svg: long,
     name: 'Long Zhao',
     title: '@Leader',
     link: 'https://www.linkedin.com/in/long-zhao-32a96916a',
   },
   {
-    imgSrc: '/image/chelsea.png',
+    svg: chelsea,
     name: 'Meiyi(Chelsea) Cao',
     title: '@Business Analyst',
     link: 'https://www.linkedin.com/in/chelsea-cao-b470b7192',
   },
   {
-    imgSrc: '/image/bruce.png',
+    svg: bruce,
     name: 'Bruce Wang',
     title: '@Business Analyst',
     link: 'https://www.linkedin.com/in/bruce-w-409971209',
   },
   {
-    imgSrc: '/image/ryann.png',
+    svg: ryann,
     name: 'Yiran(Ryann) Ma',
     title: '@UI Designer',
-    link: 'https://www.linkedin.com/in/yiran-ma-496376267',
+    link: 'https://www.linkedin.com/in/ryann-yiran-ma',
   },
   {
-    imgSrc: '/image/ethan.png',
+    svg: ethan,
     name: 'Hao(Ethan) Tang',
     title: '@Developer',
     link: 'https://www.linkedin.com/in/ethanhaotang',
   },
   {
-    imgSrc: '/image/jeremy.png',
+    svg: jeremy,
     name: 'Jeremy Huang',
     title: '@Developer',
-    link: 'https://www.linkedin.com/in/jeremy-huang-0428a9267',
+    link: 'https://www.linkedin.com/in/jeremy-huang-au',
   },
   {
-    imgSrc: '/image/jerry.png',
+    svg: jerry,
     name: 'Jerry Gao',
     title: '@Developer',
     link: 'https://www.linkedin.com/in/jerrygaoau',
   },
   {
-    imgSrc: '/image/Kim.png',
+    svg: kim,
     name: 'Kimane Chen',
     title: '@Developer',
     link: 'https://www.linkedin.com/in/kimanechen',
   },
   {
-    imgSrc: '/image/linghan.png',
-    name: 'Linghan Song',
+    svg: linghan,
+    name: 'Ling.H Song',
     title: '@Developer',
-    link: 'https://www.linkedin.com/in/linghan-song-7b3134176',
+    link: 'https://www.linkedin.com/in/ling-h-song',
   },
   {
-    imgSrc: '/image/nash.png',
+    svg: nash,
     name: 'Longcheng(Nash) Zhao',
     title: '@Developer',
     link: 'https://www.linkedin.com/in/nash-zhao-au',
   },
   {
-    imgSrc: '/image/vivi.png',
+    svg: vivi,
     name: 'Vivian Xu',
     title: '@Developer',
     link: 'https://www.linkedin.com/in/vivian-xu-fullstack',
   },
   {
-    imgSrc: '/image/mitch.png',
+    svg: mitch,
     name: 'Yifan(Mitchell) Zhang',
     title: '@Developer',
     link: 'https://www.linkedin.com/in/yifan-zhang-681224127',
