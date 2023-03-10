@@ -34,16 +34,16 @@ const UserBlogsPage: NextPage = () => {
             <Loading />
           </div>
         ) : (
-          <div className="pt-12 pb-7">
+          <div>
             <div className="flex justify-between items-center mb-6">
-              <h1 className="text-4xl">Blogs</h1>
+              <h1 className="text-[32px] font-bold">Blogs</h1>
               <CreateANewBlogButton>Create a new Blog</CreateANewBlogButton>
             </div>
             {!blogs.length ? (
               <div className="bg-background-variant min-h-[80vh] flex justify-center items-center rounded-lg">
-                <div className="flex flex-col items-center ">
-                  <Image src={noBlogAlert} alt="No Blogs" className="w-12 h-12 mb-6" />
-                  <p className="text-placeholder">
+                <div className="flex flex-col items-center">
+                  <Image src={noBlogAlert} alt="No Blogs" className="w-12 h-12 mb-5" />
+                  <p className="text-on-background">
                     Your blog page is looking a little empty. It&rsquo;s time to fill it with your
                     amazing content. Create a new blog post now!
                   </p>
