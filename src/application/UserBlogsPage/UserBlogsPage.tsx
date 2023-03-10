@@ -1,14 +1,14 @@
+import BlogOverview from '@/application/BlogOverview'
+import CreateANewBlogButton, { Size } from '@/application/CreateANewBlogButton'
+import LoadMoreButton from '@/application/LoadMoreButton'
+import UserLayout from '@/application/UserLayout'
+import Loading from '@/components/Loading'
+import Blog from '@/types/Blog'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import useSWRInfinite from 'swr/infinite'
-import Blog from '@/types/Blog'
-import UserLayout from '@/application/UserLayout'
-import LoadMoreButton from '@/application/LoadMoreButton'
-import BlogOverview from '@/application/BlogOverview'
-import CreateANewBlogButton from '@/application/CreateANewBlogButton'
-import Loading from '@/components/Loading'
 import noBlogAlert from './assets/noblog-alert.svg'
 
 const BLOGS_PER_PAGE = 3
@@ -37,7 +37,7 @@ const UserBlogsPage: NextPage = () => {
           <div>
             <div className="flex justify-between items-center mb-6">
               <h1 className="text-[32px] font-bold">Blogs</h1>
-              <CreateANewBlogButton>Create a new Blog</CreateANewBlogButton>
+              <CreateANewBlogButton size={Size.Medium}>Create a new Blog</CreateANewBlogButton>
             </div>
             {!blogs.length ? (
               <div className="bg-background-variant min-h-[800px] flex justify-center items-center rounded-lg">

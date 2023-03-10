@@ -1,14 +1,17 @@
-import Button, { Variant, Size, Props as ButtonProps } from '@/components/Button'
-import { FC, ReactNode } from 'react'
+import Button, { Props as ButtonProps, Size, Variant } from '@/components/Button'
 import Router from 'next/router'
+import { FC, ReactNode } from 'react'
+
+export { Size } from '@/components/Button'
 
 interface Props extends ButtonProps {
   children: ReactNode
+  size?: Size
 }
-const CreateANewBlogButton: FC<Props> = ({ children, className }) => (
+const CreateANewBlogButton: FC<Props> = ({ children, size = Size.Normal, className }) => (
   <Button
     variant={Variant.Dark}
-    size={Size.Medium}
+    size={size}
     onClick={() => Router.push('/new-blog')}
     className={className}
   >
