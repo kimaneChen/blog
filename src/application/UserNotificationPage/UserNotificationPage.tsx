@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import { NextPage } from 'next'
 import { useState } from 'react'
 import Link from 'next/link'
+import Comment from '@/types/Comment'
 import Item, { CommentType } from './components/Item'
 import Quote from './components/Quote/Quote'
 import AuthMessageToast from './components/AuthMessageToast'
@@ -48,22 +49,23 @@ const UserNotificationPage: NextPage = () => {
           </div>
         ) : (
           blogsWithComments &&
-          blogsWithComments.map((item: any) => (
-            <Link href={`/blogs/${item.blog.id}`} key={item.blog.id}>
-              <div id={item.blog.id}>
-                <h3 className="text-lg font-medium mt-6 mb-3">{item.blog.title}</h3>
-                {item.blog.comments.map((comment: any) => (
-                  <Link href={`/blogs/${item.blog.id}?scrollTo=${comment.id}`} key={comment.id}>
-                    <Item
-                      key={comment.id}
-                      type={CommentType.Commented}
-                      user={comment.user}
-                      createdAt={comment.createdAt}
-                    >
-                      {comment.content}
-                    </Item>
-                  </Link>
-                ))}
+          blogsWithComments.map((item: Comment) => (
+            <Link href={`/blogs/${item.blogId}`} key={item.blogId}>
+              <div id={item.blogId}>
+                <h3 className="text-lg font-medium mt-6 mb-3">{item.blog?.title}</h3>
+                {item.blog.comment &&
+                  item.blog?.comments.map((comment: Comment) => (
+                    <Link href={`/blogs/${item.blogId}?scrollTo=${comment.id}`} key={comment.id}>
+                      <Item
+                        key={comment.id}
+                        type={CommentType.Commented}
+                        user={comment.user}
+                        createdAt={comment.createdAt}
+                      >
+                        {comment.content}
+                      </Item>
+                    </Link>
+                  ))}
               </div>
             </Link>
           ))
