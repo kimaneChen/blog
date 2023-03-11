@@ -71,22 +71,38 @@ const UserNotificationPage: NextPage = () => {
 
       {currentActive === Tabs.Comments && (
         <div>
-          <Item type={CommentType.Replied}>
+          <Item
+            type={CommentType.Replied}
+            user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
+            createdAt="2023-03-03"
+          >
             <Quote reference="Lorem ipsum dolor sit amet consectetur">
               Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
             </Quote>
           </Item>
-          <Item type={CommentType.Replied}>
+          <Item
+            type={CommentType.Replied}
+            user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
+            createdAt="2023-03-03"
+          >
             <Quote reference="Lorem ipsum dolor sit amet consectetur">
               Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
             </Quote>
           </Item>
-          <Item type={CommentType.Replied}>
+          <Item
+            type={CommentType.Replied}
+            user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
+            createdAt="2023-03-03"
+          >
             <Quote reference="Lorem ipsum dolor sit amet consectetur">
               Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
             </Quote>
           </Item>
-          <Item type={CommentType.Replied}>
+          <Item
+            type={CommentType.Replied}
+            user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
+            createdAt="2023-03-03"
+          >
             <Quote reference="Lorem ipsum dolor sit amet consectetur">
               Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
             </Quote>
