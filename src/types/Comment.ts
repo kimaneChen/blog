@@ -1,11 +1,10 @@
-import { Comment as PrismaComment, User as PrismaUser } from '@prisma/client'
-import Blog from './Blog'
+import { Comment as PrismaComment, User as PrismaUser, Blog as PrismaBlog } from '@prisma/client'
 
 interface Comment extends Pick<PrismaComment, 'id' | 'content' | 'blogId'> {
   createdAt: string
   updatedAt: string
   user?: Pick<PrismaUser, 'id' | 'name' | 'email' | 'image'>
-  blog?: Blog
+  blog?: Pick<PrismaBlog, 'id' | 'title'>
 }
 
 export default Comment
