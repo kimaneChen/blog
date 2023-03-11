@@ -23,7 +23,7 @@ const Item: FC<Props> = ({ type, children, user, createdAt }) => (
       <div>{type}</div>
       <hr className="h-5 border-r" />
       <div>
-        <FormattedTime>{createdAt as string}</FormattedTime>
+        <FormattedTime>{createdAt}</FormattedTime>
       </div>
     </div>
     <p className="pl-7">{children}</p>

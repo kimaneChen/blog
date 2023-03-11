@@ -6,7 +6,6 @@ import classNames from 'classnames'
 import { NextPage } from 'next'
 import { useState } from 'react'
 import Link from 'next/link'
-import Comment from '@/types/Comment'
 import Blog from '@/types/Blog'
 import Item, { CommentType } from './components/Item'
 import Quote from './components/Quote/Quote'
@@ -50,13 +49,13 @@ const UserNotificationPage: NextPage = () => {
           </div>
         ) : (
           blogsWithComments &&
-          blogsWithComments.map((item: Blog) => (
-            <Link href={`/blogs/${item.blogId}`} key={item.blogId}>
-              <div id={item.blogId}>
-                <h3 className="text-lg font-medium mt-6 mb-3">{item.blog?.title}</h3>
-                {item.blog?.comments &&
-                  item.blog.comments.map((comment: any) => (
-                    <Link href={`/blogs/${item.blogId}?scrollTo=${comment.id}`} key={comment.id}>
+          blogsWithComments.map((blog: Blog) => (
+            <Link href={`/blogs/${blog.id}`} key={blog.id}>
+              <div id={blog.id}>
+                <h3 className="text-lg font-medium mt-6 mb-3">{blog.title}</h3>
+                {blog.comments &&
+                  blog.comments.map((comment) => (
+                    <Link href={`/blogs/${blog.id}?scrollTo=${comment.id}`} key={comment.id}>
                       <Item
                         key={comment.id}
                         type={CommentType.Commented}
@@ -77,7 +76,7 @@ const UserNotificationPage: NextPage = () => {
           <Item
             type={CommentType.Replied}
             user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
-            createdAt="2023-03-03"
+            createdAt={new Date('2023-03-03')}
           >
             <Quote reference="Lorem ipsum dolor sit amet consectetur">
               Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
@@ -86,7 +85,7 @@ const UserNotificationPage: NextPage = () => {
           <Item
             type={CommentType.Replied}
             user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
-            createdAt="2023-03-03"
+            createdAt={new Date('2023-03-03')}
           >
             <Quote reference="Lorem ipsum dolor sit amet consectetur">
               Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
@@ -95,7 +94,7 @@ const UserNotificationPage: NextPage = () => {
           <Item
             type={CommentType.Replied}
             user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
-            createdAt="2023-03-03"
+            createdAt={new Date('2023-03-03')}
           >
             <Quote reference="Lorem ipsum dolor sit amet consectetur">
               Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
@@ -104,7 +103,7 @@ const UserNotificationPage: NextPage = () => {
           <Item
             type={CommentType.Replied}
             user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
-            createdAt="2023-03-03"
+            createdAt={new Date('2023-03-03')}
           >
             <Quote reference="Lorem ipsum dolor sit amet consectetur">
               Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
