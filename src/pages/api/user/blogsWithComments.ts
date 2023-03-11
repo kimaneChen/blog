@@ -17,7 +17,7 @@ const getBlogsWithComments: NextApiHandler = async (req, res) => {
   const page = Number(req.query.page) || 1
   const perPage = Number(req.query.perPage) || 3
 
-  const blogs = await prisma.comment.findMany({
+  const comments = await prisma.comment.findMany({
     where: {
       blog: {
         user: {
@@ -59,6 +59,8 @@ const getBlogsWithComments: NextApiHandler = async (req, res) => {
     take: 5,
     skip: (page - 1) * perPage,
   })
+
+  const blogs = comments.map((comment) => comment.blog)
   res.status(200).json(blogs)
 }
 
