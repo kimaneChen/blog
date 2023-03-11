@@ -8,7 +8,7 @@ import { Variant } from '@/components/Button'
 import Error from '@/components/Error'
 import AuthButton from '@/application/AuthButton'
 import Input from '@/components/Input'
-import handleSignIn from '@/utils/handleSignIn'
+import handleAuthentication from '@/utils/handleAuthentication'
 import CheckEmailModal from './components/CheckEmailModal'
 
 enum EmailErrorMessage {
@@ -33,7 +33,7 @@ const AuthForm: FC<Props> = ({ type }) => {
 
   const onSubmit = async (data: any): Promise<void> => {
     setIsLoading(true)
-    await handleSignIn('email', { email: data.email, redirect: false })
+    await handleAuthentication('email', { email: data.email, redirect: false })
     setIsShowCheckEmailModal(true)
     setIsLoading(false)
   }

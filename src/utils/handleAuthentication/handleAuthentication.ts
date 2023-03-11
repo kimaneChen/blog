@@ -5,7 +5,7 @@ interface Options {
   redirect?: boolean
 }
 
-const handleSignIn = async (provider: string, options?: Options): Promise<void> => {
+const handleAuthentication = async (provider: string, options?: Options): Promise<void> => {
   const redirectUrl = localStorage.getItem('redirect_url') || '/user/notifications'
 
   await signIn(provider, {
@@ -16,4 +16,4 @@ const handleSignIn = async (provider: string, options?: Options): Promise<void> 
   localStorage.setItem('auth_message', 'Authentication success')
 }
 
-export default handleSignIn
+export default handleAuthentication
