@@ -1,6 +1,6 @@
 import Avatar from '@/components/Avatar'
 import { FC, ReactNode } from 'react'
-import User from '@/types/User'
+import Comment from '@/types/Comment'
 import FormattedTime from '@/components/FormattedTime'
 
 export enum CommentType {
@@ -11,8 +11,8 @@ export enum CommentType {
 interface Props {
   type: CommentType
   children: ReactNode
-  user: User
-  createdAt: string
+  user: Comment['user']
+  createdAt: Comment['createdAt']
 }
 
 const Item: FC<Props> = ({ type, children, user, createdAt }) => (
