@@ -1,16 +1,12 @@
-import AuthButton from '@/application/AuthButton'
-import ContinueWithEmailButton from '@/application/ContinueWithEmailButton'
 import { NextPage } from 'next'
-import { FaGithub } from 'react-icons/fa'
-import handleSignIn from '@/utils/handleSignIn'
-import LoginPageLayout from '../LoginPageLayout'
+import LoginPageLayout from '@/application/LoginPageLayout'
+import AuthButtonGroup from '@/application/AuthButtonGroup'
+import AuthType from '@/types/AuthType'
 
 const LoginPage: NextPage = () => (
   <LoginPageLayout>
-    <AuthButton icon={<FaGithub className="text-lg" />} onClick={() => handleSignIn('github')}>
-      Continue with Github
-    </AuthButton>
-    <ContinueWithEmailButton href="/login/email" />
+    <AuthButtonGroup type={AuthType.Login} />
   </LoginPageLayout>
 )
+
 export default LoginPage

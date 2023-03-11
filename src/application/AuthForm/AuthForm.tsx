@@ -3,12 +3,12 @@ import { useForm } from 'react-hook-form'
 import { FiMail } from 'react-icons/fi'
 import Link from 'next/link'
 import checkEmail from '@/apis/checkEmail'
-import Type from '@/types/AuthType'
+import AuthType from '@/types/AuthType'
 import { Variant } from '@/components/Button'
 import Error from '@/components/Error'
 import AuthButton from '@/application/AuthButton'
 import Input from '@/components/Input'
-import handleSignIn from '@/utils/handleSignIn'
+import handleAuthentication from '@/utils/handleAuthentication'
 import CheckEmailModal from './components/CheckEmailModal'
 
 enum EmailErrorMessage {
@@ -18,7 +18,7 @@ enum EmailErrorMessage {
 }
 
 interface Props {
-  type: Type
+  type: AuthType
 }
 
 const AuthForm: FC<Props> = ({ type }) => {
@@ -33,7 +33,7 @@ const AuthForm: FC<Props> = ({ type }) => {
 
   const onSubmit = async (data: any): Promise<void> => {
     setIsLoading(true)
-    await handleSignIn('email', { email: data.email, redirect: false })
+    await handleAuthentication('email', { email: data.email, redirect: false })
     setIsShowCheckEmailModal(true)
     setIsLoading(false)
   }
@@ -73,10 +73,10 @@ const AuthForm: FC<Props> = ({ type }) => {
                 }
                 try {
                   await checkEmail(value)
-                  return type === Type.SignUp || EmailErrorMessage.noAccount
+                  return type === AuthType.SignUp || EmailErrorMessage.noAccount
                 } catch (err: any) {
                   if (err?.response.status === 409) {
-                    return type === Type.Login || EmailErrorMessage.Exists
+                    return type === AuthType.Login || EmailErrorMessage.Exists
                   }
                   throw err
                 }

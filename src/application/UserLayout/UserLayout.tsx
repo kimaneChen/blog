@@ -20,7 +20,11 @@ const UserLayout: FC<Props> = ({ children, className = undefined }) => {
     <>
       <Header />
       <Navigation />
-      <div className={classNames('max-w-[1300px]', 'mx-auto', 'px-6', className)}>{children}</div>
+      <div
+        className={classNames('max-w-[1300px]', 'pt-12', 'pb-[72px]', 'mx-auto', 'px-7', className)}
+      >
+        {children}
+      </div>
     </>
   )
 }

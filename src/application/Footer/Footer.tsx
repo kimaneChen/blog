@@ -31,12 +31,16 @@ const Footer: FC = () => (
         <ColumnWrapper>
           <Item>Share Link</Item>
           <Link href="https://twitter.com">
-            <BsTwitter className="inline mr-1" />
-            Twitter
+            <div className="flex flex-column justify-center items-center">
+              <BsTwitter className="inline mr-2 w-5 h-5" />
+              Twitter
+            </div>
           </Link>
           <Link href="https://www.facebook.com/">
-            <BsFacebook className="inline mr-1" />
-            Facebook
+            <div className="flex flex-column justify-center items-center">
+              <BsFacebook className="inline mr-2 w-5 h-5" />
+              Facebook
+            </div>
           </Link>
         </ColumnWrapper>
       </div>

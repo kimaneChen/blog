@@ -54,8 +54,8 @@ const Button: FC<Props> = ({
       variant === Variant.Dark && ['bg-dark', 'text-background'],
       variant === Variant.Outline && ['border', 'border-outline', 'text-on-background'],
       size === Size.Small && ['h-8', 'px-3'],
-      size === Size.Normal && ['h-12'],
       size === Size.Medium && ['h-10'],
+      size === Size.Normal && ['h-12'],
       block && ['block', 'w-full'],
       className
     )}

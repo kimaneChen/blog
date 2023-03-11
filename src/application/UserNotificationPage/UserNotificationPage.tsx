@@ -53,8 +53,8 @@ const UserNotificationPage: NextPage = () => {
             <Link href={`/blogs/${item.blogId}`} key={item.blogId}>
               <div id={item.blogId}>
                 <h3 className="text-lg font-medium mt-6 mb-3">{item.blog?.title}</h3>
-                {item.blog.comment &&
-                  item.blog?.comments.map((comment: Comment) => (
+                {item.blog?.comments &&
+                  item.blog.comments.map((comment: any) => (
                     <Link href={`/blogs/${item.blogId}?scrollTo=${comment.id}`} key={comment.id}>
                       <Item
                         key={comment.id}

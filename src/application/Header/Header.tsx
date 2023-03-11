@@ -1,6 +1,6 @@
 import Logo from '@/application/Logo'
 import SearchModal from '@/application/SearchModal'
-import Container from '@/components/Container'
+import Container, { Space } from '@/components/Container'
 import Input from '@/components/Input'
 import { useSession } from 'next-auth/react'
 import { FC, useState } from 'react'
@@ -15,7 +15,7 @@ const Header: FC = () => {
 
   return (
     <header className="bg-background border-b">
-      <Container className="flex justify-between items-center h-16 relative">
+      <Container className="flex justify-between items-center h-16 relative" space={Space.Small}>
         <Logo />
 
         <div className="absolute text-center h-8 w-[200px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
