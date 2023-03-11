@@ -1,6 +1,5 @@
 import UserLayout from '@/application/UserLayout'
 import Button, { Size, Variant } from '@/components/Button'
-
 import useSWR from 'swr'
 import Loading from '@/components/Loading'
 import classNames from 'classnames'
