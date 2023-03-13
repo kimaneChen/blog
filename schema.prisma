@@ -97,5 +97,4 @@ model Notification{
   commentId String? 
   comment Comment? @relation(fields:[commentId], references: [id], onDelete: Cascade)
   createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
 }

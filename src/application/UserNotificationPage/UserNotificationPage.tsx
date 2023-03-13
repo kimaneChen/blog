@@ -19,9 +19,8 @@ enum Tabs {
 const UserNotificationPage: NextPage = () => {
   const [currentActive, setCurrentActive] = useState(Tabs.Blogs)
 
-  const { data: blogsWithComments, isLoading: isCommentsLoading } = useSWR(
-    '/api/user/blogsWithComments'
-  )
+  const { data: blogsWithComments, isLoading: isCommentsLoading } =
+    useSWR('/api/user/notifications')
 
   return (
     <UserLayout className="px-7 pt-6 mt-10 border rounded-xl">
