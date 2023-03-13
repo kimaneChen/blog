@@ -69,6 +69,7 @@ model Blog {
   content       Json?
   unpublishedAt DateTime?
   comments      Comment[]
+  notifications Notification[]
 }
 
 model Tag {
@@ -86,4 +87,14 @@ model Comment {
   userId        String
   user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   content       String
+  notifications Notification[]
+}
+
+model Notification{
+  id String @id @default(cuid())
+  blogId String? 
+  blog Blog? @relation(fields:[blogId], references: [id], onDelete: Cascade)
+  commentId String? 
+  comment Comment? @relation(fields:[commentId], references: [id], onDelete: Cascade)
+  createdAt     DateTime  @default(now())
 }

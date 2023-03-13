@@ -1,4 +1,5 @@
 import createComment from '@/apis/createComment'
+import createNotification from '@/apis/createNotification'
 import Avatar from '@/components/Avatar'
 import Button, { Size, Variant } from '@/components/Button'
 import { Comment } from '@/schemas/Comment'
@@ -33,6 +34,10 @@ const AddComment: FC<Props> = ({ onSuccess }) => {
       await createComment({
         blogId: blogId as string,
         ...data,
+      })
+
+      await createNotification({
+        blogId: blogId as string,
       })
 
       reset()
