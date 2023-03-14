@@ -89,14 +89,12 @@ const BlogsPage: NextPage = () => {
                       </div>
                     ))}
                   </div>
-                  <div>
-                    <LoadMoreButton
-                      hasMore={!isLoadMoreDisabled}
-                      onLoadMore={() => setSize(size + 1)}
-                    >
-                      More Blogs
-                    </LoadMoreButton>
-                  </div>
+                  <LoadMoreButton
+                    hasMore={!isLoadMoreDisabled}
+                    onLoadMore={() => setSize(size + 1)}
+                  >
+                    More Blogs
+                  </LoadMoreButton>
                 </>
               )}
             </div>

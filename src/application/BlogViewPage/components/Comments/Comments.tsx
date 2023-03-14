@@ -36,7 +36,7 @@ const Comments: FC = () => {
             user={comment.user}
           />
         ))}
-        <div className="text-center mb-20">
+        <div className="mb-20">
           <LoadMoreButton hasMore={!isLoadMoreDisabled} onLoadMore={() => setSize(size + 1)}>
             MORE COMMENTS
           </LoadMoreButton>
