@@ -5,7 +5,7 @@ import { FC } from 'react'
 
 interface Props {
   children: string
-  format?: string
+  format?: DateFormat
   className?: string
 }
 

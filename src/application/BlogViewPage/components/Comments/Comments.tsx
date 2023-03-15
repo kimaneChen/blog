@@ -34,11 +34,12 @@ const Comments: FC = () => {
             content={comment.content}
             createdAt={comment.createdAt}
             user={comment.user}
+            replyNumber={2}
           />
         ))}
         <div className="mb-20">
           <LoadMoreButton hasMore={!isLoadMoreDisabled} onLoadMore={() => setSize(size + 1)}>
-            MORE COMMENTS
+            <span className="text-sm">MORE COMMENTS</span>
           </LoadMoreButton>
         </div>
       </div>

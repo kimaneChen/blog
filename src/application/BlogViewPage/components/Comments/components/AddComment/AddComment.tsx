@@ -1,12 +1,12 @@
 import createComment from '@/apis/createComment'
 import Avatar from '@/components/Avatar'
-import Button, { Size, Variant } from '@/components/Button'
-import { Comment } from '@/schemas/Comment'
-import classNames from 'classnames'
 import { useSession } from 'next-auth/react'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import router from 'next/router'
+import { Comment } from '@/schemas/Comment'
+import RemarkTextarea from '@/application/RemarkTextArea'
 import { FC, useState } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import Button, { Size, Variant } from '@/components/Button'
 
 interface Props {
   onSuccess: () => void
@@ -19,9 +19,9 @@ const AddComment: FC<Props> = ({ onSuccess }) => {
 
   const { id: blogId } = router.query
 
-  const { handleSubmit, reset, watch, register, formState } = useForm<Pick<Comment, 'content'>>()
-  const { isValid } = formState
+  const { handleSubmit, reset, watch, formState, register } = useForm<Pick<Comment, 'content'>>()
   const content = watch('content')
+  const { isValid } = formState
 
   const onSubmit: SubmitHandler<Pick<Comment, 'content'>> = async (data) => {
     if (!session || !blogId) {
@@ -47,26 +47,15 @@ const AddComment: FC<Props> = ({ onSuccess }) => {
   }
 
   return (
-    <div className="pt-12  pr-24">
+    <div className="pt-12 pr-24">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex gap-6 items-start">
           <div className="py-0.5">
             <Avatar src={session?.user?.image} alt={session?.user?.name} width={40} height={40} />
           </div>
           <div className="border rounded-lg grow box-border">
-            <textarea
-              className={classNames(
-                'text-sm',
-                'focus:outline-none',
-                'py-3',
-                'leading-6',
-                'px-4',
-                'w-full',
-                'overflow-hidden',
-                'block',
-                'resize-none',
-                focused || content ? 'h-[90px]' : 'h-11'
-              )}
+            <RemarkTextarea
+              className={!focused && !content && 'h-11'}
               placeholder="Start a discussion, not a fire. Post with kindness"
               // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('content', { required: true })}

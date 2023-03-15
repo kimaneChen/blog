@@ -10,12 +10,15 @@ export enum Variant {
   Dark,
   Outline,
   Background,
+  BackgroundVariant,
+  OnBackground,
 }
 
 export enum Size {
   Normal,
   Medium,
   Small,
+  XSmall,
 }
 
 export interface Props extends HTMLProps<HTMLButtonElement> {
@@ -51,8 +54,11 @@ const Button: FC<Props> = ({
       variant === Variant.Warn && ['bg-warn', 'text-on-warn'],
       variant === Variant.Error && ['bg-error', 'text-on-error'],
       variant === Variant.Background && ['bg-background', 'text-dark'],
+      variant === Variant.OnBackground && ['bg-dark', 'text-background-variant'],
       variant === Variant.Dark && ['bg-dark', 'text-background'],
       variant === Variant.Outline && ['border', 'border-outline', 'text-on-background'],
+      variant === Variant.BackgroundVariant && ['bg-background-variant', 'text-on-background'],
+      size === Size.XSmall && ['h-[22px]', 'px-3'],
       size === Size.Small && ['h-8', 'px-3'],
       size === Size.Medium && ['h-10'],
       size === Size.Normal && ['h-12'],
