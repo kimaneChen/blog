@@ -16,9 +16,9 @@ const Description: FC = () => {
           enthusiasts to share their knowledge and connect with others in the community.
         </p>
       </div>
-      <div className="max-w-xl mx-auto px-20 mb-14 border border-[#666666] rounded-full">
+      <div className="max-w-xl mx-auto px-20 mb-40 border border-[#666666] rounded-full">
         <NakedInput
-          className="rounded-full py-8  placeholder:text-lg placeholder:font-medium mix-blend-multiply"
+          className="rounded-full py-7 placeholder:text-lg placeholder:font-medium mix-blend-multiply"
           prefix={<FiSearch />}
           type="text"
           placeholder="Search our blogs for a world of inspiration..."

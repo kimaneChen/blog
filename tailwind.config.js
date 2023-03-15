@@ -39,11 +39,11 @@ module.exports = {
         },
       }),
       maxWidth: {
-        container: '1440px',
+        container: '1280px',
         narrow: '1040px',
       },
       width: {
-        container: '1440px',
+        container: '1280px',
         narrow: '950px',
       },
       height: {

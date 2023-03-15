@@ -60,7 +60,7 @@ const ExploreBlogs: FC = () => {
       <Button
         variant={Variant.Dark}
         onClick={() => Router.push('/blogs')}
-        className="mt-20 mx-auto px-12 block"
+        className="text-sm mt-20 mx-auto px-12 block"
       >
         SEE MORE BLOGS
       </Button>

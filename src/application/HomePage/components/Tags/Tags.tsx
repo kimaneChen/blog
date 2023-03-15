@@ -1,4 +1,4 @@
-import CreateANewBlogButton from '@/application/CreateANewBlogButton'
+import CreateANewBlogButton, { Size } from '@/application/CreateANewBlogButton'
 import Tag from '@/types/Tag'
 import { chunk } from 'lodash'
 import { FC } from 'react'
@@ -19,16 +19,18 @@ const Tags: FC = () => {
   return (
     <div className="flex flex-col items-center relative">
       <div>
-        <h2 className="mb-12 font-bold ">Explore Our Tags</h2>
+        <h2 className="mb-12 font-bold text-2xl">Explore Our Tags</h2>
       </div>
       {sections.map((section) => (
         <div key={section.map((tag) => tag.id).join()}>
           <Holder tags={section} />
         </div>
       ))}
-      <CreateANewBlogButton className="mt-[52px]">
-        Start Creating a New Blog Now
-      </CreateANewBlogButton>
+      <div className="mt-[52px]">
+        <CreateANewBlogButton size={Size.Large}>
+          <div className="px-3">Start Creating a New Blog Now</div>
+        </CreateANewBlogButton>
+      </div>
       <Gradient />
     </div>
   )

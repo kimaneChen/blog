@@ -19,6 +19,7 @@ export enum Size {
   Medium,
   Small,
   XSmall,
+  Large,
 }
 
 export interface Props extends HTMLProps<HTMLButtonElement> {
@@ -62,6 +63,7 @@ const Button: FC<Props> = ({
       size === Size.Small && ['h-8', 'px-3'],
       size === Size.Medium && ['h-10'],
       size === Size.Normal && ['h-12'],
+      size === Size.Large && ['h-14', 'text-lg'],
       block && ['block', 'w-full'],
       className
     )}
