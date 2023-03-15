@@ -14,7 +14,6 @@
     ],
     "arrow-body-style": "error",
     "no-restricted-exports": "off",
-    "@typescript-eslint/no-unnecessary-condition": "error",
     "react/function-component-definition": [
       "error",
       {
@@ -33,7 +32,9 @@
       {
         "allowExpressions": true
       }
-    ]
+    ],
+    "@typescript-eslint/no-unnecessary-condition": "error",
+    "@typescript-eslint/prefer-optional-chain": "error"
   },
   "parserOptions": {
     "project": [
