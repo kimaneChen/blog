@@ -57,9 +57,45 @@ const createComment: NextApiHandler = async (req, res) => {
   }
 }
 
+const getComments: NextApiHandler = async (req, res) => {
+  const session = await getServerSession(req, res, authOptions)
+
+  if (!session) {
+    const { statusCode, message } = Boom.unauthorized().output.payload
+    res.status(statusCode).json(message)
+
+    return
+  }
+
+  const comments = await prisma.comment.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+    where: {
+      user: {
+        email: {
+          equals: session.user?.email,
+        },
+      },
+    },
+    include: {
+      blog: {
+        select: {
+          id: true,
+          title: true,
+        },
+      },
+    },
+  })
+  res.status(200).json(comments)
+}
+
 const CommentsHandler: NextApiHandler = async (req, res) => {
   if (req.method === 'POST') {
     await createComment(req, res)
+  }
+  if (req.method === 'GET') {
+    await getComments(req, res)
   }
 }
 

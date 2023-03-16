@@ -1,12 +1,23 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
+import Link from 'next/link'
+import Comment from '@/types/Comment'
 import Item from './components/Item'
 
-const Comments: FC = () => (
-  <div className="mb-6">
-    <div className="text-sm text-on-background mb-3">Feb 27th 2023</div>
-    <Item />
-    <Item />
-    <Item />
+type Props = {
+  date: string
+  comments: Comment[]
+}
+
+const Comments: FC<Props> = ({ date, comments }) => (
+  <div key={date} className="mb-6">
+    <div className="text-sm text-on-background mb-3">{date}</div>
+    <ul>
+      {comments.map((comment) => (
+        <Link key={comment.id} href={`/blogs/${comment.blog.id}?scrollTo=${comment.id}`}>
+          <Item title={comment.blog.title} comment={comment.content} />
+        </Link>
+      ))}
+    </ul>
   </div>
 )
 
