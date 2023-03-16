@@ -1,17 +1,16 @@
 import Avatar from '@/components/Avatar'
 import { FC, ReactNode } from 'react'
 
-export enum CommentType {
+export enum Type {
   Commented = 'Commented',
   Replied = 'Replied',
 }
-
 interface Props {
-  type: CommentType
+  type: Type
   children: ReactNode
 }
 
-const Item: FC<Props> = ({ type, children }) => (
+const CommentItem: FC<Props> = ({ type, children }) => (
   <div className="mb-3 p-3 rounded-xl bg-background-variant">
     <div className="flex gap-2 items-center mb-1 text-sm text-on-background">
       <Avatar width={20} height={20} />
@@ -24,4 +23,4 @@ const Item: FC<Props> = ({ type, children }) => (
   </div>
 )
 
-export default Item
+export default CommentItem

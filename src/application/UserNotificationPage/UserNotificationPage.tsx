@@ -3,8 +3,8 @@ import Button, { Size, Variant } from '@/components/Button'
 import classNames from 'classnames'
 import { NextPage } from 'next'
 import { useState } from 'react'
-import Item, { CommentType } from './components/Item'
-import Quote from './components/Quote/Quote'
+import Quote from '@/components/Quote'
+import CommentItem, { Type } from '@/application/CommentItem'
 import AuthMessageToast from './components/AuthMessageToast'
 
 enum Tabs {
@@ -39,40 +39,40 @@ const UserNotificationPage: NextPage = () => {
           <h3 className="text-lg font-medium mt-6 mb-3">
             How to Build a Fullstack App with Next.js, Prisma, and PostgreSQL
           </h3>
-          <Item type={CommentType.Commented}>
+          <CommentItem type={Type.Commented}>
             Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
-          </Item>
-          <Item type={CommentType.Commented}>
+          </CommentItem>
+          <CommentItem type={Type.Commented}>
             Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
-          </Item>
-          <Item type={CommentType.Commented}>
+          </CommentItem>
+          <CommentItem type={Type.Commented}>
             Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
-          </Item>
+          </CommentItem>
         </div>
       )}
 
       {currentActive === Tabs.Comments && (
         <div>
-          <Item type={CommentType.Replied}>
+          <CommentItem type={Type.Replied}>
             <Quote reference="Lorem ipsum dolor sit amet consectetur">
               Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
             </Quote>
-          </Item>
-          <Item type={CommentType.Replied}>
+          </CommentItem>
+          <CommentItem type={Type.Replied}>
             <Quote reference="Lorem ipsum dolor sit amet consectetur">
               Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
             </Quote>
-          </Item>
-          <Item type={CommentType.Replied}>
+          </CommentItem>
+          <CommentItem type={Type.Replied}>
             <Quote reference="Lorem ipsum dolor sit amet consectetur">
               Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
             </Quote>
-          </Item>
-          <Item type={CommentType.Replied}>
+          </CommentItem>
+          <CommentItem type={Type.Replied}>
             <Quote reference="Lorem ipsum dolor sit amet consectetur">
               Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering.
             </Quote>
-          </Item>
+          </CommentItem>
         </div>
       )}
     </UserLayout>

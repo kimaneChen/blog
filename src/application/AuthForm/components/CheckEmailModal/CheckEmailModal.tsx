@@ -9,7 +9,7 @@ interface Props {
 }
 
 const CheckEmailModal: FC<Props> = ({ type, email, onClose }) => (
-  <Modal overlay={Overlay.Light} onClose={onClose} size={Size.ExtraLarge}>
+  <Modal overlay={Overlay.Light} onClose={onClose} size={Size.Large}>
     <div className="flex items-center justify-center w-full h-full py-[98px]">
       <div className="text-center">
         <h2 className="text-4xl font-bold mb-5">Email Verification</h2>

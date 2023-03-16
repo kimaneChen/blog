@@ -17,7 +17,6 @@ export enum Position {
 export enum Size {
   Normal = 'Normal',
   Large = 'Large',
-  ExtraLarge = 'ExtraLarge',
 }
 
 interface Props {
@@ -48,7 +47,7 @@ const Modal: FC<Props> = ({
         'flex',
         'justify-center',
         'z-50',
-        overlay === Overlay.Dark && ['bg-[#000000]/50'],
+        overlay === Overlay.Dark && ['bg-[#131313]/50'],
         overlay === Overlay.Light && ['bg-[#fff]/80'],
         position === Position.Center && ['items-center']
       )}
@@ -59,11 +58,11 @@ const Modal: FC<Props> = ({
         className={classNames(
           'bg-background',
           'rounded',
+          'p-7',
           overlay === Overlay.Light && ['shadow-[0_2px_50px_8px_rgba(234,234,234,1)]'],
-          size === Size.Normal && ['w-[600px]', 'px-8', 'py-7'],
-          size === Size.Large && ['w-[650px]'],
-          size === Size.ExtraLarge && ['w-[900px]'],
-          position === Position.Top && ['absolute', 'top-[15vh]']
+          size === Size.Normal && ['w-[660px]'],
+          size === Size.Large && ['w-[900px]'],
+          position === Position.Top && ['absolute', 'top-[200px]']
         )}
         onClick={(event) => event.stopPropagation()}
         onKeyDown={(event) => event.stopPropagation()}
