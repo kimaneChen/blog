@@ -6,17 +6,17 @@ import ToggleRepliesButton from './components/ToggleRepliesButton'
 import Replies from './components/Replies'
 
 interface Props {
+  id: Comment['id']
   content: Comment['content']
   createdAt: Comment['createdAt']
   user: Comment['user']
   replyNumber: Comment['replyNumber']
 }
 
-const Item: FC<Props> = ({ content, createdAt, user, replyNumber }) => {
+const Item: FC<Props> = ({ content, createdAt, user, id, replyNumber }) => {
   const [isShowReplies, setIsShowReplies] = useState<boolean>(false)
-
   return (
-    <section className="py-4 px-5 mb-4 rounded-xl bg-background-variant relative">
+    <section id={id} className="py-4 px-5 mb-4 rounded-xl bg-background-variant relative">
       <Remark user={user} createdAt={createdAt} content={content} header={user?.name} />
       {!!replyNumber && (
         <>

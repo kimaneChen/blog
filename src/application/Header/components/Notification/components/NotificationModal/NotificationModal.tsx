@@ -20,25 +20,41 @@ const NotificationModal: FC<Props> = ({ onClose }) => {
         {data ? (
           <>
             <div className="text-xs font-medium text-on-background mt-3 mb-2">Comments</div>
-            <CommentItem type={Type.Replied}>
+            <CommentItem
+              type={Type.Replied}
+              user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
+              createdAt="2023-03-03"
+            >
               <Quote reference="Lorem ipsum dolor sit amet consectetur.(This is the comment that was answered)">
                 Lorem ipsum dolor sit amet consectetur.
               </Quote>
             </CommentItem>
-            <CommentItem type={Type.Replied}>
+            <CommentItem
+              type={Type.Replied}
+              user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
+              createdAt="2023-03-03"
+            >
               <Quote reference="Lorem ipsum dolor sit amet consectetur.(This is the comment that was answered)">
                 Lorem ipsum dolor sit amet consectetur.
               </Quote>
             </CommentItem>
 
             <div className="text-xs font-medium text-on-background my-2">Blogs</div>
-            <CommentItem type={Type.Commented}>
+            <CommentItem
+              type={Type.Commented}
+              user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
+              createdAt="2023-03-03"
+            >
               <Quote reference="Lorem ipsum dolor sit amet cosectetur.(This is the blog title)">
                 Lorem ipsum dolor sit amet consectetur. Pharetra lacus (This is
                 commentt&rsquo;scontent)
               </Quote>
             </CommentItem>
-            <CommentItem type={Type.Commented}>
+            <CommentItem
+              type={Type.Commented}
+              user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
+              createdAt="2023-03-03"
+            >
               <Quote reference="Lorem ipsum dolor sit amet cosectetur.(This is the blog title)">
                 Lorem ipsum dolor sit amet consectetur. Pharetra lacus (This is
                 commentt&rsquo;scontent)

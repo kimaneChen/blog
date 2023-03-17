@@ -1,8 +1,7 @@
 import { FC } from 'react'
 import { BsDot } from 'react-icons/bs'
 import { FaRegSmile } from 'react-icons/fa'
-import DateFormat from '@/types/DateFormat'
-import Date from '@/components/Date/Date'
+import RelativeDateTime from '@/components/RelativeDateTime'
 import { useSession } from 'next-auth/react'
 import Comment from '@/types/Comment'
 
@@ -16,7 +15,7 @@ const Interactions: FC<Props> = ({ createdAt, onReply, user }) => {
   const { data: session } = useSession()
   return (
     <div className="relative flex items-center text-sm text-on-background">
-      <Date format={DateFormat.LongTime}>{createdAt}</Date>
+      <RelativeDateTime>{createdAt}</RelativeDateTime>
       {session?.user && (
         <>
           <BsDot />

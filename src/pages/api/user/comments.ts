@@ -25,6 +25,18 @@ const createComment: NextApiHandler = async (req, res) => {
 
   try {
     const { content, blogId } = CommentSchema.parse(req.body)
+    const blog = await prisma.blog.findUnique({
+      where: {
+        id: blogId,
+      },
+    })
+
+    if (!blog) {
+      const { statusCode, message } = Boom.badData().output.payload
+      res.status(statusCode).json(message)
+      return
+    }
+
     const result = await prisma.comment.create({
       data: {
         content,
@@ -38,6 +50,13 @@ const createComment: NextApiHandler = async (req, res) => {
             email: session.user.email,
           },
         },
+      },
+    })
+
+    await prisma.commentNotification.create({
+      data: {
+        commentId: result.id,
+        userId: blog.userId,
       },
     })
 

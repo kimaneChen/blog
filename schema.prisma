@@ -46,7 +46,8 @@ model User {
   accounts      Account[]
   sessions      Session[]
   blogs         Blog[]
-  comments      Comment[] 
+  comments      Comment[]
+  commentNotifications CommentNotification[]
 }
 
 model VerificationToken {
@@ -78,12 +79,22 @@ model Tag {
 }
 
 model Comment {
-  id            String    @id @default(cuid())
-  blogId        String
-  blog          Blog      @relation(fields:[blogId], references: [id], onDelete: Cascade)
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  userId        String
-  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  content       String
+  id             String    @id @default(cuid())
+  blogId         String
+  blog           Blog      @relation(fields:[blogId], references: [id], onDelete: Cascade)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  userId         String
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  content        String
+  notification   CommentNotification?
+}
+
+model CommentNotification{
+  id               String @id @default(cuid()) 
+  commentId        String @unique
+  comment          Comment   @relation(fields: [commentId], references: [id])
+  createdAt        DateTime  @default(now())
+  userId           String
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
