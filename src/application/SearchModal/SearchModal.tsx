@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import Blog from '@/types/Blog'
 import useSWR from 'swr'
-import Modal, { Overlay, Size, Position } from '@/components/Modal'
+import Modal, { Overlay, Position } from '@/components/Modal'
 import SearchBlog from './components/SearchBlog'
 import Search from './components/Search'
 
@@ -16,7 +16,7 @@ const SearchModal: FC<Props> = ({ onClose }) => {
   const { data: blogs } = useSWR(`/api/blogs?perPage=${PER_PAGE}&search=${search?.trim()}`)
 
   return (
-    <Modal onClose={onClose} overlay={Overlay.Light} size={Size.Large} position={Position.Top}>
+    <Modal onClose={onClose} overlay={Overlay.Light} position={Position.Top}>
       <Search value={search} onChange={(event) => setSearch(event.target.value)} />
       {search && (
         <>
