@@ -19,7 +19,7 @@ const BeforeCloseModal: FC<Props> = ({ onClose }) => {
         <Button onClick={onClose} size={Size.Small} variant={Variant.Outline}>
           No
         </Button>
-        <Button onClick={() => router.push('/')} size={Size.Small} variant={Variant.Dark}>
+        <Button onClick={() => router.back()} size={Size.Small} variant={Variant.Dark}>
           Yes
         </Button>
       </div>

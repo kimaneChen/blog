@@ -2,7 +2,7 @@ import EditorJS from '@editorjs/editorjs'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { FC, useRef } from 'react'
-import useBlog from '../../../../hooks/useBlog'
+import useBlog from '@/hooks/useBlog'
 
 const EditorBlock = dynamic(() => import('@/components/Editor'), {
   ssr: false,

@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 export const BlogSchema = z.object({
   title: z.string(),
-  description: z.string().optional(),
+  description: z.string().nullable().optional(),
   tags: z.array(z.string()),
   content: z.any().optional(),
 })

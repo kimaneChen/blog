@@ -30,7 +30,7 @@ const ActionButtons: FC<Props> = ({ onConfirmPublish, isLoading }) => {
     if (isDirty) {
       setModal(ConfirmationModal.BeforeClose)
     } else {
-      router.push('/')
+      router.back()
     }
   }
 

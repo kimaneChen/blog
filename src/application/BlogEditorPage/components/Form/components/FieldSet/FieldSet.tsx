@@ -1,7 +1,8 @@
+import Blog from '@/types/Blog'
 import EditorJS from '@editorjs/editorjs'
+import dynamic from 'next/dynamic'
 import { FC } from 'react'
 import { useFormContext } from 'react-hook-form'
-import dynamic from 'next/dynamic'
 import Tags from './components/Tags'
 import Textarea from './components/Textarea'
 
@@ -13,9 +14,10 @@ interface Props {
   tags: string[]
   onTagsChange: (tags: string[]) => void
   onEditorInitialize: (instance: EditorJS) => void
+  content?: Blog['content']
 }
 
-const FieldSet: FC<Props> = ({ tags, onTagsChange, onEditorInitialize }) => {
+const FieldSet: FC<Props> = ({ tags, onTagsChange, onEditorInitialize, content = undefined }) => {
   const { register } = useFormContext()
 
   return (
@@ -37,7 +39,7 @@ const FieldSet: FC<Props> = ({ tags, onTagsChange, onEditorInitialize }) => {
       <Tags tags={tags} onTagsChange={onTagsChange} />
       <hr className="border-t-2 border-outline mb-5" />
       <div className="prose max-w-none">
-        <EditorBlock onInitialize={onEditorInitialize} />
+        <EditorBlock onInitialize={onEditorInitialize} data={content} />
       </div>
     </div>
   )
