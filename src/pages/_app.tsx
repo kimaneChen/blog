@@ -12,7 +12,20 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-const fetcher = (url: string): Promise<unknown> => fetch(url).then((res) => res.json())
+interface FetchError extends Error {
+  status: number
+  info?: unknown
+}
+const fetcher = async (url: string): Promise<unknown> => {
+  const res = await fetch(url)
+  if (!res.ok) {
+    const error = new Error('An error occurred while fetching the data.') as FetchError
+    error.info = await res.json()
+    error.status = res.status
+    throw error
+  }
+  return res.json()
+}
 
 const App: React.FC<AppProps> = ({ Component, pageProps: { session, ...pageProps } }) => {
   const { query } = useRouter()

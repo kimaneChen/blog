@@ -20,7 +20,11 @@ enum Tabs {
 const UserNotificationPage: NextPage = () => {
   const [currentActive, setCurrentActive] = useState(Tabs.Blogs)
 
-  const { data, isLoading } = useSWR('/api/user/comment-notifications')
+  const { data, isLoading, error } = useSWR('/api/user/comment-notifications')
+
+  if (error) {
+    return null
+  }
 
   const groupedCommentNotifications = groupBy(
     data,

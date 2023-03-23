@@ -3,6 +3,7 @@ import Container, { Size } from '@/components/Container'
 import Loading from '@/components/Loading'
 import { NextPage } from 'next'
 import useBlog from '@/hooks/useBlog'
+import Toast, { Position, Variant } from '@/components/Toast'
 import BackLink from './components/BackLink'
 import BlogTitle from './components/BlogTitle'
 import Comments from './components/Comments'
@@ -18,11 +19,12 @@ const BlogViewPage: NextPage = () => {
   return (
     <Layout>
       <PublishStatusMessage />
-      {isLoading ? (
+      {isLoading && (
         <div className="h-[700px] flex items-center justify-center">
           <Loading />
         </div>
-      ) : (
+      )}
+      {blog.unpublishedAt === null ? (
         <>
           <Container>
             <BackLink />
@@ -34,6 +36,12 @@ const BlogViewPage: NextPage = () => {
           <hr />
           <Comments />
         </>
+      ) : (
+        <Container className="h-[700px]">
+          <Toast position={Position.Center} variant={Variant.Error}>
+            The blog does not exist, cannot be viewed
+          </Toast>
+        </Container>
       )}
     </Layout>
   )
