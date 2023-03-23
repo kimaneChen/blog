@@ -1,11 +1,11 @@
 import { NextPage } from 'next'
-import LegalMarkdownLayout from '@/application/LegalMarkdownLayout'
-import ReactMarkdown from 'react-markdown'
+import LegalMarkdownLayout, { Title } from '@/application/LegalMarkdownLayout'
+import LegalMarkdown from '@/application/LegalMarkdown/LegalMarkdown'
 import policy from './assets/policy.md'
 
 const PrivacyPolicyPage: NextPage = () => (
-  <LegalMarkdownLayout title="Privacy Policy">
-    <ReactMarkdown>{policy}</ReactMarkdown>
+  <LegalMarkdownLayout title={Title.Policy}>
+    <LegalMarkdown>{policy}</LegalMarkdown>
   </LegalMarkdownLayout>
 )
 

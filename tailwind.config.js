@@ -40,7 +40,7 @@ module.exports = {
       }),
       maxWidth: {
         container: '1280px',
-        narrow: '1040px',
+        narrow: '880px',
       },
       width: {
         container: '1280px',

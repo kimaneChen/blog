@@ -1,11 +1,11 @@
 import { NextPage } from 'next'
-import ReactMarkdown from 'react-markdown'
-import LegalMarkdownLayout from '@/application/LegalMarkdownLayout'
+import LegalMarkdownLayout, { Title } from '@/application/LegalMarkdownLayout'
+import LegalMarkdown from '@/application/LegalMarkdown'
 import term from './assets/term.md'
 
 const TermOfServicePage: NextPage = () => (
-  <LegalMarkdownLayout title="Term of Service">
-    <ReactMarkdown>{term}</ReactMarkdown>
+  <LegalMarkdownLayout title={Title.Term}>
+    <LegalMarkdown>{term}</LegalMarkdown>
   </LegalMarkdownLayout>
 )
 

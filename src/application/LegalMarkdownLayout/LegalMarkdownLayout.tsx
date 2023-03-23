@@ -1,24 +1,30 @@
-import Container from '@/components/Container'
-import Header from '@/application/Header'
+import Container, { Size } from '@/components/Container'
 import { FC, ReactNode } from 'react'
+import Layout from '@/application/Layout'
+
+export enum Title {
+  Term = 'Term of Service',
+  Policy = 'Privacy Policy',
+}
 
 interface Props {
   children: ReactNode
-  title: 'Term of Service' | 'Privacy Policy'
+  title: Title
 }
 
 const LegalMarkdownLayout: FC<Props> = ({ children, title }) => (
-  <Container>
-    <Header />
-    <div>
-      <div className="min-h-[50vh] flex items-center">
-        <h1 className="mx-auto text-7xl">{title}</h1>
+  <Layout>
+    <Container size={Size.Narrow} className="px-0">
+      <div className="mx-auto">
+        <div className="py-44">
+          <h1 className="text-center text-7xl font-extrabold">{title}</h1>
+        </div>
+        <div className="pt-24 pb-40 mx-auto">
+          <section className="prose max-w-[880px] text-[18px]">{children}</section>
+        </div>
       </div>
-      <div className="bg-background-variant flex justify-center py-40">
-        <section className="w-2/3 prose">{children}</section>
-      </div>
-    </div>
-  </Container>
+    </Container>
+  </Layout>
 )
 
 export default LegalMarkdownLayout
