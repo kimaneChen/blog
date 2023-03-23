@@ -1,16 +1,28 @@
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
 import Image from 'next/image'
 import Modal, { Size, Position } from '@/components/Modal'
+import useSWRMutation from 'swr/mutation'
+import updateNotifications from '@/apis/updateNotifications'
 import Quote from '@/components/Quote'
 import CommentItem, { Type } from '@/application/CommentItem'
 import noNewNotification from './assets/noNewNotification.svg'
 
 interface Props {
   onClose: () => void
+  onRead: () => unknown
 }
 
-const NotificationModal: FC<Props> = ({ onClose }) => {
+const NotificationModal: FC<Props> = ({ onClose, onRead }) => {
   const [data] = useState(true)
+
+  const { trigger } = useSWRMutation('/api/user/notifications', () =>
+    updateNotifications({ readAt: new Date() })
+  )
+
+  useEffect(() => {
+    trigger()
+    onRead()
+  }, [])
 
   return (
     <Modal onClose={onClose} enableCloseButton size={Size.Large} position={Position.Top}>

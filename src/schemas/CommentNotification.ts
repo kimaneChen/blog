@@ -1,7 +1,8 @@
 import { z } from 'zod'
 
 export const CommentNotificationSchema = z.object({
-  blogId: z.string(),
+  commentId: z.string(),
+  readAt: z.date().optional(),
 })
 
 export type CommentNotification = z.infer<typeof CommentNotificationSchema>
