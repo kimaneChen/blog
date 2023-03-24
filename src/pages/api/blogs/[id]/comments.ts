@@ -5,7 +5,7 @@ const getComments: NextApiHandler = async (req, res) => {
   const page = Number(req.query.page) || 1
   const perPage = Number(req.query.perPage) || 3
   const { id } = req.query
-  const comments = await prisma.comment.findMany({
+  const result = await prisma.comment.findMany({
     orderBy: {
       createdAt: 'desc',
     },
@@ -21,10 +21,21 @@ const getComments: NextApiHandler = async (req, res) => {
           image: true,
         },
       },
+      _count: {
+        select: { replies: true },
+      },
     },
     take: perPage,
     skip: (page - 1) * perPage,
   })
+  const comments = result.map((comment) => {
+    const { _count: count, ...rest } = comment
+    return {
+      ...rest,
+      replyNumber: count.replies,
+    }
+  })
+
   res.status(200).json(comments)
 }
 

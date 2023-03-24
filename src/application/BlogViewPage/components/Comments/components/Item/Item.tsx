@@ -11,16 +11,24 @@ interface Props {
   createdAt: Comment['createdAt']
   user: Comment['user']
   replyNumber: Comment['replyNumber']
+  onReply: () => void
 }
 
-const Item: FC<Props> = ({ content, createdAt, user, id, replyNumber }) => {
+const Item: FC<Props> = ({ content, createdAt, user, replyNumber, id, onReply }) => {
   const [isShowReplies, setIsShowReplies] = useState<boolean>(false)
   return (
-    <section id={id} className="py-4 px-5 mb-4 rounded-xl bg-background-variant relative">
-      <Remark user={user} createdAt={createdAt} content={content} header={user?.name} />
+    <section className="py-4 px-5 mb-4 rounded-xl bg-background-variant relative">
+      <Remark
+        user={user}
+        createdAt={createdAt}
+        content={content}
+        header={user?.name}
+        commentId={id}
+        onReply={onReply}
+      />
       {!!replyNumber && (
         <>
-          {isShowReplies && <Replies />}
+          {isShowReplies && <Replies commentId={id} onReply={onReply} />}
           <ToggleRepliesButton onToggle={() => setIsShowReplies(!isShowReplies)}>
             {isShowReplies ? (
               <>

@@ -35,18 +35,19 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  role          String?
-  accounts      Account[]
-  sessions      Session[]
-  blogs         Blog[]
-  comments      Comment[]
+  id                   String                @id @default(cuid())
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  name                 String?
+  email                String?               @unique
+  emailVerified        DateTime?
+  image                String?
+  role                 String?
+  accounts             Account[]
+  sessions             Session[]
+  blogs                Blog[]
+  comments             Comment[]
+  replies              Reply[]
   commentNotifications CommentNotification[]
 }
 
@@ -79,23 +80,38 @@ model Tag {
 }
 
 model Comment {
-  id             String    @id @default(cuid())
-  blogId         String
-  blog           Blog      @relation(fields:[blogId], references: [id], onDelete: Cascade)
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
-  userId         String
-  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  content        String
-  notification   CommentNotification?
+  id           String               @id @default(cuid())
+  blogId       String
+  blog         Blog                 @relation(fields: [blogId], references: [id], onDelete: Cascade)
+  createdAt    DateTime             @default(now())
+  updatedAt    DateTime             @updatedAt
+  userId       String
+  user         User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  content      String
+  replies      Reply[]
+  notification CommentNotification?
 }
 
-model CommentNotification{
-  id               String     @id @default(cuid()) 
-  commentId        String     @unique
-  comment          Comment    @relation(fields: [commentId], references: [id])
-  createdAt        DateTime   @default(now())
-  userId           String
-  user             User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  readAt           DateTime?   
+model CommentNotification {
+  id        String    @id @default(cuid())
+  commentId String    @unique
+  comment   Comment   @relation(fields: [commentId], references: [id])
+  createdAt DateTime  @default(now())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  readAt    DateTime?
+}
+
+model Reply {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  commentId String
+  comment   Comment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  replyToId String?
+  replyTo   Reply?   @relation("replyTo", fields: [replyToId], references: [id], onDelete: Cascade)
+  replyFrom Reply[]  @relation("replyTo")
 }

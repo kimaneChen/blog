@@ -34,7 +34,6 @@ const AddComment: FC<Props> = ({ onSuccess }) => {
         blogId: blogId as string,
         ...data,
       })
-
       reset()
       onSuccess()
     } catch (error) {
