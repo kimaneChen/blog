@@ -5,7 +5,7 @@ interface Blog extends Pick<PrismaBlog, 'id' | 'title' | 'description'> {
   updatedAt: string
   unpublishedAt: string | null
   content: any
-  user?: Pick<PrismaUser, 'id' | 'name' | 'email' | 'image'>
+  user?: Pick<PrismaUser, 'id' | 'name' | 'email' | 'image' | 'occupation'>
   tags?: Pick<PrismaTag, 'id' | 'name'>[]
 }
 

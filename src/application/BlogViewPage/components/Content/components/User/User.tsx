@@ -22,7 +22,7 @@ const User: FC = () => {
   return (
     <div className="border-l pl-9 py-3">
       <div className="text-on-background text-xs mb-3">Posted by</div>
-      {user && <Info name={user.name} image={user.image} />}
+      {user && <Info name={user.name} image={user.image} occupation={user.occupation} />}
 
       {blogs.length > 0 && (
         <>

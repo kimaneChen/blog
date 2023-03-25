@@ -43,7 +43,11 @@ const ExploreBlogs: FC = () => {
                 reversed && ['flex-row-reverse']
               )}
             >
-              <UserInfo name={blog.user?.name} image={blog.user?.image} />
+              <UserInfo
+                name={blog.user?.name}
+                image={blog.user?.image}
+                occupation={blog.user?.occupation}
+              />
               <div className="border-r h-full" />
               <div className="grow px-8">
                 <BlogOverview title={blog.title} date={blog.createdAt} tags={blog.tags} unframed>

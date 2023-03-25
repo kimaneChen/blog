@@ -49,6 +49,7 @@ model User {
   comments             Comment[]
   replies              Reply[]
   commentNotifications CommentNotification[]
+  occupation    String?
 }
 
 model VerificationToken {
