@@ -9,6 +9,7 @@ import BeforeCloseModal from './components/BeforeCloseModal'
 interface Props {
   onConfirmPublish: () => void
   isLoading: boolean
+  isEditorDirty: boolean
 }
 
 enum ConfirmationModal {
@@ -16,7 +17,7 @@ enum ConfirmationModal {
   AddTitle,
 }
 
-const ActionButtons: FC<Props> = ({ onConfirmPublish, isLoading }) => {
+const ActionButtons: FC<Props> = ({ onConfirmPublish, isLoading, isEditorDirty }) => {
   const { formState } = useFormContext()
   const { isDirty, isValid } = formState
   const { data: session } = useSession()
@@ -27,7 +28,7 @@ const ActionButtons: FC<Props> = ({ onConfirmPublish, isLoading }) => {
   const handleClose = (e: MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault()
 
-    if (isDirty) {
+    if (isDirty || isEditorDirty) {
       setModal(ConfirmationModal.BeforeClose)
     } else {
       router.back()

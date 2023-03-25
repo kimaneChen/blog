@@ -1,4 +1,4 @@
-import EditorJS, { OutputData } from '@editorjs/editorjs'
+import EditorJS, { API, OutputData } from '@editorjs/editorjs'
 import { FC, useEffect, useRef } from 'react'
 import { editableTools, readOnlyTools } from './tools'
 
@@ -9,6 +9,7 @@ interface Props {
   readOnly?: boolean
   data?: OutputData | undefined
   onReady?: () => void | undefined
+  onChange?: (api: API) => void
 }
 
 const Editor: FC<Props> = ({
@@ -16,6 +17,7 @@ const Editor: FC<Props> = ({
   readOnly = false,
   data = undefined,
   onReady = undefined,
+  onChange = undefined,
 }) => {
   const ref = useRef<EditorJS>()
   const tools = readOnly ? readOnlyTools : editableTools
@@ -28,6 +30,7 @@ const Editor: FC<Props> = ({
         readOnly,
         data,
         onReady,
+        onChange,
       })
       ref.current = instance
 

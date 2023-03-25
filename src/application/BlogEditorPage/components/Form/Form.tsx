@@ -21,6 +21,7 @@ const Form: FC<Props> = ({ defaultValues = undefined }) => {
   const { data: session } = useSession()
   const router = useRouter()
 
+  const [isEditorDirty, setIsEditorDirty] = useState(false)
   const [tags, setTags] = useState<string[]>(defaultValues?.tags?.map((tag) => tag.name) || [])
 
   const { setMessage } = useNotification()
@@ -70,12 +71,17 @@ const Form: FC<Props> = ({ defaultValues = undefined }) => {
     // eslint-disable-next-line react/jsx-props-no-spreading
     <FormProvider {...form}>
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-narrow grow flex flex-col">
-        <ActionButtons onConfirmPublish={handleSubmit(onSubmit)} isLoading={isMutating} />
+        <ActionButtons
+          onConfirmPublish={handleSubmit(onSubmit)}
+          isLoading={isMutating}
+          isEditorDirty={isEditorDirty}
+        />
         <FieldSet
           content={defaultValues?.content}
           tags={tags}
           onTagsChange={setTags}
           onEditorInitialize={handleEditorInitialize}
+          onEditorChange={() => setIsEditorDirty(true)}
         />
       </form>
     </FormProvider>

@@ -55,8 +55,6 @@ module.exports = {
       fontSize: {
         sx: ['12px', '18px'],
         sm: ['14px', '22px'],
-        '3xl': ['32px', '40px'],
-        '4xl': ['40px', '60px'],
       },
     },
     fontFamily: {

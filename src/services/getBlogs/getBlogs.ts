@@ -28,6 +28,7 @@ const getBlogs = ({ page, perPage, userId, exclude, tags, search }: Query): Prom
             name: true,
             email: true,
             image: true,
+            occupation: true,
           },
         },
         tags: {

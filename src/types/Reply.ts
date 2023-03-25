@@ -8,9 +8,9 @@ interface Reply {
   updatedAt?: string
   title: string
   content: any
-  user?: Pick<User, 'id' | 'name' | 'email' | 'image'>
+  user: Pick<User, 'id' | 'name' | 'email' | 'image'>
   blog?: Pick<Blog, 'id' | 'title'>
-  comment?: Pick<Comment, 'id'>
+  comment: Pick<Comment, 'id'>
   replyTo?: Pick<Reply, 'id' | 'user'>
 }
 

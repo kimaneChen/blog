@@ -5,7 +5,7 @@ interface NotificationContextType {
   setMessage: (message: string | null) => void
 }
 
-interface NotificaitonProviderProps {
+interface Props {
   children: ReactNode
 }
 
@@ -14,7 +14,7 @@ const NotificationContext = createContext<NotificationContextType>({
   setMessage: () => {},
 })
 
-const NotificationProvider: FC<NotificaitonProviderProps> = ({ children }) => {
+const NotificationProvider: FC<Props> = ({ children }) => {
   const [message, setMessage] = useState<string | null>(null)
 
   useEffect(() => {

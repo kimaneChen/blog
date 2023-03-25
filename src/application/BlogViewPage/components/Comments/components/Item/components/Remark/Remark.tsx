@@ -1,6 +1,8 @@
 import Avatar from '@/components/Avatar'
 import { FC, ReactNode, useState } from 'react'
 import User from '@/types/User'
+import Comment from '@/types/Comment'
+import Reply from '@/types/Reply'
 import AddReply from './components/AddReply'
 import Interactions from './components/Interactions'
 import Article from './components/Article'
@@ -10,9 +12,20 @@ interface Props {
   content: string
   createdAt: string
   header: ReactNode
+  commentId: Comment['id']
+  replyId?: Reply['id']
+  onReply: () => void
 }
 
-const Remark: FC<Props> = ({ user, content, createdAt, header }) => {
+const Remark: FC<Props> = ({
+  user,
+  content,
+  createdAt,
+  header,
+  commentId,
+  replyId = undefined,
+  onReply,
+}) => {
   const [isShowAddReply, setIsShowAddReply] = useState<boolean>(false)
 
   return (
@@ -25,7 +38,15 @@ const Remark: FC<Props> = ({ user, content, createdAt, header }) => {
           onReply={() => setIsShowAddReply(!isShowAddReply)}
           user={user}
         />
-        {isShowAddReply && <AddReply onClose={() => setIsShowAddReply(false)} to={user?.name} />}
+        {isShowAddReply && (
+          <AddReply
+            onClose={() => setIsShowAddReply(false)}
+            to={user?.name}
+            commentId={commentId}
+            replyToId={replyId}
+            onSuccess={onReply}
+          />
+        )}
       </div>
     </div>
   )

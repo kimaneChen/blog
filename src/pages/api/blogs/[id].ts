@@ -21,6 +21,7 @@ const getBlog: NextApiHandler = async (req, res) => {
             name: true,
             email: true,
             image: true,
+            occupation: true,
           },
         },
         tags: {

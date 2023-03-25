@@ -8,19 +8,19 @@ import AddComment from './components/AddComment'
 import CommentsUserList from './components/CommentsUserList'
 import Item from './components/Item'
 
-const COMMENTS_PER_PAGE = 5
+const PER_PAGE = 5
 
 const Comments: FC = () => {
   const router = useRouter()
   const { id } = router.query
 
   const { data, isLoading, size, setSize, mutate } = useSWRInfinite<Comment[]>(
-    (index) => `/api/blogs/${id}/comments?page=${index + 1}&perPage=${COMMENTS_PER_PAGE}`
+    (index) => `/api/blogs/${id}/comments?page=${index + 1}&perPage=${PER_PAGE}`
   )
 
   const comments = data ? data.flat() : []
   const lastPage = data?.[data.length - 1]
-  const isReachingEnd = lastPage && lastPage.length < COMMENTS_PER_PAGE
+  const isReachingEnd = lastPage && lastPage.length < PER_PAGE
   const isLoadMoreDisabled = isLoading || isReachingEnd
 
   return (
@@ -35,7 +35,8 @@ const Comments: FC = () => {
             content={comment.content}
             createdAt={comment.createdAt}
             user={comment.user}
-            replyNumber={2}
+            replyNumber={comment.replyNumber}
+            onReply={mutate}
           />
         ))}
         <div className="mb-20">
