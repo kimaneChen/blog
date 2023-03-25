@@ -7,7 +7,7 @@ import Router, { useRouter } from 'next/router'
 import useSWR from 'swr'
 import Link from 'next/link'
 import Loading from '@/components/Loading'
-import Container from '@/components/Container'
+import Container, { Space } from '@/components/Container'
 import TagsFilter from './components/TagsFilter'
 import useBlogs from './hooks/useBlogs'
 
@@ -37,15 +37,15 @@ const BlogsPage: NextPage = () => {
 
   return (
     <Layout>
-      <Container>
+      <Container space={Space.Small}>
         {isTagsLoading ? (
-          <div className="h-[1000px] flex items-center justify-center">
+          <div className="h-[660px] pt-52 flex  justify-center">
             <Loading />
           </div>
         ) : (
           <section className="flex">
             <div className="min-w-[300px] border-r">
-              <div className="pr-5 mt-9 mb-[120px]">
+              <div className="pr-5 pt-9 pb-[120px]">
                 <div>Filters</div>
                 <div>
                   {tags && (
@@ -59,13 +59,13 @@ const BlogsPage: NextPage = () => {
               </div>
             </div>
 
-            <div className="grow pt-9 pb-[75px] px-5 mx-3 min-h-[1000px]">
+            <div className="grow ml-3 pt-9 pb-[75px] px-5 min-h-[861px]">
               <div className="mb-4">
                 <h1 className="text-3xl font-bold">All Blogs</h1>
               </div>
               <div className="text-on-background">See what&apos;s new on the blog</div>
               {isBlogsLoading ? (
-                <div className="mt-[200px]">
+                <div className="mt-40">
                   <Loading />
                 </div>
               ) : (
