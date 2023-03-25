@@ -45,7 +45,7 @@ const BlogsPage: NextPage = () => {
         ) : (
           <section className="flex">
             <div className="min-w-[300px] border-r">
-              <div className="pr-5 pt-9 pb-[120px]">
+              <div className="pr-5 mt-9 mb-[120px]">
                 <div>Filters</div>
                 <div>
                   {tags && (
