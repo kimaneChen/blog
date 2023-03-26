@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react'
 import Image from 'next/image'
-import Modal, { Size, Position } from '@/components/Modal'
+import Modal, { Size } from '@/components/Modal'
 import useSWRMutation from 'swr/mutation'
 import updateNotifications from '@/apis/updateNotifications'
 import Quote from '@/components/Quote'
@@ -25,7 +25,7 @@ const NotificationModal: FC<Props> = ({ onClose, onRead }) => {
   }, [])
 
   return (
-    <Modal onClose={onClose} enableCloseButton size={Size.Large} position={Position.Top}>
+    <Modal onClose={onClose} enableCloseButton size={Size.Large}>
       <h3 className="text-lg font-medium mb-4">New Notifications</h3>
       <hr className="border-t absolute w-full left-0" />
       <div className="max-h-[432px] overflow-scroll">

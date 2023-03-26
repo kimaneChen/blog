@@ -34,7 +34,7 @@ const Modal: FC<Props> = ({
   enableCloseButton = false,
   overlay = Overlay.Dark,
   size = Size.Normal,
-  position = Position.Center,
+  position = Position.Top,
 }) =>
   ReactDOM.createPortal(
     <div
@@ -48,8 +48,7 @@ const Modal: FC<Props> = ({
         'justify-center',
         'z-50',
         overlay === Overlay.Dark && ['bg-[#131313]/50'],
-        overlay === Overlay.Light && ['bg-[#fff]/80'],
-        position === Position.Center && ['items-center']
+        overlay === Overlay.Light && ['bg-[#fff]/80']
       )}
       onClick={onClose}
       onKeyDown={onClose}
@@ -62,7 +61,7 @@ const Modal: FC<Props> = ({
           overlay === Overlay.Light && ['shadow-[0_2px_50px_8px_rgba(234,234,234,1)]'],
           size === Size.Normal && ['w-[660px]'],
           size === Size.Large && ['w-[900px]'],
-          position === Position.Top && ['absolute', 'top-[200px]']
+          position === Position.Top && ['absolute', 'top-[160px]']
         )}
         onClick={(event) => event.stopPropagation()}
         onKeyDown={(event) => event.stopPropagation()}
