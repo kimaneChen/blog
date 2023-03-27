@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import AuthType from '@/types/AuthType'
-import Modal, { Overlay, Size } from '@/components/Modal'
+import Modal, { Overlay, Size, Position } from '@/components/Modal'
 
 interface Props {
   type: AuthType
@@ -9,8 +9,8 @@ interface Props {
 }
 
 const CheckEmailModal: FC<Props> = ({ type, email, onClose }) => (
-  <Modal overlay={Overlay.Light} onClose={onClose} size={Size.Large}>
-    <div className="flex items-center justify-center w-full h-full py-[98px]">
+  <Modal overlay={Overlay.Light} onClose={onClose} size={Size.Large} position={Position.Top}>
+    <div className="flex items-center justify-center w-full py-[70px]">
       <div className="text-center">
         <h2 className="text-4xl font-bold mb-5">Email Verification</h2>
         <p className="text-base font-medium text-on-background">
