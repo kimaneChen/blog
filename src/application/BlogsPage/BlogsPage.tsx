@@ -39,7 +39,7 @@ const BlogsPage: NextPage = () => {
     <Layout>
       <Container>
         {isTagsLoading ? (
-          <div className="h-[1000px] items-center flex  justify-center">
+          <div className="h-[1000px] flex items-center justify-center">
             <Loading />
           </div>
         ) : (
