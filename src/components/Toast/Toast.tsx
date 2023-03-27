@@ -39,7 +39,7 @@ const Toast: FC<Props> = ({ children, position, variant }) => (
       'top-[90px]',
 
       position === Position.Center && ['left-1/2', 'translate-x-[-50%]'],
-      position === Position.Right && ['right-1/2', 'translate-x-[650px]'],
+      position === Position.Right && ['right-1/2', 'translate-x-[570px]'],
       variant === Variant.Success && ['border-success', 'text-success'],
       variant === Variant.Error && ['border-error', 'text-error']
     )}
