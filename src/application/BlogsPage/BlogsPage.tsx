@@ -59,7 +59,7 @@ const BlogsPage: NextPage = () => {
               </div>
             </div>
 
-            <div className="grow ml-3 pt-9 pb-[75px] px-5 min-h-[861px]">
+            <div className="grow ml-3 pt-9 pb-[75px] px-5 min-h-[860px]">
               <div className="mb-4">
                 <h1 className="text-3xl font-bold">All Blogs</h1>
               </div>

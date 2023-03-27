@@ -11,7 +11,7 @@ const AboutUsPage: NextPage = () => (
       <title>About Us</title>
     </Head>
     <Layout>
-      <Container size={Size.Narrow} className="px-0">
+      <Container size={Size.Narrow} className="space:none">
         <Content />
         <TeamCards />
       </Container>
