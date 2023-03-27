@@ -22,7 +22,7 @@ const NotificationModal: FC<Props> = ({ onClose, onRead }) => {
   useEffect(() => {
     trigger()
     onRead()
-  }, [])
+  }, [trigger, onRead])
 
   return (
     <Modal onClose={onClose} enableCloseButton size={Size.Large}>
