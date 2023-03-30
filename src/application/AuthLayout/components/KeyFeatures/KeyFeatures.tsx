@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Feature from './components/Feature'
 
 const KeyFeatures: FC = () => (
-  <div className="py-3">
+  <div className="py-6">
     <Feature
       title="A in-text comment system"
       content="Easy share your thoughts and feedback directly on specific parts of a blog post."

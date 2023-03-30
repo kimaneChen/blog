@@ -4,11 +4,10 @@ import Blog from '@/types/Blog'
 import useSWR from 'swr'
 import Link from 'next/link'
 
-const BLOGS_LIMIT = 2
+const BLOGS_LIMIT = 1
 
 const Blogs: FC = () => {
   const { data } = useSWR(`/api/blogs?perPage=${BLOGS_LIMIT}`)
-
   if (!data) {
     return null
   }
@@ -16,7 +15,7 @@ const Blogs: FC = () => {
   return (
     <>
       {data.map((blog: Blog) => (
-        <div key={blog.id} className="mt-3">
+        <div key={blog.id} className="mt-2">
           <Link href={`/blogs/${blog.id}`}>
             <BlogOverview
               title={blog.title}
@@ -27,6 +26,7 @@ const Blogs: FC = () => {
                 src: blog.user?.image,
                 alt: blog.user?.name || 'Unknown user',
               }}
+              ellipsis
             >
               {blog.description}
             </BlogOverview>

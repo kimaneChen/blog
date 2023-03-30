@@ -15,6 +15,7 @@ export interface Props {
     alt: string
   }
   unframed?: boolean
+  ellipsis?: boolean
 }
 
 const BlogOverview: FC<Props> = ({
@@ -24,17 +25,20 @@ const BlogOverview: FC<Props> = ({
   avatar = undefined,
   tags,
   unframed = false,
+  ellipsis = false,
 }) => {
   const className = classNames(
     'bg-background',
     !unframed && ['border', 'rounded-xl', 'py-4', 'px-6']
   )
 
+  const truncate = classNames(ellipsis && 'truncate')
+
   return (
     <article className={className}>
       <Date className="text-on-background text-sm">{date}</Date>
-      <h3 className="text-2xl font-medium my-2 break-words">{title}</h3>
-      <p className="text-on-background">{children}</p>
+      <h3 className={classNames('text-2xl font-medium my-2 break-words', truncate)}>{title}</h3>
+      <p className={classNames('text-on-background', truncate)}>{children}</p>
       <div className="flex justify-between mt-3">
         <div className="flex gap-2 flex-wrap">
           {tags?.map((tag) => (

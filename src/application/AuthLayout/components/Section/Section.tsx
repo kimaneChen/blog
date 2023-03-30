@@ -16,18 +16,15 @@ const Section: FC<Props> = ({ children, position }) => (
     className={classNames(
       'min-h-screen',
       'w-1/2',
-      'flex',
-      'items-center',
-      position === Position.Left && ['justify-end', 'bg-background-variant'],
-      position === Position.Right && 'justify-start'
+      'flex flex-col',
+      'justify-center',
+      position === Position.Left && ['bg-background-variant items-end']
     )}
   >
     <div
       className={classNames(
-        'mx-32',
-        'my-24',
-        position === Position.Left && 'w-[600px]',
-        position === Position.Right && 'w-80'
+        position === Position.Left && ['max-w-[460px]', 'mx-[90px]'],
+        position === Position.Right && ['max-w-xs', 'ml-[90px]']
       )}
     >
       {children}

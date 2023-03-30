@@ -31,7 +31,12 @@ const AuthLayout: FC<Props> = ({ children, type }) => {
         </Section>
         <Section position={Position.Right}>
           <h1 className="text-3xl font-medium mb-4">
-            {type === AuthType.Login && `Log In`}
+            {type === AuthType.Login && (
+              <>
+                Log In <br />
+                to Chuckroo
+              </>
+            )}
             {type === AuthType.SignUp && (
               <>
                 Join <br />

@@ -4,10 +4,8 @@ import Signature from '@/application/Signature'
 
 const Header: FC = () => (
   <div>
-    <div className="text-2xl font-medium">
-      <Logo />
-    </div>
-    <div className="text-on-background mb-4">
+    <Logo />
+    <div className="text-on-background my-3">
       <Signature />
     </div>
   </div>
