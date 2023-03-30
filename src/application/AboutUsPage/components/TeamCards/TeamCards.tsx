@@ -1,16 +1,15 @@
 import { FC } from 'react'
 import Image from 'next/image'
-import Container, { Size } from '@/components/Container'
 import members from './members'
 import linkedin from './assets/linkedin.svg'
 
 const TeamCards: FC = () => (
-  <Container size={Size.Narrow} className="mb-40">
+  <div className="mb-40">
     <h2 className="text-2xl font-bold text-center mb-10">Our Team Members</h2>
-    <div className="grid grid-cols-3 gap-10">
+    <div className="grid grid-cols-3 gap-6">
       {members.map(({ svg, name, title, link }) => (
         <div
-          className="py-9 px-10 text-center rounded-xl shadow-[2px_2px_20px] shadow-[#f36f3724]"
+          className="p-6 text-center rounded-xl shadow-[2px_2px_20px] shadow-[#f36f3724]"
           key={link}
         >
           <Image
@@ -30,7 +29,7 @@ const TeamCards: FC = () => (
         </div>
       ))}
     </div>
-  </Container>
+  </div>
 )
 
 export default TeamCards
