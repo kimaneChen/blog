@@ -1,5 +1,5 @@
 import LoadMoreButton from '@/application/LoadMoreButton'
-import Container, { Size } from '@/components/Container'
+import Container, { Size, Space } from '@/components/Container'
 import Comment from '@/types/Comment'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
@@ -24,7 +24,7 @@ const Comments: FC = () => {
   const isLoadMoreDisabled = isLoading || isReachingEnd
 
   return (
-    <Container size={Size.Narrow}>
+    <Container size={Size.Medium} space={Space.None}>
       <AddComment onSuccess={mutate} />
       <CommentsUserList />
       <div className="pr-24">

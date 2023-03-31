@@ -3,7 +3,7 @@ import Article from './components/Article'
 import User from './components/User'
 
 const Content: FC = () => (
-  <div className="flex pt-5">
+  <div className="flex">
     <Article />
     <User />
   </div>

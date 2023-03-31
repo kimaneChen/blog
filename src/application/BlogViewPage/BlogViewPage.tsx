@@ -1,5 +1,5 @@
 import Layout from '@/application/Layout'
-import Container, { Size } from '@/components/Container'
+import Container, { Size, Space } from '@/components/Container'
 import Loading from '@/components/Loading'
 import { NextPage } from 'next'
 import useBlog from '@/hooks/useBlog'
@@ -26,10 +26,10 @@ const BlogViewPage: NextPage = () => {
       )}
       {blog.unpublishedAt === null ? (
         <>
-          <Container>
+          <Container space={Space.Small}>
             <BackLink />
           </Container>
-          <Container size={Size.Narrow}>
+          <Container size={Size.Medium} space={Space.None}>
             <BlogTitle />
             <Content />
           </Container>

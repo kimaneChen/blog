@@ -3,12 +3,14 @@ import { FC, ReactNode } from 'react'
 
 export enum Size {
   Default,
+  Medium,
   Narrow,
 }
 
 export enum Space {
   Default,
   Small,
+  None,
 }
 
 interface Props {
@@ -27,9 +29,11 @@ const Container: FC<Props> = ({
   <div
     className={classNames(
       size === Size.Default && 'max-w-container',
+      size === Size.Medium && 'max-w-medium',
       size === Size.Narrow && 'max-w-narrow',
       space === Space.Default && 'px-9',
       space === Space.Small && 'px-6',
+      space === Space.None && 'px-0',
       'mx-auto',
       className
     )}
