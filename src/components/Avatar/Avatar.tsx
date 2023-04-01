@@ -12,10 +12,10 @@ interface Props {
 const Avatar: FC<Props> = ({ src = undefined, alt = undefined, width, height }) => (
   <Image
     src={src || defaultAvatar}
-    alt={alt || 'Avatar Placeholder'}
+    alt={alt || 'User Avatar'}
     width={width}
     height={height}
-    className="object-cover rounded-full inline-block"
+    className="rounded-full"
   />
 )
 

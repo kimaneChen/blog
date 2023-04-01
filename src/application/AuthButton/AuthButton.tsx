@@ -4,6 +4,7 @@ import Button, { Variant, Props as ButtonProps } from '@/components/Button'
 interface Props extends ButtonProps {
   icon: ReactNode
   children: ReactNode
+  isLoading?: boolean
 }
 
 const AuthButton: FC<Props> = ({ icon, isLoading = false, children, onClick }) => (

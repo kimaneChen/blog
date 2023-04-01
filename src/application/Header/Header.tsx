@@ -4,6 +4,8 @@ import Container, { Space } from '@/components/Container'
 import Input from '@/components/Input'
 import { useSession } from 'next-auth/react'
 import { FC, useState } from 'react'
+import { FiSearch } from 'react-icons/fi'
+import { HiMenuAlt2 } from 'react-icons/hi'
 import { Size } from '../../components/Input/Input'
 import NavLink, { Variant } from './components/NavLink'
 import Notification from './components/Notification'
@@ -14,11 +16,11 @@ const Header: FC = () => {
   const { data: session } = useSession()
 
   return (
-    <header className="bg-background border-b">
+    <header className="bg-background border-b w-[390px] mx-auto md:w-full">
       <Container className="flex justify-between items-center h-16 relative" space={Space.Small}>
         <Logo />
 
-        <div className="absolute text-center h-8 w-[200px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
+        <div className="hidden md:block absolute text-center h-8 w-[200px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
           <Input
             size={Size.Small}
             className="text-center"
@@ -34,12 +36,23 @@ const Header: FC = () => {
             <User />
           </section>
         ) : (
-          <section className="flex gap-4">
-            <NavLink href="/login">Log In</NavLink>
-            <NavLink href="/sign-up" variant={Variant.Dark}>
-              Sign Up
-            </NavLink>
-          </section>
+          <>
+            <section className="flex gap-2 text-2xl md:hidden">
+              <NavLink href="#">
+                <FiSearch />
+              </NavLink>
+              <NavLink href="#">
+                <HiMenuAlt2 />
+              </NavLink>
+            </section>
+
+            <section className="hidden md:flex gap-4">
+              <NavLink href="/login">Log In</NavLink>
+              <NavLink href="/sign-up" variant={Variant.Dark}>
+                Sign Up
+              </NavLink>
+            </section>
+          </>
         )}
       </Container>
     </header>

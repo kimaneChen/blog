@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { FiExternalLink } from 'react-icons/fi'
 
 const LegalPolicy: FC = () => (
-  <section>
+  <section className="text-sm md:text-base">
     <div className="text-on-background">By clicking continue, you agree to our</div>
     <div>
       <Link href="/legal/term" className="flex items-center gap-1">

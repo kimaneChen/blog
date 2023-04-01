@@ -48,7 +48,7 @@ const Modal: FC<Props> = ({
         'justify-center',
         'z-50',
         overlay === Overlay.Dark && ['bg-[#131313]/50'],
-        overlay === Overlay.Light && ['bg-[#fff]/80']
+        overlay === Overlay.Light && ['md:bg-[#fff]/80']
       )}
       onClick={onClose}
       onKeyDown={onClose}
@@ -58,10 +58,11 @@ const Modal: FC<Props> = ({
           'bg-background',
           'rounded',
           'p-7',
+          'w-[390px]',
           overlay === Overlay.Light && ['shadow-[0_2px_50px_8px_rgba(234,234,234,1)]'],
-          size === Size.Normal && ['w-[660px]'],
-          size === Size.Large && ['w-[900px]'],
-          position === Position.Top && ['absolute', 'top-[160px]']
+          size === Size.Normal && ['md:w-[660px]'],
+          size === Size.Large && ['md:w-[900px]'],
+          position === Position.Top && ['absolute', 'top-[65px] md:top-[160px]']
         )}
         onClick={(event) => event.stopPropagation()}
         onKeyDown={(event) => event.stopPropagation()}

@@ -10,16 +10,13 @@ interface Props {
 
 const CheckEmailModal: FC<Props> = ({ type, email, onClose }) => (
   <Modal overlay={Overlay.Light} onClose={onClose} size={Size.Large} position={Position.Top}>
-    <div className="flex items-center justify-center w-full py-[70px]">
-      <div className="text-center">
-        <h2 className="text-4xl font-bold mb-5">Email Verification</h2>
-        <p className="text-base font-medium text-on-background">
-          {type === AuthType.SignUp && 'Thanks for joining us! '}
-          {type === AuthType.Login && 'Welcome to Chuckroo! '}
-          We just sent a link to <span className="text-dark">{email}</span>, please check your
-          email.
-        </p>
-      </div>
+    <div className="text-center pt-[200px] pb-[448px] md:py-[70px]">
+      <h2 className="text-3xl md:text-4xl font-bold mb-5">Email Verification</h2>
+      <p className="font-medium text-base text-on-background">
+        {type === AuthType.SignUp && 'Thanks for joining us! '}
+        {type === AuthType.Login && 'Welcome to Chuckroo! '}
+        We just sent a link to <span className="text-dark">{email}</span>, please check your email.
+      </p>
     </div>
   </Modal>
 )

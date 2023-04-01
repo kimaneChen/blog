@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Logo from '@/application/Logo'
 import Signature from '@/application/Signature'
 
-const Header: FC = () => (
+const Title: FC = () => (
   <div>
     <Logo />
     <div className="text-on-background my-3">
@@ -11,4 +11,4 @@ const Header: FC = () => (
   </div>
 )
 
-export default Header
+export default Title
