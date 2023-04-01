@@ -19,6 +19,7 @@ export enum Size {
   Medium,
   Small,
   XSmall,
+  XXSmall,
   Large,
 }
 

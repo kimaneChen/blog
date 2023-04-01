@@ -1,25 +1,21 @@
-import BlogOverview from '@/application/BlogOverview'
 import CreateANewBlogButton, { Size } from '@/application/CreateANewBlogButton'
-import LoadMoreButton from '@/application/LoadMoreButton'
-import UserLayout from '@/application/UserLayout'
 import Loading from '@/components/Loading'
-import Blog from '@/types/Blog'
 import { NextPage } from 'next'
+import { useRouter } from 'next/router'
+import useSWR from 'swr'
+import UserLayout from '@/application/UserLayout'
 import Head from 'next/head'
-import useSWRInfinite from 'swr/infinite'
-import Link from 'next/link'
-import Empty from './component/Empty'
-import Actions from './component/Actions'
-
-const BLOGS_PER_PAGE = 3
+import Pagination from '@/components/Pagination'
+import Empty from '@/components/Empty'
+import Blogs, { PER_PAGE } from './components/Blogs'
 
 const UserBlogsPage: NextPage = () => {
-  const { data, isLoading, size, setSize } = useSWRInfinite<Blog[]>(
-    (index) => `/api/user/blogs?page=${index + 1}&perPage=${BLOGS_PER_PAGE}`
-  )
+  const router = useRouter()
+  const page = Number(router.query.page) || 1
+  const { data, isLoading } = useSWR(`/api/user/blogs?perPage=${PER_PAGE}&page=${page}`)
+  const isPreviousPage = page > 1
+  const isNextPage = data?.length === PER_PAGE
   const blogs = data ? data.flat() : []
-  const lastPage = data?.[data.length - 1]
-  const isReachingEnd = lastPage && lastPage.length < BLOGS_PER_PAGE
 
   return (
     <>
@@ -33,46 +29,40 @@ const UserBlogsPage: NextPage = () => {
             <Loading />
           </div>
         ) : (
-          <div>
-            <div className="flex justify-between items-center mb-6">
-              <h1 className="text-[32px] font-bold">Blogs</h1>
-              <CreateANewBlogButton size={Size.Medium}>Create a new Blog</CreateANewBlogButton>
-            </div>
-
-            {!blogs.length ? (
-              <Empty />
-            ) : (
-              <>
-                <div className="mt-6">
-                  {blogs.map((blog) => (
-                    <div key={blog.id} className="mb-6">
-                      <div className="flex items-center border p-5 gap-5 rounded-xl">
-                        <div className="grow">
-                          <Link href={`/blogs/${blog.id}`}>
-                            <BlogOverview
-                              unframed
-                              title={blog.title}
-                              date={blog.createdAt}
-                              tags={blog.tags}
-                            >
-                              {blog.description}
-                            </BlogOverview>
-                          </Link>
-                        </div>
-                        <div className="border-l min-h-[130px]" />
-                        <Actions />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  <LoadMoreButton hasMore={!isReachingEnd} onLoadMore={() => setSize(size + 1)}>
-                    MORE BLOGS
-                  </LoadMoreButton>
-                </div>
-              </>
-            )}
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-[32px] font-bold">Blogs</h1>
+            <CreateANewBlogButton size={Size.Medium}>Create a new Blog</CreateANewBlogButton>
           </div>
+        )}
+
+        {!blogs.length && page === 1 ? (
+          <Empty>
+            Your blog page is looking a little empty. It&rsquo;s time to fill it with your amazing
+            content. Create a new blog post now!
+          </Empty>
+        ) : (
+          <>
+            {!blogs.length && !isNextPage && <div className="text-center">No More Blogs</div>}
+            {isPreviousPage && (
+              <div className="hidden">
+                <Blogs page={page - 1} />
+              </div>
+            )}
+            <Blogs page={page} />
+            {isNextPage && (
+              <div className="hidden">
+                <Blogs page={page + 1} />
+              </div>
+            )}
+            <Pagination
+              perPage={PER_PAGE}
+              page={page}
+              total={data.length}
+              onPageChange={(to: number): void => {
+                router.push(`/user/blogs?page=${to}`)
+              }}
+            />
+          </>
         )}
       </UserLayout>
     </>
