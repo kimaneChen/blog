@@ -46,9 +46,9 @@ const AddComment: FC<Props> = ({ onSuccess }) => {
   }
 
   return (
-    <div className="pt-12 pr-24">
+    <div className="pt-12 pr-24 pb-[120px]">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex gap-6 items-start">
+        <div className="flex gap-6 items-start ">
           <div className="py-0.5">
             <Avatar src={session?.user?.image} alt={session?.user?.name} width={40} height={40} />
           </div>
