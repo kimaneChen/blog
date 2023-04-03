@@ -8,7 +8,10 @@ import NotificationModal from './components/NotificationModal'
 const Notification: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
-  const { data, mutate } = useSWR('/api/user/notifications?readAt=')
+  const { data: commentNotifications } = useSWR('/api/user/comment-notifications?readAt=')
+  const { data: replyNotifications } = useSWR('/api/user/reply-notifications?readAt=')
+
+  const isUnRead = commentNotifications?.length > 0 || replyNotifications?.length > 0
 
   return (
     <div className="bg-background-variant rounded-full w-[30px] h-[30px] relative">
@@ -17,9 +20,9 @@ const Notification: FC = () => {
         onClick={() => {
           setIsModalOpen(true)
         }}
-        disabled={!data}
+        disabled={!isUnRead}
       >
-        {data && (
+        {isUnRead && (
           <Image
             src={newNotificationAlert}
             alt="New Notification"
@@ -32,7 +35,7 @@ const Notification: FC = () => {
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         />
       </button>
-      {isModalOpen && <NotificationModal onRead={mutate} onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && <NotificationModal onClose={() => setIsModalOpen(false)} />}
     </div>
   )
 }

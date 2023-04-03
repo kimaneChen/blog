@@ -23,6 +23,19 @@ const createReply: NextApiHandler = async (req, res) => {
 
   try {
     const { content, commentId, replyToId } = ReplySchema.parse(req.body)
+
+    const comment = await prisma.comment.findUnique({
+      where: {
+        id: commentId,
+      },
+    })
+
+    if (!comment) {
+      const { statusCode, message } = Boom.badData().output.payload
+      res.status(statusCode).json(message)
+      return
+    }
+
     const result = await prisma.reply.create({
       data: {
         content,
@@ -45,6 +58,14 @@ const createReply: NextApiHandler = async (req, res) => {
         }),
       },
     })
+
+    await prisma.replyNotification.create({
+      data: {
+        userId: comment.userId,
+        replyId: result.id,
+      },
+    })
+
     res.status(200).json({ id: result.id })
   } catch (error) {
     if (error instanceof ZodError) {

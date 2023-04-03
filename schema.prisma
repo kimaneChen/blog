@@ -49,7 +49,8 @@ model User {
   comments             Comment[]
   replies              Reply[]
   commentNotifications CommentNotification[]
-  occupation    String?
+  occupation           String?
+  replyNotifications   ReplyNotification[]
 }
 
 model VerificationToken {
@@ -104,15 +105,26 @@ model CommentNotification {
 }
 
 model Reply {
-  id        String   @id @default(cuid())
-  content   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String              @id @default(cuid())
+  content      String
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+  userId       String
+  user         User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  commentId    String
+  comment      Comment             @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  replyToId    String?
+  replyTo      Reply?              @relation("replyTo", fields: [replyToId], references: [id], onDelete: Cascade)
+  replyFrom    Reply[]             @relation("replyTo")
+  notification ReplyNotification[]
+}
+
+model ReplyNotification {
+  id        String    @id @default(cuid())
+  replyId   String
+  reply     Reply     @relation(fields: [replyId], references: [id], onDelete: Cascade)
   userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  commentId String
-  comment   Comment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
-  replyToId String?
-  replyTo   Reply?   @relation("replyTo", fields: [replyToId], references: [id], onDelete: Cascade)
-  replyFrom Reply[]  @relation("replyTo")
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+  readAt    DateTime?
 }

@@ -2,27 +2,32 @@ import { FC, useState, useEffect } from 'react'
 import Image from 'next/image'
 import Modal, { Size } from '@/components/Modal'
 import useSWRMutation from 'swr/mutation'
-import updateNotifications from '@/apis/updateNotifications'
+import updateCommentNotifications from '@/apis/updateCommentNotifications'
 import Quote from '@/components/Quote'
 import CommentItem, { Type } from '@/application/CommentItem'
+import updateReplyNotifications from '@/apis/updateReplyNotifications'
 import noNewNotification from './assets/noNewNotification.svg'
 
 interface Props {
   onClose: () => void
-  onRead: () => unknown
 }
 
-const NotificationModal: FC<Props> = ({ onClose, onRead }) => {
+const NotificationModal: FC<Props> = ({ onClose }) => {
   const [data] = useState(true)
 
-  const { trigger } = useSWRMutation('/api/user/notifications', () =>
-    updateNotifications({ readAt: new Date() })
+  const { trigger: mutateCommentNotifications } = useSWRMutation(
+    '/api/user/comment-notifications?readAt=',
+    () => updateCommentNotifications({ readAt: String(new Date()) })
+  )
+  const { trigger: mutateReplyNotifications } = useSWRMutation(
+    '/api/user/reply-notifications?readAt=',
+    () => updateReplyNotifications({ readAt: String(new Date()) })
   )
 
   useEffect(() => {
-    trigger()
-    onRead()
-  }, [trigger, onRead])
+    mutateCommentNotifications()
+    mutateReplyNotifications()
+  }, [mutateCommentNotifications, mutateReplyNotifications])
 
   return (
     <Modal onClose={onClose} enableCloseButton size={Size.Large}>
