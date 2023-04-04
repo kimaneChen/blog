@@ -40,7 +40,7 @@ const ActionButtons: FC<Props> = ({ onConfirmPublish, isLoading, isEditorDirty }
       <div className="flex justify-end gap-3 pt-6 pb-3">
         {session ? (
           <Button
-            variant={Variant.Primary}
+            variant={Variant.Dark}
             isLoading={isLoading}
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...(isValid

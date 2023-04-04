@@ -70,7 +70,7 @@ const Form: FC<Props> = ({ defaultValues = undefined }) => {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <FormProvider {...form}>
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-narrow grow flex flex-col">
+      <form onSubmit={handleSubmit(onSubmit)}>
         <ActionButtons
           onConfirmPublish={handleSubmit(onSubmit)}
           isLoading={isMutating}

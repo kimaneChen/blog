@@ -1,8 +1,8 @@
-import Header from '@/application/Header'
 import Loading from '@/components/Loading'
 import useBlog from '@/hooks/useBlog'
 import { NextPage } from 'next'
 import { useSession } from 'next-auth/react'
+import Layout from '@/application/Layout'
 import Form from './components/Form'
 
 const BlogEditorPage: NextPage = () => {
@@ -22,12 +22,11 @@ const BlogEditorPage: NextPage = () => {
   }
 
   return (
-    <>
-      <Header />
-      <main className="min-h-[calc(100vh-theme(height.header))] px-3 pb-5 flex flex-col items-center">
+    <Layout>
+      <main className="xl:w-[960px] max-w-[960px] mx-auto">
         <Form defaultValues={blog} />
       </main>
-    </>
+    </Layout>
   )
 }
 

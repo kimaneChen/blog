@@ -18,7 +18,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, Props>(
     return (
       <textarea
         ref={ref}
-        className={`resize-none my-3 ${className}`}
+        className={`resize-none my-3 w-full ${className}`}
         placeholder={placeholder}
         onChange={handleChange}
         rows={1}

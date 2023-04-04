@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Button, { Size, Variant } from '@/components/Button'
 import { useFormContext } from 'react-hook-form'
-import Modal from '@/components/Modal'
+import Modal, { Position } from '@/components/Modal'
 
 interface Props {
   onClose: () => void
@@ -13,7 +13,7 @@ const AddTitleModal: FC<Props> = ({ onClose, onConfirmPublish }) => {
   const { isValid } = formState
 
   return (
-    <Modal onClose={onClose} enableCloseButton>
+    <Modal position={Position.Top} onClose={onClose} enableCloseButton>
       <div className="text-xl font-medium mb-4">This blog needs a title</div>
       <div className="text-sm text-on-background mb-4">
         You need to add a title to this page to publish it

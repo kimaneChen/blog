@@ -28,9 +28,9 @@ const FieldSet: FC<Props> = ({
   const { register } = useFormContext()
 
   return (
-    <div className="bg-background py-16 px-20 grow flex flex-col">
+    <div className="bg-background px-6">
       <Textarea
-        className="block focus:outline-none placeholder:text-placeholder-500 text-[2rem] mb-3"
+        className="block focus:outline-none placeholder:text-placeholder-500 text-[2rem] py-3"
         placeholder="Give this blog a title"
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...register('title', {
@@ -38,14 +38,14 @@ const FieldSet: FC<Props> = ({
         })}
       />
       <Textarea
-        className="block focus:outline-none placeholder:text-placeholder-400 mb-2"
+        className="block focus:outline-none placeholder:text-placeholder-400 py-3"
         placeholder="A short description to attract others attention"
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...register('description')}
       />
       <Tags tags={tags} onTagsChange={onTagsChange} />
-      <hr className="border-t-2 border-outline mb-5" />
-      <div className="prose max-w-none">
+      <hr className="border-t-2 border-outline mb-3" />
+      <div className="prose max-w-none min-h-[480px]">
         <EditorBlock onInitialize={onEditorInitialize} data={content} onChange={onEditorChange} />
       </div>
     </div>
