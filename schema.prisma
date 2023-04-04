@@ -97,7 +97,7 @@ model Comment {
 model CommentNotification {
   id        String    @id @default(cuid())
   commentId String    @unique
-  comment   Comment   @relation(fields: [commentId], references: [id])
+  comment   Comment   @relation(fields: [commentId], references: [id], onDelete: Cascade)
   createdAt DateTime  @default(now())
   userId    String
   user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
