@@ -1,7 +1,6 @@
 import { FC, ReactNode } from 'react'
 import { useSession } from 'next-auth/react'
-import Header from '@/application/Header'
-import Footer from '@/application/Footer'
+import Layout from '@/application/Layout'
 import classNames from 'classnames'
 import Navigation from './components/Navigation'
 
@@ -14,22 +13,20 @@ const UserLayout: FC<Props> = ({ children, className = undefined }) => {
   const { data: session } = useSession()
 
   return (
-    <>
-      <Header />
+    <Layout>
       {session ? (
         <>
           <Navigation />
           <div
-            className={classNames('xl:max-w-[1140px]', 'pt-12', 'pb-[120px]', 'mx-auto', className)}
+            className={classNames('max-w-[1140px]', 'mt-12', 'mb-[120px]', 'mx-auto', className)}
           >
             {children}
           </div>
         </>
       ) : (
-        `Log In to Operate`
+        'Log In to Operate'
       )}
-      <Footer />
-    </>
+    </Layout>
   )
 }
 
