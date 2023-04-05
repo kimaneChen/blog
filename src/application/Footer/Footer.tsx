@@ -10,7 +10,7 @@ import ColumnWrapper from './components/ColumnWrapper'
 const Footer: FC = () => (
   <footer className="border-t border-outline">
     <Container>
-      <div className="h-[300px] flex justify-start gap-x-30 pt-[60px] px-[60px]">
+      <div className="h-[300px] flex justify-start gap-x-[120px] pt-[60px] px-[60px]">
         <div className="flex justify-center items-start">
           <Logo />
         </div>
