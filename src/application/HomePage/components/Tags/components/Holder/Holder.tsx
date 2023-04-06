@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Holder: FC<Props> = ({ tags }) => (
-  <section className="flex gap-8 mb-12">
+  <section className="flex gap-8 mb-6 md:mb-12">
     {tags.map((tag) => (
       <Option name={tag.name} key={tag.id} onClick={() => Router.push(`/blogs?tags=${tag.name}`)} />
     ))}

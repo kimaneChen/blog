@@ -1,14 +1,19 @@
 import { GetStaticProps } from 'next'
 import { BLOGS_PER_PAGE } from './components/ExploreBlogs/ExploreBlogs'
-import { TAGS_PER_PAGE } from './components/Tags'
+import { TagsPerPage } from './components/Tags'
 
 const getStaticProps: GetStaticProps = async () => {
   const getTags = (await import('@/services/getTags')).default
   const getBlogs = (await import('@/services/getBlogs')).default
 
-  const tags = await getTags({
+  const tagsOnLargeScreen = await getTags({
     page: 1,
-    perPage: TAGS_PER_PAGE,
+    perPage: TagsPerPage.Large,
+  })
+
+  const tagsOnSmallScreen = await getTags({
+    page: 1,
+    perPage: TagsPerPage.Small,
   })
 
   const blogs = await getBlogs({
@@ -19,7 +24,8 @@ const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       fallback: {
-        [`/api/tags?perPage=${TAGS_PER_PAGE}`]: tags,
+        [`/api/tags?perPage=${TagsPerPage.Large}`]: tagsOnLargeScreen,
+        [`/api/tags?perPage=${TagsPerPage.Small}`]: tagsOnSmallScreen,
         [`/api/blogs?perPage=${BLOGS_PER_PAGE}`]: blogs,
       },
     },

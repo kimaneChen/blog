@@ -5,13 +5,15 @@ import Link from 'next/link'
 import Router from 'next/router'
 import classNames from 'classnames'
 import BlogOverview from '@/application/BlogOverview'
-import Button, { Variant } from '@/components/Button'
+import Button, { Size, Variant } from '@/components/Button'
+import useIsScreen, { Screen } from '@/hooks/useIsScreen'
 import UserInfo from './components/UserInfo'
 import DecorationLine from './components/DecorationLine'
 
 export const BLOGS_PER_PAGE = 10
 
 const ExploreBlogs: FC = () => {
+  const isSmallScreen = useIsScreen(Screen.Small)
   const { data: blogs } = useSWR(`/api/blogs?perPage=${BLOGS_PER_PAGE}`)
 
   if (!blogs) {
@@ -19,8 +21,8 @@ const ExploreBlogs: FC = () => {
   }
 
   return (
-    <div className="md:px-12 pt-20 pb-40">
-      <h3 className="text-2xl font-bold mb-10">Explore Our Blogs</h3>
+    <div className="md:px-12 py-24 md:pb-40">
+      <h3 className="text-lg md:text-2xl font-bold mb-6 md:mb-10">Explore Our Blogs</h3>
 
       {blogs.map((blog: Blog, index: number) => {
         const reversed = index % 2 !== 0
@@ -28,17 +30,19 @@ const ExploreBlogs: FC = () => {
         return (
           <div
             key={blog.id}
-            className={classNames('flex', 'mb-10', reversed && ['flex-row-reverse'])}
+            className={classNames('flex', 'mb-6', 'md:mb-10', reversed && ['md:flex-row-reverse'])}
           >
             <Link
               href={`/blogs/${blog.id}`}
               className={classNames(
+                'w-full',
                 'md:w-[70%]',
                 'border',
-                'flex',
+                'md:flex',
                 'items-center',
                 'rounded-xl',
-                'py-6',
+                'px-3',
+                'md:py-6',
                 'bg-background',
                 reversed && ['flex-row-reverse']
               )}
@@ -48,8 +52,8 @@ const ExploreBlogs: FC = () => {
                 image={blog.user?.image}
                 occupation={blog.user?.occupation}
               />
-              <div className="border-r h-full" />
-              <div className="grow px-8">
+              <div className="border-t md:border-r md:h-full" />
+              <div className="md:grow pt-3 pb-5 md:pb-3 px-5 md:px-8">
                 <BlogOverview title={blog.title} date={blog.createdAt} tags={blog.tags} unframed>
                   {blog.description}
                 </BlogOverview>
@@ -62,9 +66,10 @@ const ExploreBlogs: FC = () => {
       })}
 
       <Button
+        size={isSmallScreen ? Size.Medium : Size.Normal}
         variant={Variant.Dark}
         onClick={() => Router.push('/blogs')}
-        className="text-sm mt-20 mx-auto px-12 block"
+        className="text-sm mt-10 md:mt-20 mx-auto px-12 block"
       >
         SEE MORE BLOGS
       </Button>

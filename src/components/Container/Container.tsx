@@ -28,10 +28,10 @@ const Container: FC<Props> = ({
 }) => (
   <div
     className={classNames(
-      size === Size.Default && 'max-w-[390px] md:max-w-container',
+      size === Size.Default && ['md:max-w-container'],
       size === Size.Medium && 'max-w-medium',
       size === Size.Narrow && 'max-w-narrow',
-      space === Space.Default && 'px-9',
+      space === Space.Default && ['px-6', 'md:px-9'],
       space === Space.Small && 'px-6',
       space === Space.None && 'px-0',
       'mx-auto',
