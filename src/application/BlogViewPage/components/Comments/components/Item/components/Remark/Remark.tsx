@@ -15,6 +15,7 @@ interface Props {
   commentId: Comment['id']
   replyId?: Reply['id']
   onReply: () => void
+  onDelete: () => void
 }
 
 const Remark: FC<Props> = ({
@@ -25,6 +26,7 @@ const Remark: FC<Props> = ({
   commentId,
   replyId = undefined,
   onReply,
+  onDelete,
 }) => {
   const [isShowAddReply, setIsShowAddReply] = useState<boolean>(false)
 
@@ -36,6 +38,7 @@ const Remark: FC<Props> = ({
         <Interactions
           createdAt={createdAt}
           onReply={() => setIsShowAddReply(!isShowAddReply)}
+          onDelete={onDelete}
           user={user}
         />
         {isShowAddReply && (

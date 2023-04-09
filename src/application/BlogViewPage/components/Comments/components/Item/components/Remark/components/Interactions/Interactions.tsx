@@ -9,9 +9,10 @@ interface Props {
   createdAt: Comment['createdAt']
   user: Comment['user']
   onReply: () => void
+  onDelete: () => void
 }
 
-const Interactions: FC<Props> = ({ createdAt, onReply, user }) => {
+const Interactions: FC<Props> = ({ createdAt, onReply, onDelete, user }) => {
   const { data: session } = useSession()
   return (
     <div className="relative flex items-center text-sm text-on-background">
@@ -27,7 +28,9 @@ const Interactions: FC<Props> = ({ createdAt, onReply, user }) => {
       {session?.user?.email === user?.email && (
         <>
           <BsDot />
-          <button type="button">Delete</button>
+          <button type="button" onClick={onDelete}>
+            Delete
+          </button>
         </>
       )}
       <BsDot />

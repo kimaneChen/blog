@@ -45,7 +45,7 @@ const Editor: FC<Props> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return <div id={HOLDER} className="-mb-48" />
+  return <div id={HOLDER} className="-mb-14" />
 }
 
 export default Editor

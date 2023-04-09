@@ -12,9 +12,20 @@ interface Props {
   user: Comment['user']
   replyNumber: Comment['replyNumber']
   onReply: () => void
+  onCommentDelete: () => void
+  onReplyDelete: () => void
 }
 
-const Item: FC<Props> = ({ content, createdAt, user, replyNumber, id, onReply }) => {
+const Item: FC<Props> = ({
+  content,
+  createdAt,
+  user,
+  replyNumber,
+  id,
+  onReply,
+  onCommentDelete,
+  onReplyDelete,
+}) => {
   const [isShowReplies, setIsShowReplies] = useState<boolean>(false)
   return (
     <section className="py-4 px-5 mb-4 rounded-xl bg-background-variant relative">
@@ -25,10 +36,11 @@ const Item: FC<Props> = ({ content, createdAt, user, replyNumber, id, onReply })
         header={user?.name}
         commentId={id}
         onReply={onReply}
+        onDelete={onCommentDelete}
       />
       {!!replyNumber && (
         <>
-          {isShowReplies && <Replies commentId={id} onReply={onReply} />}
+          {isShowReplies && <Replies commentId={id} onReply={onReply} onDelete={onReplyDelete} />}
           <ToggleRepliesButton onToggle={() => setIsShowReplies(!isShowReplies)}>
             {isShowReplies ? (
               <>

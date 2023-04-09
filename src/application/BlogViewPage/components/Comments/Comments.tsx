@@ -4,6 +4,7 @@ import Comment from '@/types/Comment'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import useSWRInfinite from 'swr/infinite'
+import deleteComment from '@/apis/deleteComment'
 import AddComment from './components/AddComment'
 import CommentsUserList from './components/CommentsUserList'
 import Item from './components/Item'
@@ -17,6 +18,16 @@ const Comments: FC = () => {
   const { data, isLoading, size, setSize, mutate } = useSWRInfinite<Comment[]>(
     (index) => `/api/blogs/${id}/comments?page=${index + 1}&perPage=${PER_PAGE}`
   )
+
+  const handleDelete = async (commentId: string): Promise<void> => {
+    try {
+      await deleteComment(commentId)
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.log(e)
+    }
+    mutate()
+  }
 
   const comments = data ? data.flat() : []
   const lastPage = data?.[data.length - 1]
@@ -37,6 +48,8 @@ const Comments: FC = () => {
               user={comment.user}
               replyNumber={comment.replyNumber}
               onReply={mutate}
+              onCommentDelete={() => handleDelete(comment.id)}
+              onReplyDelete={mutate}
             />
           ))}
           <div className="mb-20">
