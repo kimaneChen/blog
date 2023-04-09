@@ -5,6 +5,7 @@ import classNames from 'classnames'
 export enum Variant {
   Light,
   Dark,
+  Border,
 }
 
 interface Props {
@@ -13,17 +14,22 @@ interface Props {
   variant?: Variant
 }
 
-const NavLink: FC<Props> = ({ children, href, variant = Variant.Light }) => {
-  const className = classNames(
-    'py-1',
-    'px-2',
-    variant === Variant.Dark && ['bg-dark', 'text-background', 'rounded-md']
-  )
-  return (
-    <Link href={href} className={className}>
-      {children}
-    </Link>
-  )
-}
+const NavLink: FC<Props> = ({ children, href, variant = Variant.Light }) => (
+  <Link
+    href={href}
+    className={classNames(
+      'px-2',
+      'rounded-md',
+      variant === Variant.Dark && ['bg-dark', 'text-background'],
+      variant === Variant.Border && ['text-on-background', 'border'],
+      'block',
+      'text-center',
+      'py-[9px]',
+      'md:py-1'
+    )}
+  >
+    {children}
+  </Link>
+)
 
 export default NavLink

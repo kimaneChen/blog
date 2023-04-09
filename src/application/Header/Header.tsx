@@ -10,13 +10,15 @@ import { Size } from '../../components/Input/Input'
 import NavLink, { Variant } from './components/NavLink'
 import Notification from './components/Notification'
 import User from './components/User'
+import MobileMenu from './components/MobileMenu'
 
 const Header: FC = () => {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
   const { data: session } = useSession()
 
   return (
-    <header className="bg-background border-b w-[390px] mx-auto md:w-full">
+    <header className="bg-background border-b mx-auto md:w-full">
       <Container className="flex justify-between items-center h-16 relative" space={Space.Small}>
         <Logo />
 
@@ -37,15 +39,19 @@ const Header: FC = () => {
           </section>
         ) : (
           <>
-            <section className="flex gap-2 text-2xl md:hidden">
+            <section className="flex text-2xl gap-2 items-center md:hidden">
               <NavLink href="#">
                 <FiSearch />
               </NavLink>
-              <NavLink href="#">
+              <button
+                type="button"
+                onClick={() => {
+                  setIsMobileMenuOpen(true)
+                }}
+              >
                 <HiMenuAlt2 />
-              </NavLink>
+              </button>
             </section>
-
             <section className="hidden md:flex gap-4">
               <NavLink href="/login">Log In</NavLink>
               <NavLink href="/sign-up" variant={Variant.Dark}>
@@ -55,6 +61,7 @@ const Header: FC = () => {
           </>
         )}
       </Container>
+      {isMobileMenuOpen && <MobileMenu onClose={() => setIsMobileMenuOpen(false)} />}
     </header>
   )
 }

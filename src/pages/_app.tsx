@@ -1,4 +1,5 @@
 import { SessionProvider } from 'next-auth/react'
+import Head from 'next/head'
 import { AppProps } from 'next/app'
 import React, { useEffect } from 'react'
 import '@/styles/globals.css'
@@ -39,17 +40,25 @@ const App: React.FC<AppProps> = ({ Component, pageProps: { session, ...pageProps
   }, [query.redirect_url])
 
   return (
-    <NotificationProvider>
-      <main className={`${inter.variable} font-sans`}>
-        <SWRConfig value={{ fetcher }}>
-          <SessionProvider session={session}>
-            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-            <Component {...pageProps} />
-          </SessionProvider>
-        </SWRConfig>
-        <div id="modal" />
-      </main>
-    </NotificationProvider>
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1,  maximum-scale=1, user-scalable=0"
+        />
+      </Head>
+      <NotificationProvider>
+        <main className={`${inter.variable} font-sans`}>
+          <SWRConfig value={{ fetcher }}>
+            <SessionProvider session={session}>
+              {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+              <Component {...pageProps} />
+            </SessionProvider>
+          </SWRConfig>
+          <div id="modal" />
+        </main>
+      </NotificationProvider>
+    </>
   )
 }
 
