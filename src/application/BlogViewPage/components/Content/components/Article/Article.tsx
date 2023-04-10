@@ -28,7 +28,7 @@ const Article: FC = () => {
   }
 
   return (
-    <article className="min-w-[700px] prose">
+    <article className="min-w-[350px] md:min-w-[700px] prose">
       <EditorBlock
         onInitialize={handleEditorInitialize}
         data={blog.content}

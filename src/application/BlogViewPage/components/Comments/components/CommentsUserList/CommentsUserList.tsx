@@ -8,7 +8,7 @@ const CommentsUserList: FC = () => {
   const { id } = router.query
   const { data } = useSWR<Comment[]>(() => `/api/blogs/${id}/interactions`)
   return (
-    <div className="pr-24 my-4 flex flex-row-reverse flex-wrap-reverse items-center gap-1">
+    <div className="md:pr-24 mb-4 md:my-4 flex flex-row-reverse flex-wrap-reverse items-center gap-1">
       {data?.map((comment) => (
         <Avatar
           key={comment.user?.id}

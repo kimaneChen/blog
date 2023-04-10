@@ -20,8 +20,8 @@ const User: FC = () => {
   }
 
   return (
-    <div className="border-l pl-9 pt-3 pb-20 grow">
-      <div className="text-on-background text-xs mb-3">Posted by</div>
+    <div className="border-t md:border-l md:pl-9 pt-6 md:pt-3 pb-14 md:pb-20 grow">
+      <div className="text-on-background text-sm mb-3">Posted by</div>
       {user && <Info name={user.name} image={user.image} occupation={user.occupation} />}
 
       {blogs.length > 0 && (

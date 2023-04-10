@@ -10,8 +10,13 @@ interface Props {
 
 const Info: FC<Props> = ({ name = undefined, image = undefined, occupation = undefined }) => (
   <div className="flex gap-3 mb-12 items-center">
-    <Avatar width={30} height={30} alt={name} src={image} />
-    <div className="text-xs">
+    <div className="hidden md:block">
+      <Avatar width={30} height={30} alt={name} src={image} />
+    </div>
+    <div className="md:hidden">
+      <Avatar width={40} height={40} alt={name} src={image} />
+    </div>
+    <div className="md:text-xs">
       {name}
       {occupation && <Occupation value={occupation} />}
     </div>

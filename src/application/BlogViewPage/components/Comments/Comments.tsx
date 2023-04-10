@@ -38,7 +38,7 @@ const Comments: FC = () => {
       <AddComment onSuccess={mutate} />
       <CommentsUserList />
       {comments.length > 0 && (
-        <div className="pr-24">
+        <div className="md:pr-24">
           {comments.map((comment) => (
             <Item
               id={comment.id}

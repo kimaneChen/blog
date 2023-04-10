@@ -18,7 +18,7 @@ const Header: FC = () => {
   const { data: session } = useSession()
 
   return (
-    <header className="bg-background border-b mx-auto md:w-full">
+    <header className="bg-background border-b min-w-[390px] mx-auto md:w-full">
       <Container className="flex justify-between items-center h-16 relative" space={Space.Small}>
         <Logo />
 

@@ -12,12 +12,14 @@ const BlogTitle: FC = () => {
   }
 
   return (
-    <header className="w-[700px] mt-9 mb-11">
+    <header className="md:w-[700px] mt-9 mb-8 md:mb-11">
       <Date className="text-sm text-on-background" format={DateFormat.LongDate}>
         {blog.createdAt}
       </Date>
-      <h1 className="text-4xl my-3">{blog.title}</h1>
-      {blog.description && <h3 className="text-lg text-on-background mb-3">{blog.description}</h3>}
+      <h1 className="font-bold text-3xl md:text-4xl my-3">{blog.title}</h1>
+      {blog.description && (
+        <h3 className="md:text-lg text-on-background mb-3">{blog.description}</h3>
+      )}
       {blog.tags && (
         <div className="flex gap-2 text-on-background py-1">
           {blog.tags.map((tag) => (

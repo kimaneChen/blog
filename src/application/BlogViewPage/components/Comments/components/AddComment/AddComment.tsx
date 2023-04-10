@@ -7,6 +7,7 @@ import { Comment } from '@/schemas/Comment'
 import RemarkTextarea from '@/application/RemarkTextArea'
 import { FC, useState } from 'react'
 import Button, { Size, Variant } from '@/components/Button'
+import classNames from 'classnames'
 
 interface Props {
   onSuccess: () => void
@@ -46,15 +47,25 @@ const AddComment: FC<Props> = ({ onSuccess }) => {
   }
 
   return (
-    <div className="pt-12 pr-24 pb-[120px]">
+    <div className="pt-9 md:pt-12 md:pr-24">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex gap-6 items-start ">
+        <div className="flex flex-col items-center gap-3 md:flex-row md:gap-6 md:items-start">
           <div className="py-0.5">
             <Avatar src={session?.user?.image} alt={session?.user?.name} width={40} height={40} />
           </div>
-          <div className="border rounded-lg grow box-border">
+          <div
+            className={classNames(
+              'border',
+              'rounded-lg',
+              'grow',
+              'box-border',
+              'w-full',
+              'h-[90px]',
+              !focused && !content && ['h-11', 'mb-[110px]', 'md:mb-[94px]']
+            )}
+          >
             <RemarkTextarea
-              className={!focused && !content && 'h-11'}
+              className="h-full"
               placeholder="Start a discussion, not a fire. Post with kindness"
               // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('content', { required: true })}
