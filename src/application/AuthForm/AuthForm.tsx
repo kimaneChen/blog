@@ -41,7 +41,7 @@ const AuthForm: FC<Props> = ({ type }) => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-2">
+        <div className="mb-6 md:mb-2">
           {errors.email?.message === EmailErrorMessage.Exists && (
             <div className="my-3">
               <Error>

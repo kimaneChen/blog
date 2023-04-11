@@ -26,6 +26,7 @@ interface Props {
   size?: Size
   enableCloseButton?: boolean
   position?: Position
+  block?: boolean
 }
 
 const Modal: FC<Props> = ({
@@ -35,6 +36,7 @@ const Modal: FC<Props> = ({
   overlay = Overlay.Dark,
   size = Size.Normal,
   position = Position.Top,
+  block = false,
 }) =>
   ReactDOM.createPortal(
     <div
@@ -58,15 +60,23 @@ const Modal: FC<Props> = ({
           'bg-background',
           'rounded',
           'p-7',
-          'w-[390px]',
+          'min-w-[390px]',
           overlay === Overlay.Light && ['shadow-[0_2px_50px_8px_rgba(234,234,234,1)]'],
           size === Size.Normal && ['md:w-[660px]'],
           size === Size.Large && ['md:w-[900px]'],
-          position === Position.Top && ['absolute', 'top-[65px] md:top-[160px]']
+          position === Position.Top && ['absolute', 'top-16 md:top-[160px]']
         )}
         onClick={(event) => event.stopPropagation()}
         onKeyDown={(event) => event.stopPropagation()}
       >
+        {block && (
+          <style jsx global>{`
+            html,
+            body {
+              overflow: hidden;
+            }
+          `}</style>
+        )}
         {enableCloseButton && (
           <div className="relative">
             <button type="button" className="absolute right-0" onClick={onClose}>
