@@ -1,8 +1,10 @@
 import { FC, useId } from 'react'
 import { IoIosCamera } from 'react-icons/io'
+import useUpdateAvatar from '../../../../hooks/useUpdateAvatar'
 
 const Upload: FC = () => {
   const userId = useId()
+  const { handleUpload } = useUpdateAvatar()
 
   return (
     <label
@@ -11,7 +13,7 @@ const Upload: FC = () => {
     >
       <IoIosCamera fontSize={20} />
       Upload
-      <input id={userId} type="file" accept="image/*" hidden />
+      <input id={userId} type="file" accept="image/*" hidden onChange={handleUpload} />
     </label>
   )
 }

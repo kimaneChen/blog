@@ -1,18 +1,25 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { useSession } from 'next-auth/react'
 import Modal from '@/components/Modal'
 import Avatar from '@/components/Avatar'
 import Actions from './components/Actions'
 
-const EditAvatarModal: FC = () => {
+interface Props {
+  onClose: () => void
+}
+
+const EditAvatarModal: FC<Props> = ({ onClose }) => {
   const { data: session } = useSession()
-  const [image] = useState(session?.user?.image)
+
+  if (!session?.user) {
+    return null
+  }
 
   return (
-    <Modal enableCloseButton onClose={() => {}}>
+    <Modal enableCloseButton onClose={onClose}>
       <h3 className="text-lg font-medium">Your Avatar</h3>
       <div className="text-center py-4">
-        <Avatar src={image} width={320} height={320} />
+        <Avatar src={session.user.image} alt={session.user.name} width={320} height={320} />
       </div>
       <Actions />
     </Modal>

@@ -5,7 +5,6 @@ import FormGroup from './components/FormGroup'
 import AvatarForm from './components/FormGroup/components/AvatarForm'
 import TextForm from './components/FormGroup/components/TextForm'
 import Label from './components/FormGroup/components/TextForm/components/Label'
-import EditAvatarModal from './components/EditAvatarModal'
 
 const UserProfilesPage: NextPage = () => (
   <UserLayout className="max-w-[1284px] px-9 lg:px-[72px]">
@@ -46,7 +45,6 @@ const UserProfilesPage: NextPage = () => (
         label={<Label text="GitHub" icon={<FaGithub size="20px" />} visible />}
       />
     </FormGroup>
-    <EditAvatarModal />
   </UserLayout>
 )
 
