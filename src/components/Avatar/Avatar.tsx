@@ -15,7 +15,7 @@ const Avatar: FC<Props> = ({ src = undefined, alt = undefined, width, height }) 
     alt={alt || 'User Avatar'}
     width={width}
     height={height}
-    className="rounded-full"
+    className="rounded-full inline-block object-cover"
   />
 )
 
