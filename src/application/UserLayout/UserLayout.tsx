@@ -18,7 +18,16 @@ const UserLayout: FC<Props> = ({ children, className = undefined }) => {
         <>
           <Navigation />
           <div
-            className={classNames('max-w-[1140px]', 'mt-12', 'mb-[120px]', 'mx-auto', className)}
+            className={classNames(
+              'max-w-[1140px]',
+              'mt-8',
+              'md:mt-12',
+              'mb-[100px]',
+              'xl:mb-[120px]',
+              'mx-6',
+              'xl:mx-auto',
+              className
+            )}
           >
             {children}
           </div>

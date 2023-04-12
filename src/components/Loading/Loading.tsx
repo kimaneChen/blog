@@ -22,7 +22,7 @@ const Loading: FC = () => {
   }, [numOfDots])
 
   return (
-    <div className={classNames('flex', 'flex-col', 'items-center', 'gap-2', 'text-placeholder')}>
+    <div className={classNames('flex', 'flex-col', 'items-center', 'gap-2', 'text-on-background')}>
       <BiRocket className="w-12 h-12" />
       <div className="flex gap-1 w-44 px-12 py-3">
         <div>Loading</div>

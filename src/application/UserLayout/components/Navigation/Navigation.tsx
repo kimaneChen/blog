@@ -9,7 +9,7 @@ const Navigation: FC = () => {
 
   return (
     <Container>
-      <nav className="flex gap-14 w-[880px] pt-5">
+      <nav className="flex gap-5 md:gap-14 w-[880px] pt-5">
         {navItems.map(({ id, href, label, icon }) => (
           <NavLink key={id} href={href} active={router.pathname === href}>
             {icon}

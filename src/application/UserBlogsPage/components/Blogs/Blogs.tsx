@@ -28,8 +28,11 @@ const Blogs: FC<Props> = ({ page }) => {
   )
 
   return data?.map((item: Blog) => (
-    <div key={item.id} className="flex items-center border p-5 mt-6 gap-5 rounded-xl">
-      <div className="grow border-r pr-5">
+    <div
+      key={item.id}
+      className="flex flex-col md:flex-row items-center border p-5 mt-6 gap-5 rounded-xl"
+    >
+      <div className="grow border-b md:border-b-0 md:border-r md:pr-5 w-full">
         <Link href={`/blogs/${item.id}`}>
           <BlogOverview unframed title={item.title} date={item.createdAt} tags={item.tags}>
             {item.description}

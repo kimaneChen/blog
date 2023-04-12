@@ -13,9 +13,13 @@ const NavLink: FC<Props> = ({ href, active = false, children }) => {
     'flex',
     'items-center',
     'text-on-background',
-    'font-medium',
+    'font-normal',
+    'md:font-medium',
+    'text-sm',
+    'md:text-base',
     'py-2',
-    'gap-2.5',
+    'gap-1',
+    'md:gap-2.5',
 
     active && [
       'text-dark',

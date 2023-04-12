@@ -7,10 +7,10 @@ interface Props {
 }
 
 const Empty: FC<Props> = ({ children }) => (
-  <div className="bg-background-variant min-h-[700px] rounded-lg flex items-center justify-center">
+  <div className="bg-background-variant h-[540px] md:min-h-[700px] rounded-lg flex items-center justify-center">
     <div className="text-center">
       <Image src={noBlogAlert} alt="No Blogs" width={48} height={48} className="mb-5 mx-auto" />
-      <p className="text-on-background">{children}</p>
+      <p className="text-on-background mx-8">{children}</p>
     </div>
   </div>
 )

@@ -10,12 +10,12 @@ import ColumnWrapper from './components/ColumnWrapper'
 const Footer: FC = () => (
   <footer className="border-t border-outline">
     <Container>
-      <div className="md:h-[300px] md:flex pt-10 md:pt-16 pb-14 md:px-16">
-        <div className="flex md:justify-center items-start md:mr-16">
+      <div className="flex flex-wrap gap-8 md:gap-12 pt-10 pb-14 md:px-16">
+        <div className="xl:mr-16">
           <Logo />
         </div>
-        <div className="md:flex md:justify-center md:grow md:gap-x-32">
-          <div className="flex gap-x-32">
+        <div className="flex flex-wrap md:flex-nowrap gap-y-8 gap-12 md:gap-24 xl:gap-36">
+          <div className="flex gap-12 md:gap-24 xl:gap-36">
             <ColumnWrapper>
               <Item>Website</Item>
               <Link href="/">Home</Link>
@@ -26,10 +26,10 @@ const Footer: FC = () => (
               <Link href="/about-us">About</Link>
             </ColumnWrapper>
           </div>
-          <div className="flex gap-x-16 md:gap-x-32">
+          <div className="flex gap-12 md:gap-24 xl:gap-36">
             <ColumnWrapper>
               <Item>Legal</Item>
-              <Link href="/legal/policy">Privacy of Policy</Link>
+              <Link href="/legal/policy">Privacy Policy</Link>
               <Link href="/legal/term">Terms of Service</Link>
             </ColumnWrapper>
             <ColumnWrapper>
@@ -51,7 +51,7 @@ const Footer: FC = () => (
         </div>
       </div>
     </Container>
-    <section className="h-16 bg-background-variant flex items-center px-6">
+    <section className="h-16 bg-background-variant flex items-center px-6 text-sm md:text-base">
       <Signature />
     </section>
   </footer>

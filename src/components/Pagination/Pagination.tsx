@@ -13,7 +13,7 @@ const Pagination: FC<Props> = ({ perPage, page, total, onPageChange }) => {
   const isPreviousPage = page > 1
   const isNextPage = total === perPage
   return (
-    <div className="mt-6 flex items-center justify-center gap-2">
+    <div className="mt-2 md:mt-6 flex items-center justify-center gap-2">
       <Button
         variant={Variant.Background}
         disabled={!isPreviousPage}

@@ -25,13 +25,15 @@ const UserBlogsPage: NextPage = () => {
 
       <UserLayout>
         {isLoading ? (
-          <div className="h-[900px] flex justify-center items-center">
+          <div className="h-[540px] xl:h-[900px] flex justify-center items-center">
             <Loading />
           </div>
         ) : (
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-[32px] font-bold">Blogs</h1>
-            <CreateANewBlogButton size={Size.Medium}>Create a new Blog</CreateANewBlogButton>
+            <CreateANewBlogButton size={Size.Medium}>
+              <div className="text-sm md:text-base">Create a new Blog</div>
+            </CreateANewBlogButton>
           </div>
         )}
 
