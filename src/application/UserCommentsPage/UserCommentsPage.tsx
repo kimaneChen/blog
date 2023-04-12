@@ -1,25 +1,24 @@
 import UserLayout from '@/application/UserLayout'
 import { NextPage } from 'next'
-import useSWRInfinite from 'swr/infinite'
+import useSWR from 'swr'
 import { useRouter } from 'next/router'
 import Comment from '@/types/Comment'
-import { parseISO } from 'date-fns'
-import { formatInTimeZone } from 'date-fns-tz'
-import groupBy from 'lodash/groupBy'
 import Loading from '@/components/Loading'
+import Empty from '@/components/Empty'
+import Pagination from '@/components/Pagination'
 import Comments from './components/Comments'
-import Empty from './components/Empty'
-import Pagination from './components/Pagination'
 
 const UserCommentsPage: NextPage = () => {
+  const PER_PAGE = 10
   const router = useRouter()
   const page = Number(router.query.page) || 1
 
-  const { data, isLoading } = useSWRInfinite<Comment[]>(() => `/api/user/comments`)
-  const comments = data ? data.flat() : []
-  const dailyComments = groupBy(comments, (comment) =>
-    formatInTimeZone(parseISO(comment.createdAt), 'GMT', 'LLL d yyyy')
+  const { data, isLoading } = useSWR<Comment[]>(
+    `/api/user/comments?perPage=${PER_PAGE}&page=${page}`
   )
+  const isPreviousPage = page > 1
+  const isNextPage = data?.length === PER_PAGE
+
   return (
     <UserLayout>
       {isLoading ? (
@@ -28,17 +27,29 @@ const UserCommentsPage: NextPage = () => {
         </div>
       ) : (
         <div>
-          {!comments.length ? (
-            <Empty />
+          {!data?.length && page === 1 ? (
+            <Empty>
+              Your have not comment with others. It&rsquo;s time to fill it with your amazing
+              comments to other blog.
+            </Empty>
           ) : (
             <>
-              {Object.keys(dailyComments).map((date) => (
-                <Comments key={date} date={date} comments={dailyComments[date]} />
-              ))}
+              {!data?.length && !isNextPage && <div className="text-center">No More Comments</div>}
+              {isPreviousPage && (
+                <div className="hidden">
+                  <Comments page={page - 1} />
+                </div>
+              )}
+              <Comments page={page} />
+              {isNextPage && (
+                <div className="hidden">
+                  <Comments page={page + 1} />
+                </div>
+              )}
               <Pagination
-                perPage={3}
+                perPage={PER_PAGE}
                 page={page}
-                total={comments.length}
+                total={data?.length || 0}
                 onPageChange={(to: number): void => {
                   router.push(`/user/comments?page=${to}`)
                 }}
