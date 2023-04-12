@@ -1,22 +1,14 @@
 import { NextPage } from 'next'
-import Head from 'next/head'
-import Layout from '@/application/Layout'
-import Container, { Size, Space } from '@/components/Container'
-import Content from './components/Content'
+import LegalMarkdownLayout, { Title } from '@/application/LegalMarkdownLayout'
+import LegalMarkdown from '@/application/LegalMarkdown'
+import about from './assets/about.md'
 import TeamCards from './components/TeamCards'
 
 const AboutUsPage: NextPage = () => (
-  <>
-    <Head>
-      <title>About Us</title>
-    </Head>
-    <Layout>
-      <Container size={Size.Narrow} space={Space.Small}>
-        <Content />
-        <TeamCards />
-      </Container>
-    </Layout>
-  </>
+  <LegalMarkdownLayout title={Title.About}>
+    <LegalMarkdown>{about}</LegalMarkdown>
+    <TeamCards />
+  </LegalMarkdownLayout>
 )
 
 export default AboutUsPage
