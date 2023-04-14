@@ -17,10 +17,10 @@ const getCommentNotifications: NextApiHandler = async (req, res) => {
   }
 
   const page = Number(req.query.page) || 1
-  const perPage = Number(req.query.perPage) || 30
+  const perPage = Number(req.query.perPage) || 10
   const readAt = req.query.readAt === '' ? null : req.query.readAt
 
-  const commentNotifications = await prisma.commentNotification.findMany({
+  const result = await prisma.commentNotification.findMany({
     where: {
       user: {
         email: {
@@ -56,7 +56,7 @@ const getCommentNotifications: NextApiHandler = async (req, res) => {
     skip: (page - 1) * perPage,
   })
 
-  res.status(200).json(commentNotifications)
+  res.status(200).json(result)
 }
 
 const updateCommentNotifications: NextApiHandler = async (req, res) => {

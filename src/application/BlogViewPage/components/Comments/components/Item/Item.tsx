@@ -28,7 +28,7 @@ const Item: FC<Props> = ({
 }) => {
   const [isShowReplies, setIsShowReplies] = useState<boolean>(false)
   return (
-    <section className="py-4 px-5 mb-4 rounded-xl bg-background-variant relative">
+    <section className="py-4 px-5 mb-4 rounded-xl bg-background-variant relative" id={id}>
       <Remark
         user={user}
         createdAt={createdAt}

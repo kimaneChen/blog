@@ -31,7 +31,7 @@ const Remark: FC<Props> = ({
   const [isShowAddReply, setIsShowAddReply] = useState<boolean>(false)
 
   return (
-    <div className="flex gap-3 mb-3 items-start">
+    <div className="flex gap-3 mb-3 items-start" id={replyId}>
       <Avatar src={user?.image} alt={user?.name} width={20} height={20} />
       <div className="grow">
         <Article content={content} header={header} />

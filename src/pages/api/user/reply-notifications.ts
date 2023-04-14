@@ -25,7 +25,7 @@ const getReplyNotifications: NextApiHandler = async (req, res) => {
 
   try {
     const page = Number(req.query.page) || 1
-    const perPage = Number(req.query.perPage) || 30
+    const perPage = Number(req.query.perPage) || 10
     const readAt = req.query.readAt === '' ? null : req.query.readAt
 
     const result = await prisma.replyNotification.findMany({
@@ -35,8 +35,33 @@ const getReplyNotifications: NextApiHandler = async (req, res) => {
         },
         readAt: readAt as string,
       },
+      orderBy: {
+        createdAt: 'desc',
+      },
       select: {
         id: true,
+        reply: {
+          select: {
+            id: true,
+            createdAt: true,
+            content: true,
+            comment: {
+              select: {
+                id: true,
+                content: true,
+                blogId: true,
+              },
+            },
+            user: {
+              select: {
+                id: true,
+                name: true,
+                image: true,
+                email: true,
+              },
+            },
+          },
+        },
       },
       take: perPage,
       skip: (page - 1) * perPage,
