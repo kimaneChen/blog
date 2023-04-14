@@ -30,8 +30,6 @@ const Header: FC = () => {
             onClick={() => setIsSearchModalOpen(true)}
           />
         </div>
-        {isSearchModalOpen && <SearchModal onClose={() => setIsSearchModalOpen(false)} />}
-
         {session ? (
           <section className="flex gap-2.5">
             <Notification />
@@ -40,9 +38,14 @@ const Header: FC = () => {
         ) : (
           <>
             <section className="flex text-2xl gap-2 items-center md:hidden">
-              <NavLink href="#">
+              <button
+                type="button"
+                onClick={() => {
+                  setIsSearchModalOpen(true)
+                }}
+              >
                 <FiSearch />
-              </NavLink>
+              </button>
               <button
                 type="button"
                 onClick={() => {
@@ -62,6 +65,7 @@ const Header: FC = () => {
         )}
       </Container>
       {isMobileMenuOpen && <MobileMenu onClose={() => setIsMobileMenuOpen(false)} />}
+      {isSearchModalOpen && <SearchModal onClose={() => setIsSearchModalOpen(false)} />}
     </header>
   )
 }

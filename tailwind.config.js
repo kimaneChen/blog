@@ -24,6 +24,7 @@ module.exports = {
     borderColor: {
       DEFAULT: '#EAEAEA',
       dark: '#131313',
+      'on-background': '#666666',
       error: 'red',
       warn: '#fff4e5',
       primary: '#F36F37',
