@@ -1,5 +1,5 @@
 import DateFormat from '@/types/DateFormat'
-import { parseISO } from 'date-fns'
+import parseISO from 'date-fns/parseISO'
 import { formatInTimeZone } from 'date-fns-tz'
 import { FC } from 'react'
 

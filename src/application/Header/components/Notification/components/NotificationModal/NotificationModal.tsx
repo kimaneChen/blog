@@ -1,10 +1,13 @@
-import { FC, useState, useEffect } from 'react'
+import { FC, useEffect } from 'react'
 import Image from 'next/image'
+import useSWR from 'swr'
+import { useRouter } from 'next/router'
 import Modal, { Size } from '@/components/Modal'
 import useSWRMutation from 'swr/mutation'
+import CommentNotifications from '@/application/CommentNotifications'
+import ReplyNotifications from '@/application/ReplyNotifications'
 import updateCommentNotifications from '@/apis/updateCommentNotifications'
-import Quote from '@/components/Quote'
-import CommentItem, { Type } from '@/application/CommentItem'
+import { groupBy } from 'lodash'
 import updateReplyNotifications from '@/apis/updateReplyNotifications'
 import noNewNotification from './assets/noNewNotification.svg'
 
@@ -13,7 +16,18 @@ interface Props {
 }
 
 const NotificationModal: FC<Props> = ({ onClose }) => {
-  const [data] = useState(true)
+  const { data: commentNotifications } = useSWR('/api/user/comment-notifications')
+  const { data: replyNotifications } = useSWR('/api/user/reply-notifications')
+
+  const groupedCommentNotifications = groupBy(
+    commentNotifications,
+    (commentNotification) => commentNotification.comment.blogId
+  )
+
+  const groupedReplyNotifications = groupBy(
+    replyNotifications,
+    (replyNotification) => replyNotification.reply.comment.blogId
+  )
 
   const { trigger: mutateCommentNotifications } = useSWRMutation(
     '/api/user/comment-notifications?readAt=',
@@ -23,6 +37,20 @@ const NotificationModal: FC<Props> = ({ onClose }) => {
     '/api/user/reply-notifications?readAt=',
     () => updateReplyNotifications({ readAt: String(new Date()) })
   )
+
+  const router = useRouter()
+
+  useEffect(() => {
+    const handleCloseModal = (): void => {
+      onClose()
+    }
+
+    router.events.on('routeChangeStart', handleCloseModal)
+
+    return () => {
+      router.events.off('routeChangeStart', handleCloseModal)
+    }
+  }, [router, onClose])
 
   useEffect(() => {
     mutateCommentNotifications()
@@ -34,49 +62,14 @@ const NotificationModal: FC<Props> = ({ onClose }) => {
       <h3 className="text-lg font-medium mb-4">New Notifications</h3>
       <hr className="border-t absolute w-full left-0" />
       <div className="max-h-[432px] overflow-scroll">
-        {data ? (
+        {commentNotifications || replyNotifications ? (
           <>
             <div className="text-xs font-medium text-on-background mt-3 mb-2">Comments</div>
-            <CommentItem
-              type={Type.Replied}
-              user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
-              createdAt="2023-03-03"
-            >
-              <Quote reference="Lorem ipsum dolor sit amet consectetur.(This is the comment that was answered)">
-                Lorem ipsum dolor sit amet consectetur.
-              </Quote>
-            </CommentItem>
-            <CommentItem
-              type={Type.Replied}
-              user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
-              createdAt="2023-03-03"
-            >
-              <Quote reference="Lorem ipsum dolor sit amet consectetur.(This is the comment that was answered)">
-                Lorem ipsum dolor sit amet consectetur.
-              </Quote>
-            </CommentItem>
+            <ReplyNotifications notifications={groupedReplyNotifications} />
 
             <div className="text-xs font-medium text-on-background my-2">Blogs</div>
-            <CommentItem
-              type={Type.Commented}
-              user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
-              createdAt="2023-03-03"
-            >
-              <Quote reference="Lorem ipsum dolor sit amet cosectetur.(This is the blog title)">
-                Lorem ipsum dolor sit amet consectetur. Pharetra lacus (This is
-                commentt&rsquo;scontent)
-              </Quote>
-            </CommentItem>
-            <CommentItem
-              type={Type.Commented}
-              user={{ name: 'Long Zhao', email: 'test@example.com', id: '01', image: '' }}
-              createdAt="2023-03-03"
-            >
-              <Quote reference="Lorem ipsum dolor sit amet cosectetur.(This is the blog title)">
-                Lorem ipsum dolor sit amet consectetur. Pharetra lacus (This is
-                commentt&rsquo;scontent)
-              </Quote>
-            </CommentItem>
+            <CommentNotifications notifications={groupedCommentNotifications} />
+
             <p className="py-4 text-center text-xs text-placeholder">
               There is no more notification to load
             </p>

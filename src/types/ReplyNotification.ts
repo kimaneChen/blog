@@ -12,6 +12,7 @@ interface ReplyNotification extends Pick<PrismaReplyNotification, 'id' | 'create
     comment: Pick<PrismaComment, 'id' | 'content' | 'blogId'>
   }
   user: Pick<PrismaUser, 'id' | 'name' | 'email' | 'image'>
+  replyId: string
 }
 
 export default ReplyNotification
