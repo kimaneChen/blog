@@ -3,12 +3,12 @@ import Container, { Size, Space } from '@/components/Container'
 import Loading from '@/components/Loading'
 import { NextPage } from 'next'
 import useBlog from '@/hooks/useBlog'
-import Toast, { Position, Variant } from '@/components/Toast'
 import BackLink from './components/BackLink'
 import BlogTitle from './components/BlogTitle'
 import Comments from './components/Comments'
 import Content from './components/Content'
 import PublishStatusMessage from './components/PublishStatusMessage'
+import NotFound from './components/NotFound'
 
 const BlogViewPage: NextPage = () => {
   const { blog, isLoading } = useBlog()
@@ -38,9 +38,7 @@ const BlogViewPage: NextPage = () => {
         </>
       ) : (
         <Container className="h-[700px]">
-          <Toast position={Position.Center} variant={Variant.Error}>
-            The blog does not exist, cannot be viewed
-          </Toast>
+          <NotFound />
         </Container>
       )}
     </Layout>

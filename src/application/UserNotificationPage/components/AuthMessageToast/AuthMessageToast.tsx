@@ -1,16 +1,19 @@
 import { FC, useEffect } from 'react'
+import useIsScreen, { Screen } from '@/hooks/useIsScreen'
 import { useNotification } from '@/context/NotificationContext'
+import LocalStorage from '@/config/LocalStorage/LocalStorage'
 import Toast, { Position, Variant } from '@/components/Toast'
 
 const AuthMessageToast: FC = () => {
+  const isSmallScreen = useIsScreen(Screen.Small)
   const { message, setMessage } = useNotification()
 
   useEffect(() => {
-    const authMessage = localStorage.getItem('auth_message')
+    const authMessage = localStorage.getItem(LocalStorage.AuthKey)
 
     if (authMessage) {
       setMessage(authMessage)
-      localStorage.removeItem('auth_message')
+      localStorage.removeItem(LocalStorage.AuthKey)
     }
   }, [setMessage])
 
@@ -19,7 +22,7 @@ const AuthMessageToast: FC = () => {
   }
 
   return (
-    <Toast position={Position.Right} variant={Variant.Success}>
+    <Toast position={isSmallScreen ? Position.Center : Position.Right} variant={Variant.Success}>
       {message}
     </Toast>
   )

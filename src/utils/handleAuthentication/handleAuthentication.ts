@@ -1,4 +1,5 @@
 import { signIn } from 'next-auth/react'
+import LocalStorage from '@/config/LocalStorage'
 
 interface Options {
   email?: string
@@ -13,7 +14,7 @@ const handleAuthentication = async (provider: string, options?: Options): Promis
     ...options,
   })
 
-  localStorage.setItem('auth_message', 'Authentication success')
+  localStorage.setItem(LocalStorage.AuthKey, LocalStorage.AuthSuccessMessage)
 }
 
 export default handleAuthentication

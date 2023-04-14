@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import Toast, { Position, Variant } from '@/components/Toast'
+import Toast, { Position, Size, Variant } from '@/components/Toast'
 
 const ERROR = {
   OAuthSignin: 'Error in constructing an authorization.',
@@ -38,7 +38,7 @@ const AuthErrorMessage: FC = () => {
   }
 
   return (
-    <Toast position={Position.Center} variant={Variant.Error}>
+    <Toast position={Position.Center} variant={Variant.Error} size={Size.ExtraWide}>
       {authErrorMessage}
     </Toast>
   )
