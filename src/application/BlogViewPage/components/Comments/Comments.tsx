@@ -4,6 +4,7 @@ import Comment from '@/types/Comment'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import useSWRInfinite from 'swr/infinite'
+import { useSWRConfig } from 'swr'
 import deleteComment from '@/apis/deleteComment'
 import AddComment from './components/AddComment'
 import CommentsUserList from './components/CommentsUserList'
@@ -15,9 +16,25 @@ const Comments: FC = () => {
   const router = useRouter()
   const { id } = router.query
 
-  const { data, isLoading, size, setSize, mutate } = useSWRInfinite<Comment[]>(
+  const {
+    data,
+    isLoading,
+    size,
+    setSize,
+    mutate: mutateComments,
+  } = useSWRInfinite<Comment[]>(
     (index) => `/api/blogs/${id}/comments?page=${index + 1}&perPage=${PER_PAGE}`
   )
+
+  const { mutate } = useSWRConfig()
+  const mutateInteractions = (): void => {
+    mutate(`/api/blogs/${id}/interactions`)
+  }
+
+  const handleMutate = (): void => {
+    mutateComments()
+    mutateInteractions()
+  }
 
   const handleDelete = async (commentId: string): Promise<void> => {
     try {
@@ -26,7 +43,7 @@ const Comments: FC = () => {
       // eslint-disable-next-line no-console
       console.log(e)
     }
-    mutate()
+    handleMutate()
   }
 
   const comments = data ? data.flat() : []
@@ -35,7 +52,7 @@ const Comments: FC = () => {
   const isLoadMoreDisabled = isLoading || isReachingEnd
   return (
     <Container size={Size.Medium} space={Space.None}>
-      <AddComment onSuccess={mutate} />
+      <AddComment onSuccess={handleMutate} />
       <CommentsUserList />
       {comments.length > 0 && (
         <div className="md:pr-24">
@@ -47,9 +64,9 @@ const Comments: FC = () => {
               createdAt={comment.createdAt}
               user={comment.user}
               replyNumber={comment.replyNumber}
-              onReply={mutate}
+              onReply={handleMutate}
               onCommentDelete={() => handleDelete(comment.id)}
-              onReplyDelete={mutate}
+              onReplyDelete={handleMutate}
             />
           ))}
           <div className="mb-20">

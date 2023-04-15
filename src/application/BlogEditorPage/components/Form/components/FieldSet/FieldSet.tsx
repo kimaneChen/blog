@@ -45,7 +45,7 @@ const FieldSet: FC<Props> = ({
       />
       <Tags tags={tags} onTagsChange={onTagsChange} />
       <hr className="border-t-2 border-outline mb-3" />
-      <div className="prose max-w-none min-h-[480px]">
+      <div className="prose max-w-none min-h-[480px] sm:pl-12 xl:pl-0">
         <EditorBlock onInitialize={onEditorInitialize} data={content} onChange={onEditorChange} />
       </div>
     </div>
