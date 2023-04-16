@@ -20,7 +20,6 @@ const Notification: FC = () => {
         onClick={() => {
           setIsModalOpen(true)
         }}
-        disabled={!isUnRead}
       >
         {isUnRead && (
           <Image
