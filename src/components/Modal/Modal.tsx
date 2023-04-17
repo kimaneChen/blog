@@ -63,7 +63,7 @@ const Modal: FC<Props> = ({
           'min-w-[390px]',
           overlay === Overlay.Light && ['shadow-[0_2px_50px_8px_rgba(234,234,234,1)]'],
           size === Size.Normal && ['md:w-[660px]'],
-          size === Size.Large && ['md:w-[900px]'],
+          size === Size.Large && ['md:w-[700px]', 'xl:w-[900px]'],
           position === Position.Top && ['absolute', 'top-16 md:top-[160px]']
         )}
         onClick={(event) => event.stopPropagation()}
