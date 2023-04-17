@@ -1,8 +1,11 @@
 import { FC, useState } from 'react'
+import Avatar from '@/components/Avatar'
+import { useSession } from 'next-auth/react'
 import EditAvatarModal from './components/EditAvatarModal'
 
 const AvatarForm: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const { data: session } = useSession()
 
   return (
     <>
@@ -18,7 +21,9 @@ const AvatarForm: FC = () => {
           type="button"
           className="w-[72px] h-[72px] bg-outline rounded-full shrink-0"
           onClick={() => setIsModalOpen(true)}
-        />
+        >
+          <Avatar src={session?.user?.image} alt={session?.user?.name} width={72} height={72} />
+        </button>
       </div>
       {isModalOpen && <EditAvatarModal onClose={() => setIsModalOpen(false)} />}
     </>

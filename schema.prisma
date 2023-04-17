@@ -43,6 +43,9 @@ model User {
   emailVerified        DateTime?
   image                String?
   role                 String?
+  selfIntroduction     String?
+  linkedInLink         String?
+  gitHubLink           String?
   accounts             Account[]
   sessions             Session[]
   blogs                Blog[]
