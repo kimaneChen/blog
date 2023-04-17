@@ -32,6 +32,15 @@ const Header: FC = () => {
         </div>
         {session ? (
           <section className="flex gap-2.5">
+            <button
+              type="button"
+              onClick={() => {
+                setIsSearchModalOpen(true)
+              }}
+              className="md:hidden"
+            >
+              <FiSearch />
+            </button>
             <Notification />
             <User />
           </section>
