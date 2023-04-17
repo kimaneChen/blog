@@ -54,6 +54,7 @@ const Comments: FC = () => {
     <Container size={Size.Medium} space={Space.None}>
       <AddComment onSuccess={handleMutate} />
       <CommentsUserList />
+<<<<<<< HEAD
       {comments.length > 0 && (
         <div className="md:pr-24">
           {comments.map((comment) => (
@@ -74,6 +75,22 @@ const Comments: FC = () => {
               <span className="text-sm">MORE COMMENTS</span>
             </LoadMoreButton>
           </div>
+=======
+      <div className="pr-24">
+        {comments.map((comment) => (
+          <Item
+            id={comment.id}
+            key={comment.id}
+            content={comment.content}
+            createdAt={comment.createdAt}
+            user={comment.user}
+          />
+        ))}
+        <div className="text-center mb-20">
+          <LoadMoreButton hasMore={!isLoadMoreDisabled} onLoadMore={() => setSize(size + 1)}>
+            MORE COMMENTS
+          </LoadMoreButton>
+>>>>>>> ad6ac005cecf9835023522640f4bba246028e1be
         </div>
       )}
     </Container>

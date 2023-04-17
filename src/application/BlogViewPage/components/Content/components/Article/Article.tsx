@@ -12,9 +12,17 @@ const Article: FC = () => {
   const { blog } = useBlog()
   const editor = useRef<EditorJS | undefined>()
   const { query } = useRouter()
+<<<<<<< HEAD
 
+=======
+>>>>>>> ad6ac005cecf9835023522640f4bba246028e1be
   const handleEditorInitialize = (instance: EditorJS): void => {
     editor.current = instance
+  }
+  const handleEditorOnReady = (): void => {
+    if (query.scrollTo) {
+      document.getElementById(query.scrollTo as string)?.scrollIntoView()
+    }
   }
 
   const handleEditorOnReady = (): void => {
@@ -28,7 +36,11 @@ const Article: FC = () => {
   }
 
   return (
+<<<<<<< HEAD
     <article className="min-w-[350px] md:min-w-[700px] prose md:pr-9">
+=======
+    <article className="min-w-[780px] pr-[60px] prose">
+>>>>>>> ad6ac005cecf9835023522640f4bba246028e1be
       <EditorBlock
         onInitialize={handleEditorInitialize}
         data={blog.content}

@@ -1,4 +1,5 @@
 import createComment from '@/apis/createComment'
+import createNotification from '@/apis/createNotification'
 import Avatar from '@/components/Avatar'
 import { useSession } from 'next-auth/react'
 import { useForm, SubmitHandler } from 'react-hook-form'
@@ -35,6 +36,14 @@ const AddComment: FC<Props> = ({ onSuccess }) => {
         blogId: blogId as string,
         ...data,
       })
+<<<<<<< HEAD
+=======
+
+      await createNotification({
+        blogId: blogId as string,
+      })
+
+>>>>>>> ad6ac005cecf9835023522640f4bba246028e1be
       reset()
       onSuccess()
     } catch (error) {

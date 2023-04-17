@@ -9,7 +9,10 @@ interface Props {
   readOnly?: boolean
   data?: OutputData | undefined
   onReady?: () => void | undefined
+<<<<<<< HEAD
   onChange?: (api: API) => void
+=======
+>>>>>>> ad6ac005cecf9835023522640f4bba246028e1be
 }
 
 const Editor: FC<Props> = ({
@@ -17,7 +20,10 @@ const Editor: FC<Props> = ({
   readOnly = false,
   data = undefined,
   onReady = undefined,
+<<<<<<< HEAD
   onChange = undefined,
+=======
+>>>>>>> ad6ac005cecf9835023522640f4bba246028e1be
 }) => {
   const ref = useRef<EditorJS>()
   const tools = readOnly ? readOnlyTools : editableTools
@@ -30,7 +36,10 @@ const Editor: FC<Props> = ({
         readOnly,
         data,
         onReady,
+<<<<<<< HEAD
         onChange,
+=======
+>>>>>>> ad6ac005cecf9835023522640f4bba246028e1be
       })
       ref.current = instance
 
