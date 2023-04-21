@@ -5,7 +5,8 @@
     "airbnb-typescript",
     "eslint:recommended",
     "next/core-web-vitals",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:cypress/recommended"
   ],
   "rules": {
     "curly": ["error", "all"],
