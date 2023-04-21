@@ -8,10 +8,7 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
-    "curly": [
-      "error",
-      "all"
-    ],
+    "curly": ["error", "all"],
     "arrow-body-style": "error",
     "no-restricted-exports": "off",
     "react/function-component-definition": [
@@ -37,8 +34,9 @@
     "@typescript-eslint/prefer-optional-chain": "error"
   },
   "parserOptions": {
-    "project": [
-      "./tsconfig.json"
-    ]
+    "project": ["./tsconfig.json"]
+  },
+  "env": {
+    "jest/globals": true
   }
 }
