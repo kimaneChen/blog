@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import Feature from './components/Feature'
+import { Trans } from '@lingui/macro'
 
 const KeyFeatures: FC = () => (
   <div className="py-6">
