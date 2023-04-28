@@ -71,7 +71,7 @@ const Comments: FC = () => {
           ))}
           <div className="mb-20">
             <LoadMoreButton hasMore={!isLoadMoreDisabled} onLoadMore={() => setSize(size + 1)}>
-              <span className="text-sm">MORE COMMENTS</span>
+              <span className="text-sm">More Comments</span>
             </LoadMoreButton>
           </div>
         </div>
