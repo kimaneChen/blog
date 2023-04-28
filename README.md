@@ -39,6 +39,7 @@ To get started with the project, follow these steps:
 6. Start the development server by running `npm run dev`.
 7. Open your web browser and navigate to `http://localhost:3000`.
 8. Configure the policies of objects in storages to allow the inserting the picture to 'avatars' buckets
+9. Test the project with npx dotenv-cli -e .env.local npm run test
 
 ## Managing the Database
 
