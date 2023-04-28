@@ -16,7 +16,7 @@ const config = {
     tsConfig: 'tsconfig.jest.json',
   },
   moduleNameMapper: {
-    '@/(.*)': '<rootDir>/src/',
+    '^@/(.*)$/': '<rootDir>/src/$1',
   },
 }
 
