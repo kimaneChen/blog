@@ -55,7 +55,7 @@ const Comments: FC = () => {
       <AddComment onSuccess={handleMutate} />
       <CommentsUserList />
       {comments.length > 0 && (
-        <div className="md:pr-24">
+        <div className="mx-auto lg:pr-24">
           {comments.map((comment) => (
             <Item
               id={comment.id}
@@ -71,7 +71,7 @@ const Comments: FC = () => {
           ))}
           <div className="mb-20">
             <LoadMoreButton hasMore={!isLoadMoreDisabled} onLoadMore={() => setSize(size + 1)}>
-              <span className="text-sm">MORE COMMENTS</span>
+              <span className="text-sm">More Comments</span>
             </LoadMoreButton>
           </div>
         </div>

@@ -71,7 +71,7 @@ const ExploreBlogs: FC = () => {
         onClick={() => Router.push('/blogs')}
         className="text-sm mt-10 md:mt-20 mx-auto px-12 block"
       >
-        SEE MORE BLOGS
+        See More Blogs
       </Button>
     </div>
   )

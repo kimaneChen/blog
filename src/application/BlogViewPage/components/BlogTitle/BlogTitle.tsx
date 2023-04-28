@@ -12,7 +12,7 @@ const BlogTitle: FC = () => {
   }
 
   return (
-    <header className="md:w-[700px] mt-9 mb-8 md:mb-11">
+    <header className="md:w-[700px] mt-9 mb-8 md:mb-11 mx-auto lg:mx-0">
       <Date className="text-sm text-on-background" format={DateFormat.LongDate}>
         {blog.createdAt}
       </Date>

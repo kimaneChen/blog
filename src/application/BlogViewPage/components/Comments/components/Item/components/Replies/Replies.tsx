@@ -72,7 +72,7 @@ const Replies: FC<Props> = ({ commentId, onReply, onDelete }) => {
           setSize(size + 1)
         }}
       >
-        <span className="text-sm">MORE REPLIES</span>
+        <span className="text-sm">More Replies</span>
       </LoadMoreButton>
     </div>
   )

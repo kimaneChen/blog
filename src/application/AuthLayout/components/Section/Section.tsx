@@ -28,11 +28,10 @@ const Section: FC<Props> = ({ children, position }) => (
         'mx-auto',
         'px-6',
         'min-w-[300px]',
-        'w-full',
         'my-[60px]',
         'md:my-0',
-        position === Position.Left && ['max-w-[600px] md:max-w-[460px] md:mx-[90px]'],
-        position === Position.Right && ['max-w-[400px] md:max-w-xs md:ml-[90px]']
+        position === Position.Left && ['max-w-[600px] md:mx-[90px]'],
+        position === Position.Right && ['w-full max-w-[400px] md:max-w-xs md:ml-[90px]']
       )}
     >
       {children}
