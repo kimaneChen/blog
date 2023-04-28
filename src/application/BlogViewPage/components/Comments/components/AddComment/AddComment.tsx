@@ -47,7 +47,7 @@ const AddComment: FC<Props> = ({ onSuccess }) => {
   }
 
   return (
-    <div className="pt-9 md:pt-12 md:pr-24">
+    <div className="pt-9 lg:pt-12 lg:pr-24">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col items-center gap-3 md:flex-row md:gap-6 md:items-start">
           <div className="py-0.5">
