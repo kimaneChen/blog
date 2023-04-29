@@ -5,6 +5,7 @@
     "airbnb-typescript",
     "eslint:recommended",
     "next/core-web-vitals",
+    "plugin:testing-library/react",
     "plugin:prettier/recommended",
     "plugin:cypress/recommended"
   ],
@@ -37,7 +38,5 @@
   "parserOptions": {
     "project": ["./tsconfig.json"]
   },
-  "env": {
-    "jest/globals": true
-  }
+  "plugins": ["testing-library"]
 }
