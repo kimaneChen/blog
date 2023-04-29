@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
-import Avatar from '@/components/Avatar'
+import Avatar from '../Avatar'
 
 describe('Avatar test', () => {
   it('renders a avatar with default setting', () => {
