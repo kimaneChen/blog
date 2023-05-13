@@ -9,7 +9,7 @@ interface Props {
 const Occupation: FC<Props> = ({ value, className = undefined }) => (
   <div
     className={classNames(
-      'truncate hover:overflow-visible hover:whitespace-normal w-44 text-on-background',
+      'truncate md:overflow-visible md:whitespace-normal hover:overflow-visible hover:whitespace-normal text-on-background',
       className
     )}
   >
