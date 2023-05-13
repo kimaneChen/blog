@@ -61,7 +61,8 @@ const AddComment: FC<Props> = ({ onSuccess }) => {
               'box-border',
               'w-full',
               'h-[90px]',
-              !focused && !content && ['h-11', 'mb-[110px]', 'md:mb-[94px]']
+              'mb-4',
+              !focused && !content && ['h-11']
             )}
           >
             <RemarkTextarea

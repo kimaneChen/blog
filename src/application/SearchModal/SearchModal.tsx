@@ -1,8 +1,7 @@
 import { FC, useState } from 'react'
 import Blog from '@/types/Blog'
 import useSWR from 'swr'
-import ResponsiveModal, { Overlay, Position } from '@/components/ResponsiveModal'
-import Logo from '@/application/Logo'
+import LogoModal from '@/application/LogoModal'
 import SearchBlog from './components/SearchBlog'
 import Search from './components/Search'
 
@@ -17,10 +16,7 @@ const SearchModal: FC<Props> = ({ onClose }) => {
   const { data: blogs } = useSWR(`/api/blogs?perPage=${PER_PAGE}&search=${search?.trim()}`)
 
   return (
-    <ResponsiveModal onClose={onClose} overlay={Overlay.Light} position={Position.Top}>
-      <div className="h-16 px-6 py-2 md:hidden">
-        <Logo />
-      </div>
+    <LogoModal onClose={onClose}>
       <div className="mt-7 px-6 md:mt-0 md:px-0 md:block">
         <Search value={search} onChange={(event) => setSearch(event.target.value)} />
       </div>
@@ -38,7 +34,7 @@ const SearchModal: FC<Props> = ({ onClose }) => {
           </div>
         </>
       )}
-    </ResponsiveModal>
+    </LogoModal>
   )
 }
 

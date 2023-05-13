@@ -4,10 +4,15 @@ import LoadMoreButton from '@/application/LoadMoreButton'
 import Tag from '@/types/Tag'
 import { NextPage } from 'next'
 import Router, { useRouter } from 'next/router'
+import { useState } from 'react'
 import useSWR from 'swr'
 import Link from 'next/link'
 import Loading from '@/components/Loading'
 import Container, { Space } from '@/components/Container'
+import useIsScreen, { Screen } from '@/hooks/useIsScreen'
+import Button, { Variant, Size } from '@/components/Button'
+import LogoModal from '@/application/LogoModal/LogoModal'
+import { BiCategory } from 'react-icons/bi'
 import TagsFilter from './components/TagsFilter'
 import useBlogs from './hooks/useBlogs'
 
@@ -22,6 +27,9 @@ const BlogsPage: NextPage = () => {
 
     Router.push(`/blogs?tags=${newTags}`)
   }
+
+  const isSmallScreen = useIsScreen(Screen.Small)
+  const [isFilterModalOpen, setIsFilterMoadalOpen] = useState(false)
 
   const {
     blogs,
@@ -43,21 +51,54 @@ const BlogsPage: NextPage = () => {
             <Loading />
           </div>
         ) : (
-          <section className="flex">
-            <div className="min-w-[300px] border-r">
-              <div className="pr-5 mt-9 mb-[120px]">
-                <div>Filters</div>
-                <div>
-                  {tags && (
-                    <TagsFilter
-                      tags={tags}
-                      selectedTags={selectedTags}
-                      onTagSelect={(name) => setSelectedTags(name)}
-                    />
-                  )}
+          <section className="flex flex-col md:flex-row">
+            {!isSmallScreen && (
+              <div className="min-w-[300px] border-r">
+                <div className="pr-5 mt-9 mb-[120px]">
+                  <div>Filters</div>
+                  <div>
+                    {tags && (
+                      <TagsFilter
+                        tags={tags}
+                        selectedTags={selectedTags}
+                        onTagSelect={(name) => setSelectedTags(name)}
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
+            {isSmallScreen && (
+              <>
+                <Button
+                  className="my-3 flex items-center justify-center gap-1"
+                  variant={Variant.Outline}
+                  size={Size.Small}
+                  onClick={() => setIsFilterMoadalOpen(true)}
+                >
+                  <BiCategory />
+                  <div>Filter</div>
+                </Button>
+                {isFilterModalOpen && (
+                  <LogoModal onClose={() => setIsFilterMoadalOpen(false)}>
+                    <div className="min-w-[300px] border-r">
+                      <div className="px-5 mt-9 mb-[120px]">
+                        <div>Filters</div>
+                        <div>
+                          {tags && (
+                            <TagsFilter
+                              tags={tags}
+                              selectedTags={selectedTags}
+                              onTagSelect={(name) => setSelectedTags(name)}
+                            />
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </LogoModal>
+                )}
+              </>
+            )}
 
             <div className="grow ml-3 pt-9 pb-[75px] px-5 min-h-[860px]">
               <div className="mb-4">
