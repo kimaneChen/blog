@@ -1,17 +1,16 @@
-import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
-import Avatar from '../Avatar'
+import Avatar from '@/components/Avatar'
 
 describe('Avatar test', () => {
   it('renders a avatar with default setting', () => {
-    const avatar = render(<Avatar width={20} height={20} />)
+    render(<Avatar width={20} height={20} />)
 
     const image = screen.getByAltText('User Avatar') as HTMLImageElement
     expect(image.src).toContain('http://localhost/_next/image?url=%2Fimg.jpg&w=48&q=75')
   })
 
   it('renders a avatar with source link', () => {
-    const avatar = render(
+    render(
       <Avatar
         width={20}
         height={20}
