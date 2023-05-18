@@ -38,6 +38,7 @@
     "classnames": "^2.3.2",
     "date-fns": "^2.29.3",
     "date-fns-tz": "^2.0.0",
+    "editorjs-math": "^1.0.2",
     "eslint-config-next": "^13.1.5",
     "lodash": "^4.17.21",
     "make-plural": "^7.2.0",
