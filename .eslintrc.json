@@ -37,6 +37,6 @@
   },
   "parserOptions": {
     "project": ["./tsconfig.json"]
-  }
+  }，
   "plugins": ["testing-library"]
 }
