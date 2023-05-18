@@ -49,13 +49,15 @@ const getBlogs = ({ page, perPage, userId, exclude, tags, search }: Query): Prom
         },
         userId,
         unpublishedAt: null,
-        tags: {
-          some: {
-            name: {
-              in: tags,
+        ...(tags && {
+          tags: {
+            some: {
+              name: {
+                in: tags,
+              },
             },
           },
-        },
+        }),
         ...(search && {
           OR: [
             {
