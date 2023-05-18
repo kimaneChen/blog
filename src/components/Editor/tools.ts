@@ -5,6 +5,7 @@ import LinkTool from '@editorjs/link'
 import List from '@editorjs/list'
 import Paragraph from '@editorjs/paragraph'
 import Quote from '@editorjs/quote'
+import MathTex from 'editorjs-math'
 
 interface Tools {
   [key: string]: any
