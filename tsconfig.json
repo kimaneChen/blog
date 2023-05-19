@@ -17,9 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    },
-    "types": ["babylonjs", "babylonjs-gui", "babylonjs-materials"]
+    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/decs.d.ts"],
   "exclude": ["node_modules"]
 }
