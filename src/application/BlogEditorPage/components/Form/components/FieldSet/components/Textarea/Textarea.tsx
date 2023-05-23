@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Textarea = forwardRef<HTMLTextAreaElement, Props>(
-  ({ className, placeholder, onChange, id=undefined, ...props }, ref) => {
+  ({ className, placeholder, onChange, id = undefined, ...props }, ref) => {
     const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
       const textarea = event.target
       textarea.style.height = '0px'
