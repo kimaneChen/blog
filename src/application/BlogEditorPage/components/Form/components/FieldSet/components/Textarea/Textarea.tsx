@@ -4,10 +4,11 @@ interface Props {
   className: string
   placeholder: string
   onChange: ChangeEventHandler
+  id?: string
 }
 
 const Textarea = forwardRef<HTMLTextAreaElement, Props>(
-  ({ className, placeholder, onChange, ...props }, ref) => {
+  ({ className, placeholder, onChange, id=undefined, ...props }, ref) => {
     const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
       const textarea = event.target
       textarea.style.height = '0px'
@@ -17,6 +18,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, Props>(
 
     return (
       <textarea
+        id={id}
         ref={ref}
         className={`resize-none my-3 w-full ${className}`}
         placeholder={placeholder}

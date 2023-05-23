@@ -1,7 +1,7 @@
 import Blog from '@/types/Blog'
 import EditorJS, { API } from '@editorjs/editorjs'
 import dynamic from 'next/dynamic'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 import Tags from './components/Tags'
 import Textarea from './components/Textarea'
@@ -27,6 +27,11 @@ const FieldSet: FC<Props> = ({
 }) => {
   const { register } = useFormContext()
 
+  useEffect(() => {
+    document.getElementById('title')?.focus()
+    document.getElementById('description')?.focus()
+  }, [])
+
   return (
     <div className="bg-background px-6">
       <Textarea
@@ -36,12 +41,14 @@ const FieldSet: FC<Props> = ({
         {...register('title', {
           required: true,
         })}
+        id="title"
       />
       <Textarea
         className="block focus:outline-none placeholder:text-placeholder-400 py-3"
         placeholder="A short description to attract others attention"
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...register('description')}
+        id="description"
       />
       <Tags tags={tags} onTagsChange={onTagsChange} />
       <hr className="border-t-2 border-outline mb-3" />
