@@ -59,7 +59,7 @@ const UserBlogsPage: NextPage = () => {
             <Pagination
               perPage={PER_PAGE}
               page={page}
-              total={data.length}
+              total={blogs.length}
               onPageChange={(to: number): void => {
                 router.push(`/user/blogs?page=${to}`)
               }}

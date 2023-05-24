@@ -3,8 +3,8 @@ import EditorJS, { API } from '@editorjs/editorjs'
 import dynamic from 'next/dynamic'
 import { FC } from 'react'
 import { useFormContext } from 'react-hook-form'
+import Textarea from '@/components/Textarea'
 import Tags from './components/Tags'
-import Textarea from './components/Textarea'
 
 const EditorBlock = dynamic(() => import('@/components/Editor'), {
   ssr: false,
