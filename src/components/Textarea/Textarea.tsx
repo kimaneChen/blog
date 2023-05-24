@@ -11,20 +11,20 @@ const Textarea = forwardRef<HTMLTextAreaElement, Props>(
   ({ className, placeholder, onChange, ...props }, ref) => {
     const forwardedRef = useForwardRef<HTMLTextAreaElement>(ref)
 
-    const autoSize = useCallback(() => {
+    const setHeight = useCallback(() => {
       const textarea = forwardedRef.current
       textarea.style.height = '0px'
       textarea.style.height = `${textarea.scrollHeight}px`
     }, [forwardedRef])
 
     const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
-      autoSize()
+      setHeight()
       onChange(event)
     }
 
     useEffect(() => {
-      autoSize()
-    }, [autoSize])
+      setHeight()
+    }, [setHeight])
 
     return (
       <textarea
@@ -32,7 +32,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, Props>(
         className={`resize-none my-3 w-full ${className}`}
         placeholder={placeholder}
         onChange={handleChange}
-        onFocus={autoSize}
+        onFocus={setHeight}
         rows={1}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
