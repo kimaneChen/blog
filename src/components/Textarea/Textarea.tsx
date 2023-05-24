@@ -22,9 +22,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, Props>(
       onChange(event)
     }
 
-    useEffect(() => {
-      setHeight()
-    }, [setHeight])
+    useEffect(setHeight, [setHeight])
 
     return (
       <textarea
