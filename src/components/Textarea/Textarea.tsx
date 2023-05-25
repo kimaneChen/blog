@@ -1,4 +1,5 @@
-import { ChangeEventHandler, forwardRef } from 'react'
+import { ChangeEventHandler, forwardRef, useEffect, useCallback } from 'react'
+import useForwardRef from '@/hooks/useForwardRef'
 
 interface Props {
   className: string
@@ -8,20 +9,27 @@ interface Props {
 
 const Textarea = forwardRef<HTMLTextAreaElement, Props>(
   ({ className, placeholder, onChange, ...props }, ref) => {
-    const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
-      const textarea = event.target
+    const forwardedRef = useForwardRef<HTMLTextAreaElement>(ref)
+
+    const setHeight = useCallback(() => {
+      const textarea = forwardedRef.current
       textarea.style.height = '0px'
       textarea.style.height = `${textarea.scrollHeight}px`
+    }, [forwardedRef])
+
+    const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
+      setHeight()
       onChange(event)
     }
 
+    useEffect(setHeight, [setHeight])
+
     return (
       <textarea
-        ref={ref}
+        ref={forwardedRef}
         className={`resize-none my-3 w-full ${className}`}
         placeholder={placeholder}
         onChange={handleChange}
-        onFocus={handleChange}
         rows={1}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
