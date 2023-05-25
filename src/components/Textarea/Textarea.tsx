@@ -30,7 +30,6 @@ const Textarea = forwardRef<HTMLTextAreaElement, Props>(
         className={`resize-none my-3 w-full ${className}`}
         placeholder={placeholder}
         onChange={handleChange}
-        onFocus={setHeight}
         rows={1}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
