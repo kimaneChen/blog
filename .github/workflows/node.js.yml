@@ -30,7 +30,6 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
       - name: Checkout repo
@@ -61,6 +60,9 @@ jobs:
       - name: Test
         run: npm run test:ci
       
+      - name: Build
+        run: npm run build
+
       - name: Save Cache
         uses: actions/cache@v3
         with:
