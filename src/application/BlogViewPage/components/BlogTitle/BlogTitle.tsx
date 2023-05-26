@@ -5,6 +5,7 @@ import { FC } from 'react'
 import useBlog from '@/hooks/useBlog'
 import { FiHeart } from 'react-icons/fi'
 import { TbShare } from 'react-icons/tb'
+import Button, { Variant } from '@/components/Button'
 
 const BlogTitle: FC = () => {
   const { blog } = useBlog()
@@ -15,22 +16,22 @@ const BlogTitle: FC = () => {
 
   return (
     <header className="md:w-[700px] mt-9 mb-8 md:mb-11 mx-auto lg:mx-0">
-      <div className="flex flex-col sm:flex-row sm:justify-between text-sm text-on-background">
+      <div className="flex flex-col-reverse sm:flex-row sm:justify-between sm:items-center text-sm text-on-background">
         <div className="flex">
           <Date format={DateFormat.LongDate}>{blog.createdAt}</Date>
           <div className="pl-2">-&nbsp;&nbsp;By&nbsp;{blog.user?.name}</div>
         </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end items-center">
           <div className="pr-4">9 Views</div>
-          <div className="pr-4">
-            <a href="#" title="Bookmark">
+          <div>
+            <Button variant={Variant.BackgroundVariant}>
               <FiHeart className="inline w-5 h-5" />
-            </a>
+            </Button>
           </div>
-          <div className="pr-2">
-            <a href="#" title="Share">
+          <div>
+            <Button variant={Variant.BackgroundVariant}>
               <TbShare className="inline w-5 h-5" />
-            </a>
+            </Button>
           </div>
         </div>
       </div>
