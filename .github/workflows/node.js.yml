@@ -12,9 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      NEXT_PUBLIC_SUPABASE_URL: 'https://ilomydhfzelsuwowssqd.supabase.co'
-
+    environment: Dev
     strategy:
       matrix:
         node-version: [18.x]
@@ -29,3 +27,5 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run test:ci
+      - run: npm run lint
+      - run: npm run build
