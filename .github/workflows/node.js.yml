@@ -61,9 +61,6 @@ jobs:
       - name: Test
         run: npm run test:ci
       
-      - name: Build
-        run: npm run build
-
       - name: Save Cache
         uses: actions/cache@v3
         with:
