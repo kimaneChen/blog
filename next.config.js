@@ -40,7 +40,7 @@ const nextConfig = {
     })
     return config
   },
-  staticPageGenerationTimeout: 100,
+  staticPageGenerationTimeout: 600,
 }
 
 module.exports = nextConfig
