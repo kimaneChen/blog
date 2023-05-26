@@ -51,7 +51,7 @@ const Button: FC<Props> = ({
       'disabled:cursor-not-allowed',
       'rounded-md',
       'px-4',
-      variant === Variant.Default && ['bg-background', 'text-primary'],
+      variant === Variant.Default && ['bg-background', 'text-on-background'],
       variant === Variant.Primary && ['bg-primary', 'text-on-primary'],
       variant === Variant.Warn && ['bg-warn', 'text-on-warn'],
       variant === Variant.Error && ['bg-error', 'text-on-error'],
