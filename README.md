@@ -41,6 +41,12 @@ To get started with the project, follow these steps:
 8. Configure the policies of objects in storages to allow the inserting the picture to 'avatars' buckets
 9. Test the project with npx dotenv-cli -e .env.local npm run test
 
+## Local check before pr or check ci/cd failure locally
+
+1. Build locally by running `npx dotenv-cli -e .env.local -- npm run build`
+2. Lint check by running `npm run lint`
+3. Test check by running `npx dotenv-cli -e .env.local -- npm run test`
+
 ## Managing the Database
 
 The project uses [PostgreSQL](https://www.postgresql.org/) as the database. To apply any changes to the database schema, you need to follow the setup steps in the "Getting Started" section and ensure that you have set up the `.env.local` file with the `DATABASE_URL` environment variable.
