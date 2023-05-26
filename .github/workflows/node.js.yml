@@ -59,8 +59,6 @@ jobs:
       
       - name: Build
         run: npm run build
-        env:
-          NEXT_TELEMETRY_DISABLED: 1
         timeout-minutes: 10
 
       - name: Save Cache
