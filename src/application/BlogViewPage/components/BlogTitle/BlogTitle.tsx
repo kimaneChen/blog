@@ -24,12 +24,12 @@ const BlogTitle: FC = () => {
         <div className="flex justify-end items-center">
           <div className="pr-4">9 Views</div>
           <div>
-            <Button>
+            <Button title="Bookmark">
               <FiHeart className="inline w-5 h-5" />
             </Button>
           </div>
           <div>
-            <Button>
+            <Button title="Share">
               <TbShare className="inline w-5 h-5" />
             </Button>
           </div>
