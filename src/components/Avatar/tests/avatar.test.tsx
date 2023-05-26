@@ -6,7 +6,7 @@ describe('Avatar test', () => {
     render(<Avatar width={20} height={20} />)
 
     const image = screen.getByAltText('User Avatar') as HTMLImageElement
-    expect(image.src).toContain('http://localhost/_next/image?url=%2Fimg.jpg&w=48&q=75 dddda')
+    expect(image.src).toContain('http://localhost/_next/image?url=%2Fimg.jpg&w=48&q=75')
   })
 
   it('renders a avatar with source link', () => {
