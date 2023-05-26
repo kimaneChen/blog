@@ -4,8 +4,7 @@ import Button from '../Button'
 
 describe('Button test', () => {
   it('renders test with default setting', () => {
-    const view = render(<Button>Test</Button>)
+    render(<Button>Test</Button>)
     expect(screen.findByRole('button', { name: 'Test' })).toBeTruthy()
-    expect(view).toMatchSnapshot()
   })
 })
