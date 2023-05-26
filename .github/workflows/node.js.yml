@@ -15,6 +15,18 @@ jobs:
     environment: Dev
     env: 
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+      NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+      EMAIL_SERVER_USER: ${{ secrets.EMAIL_SERVER_USER }}
+      EMAIL_SERVER_PASSWORD: ${{ secrets.EMAIL_SERVER_PASSWORD }}
+      EMAIL_SERVER_HOST: ${{ secrets.EMAIL_SERVER_HOST }}
+      EMAIL_SERVER_PORT: 587
+      EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+      SECRET: ${{ secrets.SECRET }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY}}
+      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+
     strategy:
       matrix:
         node-version: [18.x]
