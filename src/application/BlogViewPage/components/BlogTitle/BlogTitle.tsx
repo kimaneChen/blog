@@ -5,7 +5,7 @@ import { FC } from 'react'
 import useBlog from '@/hooks/useBlog'
 import { FiHeart } from 'react-icons/fi'
 import { TbShare } from 'react-icons/tb'
-import Button from '@/components/Button'
+import Button, { Size } from '@/components/Button'
 
 const BlogTitle: FC = () => {
   const { blog } = useBlog()
@@ -21,15 +21,15 @@ const BlogTitle: FC = () => {
           <Date format={DateFormat.LongDate}>{blog.createdAt}</Date>
           <div className="pl-2">-&nbsp;&nbsp;By&nbsp;{blog.user?.name}</div>
         </div>
-        <div className="flex justify-end items-center">
-          <div className="pr-4">9 Views</div>
+        <div className="flex justify-end">
+          <div className="pr-3">9 Views</div>
           <div>
-            <Button title="Bookmark">
+            <Button size={Size.XSmall} title="Bookmark">
               <FiHeart className="inline w-5 h-5" />
             </Button>
           </div>
           <div>
-            <Button title="Share">
+            <Button size={Size.XSmall} title="Share">
               <TbShare className="inline w-5 h-5" />
             </Button>
           </div>
