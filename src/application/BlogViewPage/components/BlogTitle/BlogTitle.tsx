@@ -5,7 +5,7 @@ import { FC } from 'react'
 import useBlog from '@/hooks/useBlog'
 import { FiHeart } from 'react-icons/fi'
 import { TbShare } from 'react-icons/tb'
-import Button, { Variant } from '@/components/Button'
+import Button from '@/components/Button'
 
 const BlogTitle: FC = () => {
   const { blog } = useBlog()
