@@ -6,7 +6,7 @@ exports[`Button test renders test with default setting 1`] = `
   "baseElement": <body>
     <div>
       <button
-        class="disabled:opacity-20 disabled:grayscale disabled:cursor-not-allowed rounded-md px-4 bg-background text-primary h-12"
+        class="disabled:opacity-20 disabled:grayscale disabled:cursor-not-allowed rounded-md px-4 bg-background text-on-background h-12"
         type="button"
       >
         Test
@@ -16,7 +16,7 @@ exports[`Button test renders test with default setting 1`] = `
   </body>,
   "container": <div>
     <button
-      class="disabled:opacity-20 disabled:grayscale disabled:cursor-not-allowed rounded-md px-4 bg-background text-primary h-12"
+      class="disabled:opacity-20 disabled:grayscale disabled:cursor-not-allowed rounded-md px-4 bg-background text-on-background h-12"
       type="button"
     >
       Test

@@ -44,8 +44,7 @@ To get started with the project, follow these steps:
 ## Local check before pr or check ci/cd failure locally
 
 1. Build locally by running `npx dotenv-cli -e .env.local -- npm run build`
-2. Lint check by running `npm run lint`
-3. Test check by running `npx dotenv-cli -e .env.local -- npm run test`
+2. Test check by running `npx dotenv-cli -e .env.local -- npm run test`
 
 ## Managing the Database
 
