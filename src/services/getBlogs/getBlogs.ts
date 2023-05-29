@@ -22,6 +22,7 @@ const getBlogs = ({ page, perPage, userId, exclude, tags, search }: Query): Prom
         description: true,
         unpublishedAt: true,
         content: true,
+        views: true,
         user: {
           select: {
             id: true,

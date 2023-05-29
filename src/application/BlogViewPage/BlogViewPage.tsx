@@ -3,6 +3,8 @@ import Container, { Size, Space } from '@/components/Container'
 import Loading from '@/components/Loading'
 import { NextPage } from 'next'
 import useBlog from '@/hooks/useBlog'
+import Blog from '@/types/Blog'
+import axios, { AxiosResponse } from 'axios'
 import BackLink from './components/BackLink'
 import BlogTitle from './components/BlogTitle'
 import Comments from './components/Comments'
@@ -14,6 +16,13 @@ const BlogViewPage: NextPage = () => {
   const { blog, isLoading } = useBlog()
   if (!blog) {
     return null
+  }
+
+  const increaseView = (blogId: Blog['id']): Promise<AxiosResponse> =>
+    axios.post(`/api/blogs/${blogId}`)
+
+  if (blog.unpublishedAt === null) {
+    increaseView(blog.id)
   }
 
   return (

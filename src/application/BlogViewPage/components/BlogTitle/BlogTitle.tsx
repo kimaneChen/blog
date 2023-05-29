@@ -22,7 +22,7 @@ const BlogTitle: FC = () => {
           <div className="pl-2">-&nbsp;&nbsp;By&nbsp;{blog.user?.name}</div>
         </div>
         <div className="flex justify-end">
-          <div className="pr-3">9 Views</div>
+          <div className="pr-3">{blog.views} Views</div>
           <div>
             <Button size={Size.XSmall} title="Bookmark">
               <FiHeart className="inline w-5 h-5" />

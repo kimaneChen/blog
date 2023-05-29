@@ -43,9 +43,32 @@ const getBlog: NextApiHandler = async (req, res) => {
   }
 }
 
+const increaseViews: NextApiHandler = async (req, res) => {
+  const { id } = req.query
+
+  const result = await prisma.blog.update({
+    where: {
+      id: id as string,
+    },
+    data: {
+      views: {
+        increment: 1,
+      },
+    },
+  })
+
+  return res.status(200).json({
+    id: result.id,
+  })
+}
+
 const BlogHandler: NextApiHandler = async (req, res) => {
   if (req.method === 'GET') {
     await getBlog(req, res)
+  }
+
+  if (req.method === 'POST') {
+    await increaseViews(req, res)
   }
 }
 

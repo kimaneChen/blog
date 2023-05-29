@@ -7,6 +7,7 @@ interface Blog extends Pick<PrismaBlog, 'id' | 'title' | 'description'> {
   content: any
   user?: Pick<PrismaUser, 'id' | 'name' | 'email' | 'image' | 'occupation'>
   tags?: Pick<PrismaTag, 'id' | 'name'>[]
+  views: number
 }
 
 export default Blog

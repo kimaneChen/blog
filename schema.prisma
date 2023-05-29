@@ -35,25 +35,25 @@ model Session {
 }
 
 model User {
-  id                   String                @id @default(cuid())
-  createdAt            DateTime              @default(now())
-  updatedAt            DateTime              @updatedAt
-  name                 String?
-  email                String?               @unique
-  emailVerified        DateTime?
-  image                String?
-  role                 String?
-  selfIntroduction     String?
-  linkedInLink         String?
-  gitHubLink           String?
-  accounts             Account[]
-  sessions             Session[]
-  blogs                Blog[]
-  comments             Comment[]
-  replies              Reply[]
-  commentNotifications CommentNotification[]
-  occupation           String?
-  replyNotifications   ReplyNotification[]
+  id                    String                @id @default(cuid())
+  createdAt             DateTime              @default(now())
+  updatedAt             DateTime              @updatedAt
+  name                  String?
+  email                 String?               @unique
+  emailVerified         DateTime?
+  image                 String?
+  role                  String?
+  selfIntroduction      String?
+  linkedInLink          String?
+  gitHubLink            String?
+  accounts              Account[]
+  sessions              Session[]
+  blogs                 Blog[]
+  comments              Comment[]
+  replies               Reply[]
+  commentNotifications  CommentNotification[]
+  occupation            String?
+  replyNotifications    ReplyNotification[]
 }
 
 model VerificationToken {
@@ -76,6 +76,7 @@ model Blog {
   content       Json?
   unpublishedAt DateTime?
   comments      Comment[]
+  views         Int       @default(0)
 }
 
 model Tag {
