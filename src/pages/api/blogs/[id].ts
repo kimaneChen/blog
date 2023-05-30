@@ -67,7 +67,7 @@ const BlogHandler: NextApiHandler = async (req, res) => {
     await getBlog(req, res)
   }
 
-  if (req.method === 'POST') {
+  if (req.method === 'PATCH') {
     await increaseViews(req, res)
   }
 }

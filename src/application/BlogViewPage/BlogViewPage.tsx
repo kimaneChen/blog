@@ -19,7 +19,7 @@ const BlogViewPage: NextPage = () => {
   }
 
   const increaseView = (blogId: Blog['id']): Promise<AxiosResponse> =>
-    axios.post(`/api/blogs/${blogId}`)
+    axios.patch(`/api/blogs/${blogId}`)
 
   if (blog.unpublishedAt === null) {
     increaseView(blog.id)
